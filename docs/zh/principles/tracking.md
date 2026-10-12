@@ -20,6 +20,10 @@ RodentFlow 使用经典的计算机视觉追踪方法：先学会空场地的样
 
 它不能提供身体部位，如鼻尖、尾根、爪子。具体[局限](#limits)列在本页末尾。
 
+::: tip 源代码
+本页内容都实现在 [`NativeMouseTracker.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/NativeMouseTracker.swift) 中，整段视频的读取在 [`FullVideoAnalyzer.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/FullVideoAnalyzer.swift) 中。
+:::
+
 ## 1. 以 10 Hz 读取视频
 
 视频从头到尾解码，每隔 0.1 s 取该时刻或之后的第一帧，并保留它的**原始时间戳**。因此，视频帧率或丢帧都不会扭曲时间。

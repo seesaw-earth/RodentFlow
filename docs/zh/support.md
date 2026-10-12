@@ -27,12 +27,16 @@ outline: false
 GitHub issue 是公开的。不要上传未发表的数据、可识别身份的信息，或你无权分享的视频。一张截图或几行匿名数据通常就够了。
 :::
 
+## 源代码
+
+RodentFlow 以 MIT 许可证开源：[github.com/seesaw-earth/RodentFlow](https://github.com/seesaw-earth/RodentFlow)。欢迎提交 pull request，见[开源与构建](./source.md)和 [CONTRIBUTING.md](https://github.com/seesaw-earth/RodentFlow/blob/main/CONTRIBUTING.md)。
+
 ## 功能建议
 
 欢迎通过 GitHub issue 提出新的实验范式、指标或导出格式。请描述实验方案、需要的指标，以及它在你的领域里是怎么定义的。附上一篇方法学文献会很有帮助。
 
 ## 关于
 
-RodentFlow 由 Ziqing Shi 开发，完全在 iPhone 上运行，不收集任何数据，见[隐私政策](./privacy.md)。
+RodentFlow 由 Ziqing Shi 开发，以 MIT 许可证开源，完全在 iPhone 上运行，不收集任何数据，见[隐私政策](./privacy.md)。
 
 系统要求：iPhone，iOS 17 或更高版本。语言：英文、简体中文。

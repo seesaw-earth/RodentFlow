@@ -9,6 +9,8 @@ RodentFlow 是一款用于啮齿类动物行为实验的 iPhone App，覆盖从�
 
 所有计算都在手机上完成：不需要账号，没有服务器，不上传任何数据。见[隐私政策](../privacy.md)。
 
+RodentFlow 以 MIT 许可证**开源**，App 源代码和本手册都公开在 [github.com/seesaw-earth/RodentFlow](https://github.com/seesaw-earth/RodentFlow)，见[开源与构建](../source.md)。
+
 ## 两个标签页
 
 | 标签页 | 用途 |

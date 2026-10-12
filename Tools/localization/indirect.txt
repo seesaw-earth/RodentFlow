@@ -1,0 +1,87 @@
+# file<TAB>text : literals that are translation keys looked up indirectly (loc(variable))
+AssayCatalog.swift	Anxiety & affect
+AssayCatalog.swift	Learning & memory
+AssayCatalog.swift	Motor function
+AssayCatalog.swift	Reward & decision
+AssayCatalog.swift	Other
+AssayCatalog.swift	Open Field / Center
+AssayCatalog.swift	Elevated Plus Maze
+AssayCatalog.swift	Light–Dark Box
+AssayCatalog.swift	Marble Burying
+AssayCatalog.swift	Sucrose Preference
+AssayCatalog.swift	Y-Maze
+AssayCatalog.swift	T-Maze
+AssayCatalog.swift	Novel Object Recognition
+AssayCatalog.swift	Morris Water Maze
+AssayCatalog.swift	Barnes Maze
+AssayCatalog.swift	Fear Conditioning
+AssayCatalog.swift	Beam Walking
+AssayCatalog.swift	Gait Analysis
+AssayCatalog.swift	Conditioned Place Preference
+AssayCatalog.swift	Two-Armed Bandit
+AssayCatalog.swift	Other / Custom Table
+AssayCatalog.swift	OF
+AssayCatalog.swift	EPM
+AssayCatalog.swift	LDB
+AssayCatalog.swift	Marbles
+AssayCatalog.swift	SPT
+AssayCatalog.swift	NOR
+AssayCatalog.swift	MWM
+AssayCatalog.swift	Barnes
+AssayCatalog.swift	Fear
+AssayCatalog.swift	Beam
+AssayCatalog.swift	Gait
+AssayCatalog.swift	CPP
+AssayCatalog.swift	Bandit
+AssayCatalog.swift	Custom
+AssayCatalog.swift	Training
+AssayCatalog.swift	Test
+AssayCatalog.swift	Acquisition
+AssayCatalog.swift	Probe
+AssayCatalog.swift	Context test
+AssayCatalog.swift	Cue test
+AssayCatalog.swift	Pre-test
+AssayCatalog.swift	Conditioning
+AssayEngine.swift	left
+AssayEngine.swift	right
+AssayEngine.swift	counted as dark
+AssayEngine.swift	excluded
+AssayEngine.swift	probe
+AssayEngine.swift	acquisition
+AssayEngine.swift	Random
+AssayEngine.swift	Direct
+AssayEngine.swift	Serial
+AssayEngine.swift	center
+AssayEngine.swift	periphery
+AssayEngine.swift	light
+AssayEngine.swift	dark
+AssayEngine.swift	neutral
+AssayEngine.swift	start
+AssayEngine.swift	platform
+AssayEngine.swift	target
+AssayEngine.swift	opposite
+AssayEngine.swift	adjacent
+AssayVisuals.swift	Path
+AssayVisuals.swift	Heatmap
+DataImport.swift	Per-animal results table
+DataImport.swift	Long table (metric, value)
+DataImport.swift	Raw measurements
+DataImport.swift	Trial-by-trial choices
+DataImport.swift	RodentFlow results
+DataImport.swift	RodentFlow 1.0 summary
+GroupAnalysisViewModel.swift	Bar + points
+GroupAnalysisViewModel.swift	Box + points
+GroupAnalysisViewModel.swift	Mean ± SEM
+ManualAssays.swift	right
+ManualAssays.swift	left
+PreviewView.swift	Tracked
+PreviewView.swift	Confidence
+PreviewView.swift	10s distance
+PreviewView.swift	Analysis Hz
+PreviewView.swift	Distance
+PreviewView.swift	Mean speed
+TrackingModels.swift	center
+TrackingModels.swift	left
+TrackingModels.swift	right
+TrackingModels.swift	start
+NativeMouseTracker.swift	center

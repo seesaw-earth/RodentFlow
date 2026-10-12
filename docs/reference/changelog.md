@@ -1,5 +1,9 @@
 # Release notes
 
+## Open source (October 2026)
+
+- The source code of RodentFlow 1.3 and this manual are published at [github.com/seesaw-earth/RodentFlow](https://github.com/seesaw-earth/RodentFlow) under the MIT License. See [Open source & building](../source.md).
+
 ## 1.3: Simplified Chinese
 
 - The whole app is available in **English and Simplified Chinese**: screens, assay and metric names, definitions, methods notes, quality flags, statistics wording, figures and the text summary. It follows the iPhone language. **Aa › Language / 语言** opens the setting for choosing a different language for RodentFlow alone.

@@ -1,5 +1,9 @@
 # 版本说明
 
+## 开源（2026 年 10 月）
+
+- RodentFlow 1.3 的源代码和本手册以 MIT 许可证发布在 [github.com/seesaw-earth/RodentFlow](https://github.com/seesaw-earth/RodentFlow)，见[开源与构建](../source.md)。
+
 ## 1.3：简体中文
 
 - 整个 App 支持**英文和简体中文**：界面、实验范式和指标名称、定义、方法说明、质量提示、统计描述、图表和文字摘要。App 跟随 iPhone 系统语言。**Aa › Language / 语言** 会打开单独为 RodentFlow 选择语言的设置。

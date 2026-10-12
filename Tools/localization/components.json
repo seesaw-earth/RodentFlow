@@ -1,0 +1,85 @@
+{
+ "MetricDefinition": [
+  "#1",
+  "#3"
+ ],
+ "ManualField": [
+  "label",
+  "help"
+ ],
+ "ManualSchema": [
+  "note",
+  "rowName"
+ ],
+ "choice": [
+  "[_]"
+ ],
+ "addSeries": [
+  "#1",
+  "xLabel"
+ ],
+ "SectionCard": [
+  "_"
+ ],
+ "KeyValueRow": [
+  "key"
+ ],
+ "MessageBanner": [
+  "text"
+ ],
+ "MetricTile": [
+  "title"
+ ],
+ "FlagList": [
+  "flags"
+ ],
+ "OptionalNumberField": [
+  "title",
+  "help"
+ ],
+ "OptionalIntField": [
+  "title"
+ ],
+ "FlowAction": [
+  "title"
+ ],
+ "JumpSection": [
+  "title"
+ ],
+ "keyValue": [
+  "_"
+ ],
+ "sectionCard": [
+  "title"
+ ],
+ "labeledField": [
+  "_"
+ ],
+ "arenaDimensionField": [
+  "_"
+ ],
+ "analysisProgressView": [
+  "title"
+ ],
+ "checkRow": [
+  "_"
+ ],
+ "field": [
+  "_"
+ ],
+ "statLine": [
+  "_"
+ ],
+ "legendSwatch": [
+  "#1"
+ ],
+ "sliderRow": [
+  "_"
+ ],
+ "numberRow": [
+  "_"
+ ],
+ "labeled": [
+  "_"
+ ]
+}

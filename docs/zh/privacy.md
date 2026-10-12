@@ -24,6 +24,10 @@ RodentFlow **仅在你的 iPhone 上**处理：
 - **不含任何统计分析、广告、崩溃报告或追踪**代码或第三方 SDK。
 - **不访问**通讯录、位置、相机、麦克风或健康数据。
 
+## 你可以自行核实
+
+RodentFlow 是开源软件，完整源代码公开在 [github.com/seesaw-earth/RodentFlow](https://github.com/seesaw-earth/RodentFlow)，任何人都可以核实其中没有联网代码。App 内附带的隐私清单（`PrivacyInfo.xcprivacy`）声明不追踪、不收集任何数据。
+
 ## 照片与文件
 
 - **照片**：通过系统的照片选择器选择视频。RodentFlow 只能拿到你选中的视频，无法访问照片图库的其他内容。

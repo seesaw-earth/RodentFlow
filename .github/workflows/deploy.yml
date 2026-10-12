@@ -1,10 +1,16 @@
-# Builds the VitePress site and publishes it to GitHub Pages.
+# Builds the VitePress user manual in docs/ and publishes it to GitHub Pages.
+# Runs when the manual changes on main (app-only commits do not redeploy), or by hand.
 # One-time setup: repository Settings › Pages › Build and deployment › Source: "GitHub Actions".
 name: Deploy manual to GitHub Pages
 
 on:
   push:
     branches: [main]
+    paths:
+      - "docs/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
 permissions:

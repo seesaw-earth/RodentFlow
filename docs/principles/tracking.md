@@ -20,6 +20,10 @@ For a single animal filmed from above against a contrasting floor, background su
 
 What it does not give you is body parts: nose, tail base, paws. [The limits](#limits) are listed at the end of this page.
 
+::: tip Source code
+Everything on this page is implemented in [`NativeMouseTracker.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/NativeMouseTracker.swift), and the whole-video reading in [`FullVideoAnalyzer.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/FullVideoAnalyzer.swift).
+:::
+
 ## 1. Reading the video at 10 Hz
 
 The video is decoded from start to finish. For every 0.1 s step, the first frame at or after that time is used, and its **original timestamp** is kept. Video frame rate and dropped frames therefore do not distort time.

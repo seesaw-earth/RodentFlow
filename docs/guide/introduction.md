@@ -9,6 +9,8 @@ RodentFlow is an iPhone app for rodent behavior experiments. It covers the path 
 
 Everything runs on the phone. There is no account, no server and no upload. See the [privacy policy](../privacy.md).
 
+RodentFlow is **open source** under the MIT License. The app's source code and this manual are public at [github.com/seesaw-earth/RodentFlow](https://github.com/seesaw-earth/RodentFlow); see [Open source & building](../source.md).
+
 ## Two tabs
 
 | Tab | What you do there |

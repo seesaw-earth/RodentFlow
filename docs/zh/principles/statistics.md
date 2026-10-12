@@ -62,7 +62,7 @@
 
 ## 数值是怎样核对的
 
-统计引擎用 Swift 从零编写，可以在手机上运行，不依赖任何库。它包括 t、F、χ² 和正态分布，Tukey 检验所用的学生化极差分布（移植自 R 的算法），Mann–Whitney 和 Wilcoxon 的精确分布，以及 Greenhouse–Geisser ε。每种检验都与成熟的 Python 实现（SciPy、pingouin、scikit-posthocs）逐一对比过，包括：Welch、Student、配对和单样本 t 检验；精确及渐近 Mann–Whitney；Wilcoxon；单因素方差分析；Tukey；Kruskal–Wallis；Dunn；带 Greenhouse–Geisser 校正的混合和重复测量方差分析；Friedman。全部 **1,059 项检查**结果一致。
+统计引擎（[`StatsEngine.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/StatsEngine.swift)；检验选择在 [`GroupAnalysis.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/GroupAnalysis.swift)）用 Swift 从零编写，可以在手机上运行，不依赖任何库。它包括 t、F、χ² 和正态分布，Tukey 检验所用的学生化极差分布（移植自 R 的算法），Mann–Whitney 和 Wilcoxon 的精确分布，以及 Greenhouse–Geisser ε。每种检验都与成熟的 Python 实现（SciPy、pingouin、scikit-posthocs）逐一对比过，包括：Welch、Student、配对和单样本 t 检验；精确及渐近 Mann–Whitney；Wilcoxon；单因素方差分析；Tukey；Kruskal–Wallis；Dunn；带 Greenhouse–Geisser 校正的混合和重复测量方差分析；Friedman。全部 **1,059 项检查**结果一致。
 
 ## 可以参考的方法描述
 

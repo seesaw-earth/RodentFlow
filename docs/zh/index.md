@@ -18,6 +18,9 @@ hero:
       text: 追踪原理
       link: /zh/principles/tracking
     - theme: alt
+      text: GitHub 源代码
+      link: https://github.com/seesaw-earth/RodentFlow
+    - theme: alt
       text: English
       link: /
 
@@ -42,10 +45,10 @@ features:
     details: 以动物为分析单位，根据设计自动选择检验，从 Welch t 检验到带 Greenhouse–Geisser 校正的混合方差分析，每种检验都与 SciPy 逐一核对过。
     link: /zh/principles/statistics
     linkText: 统计方法
-  - title: 数据只在你的手机上
-    details: 不需要账号，没有统计分析 SDK，不联网。视频、结果和图表都保存在 iPhone 和“文件”App 里，由你决定是否分享。
-    link: /zh/privacy
-    linkText: 隐私政策
+  - title: 数据只在手机上，代码完全开源
+    details: 不需要账号，没有统计分析 SDK，不联网。视频、结果和图表都保存在 iPhone 上，由你决定是否分享。全部源代码以 MIT 许可证公开。
+    link: /zh/source
+    linkText: 源代码
 ---
 
 <div class="rf-home">
@@ -71,6 +74,12 @@ features:
 | 运动功能 | 平衡木、步态分析 | —（手动录入或导入） |
 | 奖赏与决策 | 条件性位置偏好、双臂老虎机任务 | 条件性位置偏好 |
 | 其他 | 任意“每只动物一行”的数据表 | —（导入） |
+
+## 开源
+
+RodentFlow 以 MIT 许可证开源。追踪器、每一个指标、统计引擎和这本手册都在同一个公开仓库里：你可以查看每个数值究竟怎么算出来，自己构建 App，或者按实验室的需要修改。
+
+<p class="rf-repo"><a href="https://github.com/seesaw-earth/RodentFlow">github.com/seesaw-earth/RodentFlow</a></p>
 
 ## 从哪里开始
 

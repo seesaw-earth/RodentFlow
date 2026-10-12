@@ -2,6 +2,10 @@
 
 Tracking produces one sample every 0.1 s: a time, a position in arena centimeters, whether the animal was detected, the maze zone for mazes, and the motion index. Every video metric is computed from this list by the rules on this page. The rules are applied after tracking. Changing a zone or threshold on the result screen recomputes everything from the saved samples in a fraction of a second, without the video.
 
+::: tip Source code
+These rules are implemented in [`AssayEngine.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/AssayEngine.swift); the defaults are in `ZoneConfig` in [`ResultModels.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/ResultModels.swift).
+:::
+
 ## Time
 
 Each sample stands for **the time until the next sample**, normally 0.1 s. If there is a gap in the video, such as a dropped stretch, a sample counts for at most five sampling intervals (0.5 s), so a gap cannot inflate the time in whatever zone the animal was last seen.

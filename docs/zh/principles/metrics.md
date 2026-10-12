@@ -2,6 +2,10 @@
 
 追踪每 0.1 s 产生一个样本，包括：时间、以场地厘米表示的位置、是否检测到动物、迷宫中的区域，以及运动指数。所有视频指标都按本页的规则由这些样本计算。这些规则在追踪之后才应用。在结果页修改区域或阈值后，App 用已保存的样本在一瞬间重算全部指标，不需要视频。
 
+::: tip 源代码
+这些规则实现在 [`AssayEngine.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/AssayEngine.swift) 中，默认值在 [`ResultModels.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/ResultModels.swift) 的 `ZoneConfig` 里。
+:::
+
 ## 时间
 
 每个样本代表**到下一个样本之前的时间**，通常是 0.1 s。如果视频中间有缺口（比如丢了一段），一个样本最多只代表五个采样间隔（0.5 s），这样缺口不会把时间都算到动物最后出现的区域里。

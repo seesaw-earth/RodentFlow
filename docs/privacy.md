@@ -24,6 +24,10 @@ RodentFlow processes, **on your iPhone only**:
 - It contains **no analytics, advertising, crash-reporting or tracking** code or third-party SDKs.
 - It does **not** access your contacts, location, camera, microphone or health data.
 
+## You can check this
+
+RodentFlow is open source. Its complete source code is public at [github.com/seesaw-earth/RodentFlow](https://github.com/seesaw-earth/RodentFlow), so anyone can verify that it contains no network code. The privacy manifest included in the app (`PrivacyInfo.xcprivacy`) declares no tracking and no collected data.
+
 ## Photos and files
 
 - **Photos.** Videos are chosen with the system photo picker. RodentFlow receives only the video you select and has no access to the rest of your photo library.

@@ -27,12 +27,16 @@ To help us help you, please include:
 GitHub issues are public. Do not post unpublished data, identifiable information, or videos you are not allowed to share. A screenshot or a few anonymized rows are usually enough.
 :::
 
+## Source code
+
+RodentFlow is open source (MIT License): [github.com/seesaw-earth/RodentFlow](https://github.com/seesaw-earth/RodentFlow). Pull requests are welcome; see [Open source & building](./source.md) and [CONTRIBUTING.md](https://github.com/seesaw-earth/RodentFlow/blob/main/CONTRIBUTING.md).
+
 ## Feature requests
 
 New assays, metrics or export formats are welcome as GitHub issues. Please describe the protocol, the measure you need, and how it is defined in your field. A reference to a methods paper helps.
 
 ## About
 
-RodentFlow is developed by Ziqing Shi. It runs entirely on the iPhone and collects no data; see the [privacy policy](./privacy.md).
+RodentFlow is developed by Ziqing Shi and released under the MIT License. It runs entirely on the iPhone and collects no data; see the [privacy policy](./privacy.md).
 
 Requirements: iPhone with iOS 17 or later. Languages: English, Simplified Chinese.

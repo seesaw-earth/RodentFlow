@@ -1,59 +1,116 @@
-# RodentFlow user manual
+<p align="center">
+  <img src="docs/public/logo.png" width="96" alt="RodentFlow icon">
+</p>
 
-Source of the RodentFlow manual website in **English and Simplified Chinese**, built with [VitePress](https://vitepress.dev/) and published to GitHub Pages at **https://seesaw-earth.github.io/RodentFlow/**.
+<h1 align="center">RodentFlow</h1>
 
-RodentFlow 使用手册网站的源文件（英文 / 简体中文），用 VitePress 构建，发布在 GitHub Pages。
+<p align="center">
+  Rodent behavior tracking and analysis on iPhone: video tracking, manual scoring, table import and group statistics, all on the device.<br>
+  在 iPhone 上完成啮齿类动物行为的视频追踪、评分与组间统计。
+</p>
 
-## Structure
+<p align="center">
+  <a href="https://seesaw-earth.github.io/RodentFlow/">User manual</a> ·
+  <a href="https://seesaw-earth.github.io/RodentFlow/zh/">中文手册</a> ·
+  <a href="https://seesaw-earth.github.io/RodentFlow/principles/tracking.html">How tracking works</a> ·
+  <a href="https://seesaw-earth.github.io/RodentFlow/principles/validation.html">Validation</a>
+</p>
 
-```text
-docs/
-├── index.md                 English home page (language switch in the hero and the nav bar)
-├── guide/  assays/  principles/  reference/
-├── privacy.md  support.md   App Store privacy-policy and support URLs
-├── zh/                      Chinese pages, same file names and structure
-├── public/
-│   ├── img/                 figures, one file per language: name.en.png / name.zh.png
-│   ├── samples/             example CSV files offered for download
-│   └── logo.png, hero.png, favicon-64.png, apple-touch-icon.png
-└── .vitepress/
-    ├── config.mts           site config: base path, nav, sidebars, search, locales
-    └── theme/               brand colors and small style additions
-.github/workflows/deploy.yml builds and deploys on every push to main
+<p align="center">
+  <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue.svg">
+  <img alt="iOS 17+" src="https://img.shields.io/badge/iOS-17%2B-lightgrey.svg">
+  <img alt="Swift 5 / SwiftUI" src="https://img.shields.io/badge/Swift-5%20%C2%B7%20SwiftUI-orange.svg">
+  <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-none-brightgreen.svg">
+</p>
+
+---
+
+![From video to group statistics](docs/public/img/dataflow.en.png)
+
+## What it does
+
+- **Video tracking on the phone.** Ten assays from a top-down video: open field, elevated plus maze, light–dark box, Y-maze, T-maze, novel object recognition, Morris water maze, Barnes maze, fear conditioning (freezing) and conditioned place preference. The whole recording is read at 10 samples per second.
+- **Calibrated arenas and mazes.** Positions in centimeters through a 4-point perspective calibration (rectangle), circle calibration, or maze centerlines (plus, Y, T).
+- **One result per animal.** Every video, manual entry or imported row becomes a result. Zones and thresholds can be changed afterwards without tracking again.
+- **Manual entry and import** for all 15 assays, including marble burying, sucrose preference, beam walking, gait and a two-armed bandit with a Q-learning fit. Accepts CSV, TSV and JSON, with English or Chinese column names.
+- **Group statistics that fit the design.** n = animals. Welch's t, Mann–Whitney, ANOVA + Tukey–Kramer, Kruskal–Wallis + Dunn, mixed ANOVA with Greenhouse–Geisser, paired and one-sample tests, with effect sizes. Each test was checked against SciPy, pingouin and scikit-posthocs (1,059 checks).
+- **Private by design.** No account, no network code, no analytics. Everything stays on the iPhone until the user shares it.
+- **English and Simplified Chinese.**
+
+The tracker is a classic, transparent pipeline: temporal-median background with repair for a resting animal, adaptive threshold, candidate scoring, and a contrast-weighted centroid. There is no neural network. Every step is documented in the [manual](https://seesaw-earth.github.io/RodentFlow/principles/tracking.html).
+
+![Tracking pipeline](docs/public/img/pipeline.en.png)
+
+## Build from source
+
+Requirements: a Mac with **Xcode 15 or later** (the project was created with Xcode 16) and an iPhone with **iOS 17 or later**. There are no third-party dependencies.
+
+```bash
+git clone https://github.com/seesaw-earth/RodentFlow.git
+cd RodentFlow
+open RodentFlow.xcodeproj
 ```
 
-## Preview locally
+In Xcode:
 
-Requires Node.js 18 or later.
+1. Select the **RodentFlow** target › **Signing & Capabilities**, and choose your own **Team**. A free Apple ID works for running on your own iPhone.
+2. Change the **Bundle Identifier** to one of your own, e.g. `com.yourname.rodentflow`. `com.ziqingshi.rodentflow` belongs to the published app.
+3. Choose your iPhone as the run destination and press **Run** (⌘R).
+
+## Repository layout
+
+```text
+RodentFlow.xcodeproj/        Xcode project (iOS 17+, iPhone)
+RodentFlow/                  App source (SwiftUI)
+  NativeMouseTracker.swift     background, threshold, candidate scoring, centroid, arena mapping, motion index
+  FullVideoAnalyzer.swift      sequential 10 Hz decoding of the whole video with checkpoints
+  AssayEngine.swift            zones, entries, distance, freezing and all video metrics
+  ManualAssays.swift           manual-entry assays and the two-armed bandit / Q-learning fit
+  StatsEngine.swift            statistics (t, F, χ², studentized range, exact rank tests, mixed ANOVA)
+  GroupAnalysis.swift          test selection by design, n = animals
+  DataImport.swift             CSV / TSV / JSON import and column matching
+  Localizable.xcstrings        English and Simplified Chinese strings (~1,000)
+  PrivacyInfo.xcprivacy        privacy manifest (no tracking, no collected data)
+SampleData/                  synthetic example tables for the import and the Groups tab
+Tools/localization/          scripts that check the string catalog
+docs/                        user manual website (VitePress, English and Chinese)
+dev-notes/                   design, build, localization and test notes
+CHANGELOG.md                 release notes
+```
+
+## User manual website
+
+The manual at https://seesaw-earth.github.io/RodentFlow/ is built from `docs/` with [VitePress](https://vitepress.dev/) and deployed by `.github/workflows/deploy.yml` whenever something under `docs/` changes on `main`.
 
 ```bash
 npm ci
-npm run docs:dev        # live preview at http://localhost:5173/RodentFlow/
-npm run docs:build      # production build in docs/.vitepress/dist (also checks for dead links)
-npm run docs:preview    # serve the production build
+npm run docs:dev      # live preview at http://localhost:5173/RodentFlow/
+npm run docs:build    # production build; fails on broken internal links
 ```
 
-## Publish on GitHub Pages
+## Contributing
 
-1. Push this folder to the repository `seesaw-earth/RodentFlow`, on branch `main`.
-2. In the repository: **Settings › Pages › Build and deployment › Source: GitHub Actions**.
-3. Every push to `main` runs `.github/workflows/deploy.yml` and publishes the site at https://seesaw-earth.github.io/RodentFlow/. The first run takes about a minute; progress is under the **Actions** tab.
+Bug reports, assay requests and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). For questions about using the app, see the [FAQ](https://seesaw-earth.github.io/RodentFlow/reference/faq.html) or open an [issue](https://github.com/seesaw-earth/RodentFlow/issues).
 
-If the repository has a different name, change `base` in `docs/.vitepress/config.mts` to `/<repository-name>/`, and the two footer links in the same file. For a custom domain, set `base` to `/`.
+## Citing
 
-If the app source code lives in the same repository, keep this folder at the repository root, or move `package.json`, `package-lock.json` and `docs/` into a subfolder and add `working-directory:` to the build steps in the workflow.
+If RodentFlow contributes to published work, please cite it. GitHub's **Cite this repository** button uses [CITATION.cff](CITATION.cff).
 
-## App Store Connect
+## License
 
-- **Privacy Policy URL**: https://seesaw-earth.github.io/RodentFlow/privacy.html (Chinese: …/zh/privacy.html)
-- **Support URL**: https://seesaw-earth.github.io/RodentFlow/support.html (Chinese: …/zh/support.html)
-- **Marketing URL** (optional): https://seesaw-earth.github.io/RodentFlow/
+[MIT](LICENSE) © 2026 Ziqing Shi
 
-## Editing
+---
 
-- Every page exists twice, `docs/<path>.md` and `docs/zh/<path>.md`. Change both.
-- UI labels in the Chinese pages follow the app's own translation (`RodentFlow/Localizable.xcstrings`), so the manual and the app use the same words.
-- Assay headings carry fixed anchors (`{#open-field-center}` …) that are identical in both languages, so links between pages work in both.
-- Figures: put `name.en.png` and `name.zh.png` in `docs/public/img/` and reference them as `/img/name.en.png`. VitePress adds the `/RodentFlow/` base automatically.
-- Screenshots of the app can be added the same way. Recommended width: 1170 px (iPhone portrait), shown at about 360 px with `<img src="/RodentFlow/img/…" width="360">` inside raw HTML, or as a normal Markdown image.
-- `npm run docs:build` fails on broken internal links, which makes it a quick check before pushing.
+## 中文简介
+
+RodentFlow 是一款 iPhone App，覆盖啮齿类动物行为实验从视频到组间统计的全过程：
+
+- 十种实验范式可以直接用俯拍视频追踪：旷场、高架十字迷宫、明暗箱、Y/T 迷宫、新物体识别、Morris 水迷宫、Barnes 迷宫、恐惧条件化、条件性位置偏好；
+- 15 种实验范式都支持手动录入和表格导入，列名中英文均可；
+- 以动物为单位，按实验设计自动选择统计检验，生成显示每只动物数据点的图表；
+- 不联网、无账号，所有数据只在手机上。
+
+**从源码构建**：用 Xcode 15 或更高版本打开 `RodentFlow.xcodeproj`，在 Signing & Capabilities 中选择自己的 Team，把 Bundle Identifier 改成自己的（如 `com.yourname.rodentflow`），连接 iPhone（iOS 17+）运行即可，没有第三方依赖。
+
+使用手册：https://seesaw-earth.github.io/RodentFlow/zh/ · 许可证：MIT

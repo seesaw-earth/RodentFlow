@@ -62,7 +62,7 @@ If a group has fewer than two animals, or all of its values are identical, no te
 
 ## How the numbers were verified
 
-The statistics engine is written from scratch in Swift, so it runs on the phone without any library. It includes the t, F, χ² and normal distributions, the studentized range distribution for Tukey's test (following the algorithm used in R), exact distributions for Mann–Whitney and Wilcoxon, and Greenhouse–Geisser ε. Each test was compared with established Python implementations (SciPy, pingouin, scikit-posthocs): Welch, Student, paired and one-sample t; exact and asymptotic Mann–Whitney; Wilcoxon; one-way ANOVA; Tukey; Kruskal–Wallis; Dunn; mixed and repeated-measures ANOVA with Greenhouse–Geisser; and Friedman. All **1,059 checks** agreed.
+The statistics engine ([`StatsEngine.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/StatsEngine.swift); test selection in [`GroupAnalysis.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/GroupAnalysis.swift)) is written from scratch in Swift, so it runs on the phone without any library. It includes the t, F, χ² and normal distributions, the studentized range distribution for Tukey's test (following the algorithm used in R), exact distributions for Mann–Whitney and Wilcoxon, and Greenhouse–Geisser ε. Each test was compared with established Python implementations (SciPy, pingouin, scikit-posthocs): Welch, Student, paired and one-sample t; exact and asymptotic Mann–Whitney; Wilcoxon; one-way ANOVA; Tukey; Kruskal–Wallis; Dunn; mixed and repeated-measures ANOVA with Greenhouse–Geisser; and Friedman. All **1,059 checks** agreed.
 
 ## A methods paragraph you can adapt
 

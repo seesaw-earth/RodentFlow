@@ -54,6 +54,7 @@ function sidebarEn(): DefaultTheme.Sidebar {
     {
       text: 'About',
       items: [
+        { text: 'Open source & building', link: '/source' },
         { text: 'Privacy policy', link: '/privacy' },
         { text: 'Support', link: '/support' }
       ]
@@ -111,6 +112,7 @@ function sidebarZh(): DefaultTheme.Sidebar {
     {
       text: '关于',
       items: [
+        { text: '开源与构建', link: '/zh/source' },
         { text: '隐私政策', link: '/zh/privacy' },
         { text: '支持', link: '/zh/support' }
       ]
@@ -170,13 +172,18 @@ export default defineConfig({
           { text: 'Assays', link: '/assays/', activeMatch: '/assays/' },
           { text: 'How it works', link: '/principles/tracking', activeMatch: '/principles/' },
           { text: 'Reference', link: '/reference/files', activeMatch: '/reference/' },
+          { text: 'Source code', link: '/source' },
           { text: 'Support', link: '/support' }
         ],
         sidebar: sidebarEn(),
         outline: { level: [2, 3], label: 'On this page' },
         docFooter: { prev: 'Previous', next: 'Next' },
+        editLink: {
+          pattern: 'https://github.com/seesaw-earth/RodentFlow/edit/main/docs/:path',
+          text: 'Edit this page on GitHub'
+        },
         footer: {
-          message: 'RodentFlow · all analysis runs on the iPhone · <a href="/RodentFlow/privacy.html">Privacy</a> · <a href="/RodentFlow/support.html">Support</a>',
+          message: 'RodentFlow · open source under the MIT License · <a href="https://github.com/seesaw-earth/RodentFlow">Source on GitHub</a> · <a href="/RodentFlow/privacy.html">Privacy</a> · <a href="/RodentFlow/support.html">Support</a>',
           copyright: '© 2026 Ziqing Shi'
         }
       }
@@ -193,11 +200,16 @@ export default defineConfig({
           { text: '实验范式', link: '/zh/assays/', activeMatch: '/zh/assays/' },
           { text: '原理', link: '/zh/principles/tracking', activeMatch: '/zh/principles/' },
           { text: '参考', link: '/zh/reference/files', activeMatch: '/zh/reference/' },
+          { text: '源代码', link: '/zh/source' },
           { text: '支持', link: '/zh/support' }
         ],
         sidebar: sidebarZh(),
         outline: { level: [2, 3], label: '本页目录' },
         docFooter: { prev: '上一页', next: '下一页' },
+        editLink: {
+          pattern: 'https://github.com/seesaw-earth/RodentFlow/edit/main/docs/:path',
+          text: '在 GitHub 上编辑此页'
+        },
         langMenuLabel: '切换语言',
         returnToTopLabel: '回到顶部',
         sidebarMenuLabel: '目录',
@@ -212,7 +224,7 @@ export default defineConfig({
           linkText: '回到首页'
         },
         footer: {
-          message: 'RodentFlow · 所有分析都在 iPhone 本机完成 · <a href="/RodentFlow/zh/privacy.html">隐私政策</a> · <a href="/RodentFlow/zh/support.html">支持</a>',
+          message: 'RodentFlow · MIT 许可证开源 · <a href="https://github.com/seesaw-earth/RodentFlow">GitHub 源代码</a> · <a href="/RodentFlow/zh/privacy.html">隐私政策</a> · <a href="/RodentFlow/zh/support.html">支持</a>',
           copyright: '© 2026 Ziqing Shi'
         }
       }

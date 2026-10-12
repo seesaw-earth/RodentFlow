@@ -1,0 +1,23 @@
+{
+ "MetricDefinition": [
+  "#0",
+  "#2"
+ ],
+ "ZoneOverlay": [
+  "id",
+  "role"
+ ],
+ "MetricPair": [
+  "key",
+  "metricA",
+  "metricB"
+ ],
+ "TestResult": [
+  "statisticName"
+ ],
+ "PairwiseComparison": [
+  "statisticName",
+  "groupA",
+  "groupB"
+ ]
+}

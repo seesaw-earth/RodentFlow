@@ -1,4 +1,18 @@
+# macOS
+.DS_Store
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+*.xcscmblueprint
+*.xccheckout
+
+# Manual website (VitePress)
 node_modules/
 docs/.vitepress/dist/
 docs/.vitepress/cache/
-.DS_Store
+
+# Python helper scripts
+__pycache__/

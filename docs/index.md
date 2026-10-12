@@ -18,6 +18,9 @@ hero:
       text: How tracking works
       link: /principles/tracking
     - theme: alt
+      text: Source on GitHub
+      link: https://github.com/seesaw-earth/RodentFlow
+    - theme: alt
       text: 中文版
       link: /zh/
 
@@ -42,10 +45,10 @@ features:
     details: The animal is the unit of analysis. The test follows from the design, from Welch's t to mixed ANOVA with Greenhouse–Geisser correction, and each test was checked against SciPy.
     link: /principles/statistics
     linkText: Statistics
-  - title: Private by design
-    details: No account, no analytics and no network connection. Videos, results and figures stay on the iPhone and in the Files app until you share them.
-    link: /privacy
-    linkText: Privacy policy
+  - title: Private and open source
+    details: No account, no analytics and no network connection. Videos, results and figures stay on the iPhone until you share them. The full source code is public under the MIT License.
+    link: /source
+    linkText: Source code
 ---
 
 <div class="rf-home">
@@ -71,6 +74,12 @@ A video becomes positions, positions become metrics for one animal, and the metr
 | Motor function | Beam walking, gait analysis | — (entered or imported) |
 | Reward & decision | Conditioned place preference, two-armed bandit | CPP |
 | Other | Any table of per-animal values | — (imported) |
+
+## Open source
+
+RodentFlow is open source under the MIT License. The tracker, every metric, the statistics engine and this manual are in one public repository. You can read exactly how each number is computed, build the app yourself, or adapt it to your lab.
+
+<p class="rf-repo"><a href="https://github.com/seesaw-earth/RodentFlow">github.com/seesaw-earth/RodentFlow</a></p>
 
 ## Where to start
 
