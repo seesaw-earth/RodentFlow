@@ -1,0 +1,159 @@
+/* RodentFlow brand: blue and teal taken from the app icon. */
+:root {
+  --rf-blue: #1f86c9;
+  --rf-blue-dark: #176aa1;
+  --rf-teal: #22b8a6;
+
+  --vp-c-brand-1: #1a78b5;
+  --vp-c-brand-2: #1f86c9;
+  --vp-c-brand-3: #1f86c9;
+  --vp-c-brand-soft: rgba(31, 134, 201, 0.14);
+
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #1f86c9 20%, #22b8a6 80%);
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, rgba(31, 134, 201, 0.45) 40%, rgba(34, 184, 166, 0.45) 60%);
+  --vp-home-hero-image-filter: blur(56px);
+
+  --vp-font-family-base: 'Inter', ui-sans-serif, system-ui, -apple-system, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+}
+
+.dark {
+  --vp-c-brand-1: #5cb4ea;
+  --vp-c-brand-2: #3a9fdc;
+  --vp-c-brand-3: #1f86c9;
+  --vp-c-brand-soft: rgba(92, 180, 234, 0.16);
+}
+
+.VPHero .image-src {
+  max-width: 220px;
+  max-height: 220px;
+  border-radius: 22%;
+}
+
+@media (min-width: 640px) {
+  .VPHero .image-src {
+    max-width: 260px;
+    max-height: 260px;
+  }
+}
+
+/* Figures: image + caption. Figures are drawn on white, so keep them on white in dark mode. */
+.vp-doc figure {
+  margin: 24px 0;
+}
+
+.vp-doc figure p {
+  margin: 0;
+}
+
+.vp-doc figure img,
+.vp-doc img.figure {
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 1px solid var(--vp-c-divider);
+  background: #fff;
+}
+
+.vp-doc figcaption {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--vp-c-text-2);
+}
+
+.dark .vp-doc figure img {
+  padding: 6px;
+}
+
+/* Step lists in the guide read better with a little more air. */
+.vp-doc ol > li + li {
+  margin-top: 6px;
+}
+
+/* Small UI-label chip, e.g. <kbd>Generate Preview</kbd>. */
+.vp-doc kbd {
+  display: inline-block;
+  padding: 0 6px;
+  border: 1px solid var(--vp-c-divider);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  font-family: var(--vp-font-family-base);
+  font-size: 0.86em;
+  line-height: 1.6;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  white-space: nowrap;
+}
+
+/* Home page extras */
+.rf-home {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+
+.rf-home h2 {
+  border-top: none;
+  margin-top: 40px;
+  padding-top: 0;
+}
+
+.rf-lang {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 8px 0 4px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+
+.rf-lang a {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.rf-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.rf-cards a {
+  display: block;
+  padding: 16px 18px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  text-decoration: none !important;
+  color: var(--vp-c-text-1) !important;
+  transition: border-color 0.2s;
+}
+
+.rf-cards a:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.rf-cards strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--vp-c-brand-1);
+}
+
+.rf-cards span {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--vp-c-text-2);
+}
+
+/* Wide tables scroll inside themselves on phones instead of widening the page. */
+.vp-doc table {
+  display: block;
+  overflow-x: auto;
+}
+
+/* Short column headers ("Unit", "单位") should not break mid-word on phones. */
+.vp-doc th {
+  white-space: nowrap;
+}
