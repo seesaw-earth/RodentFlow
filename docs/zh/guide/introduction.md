@@ -1,4 +1,8 @@
-# RodentFlow 是什么
+# iPhone 上的质心追踪
+
+::: tip iPhone 版 RodentFlow 1.x
+本页及之后的 iPhone 页面介绍 iPhone 版 RodentFlow 1.x 的质心追踪、手动录入、表格导入和组间统计。姿态追踪、双鼠追踪、iPad 和 Mac 版，请先看[我该用哪个版本？](./editions.md)
+:::
 
 RodentFlow 是一款用于啮齿类动物行为实验的 iPhone App，覆盖从一段实验录像到组间比较的全过程：
 

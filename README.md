@@ -10,8 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="https://seesaw-earth.github.io/RodentFlow/">User manual</a> ·
-  <a href="https://seesaw-earth.github.io/RodentFlow/zh/">中文手册</a> ·
+  <a href="https://seesaw-earth.github.io/RodentFlow/">Website</a> ·
+  <a href="https://seesaw-earth.github.io/RodentFlow/guide/introduction.html">User manual</a> ·
+  <a href="https://seesaw-earth.github.io/RodentFlow/zh/guide/introduction.html">中文手册</a> ·
   <a href="https://seesaw-earth.github.io/RodentFlow/principles/tracking.html">How tracking works</a> ·
   <a href="https://seesaw-earth.github.io/RodentFlow/principles/validation.html">Validation</a>
 </p>

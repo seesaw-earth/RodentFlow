@@ -1,5 +1,7 @@
 # Release notes
 
+Releases of RodentFlow for iPhone 1.x are listed first, then the [Mac app](#mac).
+
 ## Open source (October 2026)
 
 - The source code of RodentFlow 1.3 and this manual are published at [github.com/seesaw-earth/RodentFlow](https://github.com/seesaw-earth/RodentFlow) under the MIT License. See [Open source & building](../source.md).
@@ -45,3 +47,22 @@ Fixes found with synthetic videos of known ground truth:
 ## 1.0
 
 - Classic-centroid tracking of open field (rectangle or circle), T-maze and Y-maze videos at 10 Hz, with preview, full analysis, recoverable checkpoints and JSON export.
+
+## Mac app (formerly RodentStudio) {#mac}
+
+### Release candidate 0.6.3 (build 6)
+
+#### Release preparation
+
+- Improved task notes, matching-task consolidation safeguards and task deletion controls.
+- macOS app icon asset preparation.
+- Privacy manifest and App Store release metadata draft.
+- Archive-specific compatibility correction for FP16 decoding on Intel (x86_64) build targets.
+
+::: info
+**Not yet a published release:** Successful Xcode Archive, signing, App Store Connect processing and final research workflow tests are required before release.
+:::
+
+#### Model support in the inspected build
+
+MousePose6_960_int8 and CylinderMousePoseV2 are the two integrated model families. Additional weights published separately are not evidence of integration into this build.

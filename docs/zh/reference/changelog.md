@@ -1,5 +1,7 @@
 # 版本说明
 
+先列出 iPhone 版 RodentFlow 1.x 的各个版本，然后是 [Mac 版](#mac)。
+
 ## 开源（2026 年 10 月）
 
 - RodentFlow 1.3 的源代码和本手册以 MIT 许可证发布在 [github.com/seesaw-earth/RodentFlow](https://github.com/seesaw-earth/RodentFlow)，见[开源与构建](../source.md)。
@@ -45,3 +47,22 @@
 ## 1.0
 
 - 以 10 Hz 对旷场（矩形或圆形）、T 迷宫和 Y 迷宫视频做经典质心追踪，支持预览、完整分析、可恢复的检查点和 JSON 导出。
+
+## Mac 版（原 RodentStudio） {#mac}
+
+### 发布候选版 0.6.3（Build 6）
+
+#### 发布准备内容
+
+- 任务备注、同名任务合并保护和删除控制。
+- macOS 应用图标资源。
+- 隐私清单与 App Store 元数据草稿。
+- 修复 Intel（x86_64）目标编译时 FP16 解码兼容问题。
+
+::: info
+**尚未正式发布：**在提交前仍需完成真实 Xcode Archive、签名、App Store Connect 处理以及科研工作流测试。
+:::
+
+#### 模型情况
+
+已审阅工程的两条 Core ML 路线使用 MousePose6_960_int8 与 CylinderMousePoseV2。单独发布的其他模型不能当作此 App 已支持的功能。

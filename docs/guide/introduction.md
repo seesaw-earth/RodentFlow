@@ -1,4 +1,8 @@
-# What is RodentFlow?
+# Centroid tracking on iPhone
+
+::: tip RodentFlow 1.x on iPhone
+This page and the iPhone pages after it describe the centroid tracker, manual entry, table import and group statistics of RodentFlow 1.x for iPhone. For pose tracking, two-animal tracking, the iPad and the Mac, start with [Which edition do I need?](./editions.md)
+:::
 
 RodentFlow is an iPhone app for rodent behavior experiments. It covers the path from a recorded session to a group comparison:
 
