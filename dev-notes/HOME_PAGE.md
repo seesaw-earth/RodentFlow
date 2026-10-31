@@ -14,6 +14,16 @@
 
 **中英文是两个文件。** 改文字、换视频顺序时，两个 `index.html` 都要改：视频清单在每个文件底部脚本里的 `const CLIPS`（中文文件里的标题和说明已翻译），实验表在 `const TESTS`。
 
+## 颜色
+
+视频旁“视频中”的图例和“三种追踪方式”里的动画，用的都是 App 在视频上画的颜色：
+
+- 六关键点：鼻尖红 `#FF383C`、左耳橙 `#FF8D28`、右耳黄 `#FFCC00`、颈部绿 `#34C759`、身体中心青 `#00C0E8`、尾根紫 `#CB30E0`（App 源码里的 `DesignSystem.keypoints`）。
+- 质心：薄荷绿点 `#00C8B3`，加最近 2.5 秒的橙色轨迹 `#FF8D28`（`TrackingOverlayView.swift`）。
+- 两只动物：A 蓝、B 红。
+
+如果 App 改了配色，两个 `index.html` 里都要改三处：CSS 的 `--kp-*` 变量、脚本里 `TRACKERS` 的图例、动画里的 `COL`。左上角 Logo 用的是 App 图标的配色，不跟着改。
+
 ## 换视频
 
 ```bash
@@ -21,7 +31,7 @@ brew install ffmpeg                                   # 只需一次
 bash tools/homepage/encode-all.sh ~/Downloads/APP_demo/3x
 ```
 
-单个视频：`bash tools/homepage/encode.sh 原文件 新名字 --start 1 --dur 12`。参数说明见 `encode.sh` 开头的注释。加新视频后，在两个 `index.html` 的 `CLIPS` 里各加一段，`file` 写转码时起的名字。
+单个视频：`bash tools/homepage/encode.sh 原文件 新名字 --start 1 --dur 12`。参数说明见 `encode.sh` 开头的注释。加新视频后，在两个 `index.html` 的 `CLIPS` 里各加一段，`file` 写转码时起的名字。`tracker` 要按视频里实际用的追踪方式填：`centroid`（质心）、`pose`（单只六关键点）、`dyad`（两只）或 `tst`（悬尾），它决定标签和图例。
 
 ## 本地预览
 
