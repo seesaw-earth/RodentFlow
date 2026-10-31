@@ -111,6 +111,46 @@ Tap **Aa › Language / 语言**. It opens RodentFlow's page in the iPhone Setti
 
 **Aa** offers five sizes from Small to Largest, or "Same as iPhone".
 
+## Mac and pose tracking {#mac}
+
+These questions come from the Mac app. For step-by-step fixes, see [Troubleshooting: Mac & pose](./troubleshooting-mac.md).
+
+### Does RodentFlow upload my videos?
+
+The source-reviewed version uses local processing and does not include a developer-operated video upload service. See [Privacy Policy](/privacy) for scope and caveats.
+
+### Do I need Python, GitHub or an internet connection to analyse a video?
+
+The intended Mac App Store distribution bundles the required Core ML models and runs analyses on-device. No Python or GitHub account is required for the analysis workflow. The final packaged app must be tested before release.
+
+### What video formats are supported?
+
+The app imports local videos through macOS media frameworks, primarily MP4 and MOV. Whether a file opens depends on its codec and container. If one fails, try an ordinary H.264 MP4 file and report the error.
+
+### Where are my results saved?
+
+The app uses local Application Support storage for workspaces and runs. Exports are saved to locations you select. Back up original videos separately; deleting a task may not remove all related files.
+
+### What happens when I delete a task?
+
+Task deletion affects its record in the workspace, but source media and some tracking artifacts may remain on disk. Confirm your backups and local files rather than assuming secure erasure.
+
+### Can I compare experimental groups?
+
+Group and animal summaries are available for applicable workflows. Verify the experimental unit, exclusions, repeated sessions and statistical assumptions. The software does not replace independently validated analysis.
+
+### Does the app support the JABS 12-point Core ML model?
+
+The JABS YOLO26s MousePose12 model may exist in the separate models repository, but the inspected RodentFlow 0.6.3 release project uses MousePose6 and CylinderMousePoseV2 for native Core ML pose workflows. Do not assume JABS support is included.
+
+### How do I report a bug?
+
+Use [Support](/support) and include your app build, macOS version, hardware, workflow and a reproducible description. Do not upload confidential research videos publicly.
+
+### Is the app suitable for clinical or veterinary diagnosis?
+
+No. It is an experimental research analysis tool, not a diagnostic or treatment device.
+
 ---
 
 Still stuck? See [Support](../support.md).

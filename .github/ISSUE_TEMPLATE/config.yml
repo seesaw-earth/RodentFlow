@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: "User manual · 使用手册"
+    url: https://seesaw-earth.github.io/RodentFlow/guide/editions.html
+    about: "Recording, calibration, tracking, review, statistics and exports · 拍摄、标定、追踪、复核、统计与导出"
+  - name: "FAQ & troubleshooting · 常见问题与排错"
+    url: https://seesaw-earth.github.io/RodentFlow/reference/faq.html
+    about: "The most common questions, iPhone and Mac · iPhone 与 Mac 上最常见的问题"
+  - name: "Join the Mac beta on TestFlight · 加入 Mac 版 TestFlight 内测"
+    url: https://testflight.apple.com/join/dU24jGY7
+    about: "Install the Mac beta through Apple TestFlight · 通过 TestFlight 安装 Mac 测试版"
