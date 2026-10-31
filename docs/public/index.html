@@ -39,9 +39,10 @@
   --ink-2:#4D5A78;
   --line:#D3DCE7;
 
-  /* keypoints, as in the app icon */
-  --kp-nose:#2F6BFF; --kp-earl:#22C7E8; --kp-earr:#7FDB84;
-  --kp-neck:#12B89A; --kp-body:#4EB3F7; --kp-tail:#9A6BFF;
+  /* keypoints, as the app draws them on video (nose, left ear, right ear, neck, body center, tail base) */
+  --kp-nose:#FF383C; --kp-earl:#FF8D28; --kp-earr:#FFCC00;
+  --kp-neck:#34C759; --kp-body:#00C0E8; --kp-tail:#CB30E0;
+  --focus:#22C7E8;
 
   /* tracking methods and identities */
   --m-centroid:#F2B441;
@@ -65,7 +66,7 @@ body{margin:0;background:var(--acrylic);color:var(--ink);font:400 1.0625rem/1.7 
 img,video,canvas,svg{display:block;max-width:100%}
 a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
 a:hover{text-decoration-thickness:2px}
-:focus-visible{outline:3px solid var(--kp-earl);outline-offset:3px;border-radius:6px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
 h1,h2,h3,h4{font-family:var(--display);margin:0;font-optical-sizing:auto}
 p{margin:0}
 .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
@@ -95,10 +96,13 @@ p{margin:0}
 .bar .get{font:600 .92rem/1 var(--display);text-decoration:none;padding:.62rem 1rem;border-radius:999px;background:#fff;color:var(--night);white-space:nowrap}
 .bar .get:hover{background:#dfe9ff}
 @media (max-width:860px){.bar-links{display:none}}
-.bar .lang{font:500 .92rem/1 var(--display);text-decoration:none;padding:.6rem .75rem;border-radius:999px;color:var(--on-night-2);white-space:nowrap}
-.bar .lang:hover{color:#fff;background:rgba(255,255,255,.08)}
-.bar.on-light .lang{color:var(--ink-2)}
-.bar.on-light .lang:hover{color:var(--ink);background:rgba(19,32,59,.06)}
+.bar .lang{flex:none;font:600 .92rem/1 var(--display);text-decoration:none;padding:.55rem .8rem;margin-right:.3rem;border-radius:999px;border:1px solid rgba(255,255,255,.28);color:#fff;white-space:nowrap}
+.bar .lang:hover{background:rgba(255,255,255,.1)}
+.bar.on-light .lang{color:var(--ink);border-color:rgba(19,32,59,.22)}
+.bar.on-light .lang:hover{background:rgba(19,32,59,.06)}
+.bar .get{flex:none}
+@media (max-width:380px){.bar{padding-left:10px}.brand{gap:.4rem;font-size:.95rem}.bar .lang{padding:.5rem .65rem}.bar .get{padding:.6rem .8rem}}
+@media (max-width:359px){.brand{font-size:0;gap:0}}
 
 /* ---------- Hero ---------- */
 .hero{background:var(--night);color:var(--on-night);padding-top:clamp(108px, 14vw, 168px);position:relative;isolation:isolate}
@@ -176,7 +180,7 @@ p{margin:0}
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 0 0 1.5px #3A404D,0 0 0 3px #0A0C12,0 50px 100px -24px rgba(0,0,0,.7);
   transition:border-radius .7s var(--ease)}
 .stage[data-device="mac"] .dev{border-radius:calc(var(--W) * .026) calc(var(--W) * .026) calc(var(--W) * .008) calc(var(--W) * .008)}
-.dev:focus-visible{outline:3px solid var(--kp-earl);outline-offset:6px}
+.dev:focus-visible{outline:3px solid var(--focus);outline-offset:6px}
 /* phone side buttons */
 .dev::before,.dev::after{content:"";position:absolute;width:3px;border-radius:2px;background:#2B303A;transition:opacity .3s}
 .dev::before{left:-4px;top:19%;height:5%;box-shadow:0 calc(var(--H) * .08) 0 #2B303A,0 calc(var(--H) * .155) 0 #2B303A}
@@ -239,7 +243,7 @@ p{margin:0}
 .auto[aria-pressed="true"]{color:#fff}
 .auto[aria-pressed="true"] .sw{background:var(--m-pose)}
 .auto[aria-pressed="true"] .sw::after{transform:translateX(12px)}
-.ic:focus-visible,.auto:focus-visible,.round:focus-visible{outline:3px solid var(--kp-earl);outline-offset:2px}
+.ic:focus-visible,.auto:focus-visible,.round:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 @media (max-width:400px){.auto .lbl-long{display:none}}
 
 /* thumbnail strip, full-bleed, first card lined up with the text column */
@@ -265,7 +269,7 @@ p{margin:0}
 .card.no-thumb img{visibility:hidden}
 .card:hover .thumb{opacity:.92}
 .card[aria-selected="true"] .thumb{opacity:1;translate:0 -3px;box-shadow:0 0 0 2px var(--c),0 14px 30px -10px var(--c)}
-.card:focus-visible .thumb{outline:3px solid var(--kp-earl);outline-offset:3px}
+.card:focus-visible .thumb{outline:3px solid var(--focus);outline-offset:3px}
 .card .bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.16)}
 .card .bar i{position:absolute;inset:0;transform-origin:0 50%;transform:scaleX(0);background:var(--c)}
 .card .bar.ab i{background:linear-gradient(90deg,var(--m-a),var(--m-b))}
@@ -316,7 +320,7 @@ dialog.lightbox::backdrop{background:rgba(5,9,20,.88);-webkit-backdrop-filter:bl
 .modes{margin-top:2rem;display:grid;gap:.6rem}
 .mode{all:unset;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr);gap:.2rem .9rem;padding:1rem 1.1rem;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.5)}
 .mode:hover{border-color:#aebbd0}
-.mode:focus-visible{outline:3px solid var(--kp-earl);outline-offset:3px}
+.mode:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 .mode[aria-pressed="true"]{background:var(--paper);border-color:var(--ink);box-shadow:0 1px 0 rgba(19,32,59,.06), 0 12px 30px rgba(19,32,59,.08)}
 .mode .glyph{grid-row:span 2;width:38px;height:38px;border-radius:10px;background:var(--night);display:grid;place-items:center}
 .mode .glyph svg{width:26px;height:26px}
@@ -333,7 +337,7 @@ dialog.lightbox::backdrop{background:rgba(5,9,20,.88);-webkit-backdrop-filter:bl
 .readout dd small{font:500 .82rem var(--display);color:var(--on-night-2);margin-left:.15rem}
 .pp{all:unset;cursor:pointer;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--night-line);color:#fff;flex:none}
 .pp:hover{background:rgba(255,255,255,.08)}
-.pp:focus-visible{outline:3px solid var(--kp-earl);outline-offset:2px}
+.pp:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .pp svg{width:18px;height:18px}
 .sim-note{margin-top:.9rem;font-size:.9rem;color:var(--ink-2)}
 @media (max-width:920px){
@@ -567,12 +571,12 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
     </div>
       <div class="modes t-modes" role="group" aria-label="Tracker">
         <button class="mode" type="button" data-mode="centroid" aria-pressed="false">
-          <span class="glyph"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="5" fill="#F2B441" stroke="#fff" stroke-width="1.5"/><path d="M13 2v5M13 19v5M2 13h5M19 13h5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+          <span class="glyph"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="5" fill="#00C8B3" stroke="#fff" stroke-width="1.5"/><path d="M13 2v5M13 19v5M2 13h5M19 13h5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg></span>
           <strong>Centroid</strong>
           <span class="d">Background subtraction finds the animal and records its center ten times a second, with no neural network. It is the RodentFlow 1.x method, unchanged, and enough for where the animal is: zones, arms, distance, freezing.</span>
         </button>
         <button class="mode" type="button" data-mode="pose" aria-pressed="true">
-          <span class="glyph"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M9 4 15 6.5 12.5 10.5 7 9.5Z M12.5 10.5 14 16 15.5 22" fill="none" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/><g stroke="#fff" stroke-width=".9"><circle cx="9" cy="4" r="2.2" fill="#2F6BFF"/><circle cx="15" cy="6.5" r="2" fill="#7FDB84"/><circle cx="7" cy="9.5" r="2" fill="#22C7E8"/><circle cx="12.5" cy="10.5" r="2" fill="#12B89A"/><circle cx="14" cy="16" r="2" fill="#4EB3F7"/><circle cx="15.5" cy="22" r="2" fill="#9A6BFF"/></g></svg></span>
+          <span class="glyph"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M9 4 15 6.5 12.5 10.5 7 9.5Z M12.5 10.5 14 16 15.5 22" fill="none" stroke="#fff" stroke-width="1.3" stroke-linejoin="round"/><g stroke="#fff" stroke-width=".9"><circle cx="9" cy="4" r="2.2" fill="#FF383C"/><circle cx="15" cy="6.5" r="2" fill="#FFCC00"/><circle cx="7" cy="9.5" r="2" fill="#FF8D28"/><circle cx="12.5" cy="10.5" r="2" fill="#34C759"/><circle cx="14" cy="16" r="2" fill="#00C0E8"/><circle cx="15.5" cy="22" r="2" fill="#CB30E0"/></g></svg></span>
           <strong>Six keypoints</strong>
           <span class="d">An on-device pose model finds the nose, both ears, neck, body center and tail base in every frame. Nose position and head direction make sniffing, object exploration and head dips measurable.</span>
         </button>
@@ -778,10 +782,10 @@ const CLIPS = [
     text: "Both animals are tracked at once, A in blue and B in red. Identities are settled over the whole recording, not frame by frame, so A is still A after the two mice cross.",
     measures: ["Contacts per animal", "Distance for A and B", "Moments flagged for review"] },
 
-  { file: "open-field", device: "phone", tracker: "pose",
+  { file: "open-field", device: "phone", tracker: "centroid",
     title: "Open field",
-    text: "Six keypoints on every frame. Distance and time in the center come from the body center; head direction from the nose and ears.",
-    measures: ["Distance", "Time in center", "Speed", "Head direction"] },
+    text: "The centroid tracker reads the whole recording at 10 Hz. Distance, time in the center and immobility all come from the body center.",
+    measures: ["Distance", "Time in center", "Center entries", "Immobility"] },
 
   { file: "three-chamber", device: "phone", tracker: "pose",
     title: "Three-chamber sociability",
@@ -808,10 +812,10 @@ const CLIPS = [
     text: "The Mac app compiles the same analysis code as the phone, so the numbers match. Head direction comes from the nose and both ears.",
     measures: ["Head direction"] },
 
-  { file: "mac-plus-maze", device: "mac", tracker: "centroid",
+  { file: "mac-plus-maze", device: "mac", tracker: "pose",
     title: "Elevated plus maze, on the Mac",
-    text: "The centroid tracker from RodentFlow 1.x, at 10 Hz and with no model: arm entries and time on the open arms.",
-    measures: ["Open-arm time", "Arm entries"] }
+    text: "Six keypoints on every frame, so head dips and stretched-attend postures are scored along with time on the open arms.",
+    measures: ["Open-arm time", "Arm entries", "Head dips", "Stretched-attend postures"] }
 ];
 
 /* With Auto-advance on, a short clip repeats until it has played at least this many seconds. */
@@ -832,9 +836,9 @@ const autoplayOK = !reduceMotion && !saveData;
    ============================================================ */
 const TRACKERS = {
   centroid: { label: "Centroid", color: "var(--m-centroid)",
-              key: [[["#F2B441"], "Body center, 10 times a second"]] },
+              key: [[["#00C8B3"], "Body center, 10 times a second"], [["#FF8D28"], "Path of the last 2.5 s"]] },
   pose:     { label: "One animal", color: "var(--m-pose)",
-              key: [[["#2F6BFF"], "Nose"], [["#22C7E8", "#7FDB84"], "Ears"], [["#12B89A"], "Neck"], [["#4EB3F7"], "Body center"], [["#9A6BFF"], "Tail base"]] },
+              key: [[["#FF383C"], "Nose"], [["#FF8D28"], "Left ear"], [["#FFCC00"], "Right ear"], [["#34C759"], "Neck"], [["#00C0E8"], "Body center"], [["#CB30E0"], "Tail base"]] },
   dyad:     { label: "Two animals", color: "var(--m-a)", ab: true,
               key: [[["#1E88E5"], "Mouse A"], [["#E53935"], "Mouse B"]] },
   tst:      { label: "Tail suspension", color: "var(--m-tst)", key: [] }
@@ -845,7 +849,7 @@ const DEVICE = {
 };
 const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>';
 const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
-const PH_SVG = '<svg viewBox="0 0 84 64" fill="none" aria-hidden="true"><rect x="2" y="2" width="80" height="60" rx="6" stroke="currentColor" stroke-opacity=".35" stroke-dasharray="4 4"/><path d="M34 20 44 24 40 31 31 29Z M40 31 43 40 46 50" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><g stroke="#fff" stroke-width="1.2"><circle cx="34" cy="20" r="3.2" fill="#2F6BFF"/><circle cx="44" cy="24" r="3" fill="#7FDB84"/><circle cx="31" cy="29" r="3" fill="#22C7E8"/><circle cx="40" cy="31" r="3" fill="#12B89A"/><circle cx="43" cy="40" r="3" fill="#4EB3F7"/><circle cx="46" cy="50" r="3" fill="#9A6BFF"/></g></svg>';
+const PH_SVG = '<svg viewBox="0 0 84 64" fill="none" aria-hidden="true"><rect x="2" y="2" width="80" height="60" rx="6" stroke="currentColor" stroke-opacity=".35" stroke-dasharray="4 4"/><path d="M34 20 44 24 40 31 31 29Z M40 31 43 40 46 50" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><g stroke="#fff" stroke-width="1.2"><circle cx="34" cy="20" r="3.2" fill="#FF383C"/><circle cx="44" cy="24" r="3" fill="#FFCC00"/><circle cx="31" cy="29" r="3" fill="#FF8D28"/><circle cx="40" cy="31" r="3" fill="#34C759"/><circle cx="43" cy="40" r="3" fill="#00C0E8"/><circle cx="46" cy="50" r="3" fill="#CB30E0"/></g></svg>';
 
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[ch]);
@@ -1259,8 +1263,8 @@ copyBtn.addEventListener("click", async () => {
   if (!cv || !cv.getContext) return;
   const ctx = cv.getContext("2d");
   const A = 40, TAU = Math.PI * 2;
-  const COL = { nose: "#2F6BFF", earL: "#22C7E8", earR: "#7FDB84", neck: "#12B89A", body: "#4EB3F7", tail: "#9A6BFF",
-                cen: "#F2B441", pose: "#12B89A", A: "#1E88E5", B: "#E53935" };
+  const COL = { nose: "#FF383C", earL: "#FF8D28", earR: "#FFCC00", neck: "#34C759", body: "#00C0E8", tail: "#CB30E0",
+                cen: "#00C8B3", trail: "#FF8D28", pose: "#12B89A", A: "#1E88E5", B: "#E53935" };
   const LABELS = {
     centroid: [["Distance", "m"], ["Time in center", "%"], ["Speed", "cm/s"]],
     pose:     [["Distance", "m"], ["Time in center", "%"], ["Speed", "cm/s"]],
@@ -1294,7 +1298,7 @@ copyBtn.addEventListener("click", async () => {
     const body = { x: m.x, y: m.y };
     const neck = { x: m.x + 2.3 * c, y: m.y + 2.3 * s };
     const nose = { x: neck.x + 2.5 * hc, y: neck.y + 2.5 * hs };
-    const px = -hs, py = hc;
+    const px = hs, py = -hc;
     const earL = { x: neck.x + .75 * hc + 1.15 * px, y: neck.y + .75 * hs + 1.15 * py };
     const earR = { x: neck.x + .75 * hc - 1.15 * px, y: neck.y + .75 * hs - 1.15 * py };
     const tail = { x: m.x - 3.9 * c, y: m.y - 3.9 * s };
@@ -1470,7 +1474,7 @@ copyBtn.addEventListener("click", async () => {
     ctx.strokeStyle = "#fff"; ctx.lineWidth = 1.5;
     ctx.beginPath(); ctx.moveTo(x - 12, y); ctx.lineTo(x - 6, y); ctx.moveTo(x + 6, y); ctx.lineTo(x + 12, y);
     ctx.moveTo(x, y - 12); ctx.lineTo(x, y - 6); ctx.moveTo(x, y + 6); ctx.lineTo(x, y + 12); ctx.stroke();
-    ctx.beginPath(); ctx.arc(x, y, 5.5, 0, TAU); ctx.fillStyle = COL.cen; ctx.fill(); ctx.strokeStyle = "#1B1D22"; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.beginPath(); ctx.arc(x, y, 5.5, 0, TAU); ctx.fillStyle = COL.cen; ctx.fill(); ctx.strokeStyle = "#fff"; ctx.lineWidth = 2; ctx.stroke();
   }
 
   function stamp() {
@@ -1486,7 +1490,7 @@ copyBtn.addEventListener("click", async () => {
     if (!floor) return;
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.drawImage(floor, 0, 0);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    if (mode === "centroid") trail(mice[0], COL.cen, 2);
+    if (mode === "centroid") trail(mice[0], COL.trail, 3);
     else if (mode === "pose") trail(mice[0], COL.pose, 2);
     else { trail(mice[0], COL.A, 2); trail(mice[1], COL.B, 2); }
     for (const m of mice) drawAnimal(m);
