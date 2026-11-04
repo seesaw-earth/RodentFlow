@@ -74,6 +74,13 @@ function sidebarEn(): DefaultTheme.Sidebar {
       ]
     },
     {
+      text: 'Blog',
+      items: [
+        { text: 'All posts', link: '/blog/' },
+        { text: 'Training on existing tracks', link: '/blog/training-on-existing-tracks' }
+      ]
+    },
+    {
       text: 'Reference',
       items: [
         { text: 'Files & data', link: '/reference/files' },
@@ -166,6 +173,13 @@ function sidebarZh(): DefaultTheme.Sidebar {
       ]
     },
     {
+      text: '博客',
+      items: [
+        { text: '全部文章', link: '/zh/blog/' },
+        { text: '用已有轨迹训练小模型', link: '/zh/blog/training-on-existing-tracks' }
+      ]
+    },
+    {
       text: '参考',
       items: [
         { text: '文件与数据', link: '/zh/reference/files' },
@@ -252,6 +266,7 @@ export default defineConfig({
             ]
           },
           { text: 'Models & tutorials', link: '/models', activeMatch: '^/(models|tutorials/)' },
+          { text: 'Blog', link: '/blog/', activeMatch: '^/blog/' },
           { text: 'Source code', link: '/source' },
           { text: 'Support', link: '/support' }
         ],
@@ -290,6 +305,7 @@ export default defineConfig({
             ]
           },
           { text: '模型与教程', link: '/zh/models', activeMatch: '^/zh/(models|tutorials/)' },
+          { text: '博客', link: '/zh/blog/', activeMatch: '^/zh/blog/' },
           { text: '源代码', link: '/zh/source' },
           { text: '支持', link: '/zh/support' }
         ],
