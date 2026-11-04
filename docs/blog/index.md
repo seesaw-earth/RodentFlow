@@ -1,6 +1,7 @@
 ---
 title: Blog
 description: Notes on how RodentFlow and RodentLimb are built, trained and tested.
+image: /img/blog/2026-11-manuscript/og-card.png
 ---
 
 # Blog

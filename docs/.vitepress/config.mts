@@ -214,10 +214,25 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/png', href: `${base}favicon-64.png` }],
     ['link', { rel: 'apple-touch-icon', href: `${base}apple-touch-icon.png` }],
     ['meta', { name: 'theme-color', content: '#1f86c9' }],
-    ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:title', content: 'RodentFlow — user manual' }],
-    ['meta', { property: 'og:image', content: `https://seesaw-earth.github.io${base}hero.png` }]
+    ['meta', { property: 'og:type', content: 'website' }]
   ],
+  // Link previews (LinkedIn, Slack, iMessage…): title, description, URL and image per page.
+  // A page can set its own preview image with `image:` in its frontmatter (a path under docs/public).
+  transformHead({ pageData, siteData }) {
+    const site = `https://seesaw-earth.github.io${base}`
+    const fm = pageData.frontmatter
+    const title = fm.title ?? pageData.title
+    const description = fm.description || pageData.description || siteData.description
+    const path = pageData.relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '.html')
+    const image = fm.image ? site + String(fm.image).replace(/^\//, '') : `${site}hero.png`
+    return [
+      ['meta', { property: 'og:title', content: title ? `${title} | RodentFlow` : 'RodentFlow' }],
+      ['meta', { property: 'og:description', content: description }],
+      ['meta', { property: 'og:url', content: site + path }],
+      ['meta', { property: 'og:image', content: image }],
+      ['meta', { name: 'twitter:card', content: 'summary_large_image' }]
+    ]
+  },
   markdown: {
     image: { lazyLoading: true }
   },

@@ -2,6 +2,7 @@
 title: Training small pose models on tracks that already exist
 description: How the RodentFlow and RodentLimb models were trained without new manual labels, what the manuscript (v0.13) shows about them, and what has not yet been validated.
 outline: [2, 3]
+image: /img/blog/2026-11-manuscript/og-card.png
 ---
 
 # Training small pose models on tracks that already exist
@@ -169,7 +170,11 @@ The MARS pose dataset provides 15,000 frames from the CalMS21 apparatus in which
 
 ### Keeping identities {#dyad-identity}
 
-The app assigns identities frame by frame, matching the two highest-scoring detections to each animal's last known keypoint centroid. Re-implemented line by line from the app source and run on every frame, this rule kept identities consistent in a median of **98.1 %** of scored frames in eight DooM videos (0.70 swaps per minute) and **75.7 %** in eight CalMS21 videos (2.77 swaps per minute). Ordering detections by confidence alone gave 56.5 % and 62.1 %, with 163 and 132 swaps per minute. Most swaps happened near close proximity. Scored frames covered a median of 98.2 % of DooM frames but only 73.1 % of CalMS21 frames, and the DooM references are the laboratories' own tracks, so these numbers describe agreement with a reference rather than accuracy against ground truth.
+::: info Which version this describes
+This section describes the identity rule of the release evaluated in the manuscript. RodentFlow 2.0 replaces it with a method that reads the whole recording, described on the <a href="/RodentFlow/#identity" target="_self">home page</a>. That method is not part of the manuscript and is not evaluated here.
+:::
+
+The evaluated release assigns identities frame by frame, matching the two highest-scoring detections to each animal's last known keypoint centroid. Re-implemented line by line from the app source and run on every frame, this rule kept identities consistent in a median of **98.1 %** of scored frames in eight DooM videos (0.70 swaps per minute) and **75.7 %** in eight CalMS21 videos (2.77 swaps per minute). Ordering detections by confidence alone gave 56.5 % and 62.1 %, with 163 and 132 swaps per minute. Most swaps happened near close proximity. Scored frames covered a median of 98.2 % of DooM frames but only 73.1 % of CalMS21 frames, and the DooM references are the laboratories' own tracks, so these numbers describe agreement with a reference rather than accuracy against ground truth.
 
 ### Scoring aggression on the phone {#aggression}
 

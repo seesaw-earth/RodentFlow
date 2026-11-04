@@ -1,6 +1,7 @@
 ---
 title: 博客
 description: 关于 RodentFlow 与 RodentLimb 如何构建、训练和测试的记录。
+image: /img/blog/2026-11-manuscript/og-card.png
 ---
 
 # 博客
