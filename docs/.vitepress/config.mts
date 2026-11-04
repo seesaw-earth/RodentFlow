@@ -224,7 +224,7 @@ export default defineConfig({
     const title = fm.title ?? pageData.title
     const description = fm.description || pageData.description || siteData.description
     const path = pageData.relativePath.replace(/(^|\/)index\.md$/, '$1').replace(/\.md$/, '.html')
-    const image = fm.image ? site + String(fm.image).replace(/^\//, '') : `${site}hero.png`
+    const image = fm.image ? site + String(fm.image).replace(/^\//, '') : `${site}og-default.png`
     return [
       ['meta', { property: 'og:title', content: title ? `${title} | RodentFlow` : 'RodentFlow' }],
       ['meta', { property: 'og:description', content: description }],
