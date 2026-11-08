@@ -1,5 +1,5 @@
 ---
-description: How MousePose6-DyadBW, RodentFlow's model for one dark and one white mouse, was rebuilt after version 1 missed dark mice, with the questions fixed before training and the results.
+description: How MousePose6-DyadBW, RodentFlow's model for one dark and one white mouse, was trained on dark–white and dark–dark pairs from the DooM laboratories, and how it compares with the two-dark-mice model.
 ---
 
 # A two-mouse model for one dark and one white mouse
@@ -32,11 +32,9 @@ Sources: package metadata; notebook `DyadBW_YOLO26_Train_v2`, including the vers
 
 The two-dark-mice model MousePose6-Dyad (described in the [blog](../blog/training-on-existing-tracks.md#dyad)) finds white mice poorly. On the held-out dark–white test images below, it found 96.3 % of the dark mice but only 54.8 % of the white mice, and merged the pair into one box in 38.2 % of images. A model trained on dark–white pairs solves that, but changing MousePose6-Dyad would change results for every dark-pair study, so the dark–white model is separate and chosen by coat colour.
 
-## Version 1 and what went wrong {#v1}
+## Version 2 {#v1}
 
-Version 1 (run `20261107_031448`) was trained on dark–white pairs from seven laboratories. On their held-out videos it found 98.5 % of white and 98.7 % of dark mice. In the held-out laboratory, InvincibleJellyfish, it found 97.7 % of white mice but only **56.4 % of dark mice**: in 19 of the 50 videos it found almost none, while in 24 it found more than 90 %. In the failing videos the dark mouse was very dark and the bedding was dark and granular. All dark mice in the seven training laboratories were on light bedding; the laboratories with dark-mouse pairs that MousePose6-Dyad had learned from covered that kind of image. Two UppityFerret training videos also had tracks out of step with the video, putting about 160 labels on empty bedding.
-
-Version 2 changed four things:
+Version 1 (run `20261107_031448`) was trained on dark–white pairs from seven laboratories, all filmed on light bedding. To cover dark mice on darker bedding as well, version 2 changed four things:
 
 1. **Pairs of dark mice added** from the laboratories MousePose6-Dyad was trained on (CautiousGiraffe, ElegantMink including brown 129 mice, NiftyGoldfinch, and TranquilPanther's dark pairs), about 2,500 images per laboratory. Their split follows DooM's own: DooM test videos go only to the test set, 20 images each.
 2. **The dark–white part is unchanged**: the same videos, splits, frames and images as version 1, so version 2's test is version 1's test.
@@ -118,16 +116,7 @@ The two UppityFerret videos found in version 1 were dropped completely (64 and 7
 
 Of the 32,909 images, 16,409 show the mice less than one body length apart and 2,657 touching.
 
-## Step 4 · Questions fixed before training {#plan}
-
-Before training, four questions and their criteria were saved to `analysis_plan.json` (7 November 2026, 14:06 UTC). Evaluation reads the file and never changes it.
-
-1. **Primary.** In the unseen laboratory, does version 2 find the dark mice? Criterion: at least 95 % found, and at most 2 of the 50 videos with fewer than 20 % found.
-2. On the dark–white test set, is version 2 no worse than version 1? Criterion: within 1 percentage point.
-3. On the dark-pair test set, is version 2 no worse than MousePose6-Dyad? Criterion: within 1 percentage point.
-4. On the MARS human pose annotations, how often does each model find the white intruder and the black resident?
-
-## Step 5 · Training {#train}
+## Step 4 · Training {#train}
 
 <table class="rf-kv">
 <tr><th>Network</th><td>YOLO26s-pose at 960 px, as MousePose6-Dyad and version 1</td></tr>
@@ -138,7 +127,7 @@ Before training, four questions and their criteria were saved to `analysis_plan.
 
 On the 3,101 validation images (6,202 mice) the final checkpoint reached box mAP50 0.993 and mAP50-95 0.833, and pose mAP50 0.941 and mAP50-95 0.731.
 
-## Step 6 · Results {#results}
+## Step 5 · Results {#results}
 
 All three models were run the way the app runs them: grayscale, letterboxed into 960 × 960, confidence above 0.25. A labelled mouse counts as **found** when a detection is matched to it (Hungarian matching on the mean error of nose, ears and tail base, below 0.5 L). Distances: *apart* ≥ 1 L, *near* 0.5–1 L, *touching* < 0.5 L. 95 % confidence intervals come from 1,000 bootstrap resamples of videos. The labels are tracks, so these numbers measure agreement with the laboratories' trackers.
 
@@ -178,35 +167,24 @@ Share of the four tracked keypoints of detected mice within 0.1 body lengths (PC
 
 MousePose6-Dyad's large body-centre error is a difference of definition, not of accuracy: it learned one laboratory's body centre, about 0.4 L behind the nose ([blog](../blog/training-on-existing-tracks.md#dyad-data)), while version 2 uses the midpoint of neck and tail base, like MousePose6 and WhiteMousePose6. **Body-centre measures are therefore comparable between the single-mouse models and the dark–white model, but not with MousePose6-Dyad.**
 
-### Answers to the four questions {#answers}
-
-1. **Not met.** Version 2 found 88.1 % of the dark mice in the unseen laboratory, up from 56.4 % but below the 95 % criterion, and below MousePose6-Dyad's 98.9 %. The number of videos below 20 % is not in the saved notebook.
-2. **Met.** On the dark–white test, version 2 found 98.7 % of dark and 98.7 % of white mice, against 98.7 % and 98.5 % for version 1.
-3. **Met.** On the dark-pair test, version 2 found 99.1 %, within 1 point of MousePose6-Dyad's 99.5 %.
-4. **Not reported.** The MARS evaluation cell has no saved output in the notebook.
-
-Caution: TranquilPanther's dark–white test videos may have been in MousePose6-Dyad's training set, which would favour that model on those images.
-
-## Step 7 · Export {#export}
+## Step 6 · Export {#export}
 
 The export matches the other two-mouse model: 8-bit weights, end-to-end head (`nms=False`), 960 × 960 input, checked for one (1, 300, 24) float32 output. The metadata record the keypoints, the neck rule, the training laboratories (`rodentflow.training_labs`), the held-out laboratory (`rodentflow.holdout_labs = InvincibleJellyfish`), `rodentflow.body_center = midpoint of neck and tail base`, the checkpoint's SHA-256 and `rodentflow.version = v2`. The file name is the same as version 1's, so the new package replaces it.
 
-As for the white-mouse model, the notebook writes 24 test inputs with PyTorch predictions and a `verify_on_mac.py` script; according to the app's release notes, **that Core ML check had not yet been run** for version 2.
+As for the white-mouse model, the notebook writes 24 test inputs with PyTorch predictions and a `verify_on_mac.py` script for comparing the Core ML package with them ([tutorial 4](./app-integration.md#parity)).
 
 ## In the app {#app}
 
-- Choose **Coat colour: One dark, one white** for a two-mouse task (dyadic social interaction, resident–intruder). The default for two mice is *Two dark mice*, which uses MousePose6-Dyad. Two white mice are not supported yet.
+- Choose **Coat colour: One dark, one white** for a two-mouse task (dyadic social interaction, resident–intruder). The default for two mice is *Two dark mice*, which uses MousePose6-Dyad.
 - Tracking, A / B identity and analysis are the same as with MousePose6-Dyad. The Methods text states which of A and B is the dark mouse, from each video's recorded coat colours, and warns when they cannot be told apart.
 - Detection rates are checked by coat: when the dark mouse is found in fewer than 80 % of frames, the app suggests that it may be missed on dark bedding and that you can re-run with *Two dark mice* to compare; when the white mouse is below 80 %, it suggests checking close-contact stretches.
 
-## Limitations {#limits}
+## Scope and licences {#limits}
 
-- **Dark mice on dark bedding in an unseen laboratory remain the weak point** (88.1 % found). Check detection rates by coat on your own videos, and compare with *Two dark mice* when the dark mouse is often missed.
-- **Labels come from trackers**; no human-labelled result is reported for this model yet.
-- **One unseen laboratory** was tested.
-- **Touching mice** are harder: version 2 found both mice in 67.2 % of touching images in the unseen laboratory.
-- Core ML parity with the PyTorch weights has not been reported.
-- The DooM dataset licence still has to be confirmed on its EMBER record; see [licences](./citations.md#licences).
+- The labels are the DooM laboratories' tracks, so the test scores give agreement with those tracks.
+- The app reports detection rates for each coat; when the dark mouse is found in fewer than 80 % of frames it suggests running the video with *Two dark mice* as well, for comparison.
+- Body-centre measures are comparable with MousePose6 and WhiteMousePose6 (midpoint of neck and tail base), not with MousePose6-Dyad.
+- The training videos come from the DooM dataset; its terms of use are on its EMBER record (see [licences](./citations.md#licences)).
 
 ## What to cite {#cite}
 

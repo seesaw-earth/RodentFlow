@@ -32,7 +32,6 @@ App 如何加载模型包、送入图像并解码输出，见 [4 · App 里的 C
 - 在 iPhone 和 iPad 上，选好范式后选择毛色，或在“信息”页的识别设置中修改；在 Mac 上，在每段视频标定的识别设置中选择。改毛色需要重新识别。
 - **不会悄悄换模型。**某段视频需要的模型缺失或加载失败时，这段视频不会被识别，App 会说明原因。
 - Methods 文字、单次 JSON 和组间长格式表（`model` 列）写明每段视频用的模型。各组用了不同模型时，组间页会提示：模型之间的差别会和组间差别混在一起。
-- 两只白鼠的情况暂不支持。
 - 没有记录毛色的数据（较早版本保存的）一律按*深色*读入，也就是它们当时用的模型。
 
 ::: warning 双鼠数据中的身体中心
@@ -55,7 +54,7 @@ git clone https://github.com/seesaw-earth/RodentStudio-CoreML-Models.git
 
 把 `.mlpackage` 复制进 Xcode 工程时请保持整个文件夹完整。如果某个 `weight.bin` 只有几百字节，它是 LFS 指针文件：运行 `git lfs pull`。
 
-WhiteMousePose6、MousePose6Dyad 和 MousePose6DyadBW 内置在 App 中，**尚未放入公开的模型仓库**。MouseDetector 模型包随 Mac 源码发布，位于 [`source/macOS/…/TSTMulti/Models`](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source)。
+WhiteMousePose6、MousePose6Dyad 和 MousePose6DyadBW 内置在 App 中。MouseDetector 模型包随 Mac 源码发布，位于 [`source/macOS/…/TSTMulti/Models`](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source)。
 
 ## 校验值 {#checksums}
 
@@ -76,7 +75,7 @@ WhiteMousePose6、MousePose6Dyad 和 MousePose6DyadBW 内置在 App 中，**尚�
 - 模型权重经项目作者授权公开。这一声明并不核实上游预训练权重或训练数据的许可。
 - 模型包用 Ultralytics YOLO 训练和导出；除非使用 Ultralytics 企业许可，其许可为 AGPL-3.0，导出时写入模型包的许可字段为 AGPL-3.0。
 - MousePose6 的四个训练数据集中，两个（Harvard Dataverse 上的 JAX 数据集）为 CC BY-NC-SA 4.0，限制商业使用；两个 ETH Zurich 数据集为 CC BY 4.0。
-- WhiteMousePose6、MousePose6Dyad 和 MousePose6DyadBW 用 DooM 数据集（EMBER-DANDI dandiset 000564）的视频和轨迹训练。本页还没能确认它的许可 <Badge type="warning" text="待核对" />；再分发或商业使用之前请查看该记录。
+- WhiteMousePose6、MousePose6Dyad 和 MousePose6DyadBW 用 DooM 数据集（EMBER-DANDI dandiset 000564）的视频和轨迹训练。它的使用条款见 [EMBER 记录](https://dandi.emberarchive.org/dandiset/000564)；再分发或商业使用之前请查看。
 - 模型放在公开仓库中，本身并不意味着可以商业再分发。
 
 [许可汇总表](./tutorials/citations.md#licences)列出了每个数据集、论文和软件包的许可，[如何引用](./tutorials/citations.md)说明了使用各模型时应引用什么。

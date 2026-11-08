@@ -1,6 +1,13 @@
+---
+title: "Manual entry & importing tables"
+description: "Enter values scored by hand or import a table on iPhone and iPad; the results take part in group comparisons with tracked results."
+---
+
 # Manual entry & importing tables
 
-Not every assay is scored from video, and not every lab scores video in RodentFlow. Values scored by hand or by another program can be entered or imported. They become the same kind of result as a tracked video and appear together with tracked results in the Groups tab.
+Not every assay is scored from video, and not every lab scores video in RodentFlow. Values scored by hand or by another program can be entered or imported. They become the same kind of result as a tracked video and appear together with tracked results in group comparisons.
+
+Manual entry and table import are part of the classic workflow on iPhone and iPad: open **Classic centroid** in the Assay Library (or *Classic centroid results* in Data) and use the **New experiment** card. Besides the ten video tests, it covers marble burying, sucrose preference, beam walking, gait analysis, the two-armed bandit and your own custom measures.
 
 ## Entering values by hand
 
@@ -30,7 +37,7 @@ Some assays take rows, such as one row per trial, per day, per CS or per stride.
 | Conditioned place preference | Paired and unpaired chamber time (required), neutral time, paired entries | Preference score (paired − unpaired), paired % |
 | Two-armed bandit | Per trial: choice, rewarded, optional reward probabilities and reaction time | Win-stay, lose-shift, switch rate, high-value choices, Q-learning fit |
 
-Definitions of every metric are on the [assay pages](../assays/index.md). A saved manual result can be changed later with **Edit Values** on its result screen.
+Definitions of every metric are listed under each test in the app; the video tests are described on the [task pages](../tasks/). A saved manual result can be changed later with **Edit Values** on its result screen.
 
 ## Importing a table
 
@@ -120,4 +127,4 @@ If a column was not recognized, rename it in the file to the metric name shown i
 
 ## Sample files
 
-Synthetic example tables for trying the import are listed on the [Quick start](./getting-started.md#try-it-without-a-video) page.
+Synthetic example tables for trying the import are listed on the 1.x [Quick start](../archive/guide/getting-started.md#try-it-without-a-video) page.

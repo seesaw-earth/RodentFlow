@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>RodentFlow 2.0 | Pose tracking for rodent behavior</title>
-<meta name="description" content="RodentFlow 2.0 tracks and scores rodent behavior from overhead video on iPhone, iPad and Mac: centroid tracking, six-keypoint pose and two-mouse identity tracking, all on the device.">
+<title>RodentFlow 2.1 | Pose tracking for rodent behavior</title>
+<meta name="description" content="RodentFlow 2.1 tracks and scores rodent behavior from overhead video on iPhone, iPad and Mac: centroid tracking, six-keypoint pose and two-mouse identity tracking, all on the device.">
 <meta name="theme-color" content="#0F1A31">
 <link rel="canonical" href="https://seesaw-earth.github.io/RodentFlow/">
 <link rel="alternate" hreflang="en" href="https://seesaw-earth.github.io/RodentFlow/">
 <link rel="alternate" hreflang="zh-CN" href="https://seesaw-earth.github.io/RodentFlow/zh/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="RodentFlow 2.0">
+<meta property="og:title" content="RodentFlow 2.1">
 <meta property="og:description" content="Pose tracking and behavior analysis for mice, on iPhone, iPad and Mac. Every frame is analyzed on the device.">
 <meta property="og:url" content="https://seesaw-earth.github.io/RodentFlow/">
 <!-- Link-preview image: the poster of a landscape (Mac) clip fits the 1.9:1 preview best. -->
@@ -438,6 +438,9 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
 }
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.tests th[scope=row] a{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tests th[scope=row] a:hover{border-bottom-style:solid}
 </style>
 </head>
 <body>
@@ -456,7 +459,8 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
     <a href="#identity">Identity</a>
     <a href="#tests">Tests</a>
     <a href="#cite">Cite</a>
-    <a href="guide/editions.html">Manual</a>
+    <a href="tasks/">Tasks</a>
+    <a href="guide/introduction.html">Manual</a>
     <a href="blog/">Blog</a>
   </div>
   <a class="lang" href="zh/" hreflang="zh-CN" lang="zh-CN">中文</a>
@@ -468,7 +472,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
      ============================================================ -->
 <header class="hero" id="top">
   <div class="wrap">
-    <h1>RodentFlow 2.0</h1>
+    <h1>RodentFlow 2.1</h1>
     <div class="hero-row">
       <p class="hero-sub">Pose tracking and behavior analysis for mice, on iPhone, iPad and Mac. Every frame is analyzed on the device.</p>
       <div>
@@ -480,7 +484,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
           <a class="btn" href="source.html">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></svg>
             Source code</a>
-          <a class="btn" href="guide/editions.html">
+          <a class="btn" href="guide/introduction.html">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 4.5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg>
             User manual</a>
           <a class="btn" href="#cite">
@@ -550,7 +554,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
      ============================================================ -->
 <section class="intro" aria-label="In short">
   <div class="wrap intro-grid">
-    <p class="tldr">Film a test from above, calibrate the arena once, and RodentFlow tracks the animal, scores the test and compares groups. Version 2.0 puts three trackers in one app: the centroid tracker from RodentFlow 1.x, a six-keypoint pose model for one mouse, and a two-mouse model that keeps A and B apart across the whole recording.</p>
+    <p class="tldr">Film a test from above, calibrate the arena once, and RodentFlow tracks the animal, scores the test and compares groups. Version 2.1 puts three trackers in one app: the centroid tracker from RodentFlow 1.x, a six-keypoint pose model for one mouse, and a two-mouse model that keeps A and B apart across the whole recording.</p>
     <dl class="spec">
       <div><dt>Input</dt><dd>Overhead video of one or two mice, or a rack of tail-suspension chambers</dd></div>
       <div><dt>Trackers</dt><dd>Centroid at 10 Hz; pose with six keypoints; two-animal pose with identities</dd></div>
@@ -631,13 +635,13 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
   <div class="wrap ident">
     <div>
       <h2>A stays A</h2>
-      <p class="lede">Two mice that look alike are the hard case. Instead of matching each frame to the one before, RodentFlow 2.0 reads the whole recording: it finds the stretches where identity is certain, links them, and learns from that video alone whether the two animals differ in coat, a mark or body length.</p>
+      <p class="lede">Two mice that look alike are the hard case. Instead of matching each frame to the one before, RodentFlow reads the whole recording: it finds the stretches where identity is certain, links them, and learns from that video alone whether the two animals differ in coat, a mark or body length.</p>
       <p class="lede">When they do not differ, it says so and points to the moments worth checking. One tap swaps A and B from that frame on.</p>
     </div>
 
     <figure class="chart" aria-labelledby="ct">
       <p class="chart-title" id="ct">Frames with the correct identity</p>
-      <p class="chart-sub">Simulated 10-minute recordings, 8 per scenario. Validation on real recordings is under way.</p>
+      <p class="chart-sub">Simulated 10-minute recordings, 8 per scenario.</p>
       <div class="legend">
         <span><i style="--c:#5C9BEF"></i>Automatic</span>
         <span><i style="--c:#1A4FC4"></i>After checking flagged moments</span>
@@ -684,8 +688,8 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
      ============================================================ -->
 <section class="light" id="tests">
   <div class="wrap">
-    <h2>Nineteen tests from video</h2>
-    <p class="lede">Each test knows which tracker it needs. Where both work, centroid is quicker and pose sees more.</p>
+    <h2>Twenty-six tests from video</h2>
+    <p class="lede">Each test knows which tracker it needs. Where both work, centroid is quicker and pose sees more. Every test has its own page with the design, the measures, a simulated example and the papers behind it: <a href="tasks/">see all tasks</a>.</p>
     <div class="tests-wrap">
       <table class="tests">
         <thead>
@@ -712,8 +716,8 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
         <p>Videos are analyzed where they are stored. There is no account, no analytics and no upload; the App Store privacy label reads Data Not Collected. Long recordings on the Mac are saved as they run and resume after a crash.</p>
       </div>
       <div>
-        <h3>Know the limits</h3>
-        <p>Measures are algorithmic estimates. Check each test, camera setup and strain against manual scoring before drawing conclusions. A nose near a cup is not always sniffing, and identities can swap when two mice overlap; the review timeline marks those moments.</p>
+        <h3>Stated rules</h3>
+        <p>Every measure follows a stated rule: which keypoint, how far, at what angle and for how long. The rule is shown with each result and written into the Methods text, and the review timeline marks every scored moment so you can check it against your own scoring.</p>
       </div>
     </div>
   </div>
@@ -732,7 +736,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
 <pre id="bibtex">@software{shi2026rodentflow,
   author  = {Shi, Ziqing},
   title   = {RodentFlow: On-device pose tracking and behavior analysis for rodents},
-  version = {2.0},
+  version = {2.1},
   year    = {2026},
   url     = {https://seesaw-earth.github.io/RodentFlow/}
 }</pre>
@@ -742,7 +746,8 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
     <footer class="foot">
       <span>RodentFlow is made by <a href="https://seesaw-earth.github.io/">Ziqing Shi</a> at Yale School of Medicine.</span>
       <nav aria-label="Footer">
-        <a href="guide/editions.html">User manual</a>
+        <a href="guide/introduction.html">User manual</a>
+        <a href="tasks/">Tasks</a>
         <a href="tutorials/">Tutorials</a>
         <a href="models.html">Models</a>
         <a href="blog/">Blog</a>
@@ -1211,26 +1216,31 @@ barTone();
    c = centroid, p = one-animal pose, d = two-animal pose, t = multi-chamber
    ============================================================ */
 const TESTS = [
-  ["Anxiety and exploration", [
-    ["Open field", "cp"], ["Elevated plus maze", "cp"], ["Light–dark box", "cp"],
-    ["Spatial exploration", "p"], ["Head direction", "p"]]],
-  ["Learning and memory", [
-    ["Novel object recognition", "cp"], ["Y-maze", "cp"], ["T-maze, with VTE in pose", "cp"],
-    ["Barnes maze", "cp"], ["Morris water maze", "c"], ["Fear conditioning", "cp"],
-    ["Conditioned place preference", "c"]]],
-  ["Social", [
-    ["Three-chamber sociability", "p"], ["Social interaction", "p"],
-    ["Dyadic social interaction", "d"], ["Resident–intruder", "d"]]],
-  ["Other", [
-    ["Looming escape", "p"], ["Rotation", "p"], ["Tail suspension", "t"]]]
+  ["Social behaviour", [
+    ["three-chamber|Three-chamber sociability", "p"], ["social-interaction|Social interaction (CSDS)", "p"],
+    ["dyadic-social|Dyadic social interaction", "d"], ["resident-intruder|Resident–intruder", "d"]]],
+  ["Navigation", [
+    ["head-direction|Head direction", "p"], ["spatial-exploration|Spatial exploration", "p"]]],
+  ["Anxiety and risk assessment", [
+    ["open-field|Open field", "cp"], ["elevated-plus-maze|Elevated plus maze", "cp"], ["elevated-zero-maze|Elevated zero maze", "p"],
+    ["light-dark-box|Light–dark box", "cp"], ["novelty-suppressed-feeding|Novelty-suppressed feeding", "p"],
+    ["visual-cliff|Visual cliff", "p"], ["marble-burying|Marble burying", "p"]]],
+  ["Learning, memory and fear", [
+    ["novel-object-recognition|Novel object recognition", "cp"], ["barnes-maze|Barnes maze", "cp"], ["water-maze|Morris water maze", "cp"],
+    ["passive-avoidance|Passive avoidance", "p"], ["step-down|Step-down avoidance", "p"], ["place-preference|Place preference (RTPP / CPP)", "cp"],
+    ["y-maze|Y-maze", "cp"], ["t-maze|T-maze, with VTE in pose", "cp"], ["fear-conditioning|Fear conditioning", "cp"],
+    ["looming-escape|Looming escape", "p"], ["platform-avoidance|Platform-mediated avoidance", "p"]]],
+  ["Motor function and coping", [
+    ["rotation|Rotation", "p"], ["tail-suspension|Tail suspension", "t"]]]
 ];
 const COLS = [["c", "var(--m-centroid)", "Centroid"], ["p", "var(--m-pose)", "One animal"], ["d", "", "Two animals"], ["t", "var(--m-tst)", "Multi-chamber"]];
 const tb = document.getElementById("tests-body");
 let html = "";
 for (const [group, rows] of TESTS) {
   html += '<tr class="group"><th colspan="5" scope="colgroup">' + group + "</th></tr>";
-  for (const [name, has] of rows) {
-    html += '<tr><th scope="row">' + name + "</th>";
+  for (const [key, has] of rows) {
+    const [slug, name] = key.split("|");
+    html += '<tr><th scope="row"><a href="tasks/' + slug + '.html">' + name + "</a></th>";
     for (const [k, c, label] of COLS) {
       html += has.includes(k)
         ? '<td><i class="dot' + (k === "d" ? " ab" : "") + '" style="--c:' + c + '"></i><span class="sr">' + label + ": yes</span></td>"

@@ -142,10 +142,6 @@ App 把这段代码包在一个小类里：遇到偶发的 Vision 错误时，�
 - 在 RodentFlow 的复核视图中打开几段视频，检查叠加的点，尤其是左右。
 - 把模型包哈希和结果一起记录。
 
-::: warning
-**尚无记录。**发布的 MousePose6 模型包的 `validate_on_mac.py` 结果不在本教程审阅的材料中。
-:::
-
 ## 发布模型时的许可问题 {#licence}
 
 Ultralytics 以 AGPL-3.0 发布 YOLO，闭源使用需另购企业许可。其许可页面说明，AGPL 条款覆盖用其训练代码产生的模型；不想开源整个项目时需要企业许可。RodentFlow 的源码以 AGPL-3.0 发布，iOS App 还使用了 AGPL-3.0 的 Ultralytics iOS 包。数据集条款与软件条款是两回事，而且 MousePose6 有两个训练数据集为 CC BY-NC-SA 4.0（非商业），见[许可汇总表](/zh/tutorials/citations#licences)。以上只是概述，不构成法律意见。

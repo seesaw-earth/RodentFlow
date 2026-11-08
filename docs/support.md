@@ -6,9 +6,9 @@ outline: false
 
 ## First steps
 
-- **[Which edition do I need?](./guide/editions.md)** compares the iPhone, iPad and Mac apps.
-- **[FAQ & troubleshooting](./reference/faq.md)** covers the most common tracking, assay, import and statistics questions. For the Mac and the pose workflows, see **[Troubleshooting: Mac & pose](./reference/troubleshooting-mac.md)**.
-- **[Quick start on iPhone](./guide/getting-started.md)** and **[Quick start on Mac](./mac/quick-start.md)** walk through a complete analysis.
+- **[iPhone, iPad and Mac](./guide/editions.md)** compares what each device does.
+- **[FAQ](./reference/faq.md)** covers the most common questions about tracking, two mice, devices, data and statistics.
+- **[Quick start](./guide/getting-started.md)** and **[Quick start on Mac](./mac/quick-start.md)** walk through a complete analysis.
 - The search box at the top of this site searches the whole manual.
 
 ## Report a problem or ask a question {#help}
@@ -19,9 +19,9 @@ Earlier reports about the Mac app are in the [RodentStudio-Support issue tracker
 
 To help us help you, please include:
 
-1. **App and version.** iPhone or iPad: Settings › General › iPhone Storage › RodentFlow. Mac: **RodentFlow › About RodentFlow**, or TestFlight.
+1. **App and version.** iPhone or iPad: Settings › General › iPhone Storage › RodentFlow. Mac: **RodentFlow › About RodentFlow**.
 2. **Device and system.** iPhone or iPad model and iOS version; or macOS version and whether the Mac has Apple silicon or Intel.
-3. **Workflow and assay.** Centroid tracking, RodentPose, RodentLimb or multi-chamber tail suspension; video, manual entry or import.
+3. **Method and task.** Pose (one or two animals, and the coat colour), classic centroid or multi-chamber tail suspension; video, manual entry or import.
 4. **What you did, what you expected, and what happened**, with the exact error message.
 5. If it concerns tracking: a **screenshot of the preview** and, if you can share it, a short clip or a synthetic test clip.
 6. If it concerns an import: the **first lines of the file**, with real animal IDs replaced if needed.

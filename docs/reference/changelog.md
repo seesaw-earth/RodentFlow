@@ -1,68 +1,43 @@
+---
+title: "Release notes"
+description: "What is new in RodentFlow 2.1 and 2.0 for iPhone, iPad and Mac."
+---
+
 # Release notes
 
-Releases of RodentFlow for iPhone 1.x are listed first, then the [Mac app](#mac).
+## 2.1 · iOS build 21, Mac build 17 {#2-1-21}
 
-## Open source (October 2026)
+Smoother and cooler, with the same results.
 
-- The source code of RodentFlow 1.3 and this manual are published at [github.com/seesaw-earth/RodentFlow](https://github.com/seesaw-earth/RodentFlow) under the MIT License. See [Open source & building](../source.md).
+- **Saving in the background.** Switching away during tracking first finishes writing the tracks and the session.
+- **Pacing when the phone gets hot.** Tracking slows down when the device is hot and pauses and resumes by itself when it is very hot, with a note on the screen.
+- **Large videos.** On iPhone and iPad, 4K and other very large frames are decoded at a reduced size that is still larger than the model input, which saves time and heat. Videos up to 1080p are read exactly as before.
+- **Smoother review.** Playback, the timeline and manual scoring respond without redrawing the whole page; *Swap A / B from here* sits on the video when an identity check is flagged.
+- **A Done key** above the number pad on every analysis, calibration, tail-suspension and group screen.
 
-## 1.3: Simplified Chinese
+## 2.1 · iOS build 20, Mac build 16 {#2-1}
 
-- The whole app is available in **English and Simplified Chinese**: screens, assay and metric names, definitions, methods notes, quality flags, statistics wording, figures and the text summary. It follows the iPhone language. **Aa › Language / 语言** opens the setting for choosing a different language for RodentFlow alone.
-- Stored data are language-independent: result files, JSON keys, assay ids, phases and CSV template columns stay English, so files move freely between phones set to different languages.
-- Imports accept Chinese column names (编号, 组别, 性别, 天, 试次, 阶段, 日期, 备注), and, when the app runs in Chinese, the Chinese metric names shown in the app.
-- The import preview lists every recognized column.
+- **Four new tasks:** [platform-mediated avoidance](../tasks/platform-avoidance.md), [step-down inhibitory avoidance](../tasks/step-down.md), [visual cliff](../tasks/visual-cliff.md) and [marble burying](../tasks/marble-burying.md) scored from video.
+- **Looming:** freezing can be defined by body speed (De Franceschi et al. 2016), and an optional threat zone.
+- **Groups:** each session’s time course is saved for time-course plots; Fisher’s exact or chi-square tests for yes/no measures; survival analysis for step-down and visual-cliff latencies.
+- **Exports:** `recording_start`, the recording time stored in the video file, for lining data up with other devices.
 
-## 1.2.1: smoother
+## 2.0 {#2-0}
 
-- No more pauses when choosing a video, opening the preview, finishing an analysis or switching tabs. Copying videos, writing result files and loading checkpoints moved off the main thread, and progress updates redraw only what changed.
+RodentFlow 2.0 brings RodentFlow for iPhone, the pose edition and the Mac app together in one app for iPhone, iPad and Mac.
 
-## 1.2: easier to use
+- **Four ways to measure** in one app: one-animal pose, two-animal pose with identity, classic centroid (the RodentFlow 1.x tracker, unchanged; 1.x results open as before) and multi-chamber tail suspension, on phone and Mac.
+- **Coat colour:** WhiteMousePose6 for a white mouse and MousePose6DyadBW for one dark and one white mouse. Every export names the model used.
+- **New tasks:** elevated zero maze, novelty-suppressed feeding, passive avoidance, place preference (RTPP / CPP), and the Morris water maze with pose (Pathfinder search strategies, mean proximity, probe measures).
+- **Groups:** two-way ANOVA (Type III), ANCOVA, assumption checks, effect sizes with 95 % CI, Kaplan–Meier curves with log-rank tests; groups on the phone as well as the Mac.
+- **Figures:** vector PDF, PNG at 300 / 600 dpi, SVG on the Mac; journal column widths; dot, bar, box and violin styles; task atlases with one shared colour scale; source data and a draft legend with every figure.
+- **Exports:** behaviour segments with BORIS-style events, DeepLabCut-format keypoints on the phone, Prism tables, long-format tables, a statistics report and a Methods paragraph.
+- **Review:** manual scoring with precision, recall and F1 against the automatic scoring; points outside the calibrated arena flagged; two-mouse skeletons in blue and red.
+- **Track the arena only**, checkpoints during tracking, **Cover part of a video**, and heat maps over the original frame.
+- **Phone to Mac sync** through a folder you choose, with a check that the Mac reproduces the phone’s numbers.
+- **The Mac** tracks two mice, writes long recordings to disk as it goes and resumes after a pause or a crash.
+- The limb tasks (cylinder, gait, single-mouse tail suspension) moved to the separate [RodentLimb](https://seesaw-earth.github.io/RodentLimb/) app.
 
-- Larger, adjustable text (**Aa**: Small to Largest, or same as iPhone).
-- A step bar (Start → Set up → Preview → Result) and a back/next bar on every workflow screen.
-- A reminder to update the preview if the setup changed after it was made.
-- Batch scoring: **Next Animal** keeps assay, group, phase and day; **Use Previous Setup** reuses arena, calibration and settings.
-- ▲▼ navigation between results of one assay, and **Compare in Groups** from any result.
-- Section chips in the Groups tab and a section menu on the setup screen.
+## Earlier versions {#earlier}
 
-## 1.1.1: tracking accuracy
-
-Fixes found with synthetic videos of known ground truth:
-
-- Frames are read on the full 0–255 gray scale, matching the background. A mouse hidden in a covered dark box is no longer "detected".
-- **Resting-animal repair** of the background removes "ghosts" left by an animal that rested at one spot for much of the video.
-- **Contrast-weighted centroid**: median position error fell from about 1 cm to 0.15–0.5 cm, and path length in mazes is far less inflated.
-- The motion-index pixel threshold was raised from 12 to 20 gray levels, so compression flicker no longer breaks freezing bouts apart.
-- Default object-interaction and Barnes hole-zone radii raised from 6 to 8 cm (body-center proxies).
-
-## 1.1: from tracking to group statistics
-
-- Two tabs: **Experiment** (per-animal results) and **Groups** (group comparison).
-- 15 assays plus custom tables, from video, manual entry or CSV/JSON import.
-- Plus-maze calibration; object, platform and target-hole markers; motion index for freezing.
-- Results with editable zones and thresholds, recomputed without re-tracking.
-- Statistics chosen from the design, with figures showing every animal and export to PNG and JSON.
-
-## 1.0
-
-- Classic-centroid tracking of open field (rectangle or circle), T-maze and Y-maze videos at 10 Hz, with preview, full analysis, recoverable checkpoints and JSON export.
-
-## Mac app (formerly RodentStudio) {#mac}
-
-### Release candidate 0.6.3 (build 6)
-
-#### Release preparation
-
-- Improved task notes, matching-task consolidation safeguards and task deletion controls.
-- macOS app icon asset preparation.
-- Privacy manifest and App Store release metadata draft.
-- Archive-specific compatibility correction for FP16 decoding on Intel (x86_64) build targets.
-
-::: info
-**Not yet a published release:** Successful Xcode Archive, signing, App Store Connect processing and final research workflow tests are required before release.
-:::
-
-#### Model support in the inspected build
-
-MousePose6_960_int8 and CylinderMousePoseV2 are the two integrated model families. Additional weights published separately are not evidence of integration into this build.
+Release notes for RodentFlow 1.x for iPhone and RodentFlow for Mac up to 0.7 are kept in [Older versions](../archive/reference/changelog.md).

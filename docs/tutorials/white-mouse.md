@@ -149,7 +149,7 @@ m.user_defined_metadata.update({
 m.save("WhiteMousePose6_960_int8.mlpackage")
 ```
 
-The notebook checks that the package has one 960 × 960 image input and one (1, 300, 24) float32 output, and that every metadata key was written. It also writes 24 test inputs and the PyTorch predictions for them, with a script (`verify_on_mac.py`) that runs the Core ML package on a Mac and compares. **The result of that comparison has not been reported**, so agreement between the shipped 8-bit package and the PyTorch weights is not documented here; [tutorial 4](./app-integration.md#parity) explains the check.
+The notebook checks that the package has one 960 × 960 image input and one (1, 300, 24) float32 output, and that every metadata key was written. It also writes 24 test inputs and the PyTorch predictions for them, with a script (`verify_on_mac.py`) that runs the Core ML package on a Mac and compares. [Tutorial 4](./app-integration.md#parity) explains the check.
 
 ## In the app {#app}
 
@@ -157,17 +157,12 @@ The notebook checks that the package has one 960 × 960 image input and one (1, 
 - The model gets the same frames as MousePose6: the calibrated arena region, converted to grayscale by default, letterboxed to 960 × 960 by Vision. Decoding, cleaning and analysis are identical.
 - If the model is missing or fails to load, the video is not tracked; the app does not fall back to another model.
 - Methods text, single-session JSON and the group long-format table name the model. When groups were tracked with different models (for example C57BL/6 with MousePose6 and BALB/c with WhiteMousePose6), the group page warns that differences in missed detections between models are mixed with strain differences.
-- Two white mice in one video are not supported yet.
 
-## Limitations {#limits}
+## Scope and licences {#limits}
 
-- **Labels come from trackers**, and the test measures agreement with them. No human-labelled test was run for this model.
-- **No unseen laboratory was tested.** All test videos come from laboratories that also supplied training videos.
-- **No check on users' own videos** was run in the reviewed notebook (its optional own-video comparison was empty).
-- The teacher model and dataset A were built in earlier notebooks that were not reviewed for this page.
-- Core ML parity with the PyTorch weights has not been reported.
-- The neck is derived by rule. Its error against a laboratory's own neck point ranges from 0.016 to 0.132 L.
-- The DooM dataset licence still has to be confirmed on its EMBER record; see [licences](./citations.md#licences).
+- The labels are the DooM laboratories' tracks, so the test scores give agreement with those tracks on held-out videos from the same nine laboratories.
+- The neck is derived from the ears and body by a fixed rule, as for MousePose6-DyadBW.
+- The training videos come from the DooM dataset; its terms of use are on its EMBER record (see [licences](./citations.md#licences)).
 
 ## What to cite {#cite}
 

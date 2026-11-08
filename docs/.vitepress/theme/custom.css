@@ -230,3 +230,70 @@
 .vp-doc li > span[id]:first-child {
   scroll-margin-top: calc(var(--vp-nav-height) + 24px);
 }
+
+/* Task pages: method / arena chips under the title. */
+.vp-doc .rf-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: -4px 0 20px;
+}
+
+.vp-doc .rf-tags span {
+  padding: 2px 10px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  background: var(--vp-c-bg-soft);
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--vp-c-text-2);
+}
+
+/* Task index: one card per task with its example figure. */
+.vp-doc .rf-taskgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 16px 0 8px;
+}
+
+.vp-doc .rf-taskgrid a {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--vp-c-bg-soft);
+  text-decoration: none;
+  color: var(--vp-c-text-1);
+  transition: border-color 0.2s;
+}
+
+.vp-doc .rf-taskgrid a:hover {
+  border-color: var(--vp-c-brand-1);
+}
+
+.vp-doc .rf-taskgrid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 12 / 5;
+  object-fit: cover;
+  object-position: left top;
+  background: #fff;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc .rf-taskgrid strong {
+  display: block;
+  padding: 10px 14px 2px;
+  font-size: 15px;
+  color: var(--vp-c-brand-1);
+}
+
+.vp-doc .rf-taskgrid span {
+  display: block;
+  padding: 0 14px 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--vp-c-text-2);
+}

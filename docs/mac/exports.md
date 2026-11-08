@@ -20,8 +20,8 @@ Task page → *Export* → **Export task data…**, or group page → **Export g
 
 Task or group page → **Export frame data…** (runs in the background; about 1 MB per minute of video per session).
 
-- **RodentPose / RodentLimb:** `frames/<animal>_<date>_S<n>_DLC.csv` in DeepLabCut format (three header rows: scorer / bodyparts / coords; x, y, likelihood per keypoint) plus `…_frames.csv` with video time, frame number, in-window flag, detection confidence and inference-failure flag.
-- **RodentFlow:** `…_centroid.csv` (image and arena coordinates in px, normalised units and cm; confidence, interpolation flag, zone, motion index), a one-point DLC file, and `…_maze_events.csv` where applicable.
+- **Pose:** `frames/<animal>_<date>_S<n>_DLC.csv` in DeepLabCut format (header rows scorer / bodyparts / coords, plus `individuals` with A and B for two mice; x, y, likelihood per keypoint) plus `…_frames.csv` with video time, frame number, in-window flag, detection confidence and inference-failure flag.
+- **Classic centroid:** `…_centroid.csv` (image and arena coordinates in px, normalised units and cm; confidence, interpolation flag, zone, motion index), a one-point DLC file, and `…_maze_events.csv` where applicable.
 - `frames_index.csv` and `frames_metadata.json` list every session, model, keypoint names, frame counts, analysis window and any read errors.
 - Conventions: upright image pixels, origin top-left, x right, y down (as DLC). Missing keypoints have empty x/y and likelihood 0. `inference_failed = 1` means the model did not run — not the same as “no animal in view”.
 
@@ -33,7 +33,11 @@ Task or group page → **Export frame data…** (runs in the background; about 1
 
 These files work with downstream tools such as [DeepLabCut](https://deeplabcut.github.io/DeepLabCut/) analysis utilities, [SimBA](https://github.com/sgoldenlab/simba), [B-SOiD](https://github.com/YttriLab/B-SOID) and [keypoint-MoSeq](https://keypoint-moseq.readthedocs.io/).
 
-## TST multi-chamber files
+## Behaviour segments {#segments}
+
+Task page → **Export behaviour segments…** exports every pose session of the task: one `<session>_segments.csv` per session with one row per bout, plus `all_segments.csv`, `segments_metadata.json` (definitions and totals) and, when there are manual marks, `agreement.csv`. See [Results and exports](../guide/results.md#exports).
+
+## TST multi-chamber files {#tst}
 
 Included automatically in task/group exports, or via **Export TST data only (JSON + CSV)…**
 

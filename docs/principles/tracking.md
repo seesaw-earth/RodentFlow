@@ -1,123 +1,44 @@
-# Tracking
+---
+title: "How tracking works"
+description: "How RodentFlow 2.1 turns video frames into clean tracks: arena-only detection, the Core ML pose models, calibration to centimetres, cleaning, derived features, two-mouse identity, classic centroid and multi-chamber motion."
+---
 
-RodentFlow uses a classic computer-vision tracker. It learns what the empty arena looks like, finds the region of each frame that differs from it, picks the region most likely to be the animal, and takes the center of that region as the animal's position. There is no neural network and no training step. Each step can be stated in one sentence, and this page does exactly that.
+# How tracking works
 
-<figure>
+Tracking turns each frame of a video into positions in centimetres. It is the only slow step and runs once; everything after it (zones, thresholds, measures, statistics) is recomputed in a moment when you change a setting.
 
-![Tracking pipeline](/img/pipeline.en.png)
+## Pose tracking, step by step {#pose}
 
-<figcaption>The pipeline on frame 412 of the synthetic open-field validation video. (a) Video frame reduced to analysis resolution. (b) Background: per-pixel median of 21 frames spread over the video; the mouse has disappeared. (c) Absolute difference inside the arena. (d) Pixels above the adaptive threshold (here 39 gray levels) after cleanup, and the contrast-weighted centroid. (e) The whole session at 10 samples per second in arena centimeters, with the center zone.</figcaption>
-</figure>
+| Step | What happens |
+|---|---|
+| **1 · Read the frame** | Frames are decoded in order with their timestamps and turned upright. With *Track the arena only* (the default), only the calibrated arena plus a margin of 5, 12 or 25 % is kept. |
+| **2 · Find the mouse** | The frame is scaled to 960 × 960 pixels and passed to the Core ML pose model. The model returns candidate animals, each with a box, a score and six keypoints with a confidence each: nose, left ear, right ear, neck, body centre, tail base. One-animal tasks keep the best candidate; two-animal tasks keep two and assign identities (below). |
+| **3 · Pixels to centimetres** | The calibration maps the image onto the arena floor. For boxes the mapping corrects perspective, so a slightly oblique camera still gives true centimetres. |
+| **4 · Clean** | Keypoints below 0.5 confidence are set aside; positions that would need an impossible speed (over 150 cm/s) are rejected; gaps up to 0.5 s are filled by straight-line interpolation; the tracks are smoothed over 0.15 s. Resident–intruder uses lighter settings (0.07 s smoothing, 0.2 s gaps) so that 100–200 ms lunges survive. |
+| **5 · Derive** | Speed from the body centre; head direction from the ear midpoint to the nose; body axis from the neck to the tail base; the head–body angle; body length from nose to tail base; and a motion index for freezing (the displacement over 0.5 s, averaged over nose, ears, body centre and tail base). |
+| **6 · Flag** | Points that fall outside the calibrated arena are marked in the review and the frame-by-frame data, with their distance from the arena. They are flagged, not changed. |
 
-## Why a classic tracker?
+All of these settings are listed with each session and written into the Methods text. The [Models](../models.md) page describes the four models, and [Speed and accuracy](./performance.md) how fast and how accurate they are.
 
-For a single animal filmed from above against a contrasting floor, background subtraction locates the body center as accurately as needed for zone times, entries, distance and freezing. On the validation videos the median position error was 0.15–0.5 cm ([Validation](./validation.md)). It also has properties that matter on a phone and in a lab:
+## Two mice, two identities {#identity}
 
-- **No training and no labeled frames.** It works on the first video of a new setup.
-- **Deterministic.** The same video and settings always give the same numbers.
-- **Fast and light.** It runs on the iPhone CPU at a resolution of 192 pixels, with no upload.
-- **Explainable failures.** When it fails, the cause is visible in the preview, such as a shadow, a reflection, or poor contrast.
+With two mice, matching each frame to the one before fails as soon as the animals touch. RodentFlow instead reads the **whole recording** before assigning identities:
 
-What it does not give you is body parts: nose, tail base, paws. [The limits](#limits) are listed at the end of this page.
+1. It finds the stretches where the two animals are clearly apart and identity is certain.
+2. It links these stretches across close contacts using motion and the body axis.
+3. It learns from this video whether the two animals differ steadily in coat brightness, a mark or body length, and uses that difference to settle the links.
+4. Links that remain uncertain are flagged for review (*Likely swap*, moments to check). **Swap A / B from here** corrects a swap in one tap and recalculates the results.
 
-::: tip Source code
-Everything on this page is implemented in [`NativeMouseTracker.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/NativeMouseTracker.swift), and the whole-video reading in [`FullVideoAnalyzer.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/FullVideoAnalyzer.swift).
-:::
+When one mouse is dark and the other white, MousePose6DyadBW finds both and the brighter one is the white mouse. In the resident–intruder test, the stretch before the intruder enters identifies the resident and the moment of entry.
 
-## 1. Reading the video at 10 Hz
+## Classic centroid {#centroid}
 
-The video is decoded from start to finish. For every 0.1 s step, the first frame at or after that time is used, and its **original timestamp** is kept. Video frame rate and dropped frames therefore do not distort time.
+The classic method is the RodentFlow 1.x tracker. It builds an image of the **empty arena** from frames spread across the whole video, subtracts it from each frame, and follows the centre of the largest difference: the body centroid, at 10 samples per second. A mouse resting in one place for a long time would blend into that background; the tracker detects and repairs such "ghosts". It needs no model, works on any coat colour against a contrasting floor, and gives zone, path and time measures. The full description is in [Older versions](../archive/principles/tracking.md).
 
-Each frame is converted to gray levels and scaled so that its long side is **192 pixels**. Video luma (16–235) is expanded to the full 0–255 range, so frames and background share the same scale. A 1080p frame becomes 192 × 108 pixels. That is plenty for a mouse body and keeps processing fast.
+## Multi-chamber tail suspension {#tst}
 
-## 2. The background: a median over time
+For tail suspension the question is not where the mouse is but whether it moves. Chambers are found automatically; for each mouse a fixed **motion box** is set around its whole range of movement, frames are aligned to cancel passive swinging, and the motion is the share of the mouse’s pixels that change from frame to frame. Immobility is motion below a threshold (2 % by default) for at least 1 s. See [Tail suspension, multi-chamber](../tasks/tail-suspension.md).
 
-To learn the empty arena without asking you to film it empty, the app takes **21 frames spread evenly over the video** and computes, for every pixel, the **median** of its 21 gray levels.
+## Same numbers on every device {#same}
 
-At any given pixel, the animal is present in only a few of the 21 frames. The median ignores those minority values and returns the floor. The animal "disappears" from the background, as panel (b) of the figure shows.
-
-### Resting-animal repair {#resting-animal-repair}
-
-The median fails where the animal stayed in **the same place in more than half of the sampled frames**: sitting in a closed arm, freezing in a corner, or waiting on the platform. The resting animal becomes part of the background. Later, when the animal has moved away, the empty floor at that spot differs from the background and looks like a second animal, a stationary "ghost" that the tracker might follow.
-
-<figure>
-
-![Ghost repair](/img/ghost-repair.en.png)
-
-<figcaption>Plus-maze validation video. Left: the plain median contains the mouse that rested in the east arm. Middle: after repair the arm is empty. Right: a later frame. The real mouse is tracked; without the repair, the empty spot (dotted) would also have been a candidate.</figcaption>
-</figure>
-
-The tracker recognizes a ghost by a pattern that a real animal does not produce. Within the 21 background frames:
-
-1. A foreground region appears at **the same place in at least two frames**.
-2. Each time, it comes with **a second region of opposite polarity** elsewhere. The ghost is brighter than the background where the real animal is darker, or the reverse.
-3. In those frames the region's **background value stands out** from the surrounding floor, while the frame itself matches the floor.
-
-Where all three hold, the background there is rebuilt from the frames in which the spot was empty. Ordinary videos do not show this pattern, and their background is left unchanged. Among the ten validation videos, the repair occurred only in the plus-maze video, covering 5.2 % of the arena.
-
-An animal that **never** moves cannot be separated from the background by this or any other background method.
-
-## 3. Difference and adaptive threshold
-
-For each frame, the app computes the **absolute difference** between the frame and the background, only inside the calibrated arena (panel c). Using the absolute value means both dark animals on light floors and light animals on dark floors are found.
-
-A pixel counts as foreground if its difference exceeds a threshold that **adapts to every frame**:
-
-> threshold = mean + 1.75 × SD of the differences inside the arena, kept between 14 and 48 gray levels.
-
-The animal covers only about 1 % of the arena, so the mean and SD mostly describe the noise of the floor: compression, sensor noise, slight light changes. The threshold therefore sits just above the noise in each video and lighting. The limits keep it sensible in very clean or very noisy frames.
-
-## 4. Cleanup
-
-Two light **3 × 3 majority filters** smooth the binary mask. In the first pass, a pixel becomes foreground if at least 3 of the 9 pixels in its neighborhood are foreground; in the second, at least 2. This removes isolated noise pixels and closes small holes without eroding the body.
-
-## 5. Choosing the animal among candidates
-
-Connected foreground regions (8-connected) are collected. Regions smaller than 0.07 % or larger than 14 % of the arena are discarded. Each remaining candidate is scored by five properties:
-
-| Weight | Property | Favors |
-|---|---|---|
-| 0.28 | **Motion continuity** | Candidates close to the previous position (decays over 16 % of the frame diagonal) |
-| 0.27 | **Size** | An area near 1.2 % of the arena (log-normal shape, broad) |
-| 0.20 | **Contrast** | A large mean difference from the background |
-| 0.17 | **Size continuity** | An area similar to the previous frame's |
-| 0.08 | **Fill** | A compact shape that fills its bounding box |
-
-The candidate with the highest score is the animal. If no candidate is left, for example because the animal is hidden in a covered box or is out of view, the sample is marked **not detected**. Its position is held at the last known point for drawing only. Not-detected samples are left out of zone times and distance (see [Metrics](./metrics.md)).
-
-## 6. The tracking point: contrast-weighted centroid
-
-The position is the **centroid of the chosen region, with each pixel weighted by its difference from the background**. Pixels that are only partly covered by the animal, at the body edge or along the thin tail, count less than pixels fully covered by the body.
-
-This matters because the tail flickers in and out of the binary mask at analysis resolution. An unweighted centroid was pulled about 1 cm backwards and jittered. Weighting reduced the median position error on the validation videos from about 1 cm to 0.15–0.5 cm.
-
-## 7. Light smoothing
-
-The final point is 90 % of the new centroid plus 10 % of the previous point. This removes single-pixel jitter, and at 10 Hz the lag it adds is about 0.01 s, which is negligible.
-
-## 8. From pixels to centimeters
-
-The calibration turns image pixels into arena centimeters:
-
-- **Rectangle.** A **4-point homography** maps the four corner handles onto a rectangle of the entered width and height. It corrects perspective, so a camera that is not exactly overhead still gives correct distances on the floor plane.
-- **Circle.** The center and radius handles scale the circle to the entered diameter. This assumes an overhead camera.
-- **Mazes (plus, Y, T).** Each arm is defined by its calibrated centerline. A position is assigned to the nearest arm and expressed as distance along that arm plus offset across it, so each arm gets its own pixel-to-cm scale. See [maze geometry](./metrics.md#maze-geometry).
-
-Markers placed during calibration, such as objects, the platform and the target hole, are converted with exactly the same mapping, so animal and markers share one coordinate system.
-
-## 9. The motion index
-
-Independently of finding the animal, every sample also records the **fraction of arena pixels that changed by at least 20 gray levels** since the previous sample 0.1 s earlier. This is the signal used for freezing ([details](./metrics.md#freezing)). It does not depend on detection: a still animal that blends into the background still has a motion index near zero.
-
-## Preview, full analysis and checkpoints
-
-The 10-second preview and the full analysis run the same code, so a good preview predicts a good full run. During the full analysis, the positions and the tracker's short memory (previous position and size) are written to a checkpoint about every 300 samples, i.e. 30 s of video. A resumed analysis continues without a jump.
-
-## Limits {#limits}
-
-- **Body center only.** Nose-based measures (object sniffing, hole pokes) are approximated with zones around the body center. Head direction, rearing and grooming are not measured.
-- **One animal.** Two animals in one arena merge into one region or are confused with each other.
-- **Static camera and light.** The background is learned once per video. A camera bumped mid-session, a light switched on, or bedding moved around changes the background and can create false candidates.
-- **Resolution.** Very small arenas in the picture leave few pixels per centimeter, which inflates path length (see the plus-maze case in [Validation](./validation.md)).
-
-For body parts, several animals or behavior classification, use a deep-learning pose estimator ([Further reading](../reference/reading.md)). Their per-animal outputs can be imported into RodentFlow for statistics and figures.
+The iPhone, iPad and Mac compile the same analysis code. The same video, calibration and settings therefore give the same values. When the Mac imports an analysis from the phone, it recomputes it and shows whether the two agree.

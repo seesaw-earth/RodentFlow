@@ -2,18 +2,13 @@
 
 Accessibility information and a route to report blockers.
 
-RodentFlow is a native macOS application. We aim to improve keyboard operation, readable text, visual clarity and compatibility with macOS accessibility features.
+RodentFlow is a native app for iPhone, iPad and Mac built with Apple’s standard controls. System settings such as zoom and increased contrast can be used with it, and on the Mac the app’s text size can be changed. We keep improving keyboard operation, readable text and visual clarity.
 
-::: info
-**Current status:** Accessibility testing for the release candidate has not been independently verified. This page does not claim complete VoiceOver or WCAG conformance.
-:::
+## Useful settings
 
-## Useful macOS settings
-
-- Use System Settings → Accessibility for display contrast, pointer and text options.
-- Try keyboard navigation in dialogs and standard macOS file pickers.
-- Use macOS zoom when reviewing small video details.
+- **iPhone and iPad:** Settings › Accessibility for text size, contrast and zoom.
+- **Mac:** System Settings › Accessibility for display contrast, pointer and text options; make RodentFlow’s text larger or smaller with <kbd>⌘</kbd><kbd>+</kbd> / <kbd>⌘</kbd><kbd>−</kbd>; use zoom when reviewing small video details. Keyboard shortcuts are listed on [Keyboard shortcuts](./mac/shortcuts.md).
 
 ## Report an accessibility issue
 
-Please use the [support channel](/support) and describe the app screen, assistive technology (if any), the expected action, and the observed behavior. You do not need to include confidential study material.
+Please use the [support channel](./support.md) and describe the screen, the assistive technology (if any), the expected action and what happened. You do not need to include confidential study material.

@@ -32,7 +32,6 @@ The task decides how many animals are tracked; the *Coat colour* setting decides
 - On iPhone and iPad, choose the coat colour after choosing the paradigm, or change it in the detection settings on the Info page. On the Mac, it is in the detection settings of each video's calibration. Changing it means tracking again.
 - **No silent fallback.** If the model a video needs is missing or fails to load, that video is not tracked, and the app says why.
 - The Methods text, single-session JSON and the group long-format table (`model` column) name the model each video used. When groups were tracked with different models, the group page warns that differences between models are mixed with group differences.
-- Two white mice are not supported yet.
 - Data saved without a coat colour (earlier versions) are read as *Dark*, which is the model they were tracked with.
 
 ::: warning Body centre in two-mouse data
@@ -55,7 +54,7 @@ git clone https://github.com/seesaw-earth/RodentStudio-CoreML-Models.git
 
 Keep each `.mlpackage` folder intact when you copy it into an Xcode project. If a `weight.bin` file is only a few hundred bytes, it is an LFS pointer: run `git lfs pull`.
 
-WhiteMousePose6, MousePose6Dyad and MousePose6DyadBW ship inside the app and are **not yet in the public models repository**. The MouseDetector package ships with the Mac source code, in [`source/macOS/…/TSTMulti/Models`](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source).
+WhiteMousePose6, MousePose6Dyad and MousePose6DyadBW ship inside the app. The MouseDetector package ships with the Mac source code, in [`source/macOS/…/TSTMulti/Models`](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source).
 
 ## Checksums {#checksums}
 
@@ -76,7 +75,7 @@ SHA-256 of each `weight.bin`, to check that you have the same weights as the app
 - The model weights are published with the project author's authorization. That statement does not verify the licences of the upstream pretrained weights or the training data.
 - The packages were trained and exported with Ultralytics YOLO, which is AGPL-3.0 unless an Ultralytics Enterprise licence is used; the licence field written into the packages on export reads AGPL-3.0.
 - Two of MousePose6's four training datasets (the JAX datasets on Harvard Dataverse) are CC BY-NC-SA 4.0, which limits commercial use. The two ETH Zurich datasets are CC BY 4.0.
-- WhiteMousePose6, MousePose6Dyad and MousePose6DyadBW were trained on videos and tracks from the DooM dataset (EMBER-DANDI dandiset 000564). Its licence has not yet been confirmed for these pages <Badge type="warning" text="To verify" />; check the record before any redistribution or commercial use.
+- WhiteMousePose6, MousePose6Dyad and MousePose6DyadBW were trained on videos and tracks from the DooM dataset (EMBER-DANDI dandiset 000564). Its terms of use are given on the [EMBER record](https://dandi.emberarchive.org/dandiset/000564); check them before any redistribution or commercial use.
 - A model being available in a public repository does not by itself grant a right to commercial redistribution.
 
 The [licence summary](./tutorials/citations.md#licences) lists every dataset, paper and software package with its licence, and [How to cite](./tutorials/citations.md) says what to cite when you use each model.

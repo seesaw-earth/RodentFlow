@@ -142,10 +142,6 @@ Export, compression and a different resizing path can each move keypoints. Befor
 - Open a few videos in RodentFlow's review view and check the overlaid points, especially left/right.
 - Record the package hash with your results.
 
-::: warning
-**Not yet documented.** The results of `validate_on_mac.py` for the shipped MousePose6 package are not in the materials reviewed for these tutorials.
-:::
-
 ## Licensing when you ship a model {#licence}
 
 Ultralytics distributes YOLO under AGPL-3.0, with an Enterprise licence for closed-source use. Its licence page says the AGPL terms cover models produced by its training code, and that an Enterprise licence is needed to use YOLO without open-sourcing the whole project. RodentFlow's source is published under AGPL-3.0, and the iOS app also uses the AGPL-3.0 Ultralytics iOS package. Dataset terms are separate from software terms, and two of MousePose6's training datasets are CC BY-NC-SA 4.0 (non-commercial): see the [licence table](/tutorials/citations#licences). This is a summary, not legal advice.

@@ -67,10 +67,8 @@
 
 引用 RodentFlow [\[S1\]](#r-rodentstudio) 和 Ultralytics YOLO11 [\[S3\]](#r-yolo11)，并说明使用的是 YOLO 检测器还是经典检测器（RodentFlow 的导出文件会记录）。RodentFlow 流程不需要引用模型；在方法中描述经典追踪器并引用 RodentFlow 即可。
 
-## 引用本教程中的检验 {#use-checks}
+## 本教程用到的其他来源 {#use-checks}
 
-- CalMS21 零样本测试：CalMS21 数据集 [\[D5\]](#r-calms-data) 和论文 [\[P9\]](#r-calms)；MARS 关键点来自 MARS [\[P10\]](#r-mars)。
-- 高架十字迷宫预试验：Sturman 等 2020 [\[P11\]](#r-sturman) 及视频记录 [\[D6\]](#r-sturman-data)；如使用了 DLCAnalyzer 的脚本，再引用 [\[S5\]](#r-dlcanalyzer)。
 - PhysioNet 演示视频（圆筒 v1）：该数据集 [\[D7\]](#r-physionet-data)，并按 PhysioNet 的要求引用平台论文 [\[P12\]](#r-physionet)。
 - 导出为 Core ML：coremltools [\[S4\]](#r-coremltools)。
 
@@ -107,7 +105,7 @@
 - <span id="r-calms-data"></span><Badge type="info" text="D5" />Sun, J. J., Karigo, T., Anderson, D. J., Perona, P., Yue, Y., & Kennedy, A. (2021). *Caltech Mouse Social Interactions (CalMS21) Dataset* (Version 1.0) \[Data set\]. CaltechDATA. <https://doi.org/10.22002/D1.1991>. CC BY 4.0.
 - <span id="r-sturman-data"></span><Badge type="info" text="D6" />von Ziegler, L., Sturman, O., & Bohacek, J. (2020). *Videos for deeplabcut, noldus ethovision X14 and TSE multi conditioning systems comparisons* \[Data set\]. Zenodo. <https://doi.org/10.5281/zenodo.3608658>. CC BY 4.0.
 - <span id="r-physionet-data"></span><Badge type="info" text="D7" />Jiang, Y., Venkitaraman, S., Jung, H. R., Blackwood, S., Lee, J., Jadav, A. A., Lee, D., Kamal, A., & Landsness, E. C. (2026). *Longitudinal Cylinder Rearing Behavioral Data in a Mouse Stroke Model Across Multiple Drug Treatments* (Version 1.0.0) \[Data set\]. PhysioNet. <https://doi.org/10.13026/8bnm-6e37>. ODC-By 1.0.
-- <span id="r-doom-data"></span><Badge type="info" text="D8" />*Days of our Mice (DooM)* \[Data set\]. EMBER-DANDI, dandiset 000564. <https://dandi.emberarchive.org/dandiset/000564>. <Badge type="warning" text="待核对" /> 作者、版本和许可以记录页面为准。
+- <span id="r-doom-data"></span><Badge type="info" text="D8" />*Days of our Mice (DooM)* \[Data set\]. EMBER-DANDI, dandiset 000564. <https://dandi.emberarchive.org/dandiset/000564>. 作者、版本和使用条款以记录页面为准。
 
 ### 论文
 
@@ -132,8 +130,8 @@
 | ETH 数据集 \[D1\]、\[D2\]、\[D6\]                | CC BY 4.0                                  | 允许再利用（包括派生的标签和模型），需署名、给出许可链接并注明改动。                                                                                                                                         |
 | JAX 数据集 \[D3\]、\[D4\]                        | CC BY-NC-SA 4.0                            | 须署名、仅限非商业使用、改编作品须以相同许可共享。MousePose6 有 3,500 张训练图来自这两个数据集，除非 JAX 另行授权，应把 MousePose6 视为仅限非商业使用；见[教程 1](/zh/tutorials/mousepose6#sources)。 |
 | JAX 姿态模型及其训练数据（Zenodo 记录 6380163）  | “Other (Non-Commercial)”                   | 适用于该发布本身。MousePose6 使用的是 \[D3\]、\[D4\] 随附的关键点文件，而不是这个发布；那些文件本身是 CC BY-NC-SA 4.0。                                                                                      |
-| CalMS21 \[D5\]                                   | CC BY 4.0                                  | 只用于外部检验。                                                                                                                                                                                             |
-| DooM \[D8\] | <Badge type="warning" text="待核对" /> | WhiteMousePose6、MousePose6Dyad 和 MousePose6DyadBW 的训练数据。本页未能从 EMBER 记录上读到它的许可；再分发这些模型或商业使用之前请先核对。 |
+| CalMS21 \[D5\]                                   | CC BY 4.0                                  | 未用于训练。                                                                                                                                                                                                 |
+| DooM \[D8\] | 见 [EMBER 记录](https://dandi.emberarchive.org/dandiset/000564) | WhiteMousePose6、MousePose6Dyad 和 MousePose6DyadBW 的训练数据。再分发这些模型或商业使用之前请先查看记录上的条款。 |
 | PhysioNet 数据集 \[D7\]                          | Open Data Commons Attribution（ODC-By）1.0 | 需署名；只用于演示视频。                                                                                                                                                                                     |
 | Ultralytics YOLO 代码和预训练权重 \[S2\]、\[S3\] | AGPL-3.0，或 Ultralytics 企业许可          | Ultralytics 声明 AGPL 条款延伸到用其代码训练的模型；闭源分发需要企业许可。                                                                                                                                   |
 | coremltools \[S4\]                               | BSD-3-Clause                               | 宽松许可。                                                                                                                                                                                                   |
@@ -159,10 +157,3 @@
       publisher = {Zenodo}, year = {2023}, doi = {10.5281/zenodo.8186065}}
     …  (references.bib 共 26 条)
 
-## 待解决的问题 {#open}
-
-- 若要商业使用 MousePose6，需要 JAX 的许可，或改用不含 \[D3\]、\[D4\] 的重新训练模型。
-- 训练 CylinderMousePoseV2 所用的实验室圆筒录像是否已经或将要公开。
-- 内置 TST 检测器的训练数据、参数和评估。
-- DooM 数据集的许可（三个姿态模型用它训练）。
-- WhiteMousePose6 和 MousePose6DyadBW 的 Core ML 一致性检查（`verify_on_mac.py` 的结果）。

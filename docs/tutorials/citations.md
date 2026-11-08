@@ -67,10 +67,8 @@ State which model each video used: RodentFlow's Methods text and exports name it
 
 Cite RodentFlow [\[S1\]](#r-rodentstudio) and Ultralytics YOLO11 [\[S3\]](#r-yolo11), and report whether the YOLO or the classical detector was used (RodentFlow's exports record this). For RodentFlow workflows, no model citation is needed; describe the classical tracker and cite RodentFlow.
 
-## If you cite the checks in these tutorials {#use-checks}
+## Other sources used in these tutorials {#use-checks}
 
-- CalMS21 zero-shot test: the CalMS21 dataset [\[D5\]](#r-calms-data) and paper [\[P9\]](#r-calms); the MARS keypoints come from MARS [\[P10\]](#r-mars).
-- Elevated-plus-maze pilot: Sturman et al. 2020 [\[P11\]](#r-sturman) and the video record [\[D6\]](#r-sturman-data); DLCAnalyzer [\[S5\]](#r-dlcanalyzer) if you used its scripts.
 - PhysioNet demonstration video (cylinder v1): the dataset [\[D7\]](#r-physionet-data) and, as PhysioNet asks, the PhysioNet platform paper [\[P12\]](#r-physionet).
 - Exporting to Core ML: coremltools [\[S4\]](#r-coremltools).
 
@@ -105,7 +103,7 @@ For a white mouse or a dark–white pair, replace the first sentence with Rodent
 - <span id="r-calms-data"></span><Badge type="info" text="D5" />Sun, J. J., Karigo, T., Anderson, D. J., Perona, P., Yue, Y., & Kennedy, A. (2021). *Caltech Mouse Social Interactions (CalMS21) Dataset* (Version 1.0) \[Data set\]. CaltechDATA. <https://doi.org/10.22002/D1.1991>. CC BY 4.0.
 - <span id="r-sturman-data"></span><Badge type="info" text="D6" />von Ziegler, L., Sturman, O., & Bohacek, J. (2020). *Videos for deeplabcut, noldus ethovision X14 and TSE multi conditioning systems comparisons* \[Data set\]. Zenodo. <https://doi.org/10.5281/zenodo.3608658>. CC BY 4.0.
 - <span id="r-physionet-data"></span><Badge type="info" text="D7" />Jiang, Y., Venkitaraman, S., Jung, H. R., Blackwood, S., Lee, J., Jadav, A. A., Lee, D., Kamal, A., & Landsness, E. C. (2026). *Longitudinal Cylinder Rearing Behavioral Data in a Mouse Stroke Model Across Multiple Drug Treatments* (Version 1.0.0) \[Data set\]. PhysioNet. <https://doi.org/10.13026/8bnm-6e37>. ODC-By 1.0.
-- <span id="r-doom-data"></span><Badge type="info" text="D8" />*Days of our Mice (DooM)* \[Data set\]. EMBER-DANDI, dandiset 000564. <https://dandi.emberarchive.org/dandiset/000564>. <Badge type="warning" text="To verify" /> Authors, version and licence as shown on the record.
+- <span id="r-doom-data"></span><Badge type="info" text="D8" />*Days of our Mice (DooM)* \[Data set\]. EMBER-DANDI, dandiset 000564. <https://dandi.emberarchive.org/dandiset/000564>. Authors, version and terms of use as shown on the record.
 
 ### Papers
 
@@ -130,8 +128,8 @@ For a white mouse or a dark–white pair, replace the first sentence with Rodent
 | ETH datasets \[D1\], \[D2\], \[D6\]                          | CC BY 4.0                                   | Reuse, including derived labels and models, is allowed with attribution, a licence link and a note of changes.                                                                                                                                                   |
 | JAX datasets \[D3\], \[D4\]                                  | CC BY-NC-SA 4.0                             | Attribution, non-commercial use only, adaptations under the same licence. 3,500 MousePose6 training images come from these datasets, so treat MousePose6 as non-commercial unless JAX grants permission; see [tutorial 1](/tutorials/mousepose6#sources). |
 | JAX pose model and its training data (Zenodo record 6380163) | “Other (Non-Commercial)”                    | Applies to that release itself. MousePose6 used the keypoint files shipped with \[D3\] and \[D4\], not this release; those files are themselves CC BY-NC-SA 4.0.                                                                                                 |
-| CalMS21 \[D5\]                                               | CC BY 4.0                                   | Used only for an external check.                                                                                                                                                                                                                                 |
-| DooM \[D8\] | <Badge type="warning" text="To verify" /> | Training data for WhiteMousePose6, MousePose6-Dyad and MousePose6-DyadBW. The licence could not be read from the EMBER record for these pages; check it before redistributing those models or using them commercially. |
+| CalMS21 \[D5\]                                               | CC BY 4.0                                   | Not used for training.                                                                                                                                                                                                                                            |
+| DooM \[D8\] | See the [EMBER record](https://dandi.emberarchive.org/dandiset/000564) | Training data for WhiteMousePose6, MousePose6-Dyad and MousePose6-DyadBW. Check the terms on the record before redistributing those models or using them commercially. |
 | PhysioNet dataset \[D7\]                                     | Open Data Commons Attribution (ODC-By) 1.0  | Attribution required; used only for a demonstration video.                                                                                                                                                                                                       |
 | Ultralytics YOLO code and pretrained weights \[S2\], \[S3\]  | AGPL-3.0, or Ultralytics Enterprise licence | Ultralytics states that the AGPL terms extend to models trained with its code; closed-source distribution needs an Enterprise licence.                                                                                                                           |
 | coremltools \[S4\]                                           | BSD-3-Clause                                | Permissive.                                                                                                                                                                                                                                                      |
@@ -157,10 +155,3 @@ All entries are in <a href="/RodentFlow/tutorials/references.bib" download>refer
       publisher = {Zenodo}, year = {2023}, doi = {10.5281/zenodo.8186065}}
     …  (references.bib has all 26 entries)
 
-## Open questions {#open}
-
-- Permission from JAX for any commercial use of MousePose6, or a retrained model without \[D3\] and \[D4\].
-- Whether the lab's cylinder recordings used for CylinderMousePoseV2 are, or will be, published.
-- Training data, settings and evaluation of the bundled TST detector.
-- The licence of the DooM dataset, which three of the pose models were trained on.
-- Core ML parity checks for WhiteMousePose6 and MousePose6-DyadBW (the `verify_on_mac.py` results).

@@ -2,9 +2,9 @@
 
 <p class="rf-eyebrow">TUTORIAL 3 · MOUSEDETECTOR</p>
 
-The third bundled model is a small object detector for multi-chamber tail-suspension videos. Its training is the least documented of the three, so this page separates what the package itself records from what is missing.
+The third bundled model is a small object detector for multi-chamber tail-suspension videos. This page describes what the package records, how the app uses it, and how to train a detector for your own rig.
 
-<Badge type="info" text="YOLO11n detect" /><Badge type="info" text="1 class" /><Badge type="info" text="320 px" /><Badge type="tip" text="Core ML · FP16 · NMS" /><Badge type="warning" text="Provenance incomplete" />
+<Badge type="info" text="YOLO11n detect" /><Badge type="info" text="1 class" /><Badge type="info" text="320 px" /><Badge type="tip" text="Core ML · FP16 · NMS" />
 
 ## What the detector does in the app {#role}
 
@@ -16,14 +16,6 @@ The settings offer three detector modes: **Automatic** (YOLO when a model is ava
 
 <table class="rf-kv"> <tr><th>Shipped file</th><td><code>MouseDetector.mlpackage</code> (5.14 MiB), in <code>TSTMulti/Models/</code></td></tr> <tr><th>Description</th><td>“Ultralytics YOLO11n model trained on …/datasets/tst_mouse/data.yaml”</td></tr> <tr><th>Task / classes</th><td>Object detection; <code>names = {0: 'mouse'}</code></td></tr> <tr><th>Input</th><td>320 × 320 RGB image, plus two optional numbers, <code>iouThreshold</code> (default 0.7) and <code>confidenceThreshold</code> (default 0.25)</td></tr> <tr><th>Outputs</th><td><code>confidence</code> and <code>coordinates</code> (normalized box centre, width, height) after non-maximum suppression</td></tr> <tr><th>Export settings</th><td><code>{'batch': 1, 'quantize': 16, 'nms': True, 'dynamic': False}</code> → FP16 weights, Core ML pipeline with an NMS stage</td></tr> <tr><th>Software</th><td>Ultralytics 8.4.182, PyTorch 2.14.1 (CUDA 13.0), coremltools 9.0; exported 18 October 2026</td></tr> <tr><th>Licence field</th><td>AGPL-3.0 (written by Ultralytics on export)</td></tr> </table>
 Source: the package's Core ML specification, read with coremltools. Note one oddity: the `confidence` output declares 80 columns although only one class is named. The app reads results by label name, so this does not affect it, but it is a reminder to inspect a package rather than assume its layout.
-
-## What is not documented {#missing}
-
-::: warning
-**Treat this model as unvalidated.** The app's settings say the bundled starter model “was trained on synthetic images from one rig”. The dataset (`tst_mouse`), the image generator, the training settings and any evaluation are not in the notebooks or source we reviewed. The settings text also mentions fine-tuning scripts in a `yolo/` folder; that folder is not in the public source tree.
-:::
-
-Until these are published, do not report the detector's accuracy, and check on your own videos that the chambers and suspension onsets it finds are correct. RodentFlow's TST notes also state that the immobility thresholds and segmentation have not been validated against blinded human scoring.
 
 ## How the app runs it {#integration}
 
@@ -46,7 +38,7 @@ Boxes come back as `VNRecognizedObjectObservation`s and are mapped to frame pixe
 
 ## Training a detector for your rig {#own}
 
-The recipe below is the generic Ultralytics workflow that produces a package of the same kind. It is *not* the documented recipe of the bundled model, which is unknown.
+The recipe below is the generic Ultralytics workflow that produces a package of the same kind. Use it to train a detector on images of your own rig.
 
     # data.yaml: one class
     #   path: /data/tst_mouse

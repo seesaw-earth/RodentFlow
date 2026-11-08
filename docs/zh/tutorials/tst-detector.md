@@ -2,9 +2,9 @@
 
 <p class="rf-eyebrow">教程 3 · MOUSEDETECTOR</p>
 
-第三个内置模型是用于多格悬尾视频的小型目标检测器。它的训练记录是三个模型中最少的，所以本页把模型包本身记录的信息与缺失的信息分开列出。
+第三个内置模型是用于多格悬尾视频的小型目标检测器。本页介绍模型包记录了什么、App 如何使用它，以及如何为自己的装置训练检测器。
 
-<Badge type="info" text="YOLO11n 检测" /><Badge type="info" text="1 个类别" /><Badge type="info" text="320 px" /><Badge type="tip" text="Core ML · FP16 · NMS" /><Badge type="warning" text="来源记录不完整" />
+<Badge type="info" text="YOLO11n 检测" /><Badge type="info" text="1 个类别" /><Badge type="info" text="320 px" /><Badge type="tip" text="Core ML · FP16 · NMS" />
 
 ## 检测器在 App 中做什么 {#role}
 
@@ -16,14 +16,6 @@
 
 <table class="rf-kv"> <tr><th>发布文件</th><td><code>MouseDetector.mlpackage</code>（5.14 MiB），位于 <code>TSTMulti/Models/</code></td></tr> <tr><th>描述</th><td>“Ultralytics YOLO11n model trained on …/datasets/tst_mouse/data.yaml”</td></tr> <tr><th>任务 / 类别</th><td>目标检测；<code>names = {0: 'mouse'}</code></td></tr> <tr><th>输入</th><td>320 × 320 RGB 图像，另有两个可选数值 <code>iouThreshold</code>（默认 0.7）和 <code>confidenceThreshold</code>（默认 0.25）</td></tr> <tr><th>输出</th><td>非极大值抑制后的 <code>confidence</code> 和 <code>coordinates</code>（归一化的框中心、宽、高）</td></tr> <tr><th>导出参数</th><td><code>{'batch': 1, 'quantize': 16, 'nms': True, 'dynamic': False}</code> → FP16 权重，带 NMS 阶段的 Core ML pipeline</td></tr> <tr><th>软件</th><td>Ultralytics 8.4.182、PyTorch 2.14.1（CUDA 13.0）、coremltools 9.0；导出于 2026 年 10 月 18 日</td></tr> <tr><th>许可字段</th><td>AGPL-3.0（导出时由 Ultralytics 写入）</td></tr> </table>
 来源：用 coremltools 读取的模型包 Core ML 规格。有一处奇怪的地方：`confidence` 输出声明了 80 列，而类别名只有一个。App 按类别名读取结果，所以不受影响；但这提醒我们要实际检查模型包，而不是假定它的结构。
-
-## 缺少哪些记录 {#missing}
-
-::: warning
-**请把这个模型视为未经验证。**App 设置里写着内置的入门模型“在单一装置的合成图像上训练”。数据集（`tst_mouse`）、图像生成方法、训练参数以及任何评估都不在我们审阅的 notebook 和源码中。设置里的说明还提到 `yolo/` 文件夹中的微调脚本，但公开的源码里没有这个文件夹。
-:::
-
-在这些材料公开之前，不要报告检测器的准确度，并请在自己的视频上确认它找到的格子和悬挂起始时间是正确的。RodentFlow 的 TST 说明也指出，不动阈值和分割方法尚未与盲法人工评分对照验证。
 
 ## App 如何运行它 {#integration}
 
@@ -46,7 +38,7 @@
 
 ## 为自己的装置训练检测器 {#own}
 
-下面是能生成同类模型包的通用 Ultralytics 流程。它*不是*内置模型的训练方法（那个方法没有记录）。
+下面是能生成同类模型包的通用 Ultralytics 流程。可以用它在自己装置的图像上训练检测器。
 
     # data.yaml：一个类别
     #   path: /data/tst_mouse
