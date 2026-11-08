@@ -5,7 +5,7 @@ search: false
 # 导出文件说明（Mac）
 
 ::: warning 旧版本
-本页介绍的是 **iPhone 版 RodentFlow 1.x** 和 **Mac 版 RodentFlow 0.7**（原 RodentStudio），保留作参考。RodentFlow 2.1 请看[Mac 导出](/zh/mac/exports.md)。
+本页介绍的是 **iPhone 版 RodentFlow 1.x** 和 **Mac 版 RodentFlow 0.7**（原 RodentStudio），保留作参考。当前版本请看[Mac 导出](/zh/mac/exports.md)。
 :::
 
 
@@ -29,8 +29,8 @@ search: false
 
 任务页或分组页 → **导出逐帧数据…**（在后台进行；每次实验每分钟视频约 1 MB）。
 
-- **RodentPose / RodentLimb：**`frames/<小鼠>_<日期>_S<次数>_DLC.csv` 为 DeepLabCut 格式（三行表头：scorer / bodyparts / coords；每个关键点 x、y、likelihood），另有 `…_frames.csv`，含视频时间、帧号、是否在分析时间段内、检测置信度、是否推理失败。
-- **RodentFlow：**`…_centroid.csv`（画面与场地坐标，单位为像素、归一化值和厘米；置信度、是否插值、所在区域、运动指数），一份只含 centroid 一个点的 DLC 文件，有迷宫事件时另有 `…_maze_events.csv`。
+- **RodentPose / RodentLimb**：`frames/<小鼠>_<日期>_S<次数>_DLC.csv` 为 DeepLabCut 格式（三行表头：scorer / bodyparts / coords；每个关键点 x、y、likelihood），另有 `…_frames.csv`，含视频时间、帧号、是否在分析时间段内、检测置信度、是否推理失败。
+- **RodentFlow**：`…_centroid.csv`（画面与场地坐标，单位为像素、归一化值和厘米；置信度、是否插值、所在区域、运动指数），一份只含 centroid 一个点的 DLC 文件，有迷宫事件时另有 `…_maze_events.csv`。
 - `frames_index.csv` 和 `frames_metadata.json` 列出每次实验、模型、关键点名称、帧数、分析时间段及读取错误。
 - 约定：校正旋转后的竖直画面像素，原点在左上角，x 向右，y 向下（与 DLC 相同）。缺失的关键点 x、y 为空、likelihood 为 0。`inference_failed = 1` 表示模型没能运行——与“画面中没有动物”不是一回事。
 
@@ -59,6 +59,6 @@ search: false
 
 ::: tip
 
-**用 Excel 打开 CSV：**文件为 UTF-8 编码。若你自己输入的中文备注显示为乱码，请通过“数据 › 从文本/CSV”导入并选择 UTF-8（Numbers 可直接打开）。指标名使用普通 ASCII 连字符（如 `min 2-6`），列名不会出现这个问题。
+**用 Excel 打开 CSV**：文件为 UTF-8 编码。若你自己输入的中文备注显示为乱码，请通过“数据 › 从文本/CSV”导入并选择 UTF-8（Numbers 可直接打开）。指标名使用普通 ASCII 连字符（如 `min 2-6`），列名不会出现这个问题。
 
 :::

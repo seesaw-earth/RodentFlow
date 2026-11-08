@@ -1,6 +1,6 @@
 ---
 title: "iPhone, iPad and Mac"
-description: "What RodentFlow 2.1 does on iPhone, iPad and Mac, what each needs, and how to get it."
+description: "What RodentFlow does on iPhone, iPad and Mac, what each needs, and how to get it."
 ---
 
 # iPhone, iPad and Mac

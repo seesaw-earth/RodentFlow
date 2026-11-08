@@ -2,6 +2,7 @@ import { h } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import type { Theme } from 'vitepress'
 import LangSwitch from './LangSwitch.vue'
+import TasksPromo from './TasksPromo.vue'
 import './custom.css'
 
 // The home pages (/RodentFlow/ and /RodentFlow/zh/) are standalone HTML files in docs/public,
@@ -15,7 +16,12 @@ function isHome(href: string, base: string): boolean {
 export default {
   extends: DefaultTheme,
   // English / 中文 link in the top bar on phones and tablets (see LangSwitch.vue).
-  Layout: () => h(DefaultTheme.Layout, null, { 'nav-bar-content-after': () => h(LangSwitch) }),
+  // and a card for the task library at the top of the sidebar (see TasksPromo.vue).
+  Layout: () =>
+    h(DefaultTheme.Layout, null, {
+      'nav-bar-content-after': () => h(LangSwitch),
+      'sidebar-nav-before': () => h(TasksPromo)
+    }),
   enhanceApp({ router, siteData }) {
     if (typeof window === 'undefined') return
     const previous = router.onBeforeRouteChange

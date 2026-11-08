@@ -4,7 +4,7 @@ The pose workflows run small neural networks with Apple's Core ML, on the Mac, i
 
 The [tutorials](./tutorials/) explain where each model's data and labels came from, how it was trained and tested, and how the app runs it.
 
-## The models in RodentFlow 2.1 {#models}
+## The models in RodentFlow {#models}
 
 | Model | What it finds | Used when | Package |
 |---|---|---|---|

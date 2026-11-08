@@ -5,7 +5,7 @@ search: false
 # Before you record: pose, limb and Mac assays
 
 ::: warning Older version
-This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For RodentFlow 2.1, see [Recording videos that track well](/guide/recording.md).
+This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For the current version, see [Recording videos that track well](/guide/recording.md).
 :::
 
 

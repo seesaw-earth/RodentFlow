@@ -6,7 +6,7 @@ search: false
 
 # 旧版本
 
-这些页面介绍 **iPhone 版 RodentFlow 1.x**（质心追踪、手动录入和组间统计）和 **Mac 版 RodentFlow 0.7**（原 RodentStudio），为仍在使用或需要引用这些版本的读者保留。RodentFlow 2.1 请从 [RodentFlow 能做什么](../guide/introduction.md)开始。
+这些页面介绍 **iPhone 版 RodentFlow 1.x**（质心追踪、手动录入和组间统计）和 **Mac 版 RodentFlow 0.7**（原 RodentStudio），为仍在使用或需要引用这些版本的读者保留。当前版本请从 [RodentFlow 能做什么](../guide/introduction.md)开始。
 
 ## iPhone 版 RodentFlow 1.x
 

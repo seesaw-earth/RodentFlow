@@ -1,6 +1,6 @@
 ---
 title: "Getting results you can trust"
-description: "Good practice for behavioural studies with RodentFlow 2.1: check against hand scoring once, fix the settings, review sessions, count animals, report the method, and interpret measures as what they are."
+description: "Good practice for behavioural studies with RodentFlow: check against hand scoring once, fix the settings, review sessions, count animals, report the method, and interpret measures as what they are."
 ---
 
 # Getting results you can trust

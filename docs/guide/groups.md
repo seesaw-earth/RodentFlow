@@ -1,6 +1,6 @@
 ---
 title: "Comparing groups"
-description: "Group comparisons in RodentFlow 2.1 on iPhone, iPad and Mac: designs, which test is used, survival curves for censored latencies, figures and exports."
+description: "Group comparisons in RodentFlow on iPhone, iPad and Mac: designs, which test is used, survival curves for censored latencies, figures and exports."
 ---
 
 # Comparing groups

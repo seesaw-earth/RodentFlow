@@ -1,11 +1,13 @@
 ---
 title: "What RodentFlow does"
-description: "RodentFlow 2.1 turns videos of laboratory mice into behavioural measures on iPhone, iPad and Mac: six-keypoint pose, two-mouse identity, classic centroid tracking and multi-chamber tail suspension."
+description: "RodentFlow turns videos of laboratory mice into behavioural measures on iPhone, iPad and Mac: six-keypoint pose, two-mouse identity, classic centroid tracking and multi-chamber tail suspension."
 ---
 
 # What RodentFlow does
 
 RodentFlow turns **videos of laboratory mice into behavioural measures**, on an iPhone, iPad or Mac. Choose the test, mark the arena on one frame, and the app tracks the animal, scores the session, and compares groups with statistics and publication-ready figures. There is no account and no upload: videos and results stay on your device.
+
+<a class="rf-promo rf-promo-wide" href="../tasks/"><span class="rf-promo-thumbs"><img src="/img/tasks/thumbs/elevated-plus-maze.en.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/three-chamber.en.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/water-maze.en.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/dyadic-social.en.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/y-maze.en.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/fear-conditioning.en.png" alt="" loading="lazy"></span><strong>27 tasks, each explained →</strong><span>Design, why keypoints help, the rule behind every measure, a simulated example and the papers behind it.</span></a>
 
 ## One app, four ways to measure {#methods}
 

@@ -1,6 +1,6 @@
 ---
 title: "How tracking works"
-description: "How RodentFlow 2.1 turns video frames into clean tracks: arena-only detection, the Core ML pose models, calibration to centimetres, cleaning, derived features, two-mouse identity, classic centroid and multi-chamber motion."
+description: "How RodentFlow turns video frames into clean tracks: arena-only detection, the Core ML pose models, calibration to centimetres, cleaning, derived features, two-mouse identity, classic centroid and multi-chamber motion."
 ---
 
 # How tracking works

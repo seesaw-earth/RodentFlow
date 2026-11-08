@@ -5,7 +5,7 @@ search: false
 # Further reading
 
 ::: warning Older version
-This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For RodentFlow 2.1, see [Further reading](/reference/reading.md).
+This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For the current version, see [Further reading](/reference/reading.md).
 :::
 
 

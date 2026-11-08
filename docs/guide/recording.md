@@ -1,6 +1,6 @@
 ---
 title: "Recording videos that track well"
-description: "Camera, light, framing, frame rate and file naming for RodentFlow 2.1, with notes for two-mouse, maze, water, marble-burying and tail-suspension recordings."
+description: "Camera, light, framing, frame rate and file naming for RodentFlow, with notes for two-mouse, maze, water, marble-burying and tail-suspension recordings."
 ---
 
 # Recording videos that track well

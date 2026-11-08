@@ -5,7 +5,7 @@ search: false
 # Troubleshooting: Mac and pose tracking
 
 ::: warning Older version
-This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For RodentFlow 2.1, see [FAQ](/reference/faq.md).
+This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For the current version, see [FAQ](/reference/faq.md).
 :::
 
 

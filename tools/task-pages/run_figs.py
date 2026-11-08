@@ -22,8 +22,9 @@ for slug, fn in {**TASKS_A, **TASKS_B, **TASKS_C}.items():
         f = os.path.join(out_dir, f'{slug}.{lang}.png')
         v = fn(lang, f)
         from PIL import Image
-        Image.open(f).convert('RGB').quantize(colors=128, method=Image.Quantize.MEDIANCUT,
-                                              dither=Image.Dither.NONE).save(f, optimize=True)
+        for g in [f] + ([os.path.join(os.environ['THUMB_DIR'], os.path.basename(f))] if os.environ.get('THUMB_DIR') else []):
+            Image.open(g).convert('RGB').quantize(colors=128, method=Image.Quantize.MEDIANCUT,
+                                                  dither=Image.Dither.NONE).save(g, optimize=True)
     vals[slug] = {k: (x.item() if hasattr(x, "item") else x) for k, x in v.items()}
     print(slug, vals[slug])
 json.dump(vals, open(vals_path, 'w'), indent=1, ensure_ascii=False)

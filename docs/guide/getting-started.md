@@ -1,6 +1,6 @@
 ---
 title: "Quick start"
-description: "Your first RodentFlow 2.1 analysis on iPhone, iPad or Mac: choose a task, calibrate, track, review and read the results."
+description: "Your first RodentFlow analysis on iPhone, iPad or Mac: choose a task, calibrate, track, review and read the results."
 ---
 
 # Quick start

@@ -1,6 +1,6 @@
 ---
 title: "数据存放位置与备份"
-description: "RodentFlow 2.1 在 iPhone、iPad 和 Mac 上把视频、分析和工作区存在哪里，以及如何备份。"
+description: "RodentFlow 在 iPhone、iPad 和 Mac 上把视频、分析和工作区存在哪里，以及如何备份。"
 ---
 
 # 数据存放位置与备份

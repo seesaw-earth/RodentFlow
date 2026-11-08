@@ -1,6 +1,6 @@
 ---
 title: "Quick start on the Mac"
-description: "Ten steps from a new task to exported results in RodentFlow 2.1 on the Mac."
+description: "Ten steps from a new task to exported results in RodentFlow on the Mac."
 ---
 
 # Quick start on the Mac (10 steps)

@@ -1,6 +1,6 @@
 ---
 title: "Results and exports"
-description: "The RodentFlow 2.1 results page and everything you can export from a session: measures, frame-by-frame data, DeepLabCut-format keypoints, behaviour segments, figures and Methods text."
+description: "The RodentFlow results page and everything you can export from a session: measures, frame-by-frame data, DeepLabCut-format keypoints, behaviour segments, figures and Methods text."
 ---
 
 # Results and exports

@@ -5,7 +5,7 @@ search: false
 # Quick start on Mac (10 steps)
 
 ::: warning Older version
-This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For RodentFlow 2.1, see [Quick start on the Mac](/mac/quick-start.md).
+This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For the current version, see [Quick start on the Mac](/mac/quick-start.md).
 :::
 
 

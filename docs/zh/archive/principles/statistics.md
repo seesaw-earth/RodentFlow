@@ -5,7 +5,7 @@ search: false
 # 统计方法
 
 ::: warning 旧版本
-本页介绍的是 **iPhone 版 RodentFlow 1.x** 和 **Mac 版 RodentFlow 0.7**（原 RodentStudio），保留作参考。RodentFlow 2.1 请看[统计方法](/zh/principles/statistics.md)。
+本页介绍的是 **iPhone 版 RodentFlow 1.x** 和 **Mac 版 RodentFlow 0.7**（原 RodentStudio），保留作参考。当前版本请看[统计方法](/zh/principles/statistics.md)。
 :::
 
 
@@ -65,7 +65,7 @@ search: false
 > t(13.4) = 2.71，p = 0.017，Hedges' g = 1.31
 > 均值差（WT − KO）= 4.8，95 % CI [1.0, 8.6]。
 
-卡片接着列出两两比较的校正 p 值和星号（* < 0.05，** < 0.01，*** < 0.001，**** < 0.0001），以及各组的描述统计：n、均值 ± SEM、SD、中位数和四分位数。小于 0.0001 的 p 值显示为“p < 0.0001”。
+卡片接着列出两两比较的校正 p 值和星号（* < 0.05，** < 0.01**，* < 0.001，**** < 0.0001），以及各组的描述统计：n、均值 ± SEM、SD、中位数和四分位数。小于 0.0001 的 p 值显示为“p < 0.0001”。
 
 如果某组动物少于两只，或组内所有数值完全相同，就无法计算检验。卡片会说明原因，而不是给出误导性的结果。
 

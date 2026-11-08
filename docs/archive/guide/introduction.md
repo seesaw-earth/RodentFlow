@@ -5,7 +5,7 @@ search: false
 # Centroid tracking on iPhone
 
 ::: warning Older version
-This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For RodentFlow 2.1, see [What RodentFlow does](/guide/introduction.md).
+This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For the current version, see [What RodentFlow does](/guide/introduction.md).
 :::
 
 

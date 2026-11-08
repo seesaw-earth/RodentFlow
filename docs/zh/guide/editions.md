@@ -1,6 +1,6 @@
 ---
 title: "iPhone、iPad 与 Mac"
-description: "RodentFlow 2.1 在 iPhone、iPad 和 Mac 上分别能做什么、需要什么系统，以及如何获取。"
+description: "RodentFlow 在 iPhone、iPad 和 Mac 上分别能做什么、需要什么系统，以及如何获取。"
 ---
 
 # iPhone、iPad 与 Mac
