@@ -6,9 +6,9 @@ outline: false
 
 ## 先看这里
 
-- **[我该用哪个版本？](./guide/editions.md)**：比较 iPhone、iPad 和 Mac 版。
-- **[常见问题与排错](./reference/faq.md)**：最常见的追踪、实验范式、导入和统计问题。Mac 版和姿态流程见 **[排查：Mac 与姿态追踪](./reference/troubleshooting-mac.md)**。
-- **[iPhone 快速上手](./guide/getting-started.md)** 和 **[Mac 快速上手](./mac/quick-start.md)**：完整走一遍分析流程。
+- **[iPhone、iPad 与 Mac](./guide/editions.md)**：比较各设备能做什么。
+- **[常见问题](./reference/faq.md)**：关于追踪、双鼠、设备、数据和统计的最常见问题。
+- **[快速上手](./guide/getting-started.md)** 和 **[Mac 快速上手](./mac/quick-start.md)**：完整走一遍分析流程。
 - 本网站顶部的搜索框可以搜索整本手册。
 
 ## 报告问题或提问 {#help}
@@ -19,9 +19,9 @@ Mac 版以前的问题报告在 [RodentStudio-Support 的 issue 列表](https://
 
 为了更快解决问题，请尽量提供：
 
-1. **App 和版本**：iPhone 或 iPad 在设置 › 通用 › iPhone 储存空间 › RodentFlow 中查看；Mac 在菜单 **RodentFlow › 关于 RodentFlow** 或 TestFlight 中查看。
+1. **App 和版本**：iPhone 或 iPad 在设置 › 通用 › iPhone 储存空间 › RodentFlow 中查看；Mac 在菜单 **RodentFlow › 关于 RodentFlow** 中查看。
 2. **设备和系统**：iPhone 或 iPad 型号及 iOS 版本；或 macOS 版本，以及 Mac 是 Apple 芯片还是 Intel。
-3. **流程和实验范式**：质心追踪、RodentPose、RodentLimb 还是多格悬尾；数据来自视频、手动录入还是导入。
+3. **方法和范式**：姿态（单鼠或双鼠，以及毛色）、质心法还是多格悬尾；数据来自视频、手动录入还是导入。
 4. **你做了什么，预期是什么，实际发生了什么**，以及错误提示原文。
 5. 如果是追踪问题：**预览截图**，方便的话再附一小段视频或模拟测试视频。
 6. 如果是导入问题：**文件的前几行**，必要时替换真实的动物编号。

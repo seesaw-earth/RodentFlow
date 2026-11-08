@@ -1,6 +1,11 @@
+---
+title: "Statistics"
+description: "Which statistical test RodentFlow 2.1 uses for each design, why, and how to read the result: Welch, Mann–Whitney, ANOVA with Tukey–Kramer, Kruskal–Wallis with Dunn, mixed ANOVA, two-way ANOVA, ANCOVA, survival analysis and effect sizes."
+---
+
 # Statistics
 
-The Groups tab chooses a test from three things: the **design** (what one data point is), the **number of groups**, and **parametric or non-parametric**. This page lists every combination and explains the choices.
+The group page (Groups on iPhone and iPad, Compare groups on the Mac) chooses a test from three things: the **design** (what one data point is), the **number of groups**, and **parametric or non-parametric**. This page lists every combination and explains the choices.
 
 ## The unit of analysis is the animal
 
@@ -40,6 +45,30 @@ The mixed ANOVA needs complete data. Animals missing a level are left out of the
 | Within each group | **Paired t-test** (Cohen's d<sub>z</sub>) | **Wilcoxon signed-rank** |
 | Between groups | Mixed ANOVA group × measure. The **interaction** tests whether the within-animal difference differs between groups. | Mann–Whitney (2 groups) or Kruskal–Wallis (≥ 3) on the within-animal differences |
 
+### Two factors {#two-way}
+
+With a second factor (sex, or group names split into two factors such as genotype × treatment), the app runs a **two-way ANOVA with Type III sums of squares**, which stays correct when the groups are unequal in size. It reports both main effects and the interaction (partial η²), **simple effects** using the pooled error of the full model, and pairwise comparisons Holm-adjusted within each comparison, each with a 95 % CI.
+
+### A covariate {#ancova}
+
+**ANCOVA** adjusts the group comparison for another measure of the same animal, such as home-cage food intake in novelty-suppressed feeding or swim speed in the water maze. It gives the adjusted group effect, the covariate slope, adjusted means ± SE with 95 % CI and Holm-adjusted pairwise differences. It also checks that the slope is the same in every group (group × covariate) and points out when the covariate itself differs between groups.
+
+### Latencies with a cut-off {#survival}
+
+For latencies where some animals never reach the event before the cut-off (water-maze escape, passive avoidance, step-down, visual cliff, novelty-suppressed feeding, attack latency), the page adds **Kaplan–Meier curves** (censored animals marked +) with the number of events, the median latency per group and a **log-rank test** (χ², df = groups − 1). Bars and t-tests enter censored latencies at the cut-off, so with censored data the log-rank test is the one to report. Each animal must contribute one record; filter to one phase, day or trial first.
+
+### Yes/no measures {#proportions}
+
+Measures that are 0 or 100 per animal (stepped down, entered the dark side, chose the deep side first, attacked) are also compared as proportions with **Fisher’s exact test** (two-sided) or a **chi-square test** of independence.
+
+## Assumption checks {#assumptions}
+
+Each comparison shows a **Shapiro–Wilk** test per group and on the model residuals, and a **Brown–Forsythe** test for equal variances. They are advice: the app suggests whether a parametric or non-parametric test fits better, but does not switch tests on its own. With fewer than 8 animals per group it notes that these checks have little power.
+
+## Effect sizes {#effect-sizes}
+
+Every test comes with an effect size and its 95 % CI: Hedges’ g and the mean difference (Welch CI) for two groups; r = Z/√N, the rank-biserial correlation and the Hodges–Lehmann shift for Mann–Whitney; η², ω² and the difference of every pair of means (Tukey simultaneous or unadjusted intervals) for several groups; the mean difference and d<sub>z</sub> for paired data; partial η² for two-way ANOVA and ANCOVA.
+
 ## Why these choices
 
 - **Welch rather than Student's t.** Welch's test does not assume equal variances. When the variances are equal it loses almost nothing, and when they differ it keeps the false-positive rate where it should be. It is a sensible default for small animal groups.
@@ -59,13 +88,3 @@ A two-group example:
 The card then lists pairwise comparisons with adjusted p and stars (* < 0.05, ** < 0.01, *** < 0.001, **** < 0.0001), and descriptive statistics per group: n, mean ± SEM, SD, median and quartiles. p values below 0.0001 are shown as "p < 0.0001".
 
 If a group has fewer than two animals, or all of its values are identical, no test can be computed, and the card says so instead of showing a misleading result.
-
-## How the numbers were verified
-
-The statistics engine ([`StatsEngine.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/StatsEngine.swift); test selection in [`GroupAnalysis.swift`](https://github.com/seesaw-earth/RodentFlow/blob/main/RodentFlow/GroupAnalysis.swift)) is written from scratch in Swift, so it runs on the phone without any library. It includes the t, F, χ² and normal distributions, the studentized range distribution for Tukey's test (following the algorithm used in R), exact distributions for Mann–Whitney and Wilcoxon, and Greenhouse–Geisser ε. Each test was compared with established Python implementations (SciPy, pingouin, scikit-posthocs): Welch, Student, paired and one-sample t; exact and asymptotic Mann–Whitney; Wilcoxon; one-way ANOVA; Tukey; Kruskal–Wallis; Dunn; mixed and repeated-measures ANOVA with Greenhouse–Geisser; and Friedman. All **1,059 checks** agreed.
-
-## A methods paragraph you can adapt
-
-> Behavior was analyzed with RodentFlow 1.3 (iPhone). The animal's body center was tracked at 10 Hz by background subtraction (temporal-median background, adaptive threshold, contrast-weighted centroid) and converted to centimeters using a perspective-corrected arena calibration. Zone entries required a stay of 0.3 s. Values from repeated sessions were averaged per animal (n = animals). Groups were compared with a one-way ANOVA followed by Tukey–Kramer HSD (two-tailed, α = 0.05). Data are shown as mean ± SEM with individual animals.
-
-Adjust the assay-specific parts. The exact parameters of each result are listed under **Methods** on its result screen, and the test statement is on the statistics card.

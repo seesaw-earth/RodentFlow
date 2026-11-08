@@ -1,0 +1,193 @@
+{
+ "open-field": {
+  "distance_m": 45.8,
+  "centre_pct": 26.9,
+  "centre_entries": 67,
+  "immobile_s": 157.2,
+  "net_turns": 11.4
+ },
+ "elevated-plus-maze": {
+  "open_pct": 32.5,
+  "open_entries": 18,
+  "closed_entries": 22,
+  "open_entry_pct": 45.0,
+  "head_dips": 8,
+  "t_open": 93,
+  "t_closed": 194,
+  "t_centre": 13
+ },
+ "elevated-zero-maze": {
+  "open_pct": 47.9,
+  "dips_outer": 7,
+  "dips_inner": 4
+ },
+ "light-dark-box": {
+  "light_pct": 22.4,
+  "transitions": 53,
+  "head_pokes": 28,
+  "latency_dark": 8.3
+ },
+ "novelty-suppressed-feeding": {
+  "first_approach_s": 35,
+  "approaches": 16,
+  "candidate_s": 244
+ },
+ "visual-cliff": {
+  "shallow_pct": 58.9,
+  "board_pct": 34.4,
+  "deep_pct": 6.7,
+  "first_choice": "shallow",
+  "edge_dips": 15
+ },
+ "marble-burying": {
+  "buried": 8,
+  "half": 10,
+  "full": 5
+ },
+ "three-chamber": {
+  "chamber_stranger_s": 289,
+  "chamber_centre_s": 177,
+  "chamber_empty_s": 134,
+  "inv_stranger_s": 130.7,
+  "inv_empty_s": 50.5,
+  "index": 0.44,
+  "bouts": 96
+ },
+ "social-interaction": {
+  "iz_no": 38.4,
+  "iz_target": 64.5,
+  "corner_no": 15.9,
+  "corner_target": 6.5,
+  "si_ratio": 1.68
+ },
+ "dyadic-social": {
+  "nose_nose_s": 16.7,
+  "ag_ab_s": 20.5,
+  "ag_ba_s": 12.9,
+  "follow_ab_s": 16.2,
+  "follow_ba_s": 16.1,
+  "mean_dist": 11.1,
+  "within10_pct": 49.5
+ },
+ "resident-intruder": {
+  "attack_latency_s": 8.1,
+  "attack_bouts": 17,
+  "attack_s": 11.4,
+  "chase_s": 24.6,
+  "sniff_s": 36.0
+ },
+ "head-direction": {
+  "coverage_pct": 100.0,
+  "mvl": 0.039,
+  "median_ahv": 62.3
+ },
+ "spatial-exploration": {
+  "coverage_pct": 86.2,
+  "coverage_5min": 63.0,
+  "moving_pct": 69.4,
+  "distance_m": 79.5
+ },
+ "novel-object-recognition": {
+  "novel_s": 55.2,
+  "familiar_s": 22.9,
+  "di": 0.41,
+  "t20_s": 123,
+  "di20": 0.38,
+  "ri": 70.7
+ },
+ "barnes-maze": {
+  "day1_latency": 114.1,
+  "day2_latency": 83.8,
+  "day3_latency": 18.0,
+  "day4_latency": 12.1,
+  "day1_errors": 9.0,
+  "day2_errors": 8.7,
+  "day3_errors": 3.0,
+  "day4_errors": 1.3
+ },
+ "water-maze": {
+  "target_pct": 35.8,
+  "opposite_pct": 14.2,
+  "crossings": 6,
+  "proximity_cm": 34.3,
+  "path_m": 10.9
+ },
+ "y-maze": {
+  "entries": 30,
+  "alternation_pct": 67.9,
+  "triplets": 28,
+  "alternations": 19,
+  "head_only": 2
+ },
+ "t-maze": {
+  "trials": 16,
+  "vte": 4,
+  "alternation_pct": 66.7,
+  "idphi_vte": 483,
+  "idphi_direct": 144
+ },
+ "place-preference": {
+  "pre_mean_s": 436,
+  "post_mean_s": 520,
+  "cpp_score_s": 84,
+  "n": 8
+ },
+ "passive-avoidance": {
+  "median_train_s": 22,
+  "censored_test": 6,
+  "n": 10,
+  "probes": 4
+ },
+ "step-down": {
+  "median_train_s": 9,
+  "censored_test": 6,
+  "n": 10,
+  "edge_dips": 7
+ },
+ "fear-conditioning": {
+  "pre_pct": 17.6,
+  "cs1": 67.3,
+  "cs2": 84.7,
+  "cs3": 83.7,
+  "iti_pct": 55.7
+ },
+ "looming-escape": {
+  "escapes": 4,
+  "trials": 5,
+  "median_latency_s": 0.27,
+  "median_to_shelter_s": 0.8
+ },
+ "platform-avoidance": {
+  "tone_pct_first": 3.7,
+  "tone_pct_last": 75.3,
+  "tone_pct": [
+   3.7,
+   45.0,
+   37.7,
+   62.7,
+   68.0,
+   76.7,
+   89.0,
+   87.0,
+   75.3
+  ]
+ },
+ "rotation": {
+  "ipsi": 217,
+  "contra": 10,
+  "net": 207,
+  "per_min": 3.45,
+  "peak_bin": "20–25"
+ },
+ "tail-suspension": {
+  "immobility_s": [
+   164,
+   101,
+   207,
+   157
+  ]
+ },
+ "pose-only": {
+  "keypoints": 6
+ }
+}

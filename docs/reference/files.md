@@ -1,89 +1,42 @@
-# Files & data
+---
+title: "Files and formats"
+description: "The files RodentFlow 2.1 reads and writes: videos, pose tracks, session settings, sync packages, tail-suspension archives and every export."
+---
 
-RodentFlow keeps its data in two places: the app's **Documents** folder, which you can see in the Files app, and a private support folder. Nothing is stored anywhere else.
+# Files and formats
 
-## In the Files app
+## What RodentFlow reads {#input}
 
-Open *Files › On My iPhone › RodentFlow*.
+- **Videos:** MP4 and MOV with H.264 or HEVC, any frame rate and resolution. Timestamps are read from the file, so variable frame rates are handled correctly.
+- **Tables** (iPhone and iPad): CSV or TSV for manual results; see [Manual entry & importing tables](../guide/manual-and-import.md).
+- **Earlier data:** RodentFlow 1.x results and runs, pose analyses from before 2.0, and Mac workspaces and runs from earlier Mac versions open as they are.
 
-```text
-RodentFlow/
-├── Results/
-│   ├── open_field/
-│   │   └── 3F2A…C1.json          one file per result
-│   ├── elevated_plus_maze/
-│   └── …                         one folder per assay
-└── Experiments/
-    └── 2026-03-14_101502_WT01_rectangle_a1b2c3/
-        ├── full_tracking.json    every 10 Hz sample
-        ├── preview_tracking.json the 10-second preview
-        ├── summary.json          totals of the run
-        ├── metadata.json         assay, arena, calibration, settings, identity
-        ├── video_info.json       source file name, duration, resolution, fps, dates
-        ├── maze_events.json      arm entries (T- and Y-maze)
-        └── result.json           copy of the result made from this run
-```
+## What RodentFlow keeps {#stored}
 
-- **Results/** holds one JSON file per result, in a folder named after the assay id. This is the library shown in the app. Copying these files to another iPhone, or importing an exported bundle there, moves the results.
-- **Experiments/** holds one *run folder* per analyzed video, named *date_time_mouse_arena_code*. The source video is **not** copied into the run folder, to save space. Keep your original videos.
-
-## The tracking file
-
-`full_tracking.json` contains one entry per 10 Hz sample:
-
-| Field | Meaning |
+| Content | Format |
 |---|---|
-| `frameIndex` | Sample number |
-| `videoTimeSeconds` | Time of the frame in the video |
-| `clipTimeSeconds` | Time from the start of the analysis |
-| `xCentimeters`, `yCentimeters` | Position in arena centimeters (origin at the top-left of the arena; for mazes, of the maze's bounding box) |
-| `arenaXNormalized`, `arenaYNormalized` | Position as a fraction of the arena (0–1) |
-| `imageXNormalized`, `imageYNormalized` | Position as a fraction of the video frame (0–1) |
-| `interpolated` | `true` when the animal was **not** detected and the last position was held |
-| `confidence` | 0–1 score of the chosen candidate |
-| `zone` | Maze zone (`center`, `A`/`B`/`C`, `left`/`right`/`start`, `N`/`E`/`S`/`W`) or `arena` |
-| `motionIndex` | Fraction of arena pixels that changed by ≥ 20 gray levels since the previous sample |
-| `blobAreaFraction` | Size of the tracked body as a fraction of the arena |
+| Pose session | `session.json`: animal fields, calibration, settings, model, review verdict |
+| Pose tracks | `pose.mpt` (identical on phone and Mac; two-animal files include identity) |
+| Long recordings on the Mac, while tracking | `pose_stream.json` plus one `segment_*.csv` per 60 s of video, assembled into `pose.mpt` at the end |
+| Manual scoring | `manual_annotations.json` in the session folder |
+| Classic centroid | Result files and run folders as in RodentFlow 1.x |
+| Tail suspension, multi-chamber | `record.json`, `measures.json` and CSV (identical on phone and Mac) |
+| Sync package | `RodentFlow Sync/<device>/<id>.rfsession/` with `manifest.json` (file sizes and checksums) and the data files |
 
-These files are plain JSON. R (`jsonlite`), Python (`json`, `pandas`), MATLAB (`jsondecode`) and most other tools read them directly, so you can compute measures the app does not provide.
+## What RodentFlow exports {#exports}
 
-## The result file
+All exports use English column names and keys, whatever the interface language.
 
-Each result is one JSON object with:
+| Export | Files |
+|---|---|
+| Session measures | One row per session: measures, animal fields, settings, model |
+| Frame-by-frame | CSV per frame: time, frame number, keypoints in cm, speed, head direction, body heading, zones, behaviour and quality flags (`outside_arena`, `outside_arena_dist_cm`), `recording_start` |
+| DeepLabCut format | `*_DLC.csv` with `scorer`, `individuals` (two mice), `bodyparts`, `coords` header rows |
+| Behaviour segments | `*_segments.csv`, `*_events_boris.csv`, `*_segments_metadata.json`, and `*_agreement.csv` when there are manual marks |
+| Session report | Full JSON with settings, calibration, measures and events |
+| Figures | PDF, PNG (300 / 600 dpi), SVG on the Mac |
+| Group comparison | `figure.*`, `figure_source_data.csv`, `figure_legend.txt`, `stats_report.csv`, `methods.txt`, `prism_table.txt`, `long_format.csv`, `summary.txt`, `comparison_result.json`, `README.txt` |
+| Task export (Mac) | A folder of CSV files for every session of a task, with `README_methods.txt` |
+| Tail suspension | Per-chamber immobility, bouts and per-minute tables; see [Mac exports](../mac/exports.md#tst) |
 
-- identity: `id`, `assay`, `subjectID`, `group`, `sex`, `phase`, `day`, `trial`, `experimentDate`;
-- `source`: `video`, `manual` or `imported`;
-- `metrics`: metric key → value, e.g. `"center_time_pct": 22.4`;
-- `series`, `labels`: time series and text results;
-- `parameters`: everything the metrics depended on;
-- `qcFlags`, `excluded`, `exclusionReason`, `notes`;
-- `zoneConfig` (video results), `manualInput` (manual results), and `runFolderName` (link to the run folder).
-
-Keys, assay ids and phase names are always English, whatever the app language, so files are interchangeable between phones set to different languages. Unknown or missing keys are tolerated when reading, so files from older or newer versions open.
-
-## Exports
-
-| From | Export | Format |
-|---|---|---|
-| Result screen › share | Share result (JSON); Share tracking folder | JSON; folder |
-| After full analysis | Share Run Folder; single JSON files | folder; JSON |
-| Groups › export menu | Figure (PNG); Statistics (JSON); All *assay* records (JSON); Copy text summary | PNG; JSON; JSON bundle; text |
-| Import sheet | CSV Template for *assay* | CSV |
-
-## Private app data
-
-The following are kept in the app's private support folder and managed automatically:
-
-- the working copy of an open video (deleted when you close the video or tap **Next Animal**);
-- checkpoints of a running analysis (deleted when it finishes or you start over);
-- the group order, colors and inclusion choices of the Groups tab.
-
-## Backup and moving to a new phone
-
-The Documents folder is included in your normal iPhone backup (iCloud or computer). To move results deliberately, export **All … records (JSON)** for each assay from the Groups tab and import the file on the other phone, or copy the `Results` folder with the Files app.
-
-## Deleting data
-
-- Delete a single result on its result screen, or swipe it away in **All results**. The run folder stays.
-- Delete run folders or result files in the Files app.
-- Deleting the app deletes all of its data on the phone.
+See [Results and exports](../guide/results.md) and [Comparing groups](../guide/groups.md#export) for what each column means.

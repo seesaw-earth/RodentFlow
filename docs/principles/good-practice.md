@@ -1,15 +1,18 @@
+---
+title: "Getting results you can trust"
+description: "Good practice for behavioural studies with RodentFlow 2.1: check against hand scoring once, fix the settings, review sessions, count animals, report the method, and interpret measures as what they are."
+---
+
 # Getting results you can trust
 
-::: info
+RodentFlow measures behaviour with stated rules from keypoints or motion. The rules are the same for every animal and every lab, which is what makes automated scoring repeatable. These habits make the results hold up.
 
-**RodentFlow is a research aid, not a diagnostic tool.** Its measures are algorithmic estimates from landmark geometry or motion. They are only as good as your recording, calibration and thresholds, and the desktop analyzers are ports whose numerical parity with the original apps is still being verified.
+1. **Check once against hand scoring, before the study.** Score a few videos of each test by hand, blinded to group, in your own setup, and compare them with RodentFlow. Adjust a threshold if needed, then keep it. [BORIS](https://www.boris.unito.it/) is a free tool for hand scoring; RodentFlow’s own manual scoring in the review reports precision, recall and F1 directly. For tail suspension, *Calibrate against manual scores…* finds the threshold for you.
+2. **Fix the settings.** Use the same calibration logic, analysis window, model and thresholds for every animal of a study. They are saved with every session and written into the exports.
+3. **Review every session.** Play through the review, look at the flagged moments, and decide exclusion criteria in advance (for example: fell off the maze, left the arena). Excluded sessions keep their reason in the exports.
+4. **Count animals, not sessions.** n is the number of animals ([Lazic et al. 2018](https://doi.org/10.1371/journal.pbio.2005282)). RodentFlow averages within the animal first and never pools phases unless asked.
+5. **Report what you did.** App version, task, model or tracker, calibration, analysis window, thresholds and exclusions. The Methods text of each session and the `methods.txt` of each group export give you a starting paragraph. Follow the [ARRIVE 2.0 guidelines](https://arriveguidelines.org/).
+6. **Interpret measures as what they are.** “Nose near the object and pointing at it” stands for investigation; “low motion” stands for freezing or immobility; immobility in tail suspension is a coping strategy. Pair anxiety-, memory- and coping-type measures with a locomotor control such as distance in the open field.
+7. **Keep the raw data.** Keep the original videos and the frame-by-frame export with the results, so that any measure can be recomputed or checked later.
 
-:::
-
-1.  **Validate on your own setup.** Hand-score a few videos per assay (blinded to group), compare with RodentFlow, and adjust thresholds once — before the real study. [BORIS](https://www.boris.unito.it/) is a free tool for manual scoring.
-2.  **Freeze your parameters.** Use the same calibration logic, analysis window and thresholds for every animal in a study. They are recorded in every export.
-3.  **Check tracking on every session** (a 100-frame check takes under a minute) and decide exclusion criteria in advance (e.g. fell off the maze, \< 80 % detection). The app lists QC warnings but never excludes automatically.
-4.  **Respect the experimental unit.** n = animals, not sessions or frames ([Lazic et al. 2018](https://doi.org/10.1371/journal.pbio.2005282)). Do not pool phases.
-5.  **Treat in-app statistics as preliminary** and run your pre-registered analysis on the exported `animals.csv`.
-6.  **Report what you did:** app edition and version, assay, model or tracker, calibration, analysis window, thresholds, exclusions — `README_methods.txt` and the mobile “Methods description” give you a starting text. Follow the [ARRIVE 2.0 guidelines](https://arriveguidelines.org/).
-7.  **Interpret with care.** “Nose near object” is a proxy for investigation; “low motion” is a proxy for freezing or immobility. Always pair anxiety-, memory- and coping-type measures with a locomotor control.
+RodentFlow is a research tool for laboratory animal studies. It is not a medical or veterinary device.

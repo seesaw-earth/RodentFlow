@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>RodentFlow 2.0 | 啮齿类动物行为的姿态追踪</title>
-<meta name="description" content="RodentFlow 2.0 在 iPhone、iPad 和 Mac 上从俯拍视频追踪啮齿类动物并给行为实验评分：质心追踪、六关键点姿态和双鼠身份追踪，全部在设备上完成。">
+<title>RodentFlow 2.1 | 啮齿类动物行为的姿态追踪</title>
+<meta name="description" content="RodentFlow 2.1 在 iPhone、iPad 和 Mac 上从俯拍视频追踪啮齿类动物并给行为实验评分：质心追踪、六关键点姿态和双鼠身份追踪，全部在设备上完成。">
 <meta name="theme-color" content="#0F1A31">
 <link rel="canonical" href="https://seesaw-earth.github.io/RodentFlow/zh/">
 <link rel="alternate" hreflang="en" href="https://seesaw-earth.github.io/RodentFlow/">
 <link rel="alternate" hreflang="zh-CN" href="https://seesaw-earth.github.io/RodentFlow/zh/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="RodentFlow 2.0">
+<meta property="og:title" content="RodentFlow 2.1">
 <meta property="og:description" content="在 iPhone、iPad 和 Mac 上完成小鼠姿态追踪与行为分析。每一帧都在设备上分析。">
 <meta property="og:url" content="https://seesaw-earth.github.io/RodentFlow/zh/">
 <!-- Link-preview image: the poster of a landscape (Mac) clip fits the 1.9:1 preview best. -->
@@ -444,6 +444,9 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
 .light h2,.cite h2{line-height:1.15;letter-spacing:0}
 .cap-item h3{line-height:1.2;letter-spacing:0}
 .mode .d,.lede,.tldr{line-break:strict}
+
+.tests th[scope=row] a{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
+.tests th[scope=row] a:hover{border-bottom-style:solid}
 </style>
 </head>
 <body>
@@ -462,7 +465,8 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
     <a href="#identity">身份</a>
     <a href="#tests">实验</a>
     <a href="#cite">引用</a>
-    <a href="guide/editions.html">手册</a>
+    <a href="tasks/">范式</a>
+    <a href="guide/introduction.html">手册</a>
     <a href="blog/">博客</a>
   </div>
   <a class="lang" href="../" hreflang="en" lang="en">English</a>
@@ -474,7 +478,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
      ============================================================ -->
 <header class="hero" id="top">
   <div class="wrap">
-    <h1>RodentFlow 2.0</h1>
+    <h1>RodentFlow 2.1</h1>
     <div class="hero-row">
       <p class="hero-sub">在 iPhone、iPad 和 Mac 上完成小鼠姿态追踪与行为分析。每一帧都在设备上分析。</p>
       <div>
@@ -486,7 +490,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
           <a class="btn" href="source.html">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></svg>
             源代码</a>
-          <a class="btn" href="guide/editions.html">
+          <a class="btn" href="guide/introduction.html">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4zM20 4.5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg>
             使用手册</a>
           <a class="btn" href="#cite">
@@ -556,7 +560,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
      ============================================================ -->
 <section class="intro" aria-label="概要">
   <div class="wrap intro-grid">
-    <p class="tldr">从上方拍下实验，标定一次场地，RodentFlow 就会追踪动物、给实验评分并比较各组。2.0 版把三种追踪方式放进一个 App：来自 RodentFlow 1.x 的质心追踪、单只小鼠的六关键点姿态模型，以及在整段录像中始终分清 A 和 B 的双鼠模型。</p>
+    <p class="tldr">从上方拍下实验，标定一次场地，RodentFlow 就会追踪动物、给实验评分并比较各组。2.1 版把三种追踪方式放进一个 App：来自 RodentFlow 1.x 的质心追踪、单只小鼠的六关键点姿态模型，以及在整段录像中始终分清 A 和 B 的双鼠模型。</p>
     <dl class="spec">
       <div><dt>输入</dt><dd>一只或两只小鼠的俯拍视频，或一排悬尾实验箱</dd></div>
       <div><dt>追踪方式</dt><dd>10 Hz 质心；六关键点姿态；带身份识别的双鼠姿态</dd></div>
@@ -637,13 +641,13 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
   <div class="wrap ident">
     <div>
       <h2>A 始终是 A</h2>
-      <p class="lede">长得很像的两只小鼠最难分。RodentFlow 2.0 不是把每一帧和上一帧对比，而是通读整段录像：找出身份确定的片段，把它们连起来，并只根据这段视频本身判断两只动物在毛色、标记或体长上有没有差别。</p>
+      <p class="lede">长得很像的两只小鼠最难分。RodentFlow 不是把每一帧和上一帧对比，而是通读整段录像：找出身份确定的片段，把它们连起来，并只根据这段视频本身判断两只动物在毛色、标记或体长上有没有差别。</p>
       <p class="lede">如果没有差别，它会如实说明，并指出值得检查的时刻。轻点一下，就能从那一帧起交换 A 和 B。</p>
     </div>
 
     <figure class="chart" aria-labelledby="ct">
       <p class="chart-title" id="ct">身份正确的帧所占比例</p>
-      <p class="chart-sub">模拟的 10 分钟录像，每种情形 8 段。真实录像上的验证正在进行。</p>
+      <p class="chart-sub">模拟的 10 分钟录像，每种情形 8 段。</p>
       <div class="legend">
         <span><i style="--c:#5C9BEF"></i>自动</span>
         <span><i style="--c:#1A4FC4"></i>检查标记时刻后</span>
@@ -690,8 +694,8 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
      ============================================================ -->
 <section class="light" id="tests">
   <div class="wrap">
-    <h2>19 种可从视频分析的实验</h2>
-    <p class="lede">每种实验都知道自己需要哪种追踪方式。两种都可用时，质心更快，姿态看到的更多。</p>
+    <h2>26 种可从视频分析的实验</h2>
+    <p class="lede">每种实验都知道自己需要哪种追踪方式。两种都可用时，质心更快，姿态看到的更多。每个实验都有单独的页面，介绍设计、指标、模拟示例和相关文献：<a href="tasks/">查看全部范式</a>。</p>
     <div class="tests-wrap">
       <table class="tests">
         <thead>
@@ -718,8 +722,8 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
         <p>视频在存放的地方直接分析。没有账号、没有使用统计、不上传；App Store 隐私标签为“未收集数据”。Mac 上的长录像边分析边保存，崩溃后可以接着分析。</p>
       </div>
       <div>
-        <h3>了解局限</h3>
-        <p>各项指标都是算法估计。下结论之前，请针对每种实验、相机设置和品系，与人工评分对照检查。鼻尖靠近杯子不一定是在嗅探，两只小鼠重叠时身份可能互换；复核时间轴会标出这些时刻。</p>
+        <h3>规则明确</h3>
+        <p>每个指标都遵循明确的规则：用哪个关键点、多远、什么角度、持续多久。规则随每个结果显示并写进方法学文字，复核时间轴标出每个被评分的时刻，方便你与自己的评分对照。</p>
       </div>
     </div>
   </div>
@@ -738,7 +742,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
 <pre id="bibtex">@software{shi2026rodentflow,
   author  = {Shi, Ziqing},
   title   = {RodentFlow: On-device pose tracking and behavior analysis for rodents},
-  version = {2.0},
+  version = {2.1},
   year    = {2026},
   url     = {https://seesaw-earth.github.io/RodentFlow/}
 }</pre>
@@ -748,7 +752,8 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
     <footer class="foot">
       <span>RodentFlow 由耶鲁大学医学院的 <a href="https://seesaw-earth.github.io/">Ziqing Shi</a> 开发。</span>
       <nav aria-label="页脚">
-        <a href="guide/editions.html">使用手册</a>
+        <a href="guide/introduction.html">使用手册</a>
+        <a href="tasks/">实验范式</a>
         <a href="tutorials/">教程</a>
         <a href="models.html">模型</a>
         <a href="blog/">博客</a>
@@ -1217,26 +1222,31 @@ barTone();
    c = centroid, p = one-animal pose, d = two-animal pose, t = multi-chamber
    ============================================================ */
 const TESTS = [
-  ["焦虑与探索", [
-    ["旷场", "cp"], ["高架十字迷宫", "cp"], ["明暗箱", "cp"],
-    ["空间探索", "p"], ["头部朝向", "p"]]],
-  ["学习与记忆", [
-    ["新物体识别", "cp"], ["Y 迷宫", "cp"], ["T 迷宫（姿态模式含 VTE）", "cp"],
-    ["Barnes 迷宫", "cp"], ["Morris 水迷宫", "c"], ["恐惧条件化", "cp"],
-    ["条件性位置偏好", "c"]]],
-  ["社交", [
-    ["三箱社交", "p"], ["社交互动", "p"],
-    ["双鼠社交互动", "d"], ["居留者–入侵者", "d"]]],
-  ["其他", [
-    ["逼近刺激逃避", "p"], ["旋转行为", "p"], ["悬尾实验", "t"]]]
+  ["社交行为", [
+    ["three-chamber|三箱社交", "p"], ["social-interaction|社交回避测试（CSDS）", "p"],
+    ["dyadic-social|双鼠社交互动", "d"], ["resident-intruder|居住者–入侵者", "d"]]],
+  ["空间导航", [
+    ["head-direction|头朝向", "p"], ["spatial-exploration|空间探索", "p"]]],
+  ["焦虑与风险评估", [
+    ["open-field|旷场", "cp"], ["elevated-plus-maze|高架十字迷宫", "cp"], ["elevated-zero-maze|高架零迷宫", "p"],
+    ["light-dark-box|明暗箱", "cp"], ["novelty-suppressed-feeding|新奇抑制摄食", "p"],
+    ["visual-cliff|视觉悬崖", "p"], ["marble-burying|埋珠实验", "p"]]],
+  ["学习、记忆与恐惧", [
+    ["novel-object-recognition|新物体识别", "cp"], ["barnes-maze|Barnes 迷宫", "cp"], ["water-maze|Morris 水迷宫", "cp"],
+    ["passive-avoidance|被动回避", "p"], ["step-down|Step-down 抑制性回避", "p"], ["place-preference|位置偏好（RTPP / CPP）", "cp"],
+    ["y-maze|Y 迷宫", "cp"], ["t-maze|T 迷宫（姿态模式含 VTE）", "cp"], ["fear-conditioning|恐惧条件化", "cp"],
+    ["looming-escape|Looming 逃跑", "p"], ["platform-avoidance|平台介导回避", "p"]]],
+  ["运动功能与应对", [
+    ["rotation|旋转行为", "p"], ["tail-suspension|多格悬尾", "t"]]]
 ];
 const COLS = [["c", "var(--m-centroid)", "质心"], ["p", "var(--m-pose)", "单只动物"], ["d", "", "两只动物"], ["t", "var(--m-tst)", "多实验箱"]];
 const tb = document.getElementById("tests-body");
 let html = "";
 for (const [group, rows] of TESTS) {
   html += '<tr class="group"><th colspan="5" scope="colgroup">' + group + "</th></tr>";
-  for (const [name, has] of rows) {
-    html += '<tr><th scope="row">' + name + "</th>";
+  for (const [key, has] of rows) {
+    const [slug, name] = key.split("|");
+    html += '<tr><th scope="row"><a href="tasks/' + slug + '.html">' + name + "</a></th>";
     for (const [k, c, label] of COLS) {
       html += has.includes(k)
         ? '<td><i class="dot' + (k === "d" ? " ab" : "") + '" style="--c:' + c + '"></i><span class="sr">' + label + "：有</span></td>"

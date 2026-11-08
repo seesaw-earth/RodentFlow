@@ -17,16 +17,16 @@ One window, three columns:
 
 **New task…** opens “What are you measuring?”. Tasks are grouped into families; each row shows how it is measured:
 
-| Family                  | Method                                                                                       | Tasks                                                                             |
-|-------------------------|----------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
-| **RodentPose**          | Core ML pose model, 6 keypoints (nose, both ears, neck, body centre, tail base), every frame | 16 assays from social to motor — see [reference](/assays/pose#assays-pose) |
-| **RodentLimb**          | Core ML limb model, 7 keypoints (four paws, tail base, nose, mouth)                          | Cylinder test, Tail suspension, Gait                                              |
-| **RodentFlow**          | Classic centroid tracking at 10 Hz (background subtraction, no neural network)               | 10 video assays — see [reference](/assays/pose#assays-flow)                |
-| **TST · Multi-Chamber** | Chamber detection, key frame, per-chamber silhouette/pixel motion                            | Several mice in one recording — see [Multi-chamber tail suspension](/mac/tst)                  |
+| Family | Method | Tasks |
+|---|---|---|
+| **Pose · one animal** | Core ML pose model (MousePose6, or WhiteMousePose6 for a white mouse), 6 keypoints (nose, both ears, neck, body centre, tail base), every frame | 24 tasks from anxiety to memory and navigation — see [Tasks](/tasks/) |
+| **Pose · two animals** | Core ML two-mouse model (MousePose6Dyad, or MousePose6DyadBW for one dark and one white mouse), identity A / B over the whole video | Dyadic social interaction, resident–intruder |
+| **Classic centroid** | Centroid tracking at 10 Hz (background subtraction, no neural network) | 10 video tests — see [Classic centroid](/guide/video-analysis#classic) |
+| **TST · Multi-Chamber** | Chamber detection, key frame, per-chamber motion | Several mice in one recording — see [Tail suspension, multi-chamber](/tasks/tail-suspension) |
 
 ::: info
 
-**Same test in two families?** Open field, EPM, light–dark box, NOR, Y-maze, T-maze, Barnes maze and fear conditioning exist in both RodentPose and RodentFlow. Choose **RodentPose** when you need head direction, nose-based object/social investigation, head dips or stretch-attend posture. Choose **RodentFlow** for classic position-based measures, the Morris water maze or CPP, or when the animal is hard for a pose model to see. Use one family consistently within a study — their measures are not interchangeable.
+**Same test with two methods?** Open field, EPM, light–dark box, NOR, Y-maze, T-maze, water maze, Barnes maze, fear conditioning and place preference can be analysed with pose or with classic centroid. Choose **pose** for head direction, nose-based object or social investigation, head dips, stretch-attend posture and the full set of measures; choose **classic centroid** to continue a study begun with RodentFlow 1.x. Use one method consistently within a study, because the two measure from different points of the body.
 
 :::
 
@@ -44,7 +44,7 @@ Select a task (or a group or animal inside it — the group/animal is then pre-f
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Animal ID \*  | Unique within the task, e.g. `M01`. Pre-filled from the file name.                                                                                       |
 | Group         | Optional (WT, KO, Vehicle…). For an animal that already has sessions, its group is kept.                                                                 |
-| Sex           | Optional; belongs to the animal (shown for RodentPose, RodentFlow and TST tasks).                                                                        |
+| Sex           | Optional; belongs to the animal.                                                                        |
 | Date \*       | Recording date. Pre-filled from the file name, otherwise the file’s creation date (check it!). *Use the first date for all* copies the first row’s date. |
 | Session \# \* | The animal’s n-th session in this task. Filled automatically with the next free number.                                                                  |
 | Phase         | For tasks with fixed phases (e.g. NOR Training / Test).                                                                                                  |
@@ -56,7 +56,7 @@ Rows with problems turn red (missing ID, session number already used, the same a
 - **Animal, group, sex** — group and sex apply to all sessions of the animal in this task; typing an existing animal ID moves the session to that animal.
 - **Recording date, session number** — required.
 - **Phase / Day / Trial** — shown when the assay uses them (e.g. Barnes maze acquisition days and trials). Phases are never pooled in summaries.
-- **Notes** — dose, treatment, anything unusual (shown for RodentPose and RodentLimb tasks; use the task note for RodentFlow batches).
+- **Notes** — dose, treatment, anything unusual (use the task note for information about a whole batch).
 - **Exclude from group summaries** — with a reason (exported). The session keeps its own results but leaves animal means, group statistics and comparisons. Decide exclusion rules *before* looking at results.
 
 Sessions without animal ID, date or session number show an orange mark and appear in *Missing info*; they cannot be analysed until completed.
@@ -86,12 +86,10 @@ Calibration tells the app where the arena is, how big it is in centimetres, wher
 | Barnes maze              | `T`                      | The target (escape) hole; other holes are spaced evenly from the hole count.                                                                                       |
 | Water maze (RodentFlow)  | `P`                      | The platform centre.                                                                                                                                               |
 | Looming / Head direction | `S` / `Q`                | S on the shelter centre; Q on a wall cue card (optional 0° reference).                                                                                             |
-| Cylinder (RodentLimb)    | Circle or floor line     | Bottom view: match the inner rim of the cylinder floor (or *Auto-fit from tracking*). Side view: drag the dashed line to the floor (or *Estimate from hind paws*). |
-| Gait / limb TST          | Ruler                    | Drag both ends onto marks a known distance apart and enter it; without a scale, distances are in body lengths.                                                     |
 
 ::: info
 
-**RodentFlow needs calibration before tracking** (its tracker maps the mouse into the calibrated arena). RodentPose and RodentLimb track without calibration, so you may calibrate afterwards — results update without re-running.
+**Calibrate before tracking.** Pose tasks track only the calibrated arena plus a margin (*Track the arena only*, on by default), and classic centroid maps the mouse into the calibrated arena. Zones and handles can be adjusted afterwards and the results update without tracking again; if the calibration is moved outside the tracked region, the app asks you to track again.
 
 :::
 
@@ -121,10 +119,10 @@ You do not need to watch the whole video. A short, systematic check catches most
 
 A problem verdict does *not* exclude a session automatically — you decide according to your pre-specified criteria. If a decoded frame does not match the tracking timestamp, the overlay is hidden rather than shown in the wrong place.
 
-### Tracking events, figures and raw files (RodentPose / RodentLimb)
+### Tracking events, figures and raw files (pose tasks)
 
 - **Tracking QC events** group consecutive frames with *Inference failed*, *No detection* or *Low confidence*. These are quality flags, not behaviours; a clean video can legitimately have none. Click an event to jump to it; mark it *Accepted* or *Flagged*.
-- Pick a **figure frame range** (inclusive, zero-based) and tick what to export: raw keypoints CSV, QC-screened CSV, frame/segment QC CSV, provenance JSON, trajectory and confidence PNGs, an annotated screenshot, and (RodentLimb) an event timeline. **Export selected files and figures…** (<kbd>⌘</kbd><kbd>E</kbd>). Figures are drawn from saved tracking; models are never re-run here.
+- Pick a **figure frame range** (inclusive, zero-based) and tick what to export: raw keypoints CSV, QC-screened CSV, frame/segment QC CSV, provenance JSON, trajectory and confidence PNGs and an annotated screenshot. **Export selected files and figures…** (<kbd>⌘</kbd><kbd>E</kbd>). Figures are drawn from saved tracking; models are never re-run here.
 - **Annotated MP4** is optional: the app benchmarks and estimates the time before you confirm. Models are not re-run.
 - RodentFlow sessions export their 10 Hz centroid samples (CSV) and the tracking check (JSON) from the same tab.
 
@@ -140,4 +138,5 @@ When you open these pages, any missing or outdated session results are computed 
 
 **All sessions** (<kbd>⌘</kbd><kbd>2</kbd>) is a single table of every session in the project with its calibration, analysis and tracking-check status — handy for a final completeness check. Right-click to open a session in its task or remove it from the project (the file itself is never deleted).
 
-**Tools** (<kbd>⌘</kbd><kbd>3</kbd>) are for checks and troubleshooting, not for experiments: *Models* (what is bundled), *Manual tracking*, *Long-video tracking* into a folder you choose, *Review manual results*, *RodentLimb track analyzer*, *Task catalog*, and the *Legacy project inspector* (reads old `.rodentproj` files without changing them). Results made in Tools are not linked to a task or animal.
+**Tools** (<kbd>⌘</kbd><kbd>3</kbd>) are for checks and troubleshooting, not for experiments: *Models* (what is bundled), *Manual tracking*, *Long-video tracking* into a folder you choose, *Review manual results*, *Cover part of a video*, *Locate video*, *Task catalog*, and the *Legacy project inspector* (reads old `.rodentproj` files without changing them). Results made in Tools are not linked to a task or animal.
+

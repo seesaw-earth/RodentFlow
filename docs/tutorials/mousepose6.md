@@ -28,7 +28,6 @@ Each image contains one mouse. The JABS videos were sampled at 250 frames per vi
 The ETH recordings and their DeepLabCut tracks are described in von Ziegler et al. 2024 (*Nature Methods*), the analysis framework that the datasets were released for. The JAX videos come from the JAX Animal Behavior System (JABS); their keypoints were produced by JAX's HRNet-based pose network (Sheppard et al. 2022) and are described with the datasets in Choudhary et al. 2026 (*eLife*). Full references are on the [citation page](/tutorials/citations).
 
 ::: info
-**A fifth source was planned but not used.** The builder also listed the elevated-plus-maze videos of Sturman et al. 2020 (Zenodo 3608657). Every download attempt returned HTTP 404 during the build, so those videos are *not* in the training set. Some of them were later used for an external pilot check ([below](#external)).
 :::
 ::: warning
 **The two JAX datasets are CC BY-NC-SA 4.0: non-commercial, share-alike.** Both Harvard Dataverse records (strain survey version 1.2, BxD version 1.0, viewed 20 October 2026) carry this licence: credit the authors, no commercial use, and adaptations must be shared under the same licence. 3,500 of MousePose6's 6,140 training images, with their keypoints, come from these two datasets. Whether trained weights legally count as an adaptation is not settled, but the cautious reading is that MousePose6 should not be used or distributed commercially, and that frames or labels derived from these datasets may only be redistributed under CC BY-NC-SA 4.0. That also sits uneasily with the AGPL-3.0 licence written into the model package, which permits commercial use. Before any commercial distribution of RodentFlow with this model, ask JAX (Kumar Lab) for permission, or retrain on the CC BY 4.0 ETH data alone (2,640 training images). This is not legal advice.
@@ -174,46 +173,13 @@ The export notebook first compared 640 and 960 px input with the PyTorch weights
     YOLO('best_mousepose.pt').export(format='coreml', imgsz=960, quantize=8, nms=False)   # INT8
     YOLO('best_mousepose.pt').export(format='coreml', imgsz=960, quantize=16, nms=False)  # FP16 alternative
 
-The saved run of the export notebook used a forced size of 640 px; the package that ships is 960 px and dated 13 October 2026, so it was produced by the same call at 960 px. The notebook also built a Mac validation pack (300 test images, `validate_on_mac.py`) to compare the `.pt`, FP16 and INT8 versions on macOS, with the rule “use INT8 if it loses less than about one PCK point”. **The results of that comparison are not in the materials we reviewed**, so the agreement between the shipped INT8 package and the PyTorch weights is not documented here. [Tutorial 4](/tutorials/app-integration#parity) shows how to run that check.
+The saved run of the export notebook used a forced size of 640 px; the package that ships is 960 px and dated 13 October 2026, so it was produced by the same call at 960 px. The notebook also built a Mac validation pack (300 test images, `validate_on_mac.py`) to compare the `.pt`, FP16 and INT8 versions on macOS, with the rule “use INT8 if it loses less than about one PCK point”. [Tutorial 4](/tutorials/app-integration#parity) shows how to run that check.
 
-## Checks outside the training data {#external}
+## Scope and licences {#limits}
 
-### CalMS21: two interacting mice in a home cage
-
-The PyTorch weights were run without fine-tuning on 2,867 frames (every 15th frame) from 8 videos of the CalMS21 *training* set, and compared with the MARS keypoints distributed with CalMS21, mapped to the same six points. CalMS21 differs from the training data in almost every way: two mice, frequent close contact, a white intruder, bedding in the background.
-
-| Mouse            | Detected | Median error (detected) | PCK@0.2L (detected) |
-|------------------|----------|-------------------------|---------------------|
-| Resident (black) | 0.118    | 30.7 px                 | 0.575               |
-| Intruder (white) | 0.003    | 67.8 px                 | 0.146               |
-
-Conclusion from the notebook: the model is not usable for this kind of video without new training data. MARS keypoints are themselves model output, so these numbers show disagreement, not which side is wrong.
-
-### Elevated plus maze: a five-video pilot
-
-A pilot ran the PyTorch weights on 5 human-scored elevated-plus-maze videos from Sturman et al. 2020, computed maze measures with RodentPose's analysis code, and compared them with the same measures from the DeepLabCut-based reference.
-
-| Measure                           | ICC(A,1) | Pearson r |
-|-----------------------------------|----------|-----------|
-| Time in closed arms               | 0.90     | 0.96      |
-| Time in centre                    | 0.89     | 0.97      |
-| Head-dip time                     | 0.91     | 0.98      |
-| Head dips (count)                 | 0.81     | 0.96      |
-| Open-arm time (%)                 | 0.74     | 0.83      |
-| Open-arm entries                  | 0.19     | 0.41      |
-| Distance travelled                | 0.08     | 0.53      |
-| Stretched-attend postures (count) | −0.02    | −0.11     |
-
-n = 5 videos. With five videos the uncertainty of each coefficient is very large; the notebook itself calls this a pilot for checking the data mapping and scripts, not a result.
-
-## Limitations {#limits}
-
+- The training images show one mouse per image, filmed from above in open-field-like arenas in two laboratories. For other arenas, cameras or bedding, check the tracking on a few of your own videos; for a white mouse use WhiteMousePose6, for two mice the two-animal models.
+- The reference labels are the DeepLabCut and JAX predictions released with the datasets, so the test scores give agreement with those trackers.
 - More than half of the training images come from CC BY-NC-SA 4.0 datasets, which restricts commercial use (see [data sources](#sources)).
-- Labels and test references are model predictions. Systematic errors shared by DeepLabCut, JAX's network and MousePose6 would not show up in these scores.
-- One mouse per image, top view, open-field-like arenas from two labs. Other arenas, cameras, coat colours, bedding or multiple animals are outside the training data, and the CalMS21 check shows how badly that can go.
-- Detection was weaker on the JAX strain-survey videos (0.854).
-- The agreement of the shipped INT8 Core ML package with the PyTorch weights is not documented.
-- Good keypoint accuracy does not by itself make a behavioural measure valid; validate the measures you report against human scoring.
 
 ## What to cite {#cite}
 

@@ -1,97 +1,32 @@
-# Results
+---
+title: "Results and exports"
+description: "The RodentFlow 2.1 results page and everything you can export from a session: measures, frame-by-frame data, DeepLabCut-format keypoints, behaviour segments, figures and Methods text."
+---
 
-Every analysis ends as a **result**: one animal in one session, meaning one phase, day or trial. A result holds the animal's details, the metrics, any time series, the parameters used, quality flags and, for videos, a link to the tracking data. Results are what the Groups tab analyzes.
+# Results and exports
 
-## Finding results
+## The results page {#page}
 
-The **Results** card on the Experiment tab shows the number of saved results and the most recent ones. **All results** opens the full list:
+Each session has one results page, the same on iPhone, iPad and Mac.
 
-- search by subject, group or phase;
-- filter by assay with the menu at the top right;
-- swipe or open a result to delete it.
+- **Measures.** Every measure of the task with its value and its definition, as on the [task pages](../tasks/). Change a zone, threshold or the analysis window and the values update without tracking again.
+- **Figures.** The track, start and end points, and a heat map (three-chamber also shows one for the nose). The heat map can be laid over the original video frame or shown beside it. Any part of a figure can be switched off (cups, objects, maze arms, zone names, the track, the legend, the scale bar …); the choice is remembered per task, so every animal’s figure looks the same, including in exports.
+- **Time course.** The main measures per time bin, saved with the session so that the Groups page can draw time courses.
+- **Methods.** A paragraph describing the model, the settings and the definitions used, ready to adapt for a manuscript.
+- **Notes and review status.** Notes, the review verdict and, if excluded, the reason.
 
-Results are also stored as files in *Files › On My iPhone › RodentFlow › Results*, one folder per assay. See [Files & data](../reference/files.md).
+## Exports {#exports}
 
-## The result screen
+Exported files always have English column names, whatever the interface language. On iPhone and iPad tap **Export data** and tick what you need; on the Mac use a session’s *Review & export* step, or export a whole task at once.
 
-Cards from top to bottom:
+| Export | What it contains |
+|---|---|
+| **Measures** | One row per session with every measure, the animal fields, the settings and the model. |
+| **Frame-by-frame CSV** | Per frame: keypoints in centimetres, speed, head direction, body heading, zones and behaviour flags (for example `on_platform`, freezing), quality flags such as `outside_arena` and `outside_arena_dist_cm`, and `recording_start`, the recording time stored in the video file, for lining data up with other devices. |
+| **DeepLabCut-format keypoints** | The DeepLabCut CSV layout (`scorer`, `individuals` for two mice, `bodyparts`, `coords`), ready for tools such as Keypoint-MoSeq. A raw keypoint CSV in the earlier layout is still offered. |
+| **Behaviour segments** | One row per bout: animal, behaviour key, start, end and duration in video seconds and frames, time from the analysis start, phase, day, trial, group and sex. Includes automatic behaviours, review flags (`category = qc`), stimulus periods such as CS or looming (`category = epoch`) and your manual marks (`source = manual`). Comes with a BORIS-style START/STOP event table, a metadata file with definitions and totals, and, when you marked behaviours by hand, an agreement table. |
+| **Report** | The full session as JSON: settings, calibration, measures, events. |
+| **Figures** | Vector PDF and PNG at 300 or 600 dpi (Mac also SVG), at journal column widths of 85, 114 or 174 mm or a custom size. |
+| **Mac only** | An annotated MP4 with the keypoints drawn on the video, and quality-control images and tables. |
 
-### Header and navigation
-
-The title is the subject ID. **▲ ▼** step to the previous or next result of the same assay, which is handy for checking a whole batch. The share menu offers **Share result (JSON)** and, for videos, **Share tracking folder**.
-
-Quality flags appear at the top when something deserves a look, for example:
-
-- *Mouse detected in only 72% of samples — check the tracking preview.* This appears when fewer than 90 % of samples are detected. It is not shown for the light–dark box, fear conditioning or the Barnes maze, where the animal is expected to be hidden at times.
-- *Low exploration: 6.2 s total (criterion 10 s).* (novel object recognition)
-- *Platform not reached within 60 s (latency set to the trial maximum).* (water maze)
-- *Target hole not visited within the trial.* (Barnes maze)
-- *Fewer than 3 arm entries — alternation cannot be computed.* (Y-maze)
-
-A flag is a prompt to check, not an exclusion. You decide whether to exclude the animal (see Details below).
-
-### Results
-
-All metrics of the assay with their units. The [assay pages](../assays/index.md) define each one.
-
-### Arena (or Freezing)
-
-For video results, the tracked path is drawn on the arena with its zones. **Plot** switches between **Path** and **Heatmap**; the heatmap shows the time spent at each position.
-
-Assays with markers show them as draggable points:
-
-| Marker | Assay | Meaning |
-|---|---|---|
-| **A**, **B** | Novel object recognition | Object centers |
-| **P** | Morris water maze | Platform center |
-| **T** | Barnes maze | Target hole |
-
-Drag a marker onto the true position and the metrics update immediately. **Save** keeps the change.
-
-For fear conditioning, this card shows the motion trace with freezing bouts, baseline and CS periods instead (see [Freezing](../principles/metrics.md#freezing)).
-
-### Series
-
-Some results include a series, which can be analyzed as a time course in the Groups tab:
-
-- open field: distance and center time per time bin;
-- fear conditioning: freezing per CS and per time bin;
-- water maze (manual): latency per trial;
-- beam walking: traversal time per trial;
-- sucrose preference: preference per day;
-- two-armed bandit: choice around reversals, and the session choice plot.
-
-### Sequence & labels
-
-Text results: the arm sequence in the Y-maze (`ABCACB…`), T-maze and plus maze, the hole visits and search strategy in the Barnes maze, and the first choice in the T-maze.
-
-### Entered values
-
-For manual and imported raw values: what was entered. **Edit Values** reopens the form.
-
-### Analysis settings
-
-For video results: the same zone and threshold settings as on the setup screen. Changing them recomputes every metric from the saved positions at once. The video is not needed and is not tracked again. Typical uses:
-
-- check how sensitive the center time is to the size of the center zone;
-- correct the open-arm axis of the plus maze if it was set wrongly;
-- enter the CS onsets of a fear session after the analysis;
-- shorten the analysis window to the first 5 minutes.
-
-The settings are stored per result. To apply the same change to many animals, change each result, or set it before analyzing the next videos.
-
-### Details
-
-**Subject ID**, **Group**, **Sex**, **Phase**, **Day**, **Trial**, **Date** and **Notes** can all be edited, for example to fix a typo in a group name. The card also shows the source (video, manual or imported), file, run folder, and the creation and last-update times.
-
-**Exclude from group analysis** keeps the result but leaves it out of statistics and figures, with a **Reason** you type, e.g. *fell off the maze* or *tracking lost*. Excluded results can be shown again in the Groups tab with **Include excluded records**. This is safer than deleting the result.
-
-### Methods
-
-**How these numbers are computed** gives the method statement for the assay, the definition of every metric shown, and the parameters used: center fraction, entry criterion, freezing threshold, analysis window, and so on. Copy it into the methods section of a paper or a lab notebook.
-
-### Saving, reverting and deleting
-
-Edits to details, settings or markers are first kept as a draft. A bar shows **Unsaved changes** with **Revert** and **Save**.
-
-**Delete Result** removes the result from the library. For video results, the tracking files in the run folder are kept. The start screen then counts the folder as a tracking run without a result, and **Create Results** can rebuild the result from it. Settings and markers return to their defaults, so check them.
+For whole-group exports (Prism tables, long-format tables for R and Python, statistics report), see [Comparing groups](./groups.md#export).

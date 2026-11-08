@@ -1,156 +1,89 @@
-# FAQ & troubleshooting
+---
+title: "FAQ"
+description: "Answers to common questions about RodentFlow 2.1: tracking, two mice, devices, data, groups and statistics."
+---
 
-## Tracking
+# FAQ
 
-### The dot jumps to a shadow, a reflection or the wall
+## Tracking {#tracking}
 
-The tracker follows whatever differs most from the empty arena and looks like a body. Things to try, in this order:
+### Which model will my video use?
 
-1. **Calibration.** Put the handles on the *inner floor* boundary, not on the top of the walls. Everything outside the calibrated area is ignored, so a tight calibration excludes wall reflections.
-2. **Light.** Moving shadows (the experimenter, a door) and glare on acrylic or water are the usual culprits. Use diffuse light and keep people out of the camera's view.
-3. **Preview window.** Check the preview at a moment where the problem happens (move **Start** there) to see whether it is occasional or constant.
+The task decides one or two animals; the *Coat colour* you choose decides the model: MousePose6 (dark), WhiteMousePose6 (white), MousePose6Dyad (two dark) or MousePose6DyadBW (one dark, one white). All four give the same six keypoints. See [Models](../models.md#coat).
 
-If the problem occurs only at the start or end of the video, for example when the animal is put in, skip that time with **Start after** or **Length** in the analysis window.
+### The keypoints jump to a shadow, a reflection or the wall
 
-### "Mouse detected in only …% of samples"
+1. Check the **coat colour** setting: a white mouse needs *White*.
+2. Keep *Track the arena only* on, and place the calibration handles on the inner floor, so that the picture outside the arena is ignored.
+3. Cover fixed distractions (a reflection, a cable, the edge of the pool) with **Cover part of a video** and analyse the covered copy.
+4. Improve the recording: even light, locked exposure, a floor that contrasts with the coat. See [Recording videos that track well](../guide/recording.md).
 
-Some samples found no candidate that looked like the animal. Common reasons:
+### Some points are marked “Outside the calibrated arena”
 
-- **Low contrast**: a gray animal on a gray floor, or an animal in a dark corner. Improve the contrast when recording.
-- **Hidden periods**: under a lid, inside a shelter, in the covered dark box. Expected in some assays.
-- **Long resting at one spot** in a short video, combined with poor contrast. See the next question.
+They lie beyond the arena you calibrated: often the nose during a head dip over a maze edge, which is expected, or a calibration handle placed slightly off. The flag is only a marker; the tracks and results are not changed. Check the calibration if many frames are flagged.
 
-Undetected samples are left out of zone times and distance, so a result with 85 % tracking is often still usable. Open the result, look at the path, and decide by your own criteria whether to exclude it.
+### The two mice swapped identities
 
-### The dot sits on an empty spot while the animal is elsewhere
+In the review, go to a flagged moment (*Likely swap*), and if A and B are wrong from there on, tap **Swap A / B from here**; the results update at once. For future recordings, mice that differ in coat colour, size or a mark are told apart most reliably. See [Two mice, two identities](../principles/tracking.md#identity).
 
-That is a "ghost": the animal rested at that spot in more than half of the background frames and became part of the background. The tracker repairs this automatically in most cases ([how](../principles/tracking.md#resting-animal-repair)). If it still happens, the repair could not find frames where the spot was empty. This occurs when the animal sat there in almost the whole video. Analyzing a longer recording, or one that includes more movement, gives the background better frames.
+### Can I analyse several animals in one video?
 
-### Total distance looks too high
-
-Distance adds up small steps, so tracking jitter adds a little to the true path: +1–2 % in an arena that fills the frame. When the arena is small in the picture (few pixels per cm), posture changes during sniffing add more. On a plus maze filling half the frame width we measured +35 %. Frame the arena tightly. Times and entries are much less sensitive than distance.
+Yes, in three ways: two mice in one arena with a two-animal task; several mice hanging side by side with [multi-chamber tail suspension](../tasks/tail-suspension.md); or several separate arenas in one picture, analysing the video once per arena with a different calibration each time.
 
 ### Can I track rats?
 
-Yes. The tracker does not assume a mouse, and the size it prefers (about 1.2 % of the arena) is a broad preference, not a limit. Two settings are tuned for mice and should be enlarged for rats: the **interaction radius** in object recognition and the **hole zone radius** in the Barnes maze. Also review the moving threshold in the open field.
+The pose models were trained on mice. The classic centroid method does not assume a species and tracks rats; enlarge the object and hole zones, which are set for mice.
 
-### Can I analyze several animals in one video?
-
-Not in the same arena. If several separate arenas are visible, analyze the video once per arena, each time calibrating a different arena. Each analysis looks only inside its calibration.
-
-## Assay-specific
-
-### Freezing is clearly too high or too low
-
-The threshold depends on the camera, the light and the bedding. Open a result, change **Freezing threshold** in Analysis settings and watch the freezing bouts in the trace update. Compare with your hand scoring of a few videos and use the best-matching threshold for all animals. Also check for:
-
-- a light cue switched on at CS onset, which shows a spike of "motion" in the trace;
-- automatic exposure on the camera (lock it when recording);
-- the protocol start and CS onsets, which must be in seconds from the protocol start.
-
-### Object recognition: total exploration is low
-
-Check that markers **A** and **B** are on the object centers. Drag them on the result screen; the numbers update immediately. Then check the **interaction radius**: the body center is about 4–5 cm behind the nose, so the radius should be about the object radius plus 5 cm (default 8 cm).
-
-### Water maze: latency equals the trial maximum although the mouse found the platform
-
-- Is **P** on the platform center? Drag it on the result screen.
-- Is the **platform zone radius** large enough for the platform (default 6 cm)?
-- Does **Must stay on platform** (default 1 s) fit your protocol?
-- Is **Trial start in video** set to the moment the mouse is released?
-
-### Barnes maze: the target hole is never visited
-
-Check that **T** is on the target hole and that **Holes** matches your maze. The hole zone (default 8 cm) must reach the body center during a poke, because the head is inside the hole.
-
-### Y-maze: alternation cannot be computed
-
-At least three arm entries are needed. If the animal clearly visited the arms, check the J/A/B/C handles in the preview, where the zone label should change as the animal enters each arm, and the arm width.
-
-## The app
-
-### The analysis paused when I switched apps
-
-That is by design. iOS does not allow long video processing in the background, so the app saves a checkpoint and pauses. Return to the app and tap **Resume Analysis**. If iOS closed the app in the meantime, the start screen offers to resume.
-
-### I cannot choose a new video
-
-A full analysis is running. Pause it with **Pause & Save**, or wait until it finishes. Only one video is open at a time.
-
-### Choosing a video from Photos takes long
-
-If the video is stored in iCloud, it is downloaded first. Large videos from Files are copied into the app in the background; the screen stays responsive meanwhile.
-
-## Groups and statistics
-
-### A group appears twice, or animals are missing
-
-Group names must be spelled identically: `WT`, `wt` and `WT ` are three groups. Correct the **Group** field in each result's Details. Also check the **phase filter** and whether animals were marked **excluded**.
-
-### n is smaller than the number of results
-
-Several results of one animal (same subject ID and group) are averaged into one value, so n counts animals. Filter by phase or day to analyze one session.
-
-### "No test result"
-
-Each group needs at least two animals with values that differ. Identical values give no variability to test.
-
-## Import
-
-### My columns were not recognized
-
-Rename them to the metric names shown in the app, e.g. `Center time (%)`, or download the **CSV Template** for the assay from the import sheet. Excel and Numbers files must be saved as CSV first. Columns that are numeric but unrecognized are still imported as custom metrics.
-
-## Display and language
-
-### How do I switch between English and Chinese?
-
-Tap **Aa › Language / 语言**. It opens RodentFlow's page in the iPhone Settings, where you choose the language for this app alone. iOS restarts the app after the change, and a running analysis is paused and saved first. Data and files are the same in both languages.
-
-### The text is too small or too large
-
-**Aa** offers five sizes from Small to Largest, or "Same as iPhone".
-
-## Mac and pose tracking {#mac}
-
-These questions come from the Mac app. For step-by-step fixes, see [Troubleshooting: Mac & pose](./troubleshooting-mac.md).
+## The app {#app}
 
 ### Does RodentFlow upload my videos?
 
-The source-reviewed version uses local processing and does not include a developer-operated video upload service. See [Privacy Policy](/privacy) for scope and caveats.
+No. There is no account and no upload; videos are analysed where they are stored. Phone-to-Mac sync uses only a folder you choose. See the [Privacy Policy](../privacy.md).
 
-### Do I need Python, GitHub or an internet connection to analyse a video?
+### Do I need Python, GitHub or an internet connection?
 
-The intended Mac App Store distribution bundles the required Core ML models and runs analyses on-device. No Python or GitHub account is required for the analysis workflow. The final packaged app must be tested before release.
+No. The models are built into the app and everything runs on the device.
 
-### What video formats are supported?
+### What video formats work?
 
-The app imports local videos through macOS media frameworks, primarily MP4 and MOV. Whether a file opens depends on its codec and container. If one fails, try an ordinary H.264 MP4 file and report the error.
+MP4 and MOV with H.264 or HEVC, at any frame rate and resolution. If a file will not open, re-encode it as H.264 MP4, for example with [HandBrake](https://handbrake.fr/).
 
-### Where are my results saved?
+### The analysis stopped when I switched apps, or the phone got warm
 
-The app uses local Application Support storage for workspaces and runs. Exports are saved to locations you select. Back up original videos separately; deleting a task may not remove all related files.
+Tracking saves checkpoints as it goes and continues where it stopped. When you switch apps, it first finishes saving. When the phone gets hot it slows down, and if it gets very hot it pauses and resumes by itself once it has cooled.
 
-### What happens when I delete a task?
+### Do my RodentFlow 1.x results still work?
 
-Task deletion affects its record in the workspace, but source media and some tracking artifacts may remain on disk. Confirm your backups and local files rather than assuming secure erasure.
+Yes. Results, runs and manual entries made with RodentFlow 1.x open and analyse as before, and take part in group comparisons.
 
-### Can I compare experimental groups?
+### Where are the cylinder, gait and single-mouse tail-suspension tasks?
 
-Group and animal summaries are available for applicable workflows. Verify the experimental unit, exclusions, repeated sessions and statistical assumptions. The software does not replace independently validated analysis.
+They are in the separate **RodentLimb** app, with its own limb models. See the [RodentLimb site](https://seesaw-earth.github.io/RodentLimb/).
 
-### Does the app support the JABS 12-point Core ML model?
+### How do I switch between English and Chinese?
 
-The JABS YOLO26s MousePose12 model may exist in the separate models repository, but the inspected RodentFlow 0.6.3 release project uses MousePose6 and CylinderMousePoseV2 for native Core ML pose workflows. Do not assume JABS support is included.
+The app follows the device language. On iPhone and iPad you can choose RodentFlow’s language in the Settings app; on the Mac use the language menu in the toolbar or Settings. Data and exports stay in English.
 
-### How do I report a bug?
+## Groups and statistics {#groups}
 
-Use [Support](/support) and include your app build, macOS version, hardware, workflow and a reproducible description. Do not upload confidential research videos publicly.
+### n is smaller than the number of results
 
-### Is the app suitable for clinical or veterinary diagnosis?
+n counts animals. Several sessions of one animal within the chosen phase are averaged first, and excluded sessions are left out. See [Statistics](../principles/statistics.md).
 
-No. It is an experimental research analysis tool, not a diagnostic or treatment device.
+### A group appears twice
 
----
+Group names must be spelled the same for every animal: `WT` and `wt` are two groups. Rename the group on the animal (Mac) or in the analysis (iPhone and iPad).
 
-Still stuck? See [Support](../support.md).
+### Some animals never reached the platform or never stepped down
+
+Their latency is set to the cut-off and flagged as censored. Use the Kaplan–Meier curves and the log-rank test on the group page for these measures. See [Latencies with a cut-off](../principles/metrics.md#latency).
+
+## Other {#other}
+
+### How do I report a problem?
+
+See [Support](../support.md). Include the app version, device and system version, the task, and what you did. Do not post unpublished research videos publicly.
+
+### Can RodentFlow be used for clinical or veterinary diagnosis?
+
+No. It is a research tool for laboratory animal studies.

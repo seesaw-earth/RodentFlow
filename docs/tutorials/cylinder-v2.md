@@ -6,6 +6,10 @@ CylinderMousePoseV2 tracks the paws, nose, mouth and tail base of a mouse in the
 
 <Badge type="info" text="YOLO26s-pose" /><Badge type="info" text="7 keypoints" /><Badge type="info" text="640 px" /><Badge type="tip" text="Core ML · FP32" />
 
+::: info Now part of RodentLimb
+RodentFlow 2.0 removed the limb workflows and this model. They continue in **RodentLimb**, where the same network ships as CylinderPose7 (half-precision weights); see the [RodentLimb model pages](https://seesaw-earth.github.io/RodentLimb/models/). This page remains the record of how the model was made.
+:::
+
 ## Model card {#card}
 
 <table class="rf-kv"> <tr><th>Shipped file</th><td><code>CylinderMousePoseV2.mlpackage</code> (37.67 MiB); metadata version 2.0</td></tr> <tr><th>Keypoints (output order)</th><td><code>L_fore_paw</code>, <code>L_hind_paw</code>, <code>R_fore_paw</code>, <code>R_hind_paw</code>, <code>tail_base</code>, <code>nose</code>, <code>mouth</code> — the order of the lab's DeepLabCut <code>config.yaml</code>; <code>flip_idx</code> = <code>[2, 3, 0, 1, 4, 5, 6]</code></td></tr> <tr><th>Starting weights</th><td>Ultralytics <code>yolo26s-pose.pt</code> (COCO-pretrained); 9,783,360 parameters</td></tr> <tr><th>Input / output</th><td>640 × 640 RGB → raw head tensor (1, 26, 8400); no NMS in the model</td></tr> <tr><th>Training data</th><td>The lab's cylinder recordings: 543 human-labelled frames (used twice) + 20,000 cleaned DeepLabCut pseudo-labels from 506 recordings</td></tr> <tr><th>Teacher</th><td>DeepLabCut ResNet-50 model <code>DLC_resnet50_cylinder_DLCJan2shuffle1_44000</code></td></tr> <tr><th>Software</th><td>Ultralytics 8.4.177, PyTorch 2.11.0, coremltools 9.0; run <code>20261014_1156_dlc_distill</code></td></tr> <tr><th>Precision</th><td>FP32 (exported without quantization)</td></tr> <tr><th>Recorded test error</th><td><code>test_err_body_length</code>: “0.035 (v1-style manual-only baseline 0.050)”</td></tr> </table>

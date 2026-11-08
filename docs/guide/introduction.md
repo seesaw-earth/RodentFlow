@@ -1,58 +1,43 @@
-# Centroid tracking on iPhone
+---
+title: "What RodentFlow does"
+description: "RodentFlow 2.1 turns videos of laboratory mice into behavioural measures on iPhone, iPad and Mac: six-keypoint pose, two-mouse identity, classic centroid tracking and multi-chamber tail suspension."
+---
 
-::: tip RodentFlow 1.x on iPhone
-This page and the iPhone pages after it describe the centroid tracker, manual entry, table import and group statistics of RodentFlow 1.x for iPhone. For pose tracking, two-animal tracking, the iPad and the Mac, start with [Which edition do I need?](./editions.md)
-:::
+# What RodentFlow does
 
-RodentFlow is an iPhone app for rodent behavior experiments. It covers the path from a recorded session to a group comparison:
+RodentFlow turns **videos of laboratory mice into behavioural measures**, on an iPhone, iPad or Mac. Choose the test, mark the arena on one frame, and the app tracks the animal, scores the session, and compares groups with statistics and publication-ready figures. There is no account and no upload: videos and results stay on your device.
 
-1. **Track** a top-down video of one animal and convert its position to centimeters inside a calibrated arena or maze.
-2. **Score** the session. Zone times, entries, distance, latencies, freezing and other assay-specific metrics are computed from the positions.
-3. **Collect** one result per animal and session. Results can also come from values scored by hand or from a table exported by another program.
-4. **Compare** groups. The app picks a test that fits the design, draws a figure with every animal shown, and exports the figure, the statistics and the data.
+## One app, four ways to measure {#methods}
 
-Everything runs on the phone. There is no account, no server and no upload. See the [privacy policy](../privacy.md).
+The task you choose decides how the video is tracked. You never pick a model; for pose tasks you only say what colour the mice are.
 
-RodentFlow is **open source** under the MIT License. The app's source code and this manual are public at [github.com/seesaw-earth/RodentFlow](https://github.com/seesaw-earth/RodentFlow); see [Open source & building](../source.md).
-
-## Two tabs
-
-| Tab | What you do there |
-|---|---|
-| **Experiment** | Start a new experiment: pick the assay, then analyze a video, enter values or import a table. The **Results** card lists everything saved so far. |
-| **Groups** | Choose an assay and a measure, set the design, and read the statistics and figure for all saved results of that assay. |
-
-## Three ways to get data in
-
-| Source | Use it when | Assays |
+| Method | What it tracks | Used for |
 |---|---|---|
-| **Video tracking** | You have a top-down recording of a single animal | Open field, elevated plus maze, light–dark box, Y-maze, T-maze, novel object recognition, Morris water maze, Barnes maze, fear conditioning, conditioned place preference |
-| **Manual entry** | You scored the session by hand (stopwatch, counts, weights) | All 15 assays |
-| **Table import** | Values come from a spreadsheet or another tracker (ANY-maze, EthoVision, DeepLabCut post-processing …) | All 15 assays, plus any custom table |
+| **Pose · one animal** | Six keypoints on every frame: nose, both ears, neck, body centre and tail base. MousePose6 for a dark mouse, WhiteMousePose6 for a white one. | 24 tasks, from open field and elevated mazes to object recognition, water maze, fear conditioning and head direction |
+| **Pose · two animals** | The same six keypoints for two mice, with identity A and B kept across the whole video. MousePose6Dyad for two dark mice, MousePose6DyadBW for one dark and one white. | Dyadic social interaction and resident–intruder aggression |
+| **Classic centroid** | The body centroid at 10 Hz by background subtraction, with no model: the tracker of RodentFlow 1.x. | Ten tests with zone and path measures: open field, elevated plus maze, light–dark box, Y- and T-maze, object recognition, water maze, Barnes maze, fear conditioning, place preference |
+| **Multi-chamber** | Several mice filmed side by side; motion in each chamber. | Tail suspension |
 
-All three produce the same kind of result. Video, manual and imported results of the same assay can be analyzed together in the Groups tab.
+On iPhone and iPad you can also **enter values by hand or import a table** (marble burying, sucrose preference, beam walking, gait, two-armed bandit or your own measures), and analyse them with the rest. See all tests on the [Tasks](../tasks/) page.
 
-## What the tracker measures, and what it does not
+## From video to figure {#workflow}
 
-RodentFlow uses a classic, transparent tracker: background subtraction followed by the centroid of the animal's body. [Tracking](../principles/tracking.md) explains every step. This choice has consequences that are worth knowing before you start.
+1. **Choose the task** and, for pose tasks, the coat colour.
+2. **Calibrate**: drag a few handles onto the arena, the cups, the maze arms or the platform on one frame, and enter its size in centimetres.
+3. **Track**: the app reads the video on the device. Only the arena is analysed, and progress is saved as it goes.
+4. **Review**: play the video with the tracked points drawn on it and a timeline of every scored behaviour. Moments that need a look (identity, leaving the arena) are flagged.
+5. **Read the results**: every measure with its definition, figures of the track and heat map, and a time course.
+6. **Compare groups**: the app suggests a test for the design, draws every animal, and exports the figure, statistics, source data and a Methods paragraph.
 
-- **One animal per arena.** Each analysis follows one animal inside the calibrated arena. Several arenas filmed side by side can be analyzed one after the other, with one calibration each.
-- **Body center, not nose.** The tracking point is the center of the body. Assays that are usually scored by nose position, namely novel object exploration and Barnes hole pokes, use a zone around the object or hole that is large enough for the body center. The [assay pages](../assays/memory.md) explain how to set it.
-- **Top-down view.** Positions are converted to centimeters on the floor plane, which assumes the camera looks down on the arena.
-- **No pose or behavior classification.** Rearing, grooming or sniffing are not detected. Freezing is measured from frame-to-frame pixel change, which is the standard automated approach for freezing.
+## iPhone, iPad and Mac {#devices}
 
-If you need body-part tracking or several interacting animals, deep-learning pose estimators are the right tool; [Further reading](../reference/reading.md) lists recent ones. Their per-animal output can then be imported into RodentFlow for statistics.
+All three run the same analysis code, so the same video, calibration and settings give the same numbers. The iPhone and iPad are convenient at the bench; the Mac organises whole studies (project, task, group, animal, session) and handles long recordings. Analyses done on the phone can be sent to the Mac automatically: see [Phone to Mac sync](../reference/sync.md).
 
-## Requirements
+## Where to go next {#next}
 
-- iPhone with iOS 17 or later.
-- English or Simplified Chinese. The app follows the iPhone language. To choose a different language for RodentFlow only, tap **Aa › Language / 语言**, which opens the app's page in Settings.
-- Text size: **Aa** offers Small to Largest, or "Same as iPhone".
-
-## How this manual is organized
-
-- **Getting started** — a [five-minute walkthrough](./getting-started.md) and [recording advice](./recording.md).
-- **Using the app** — each screen in order: [video analysis](./video-analysis.md), [manual entry and import](./manual-and-import.md), [results](./results.md), [group analysis](./groups.md).
-- **Assays** — what to set and how every metric is defined, [assay by assay](../assays/index.md).
-- **How it works** — [tracking](../principles/tracking.md), [metrics](../principles/metrics.md), [statistics](../principles/statistics.md) and [validation](../principles/validation.md) against ground-truth videos.
-- **Reference** — [files](../reference/files.md), [FAQ](../reference/faq.md), [further reading](../reference/reading.md) and [release notes](../reference/changelog.md).
+<div class="rf-cards">
+  <a href="./getting-started.html"><strong>Quick start</strong><span>Your first analysis in ten minutes.</span></a>
+  <a href="./recording.html"><strong>Recording</strong><span>Camera, light and arena for clean tracking.</span></a>
+  <a href="../tasks/"><strong>Tasks</strong><span>Every test: design, measures, simulated example, references.</span></a>
+  <a href="../principles/performance.html"><strong>Speed and accuracy</strong><span>How fast and how accurate the tracking is.</span></a>
+</div>
