@@ -6,7 +6,7 @@ search: false
 
 # Older versions
 
-These pages describe **RodentFlow 1.x for iPhone** (classic centroid tracking, manual entry and group statistics) and **RodentFlow for Mac 0.7** (formerly RodentStudio). They are kept for readers who still use those versions or who cite them. For RodentFlow 2.1, start at [What RodentFlow does](../guide/introduction.md).
+These pages describe **RodentFlow 1.x for iPhone** (classic centroid tracking, manual entry and group statistics) and **RodentFlow for Mac 0.7** (formerly RodentStudio). They are kept for readers who still use those versions or who cite them. For the current version, start at [What RodentFlow does](../guide/introduction.md).
 
 ## RodentFlow 1.x for iPhone
 

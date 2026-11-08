@@ -243,30 +243,53 @@ def page(slug, key, cg, method, classic, arena, lang):
 def index(lang):
     en = lang == 'en'
     L = lambda e, z: e if en else z
+    DOTS = {'pose': '<i class="rf-dot" style="--c:#12B89A"></i>', 'pose2': '<i class="rf-dot rf-ab"></i>',
+            'multi': '<i class="rf-dot" style="--c:#9A6BFF"></i>', 'classic': '<i class="rf-dot" style="--c:#F2B441"></i>'}
+    MN = {'pose': L('One animal', '单鼠'), 'pose2': L('Two animals', '双鼠'), 'multi': L('Multi-chamber', '多格'), 'classic': L('Centroid', '质心')}
+    nref = sum(len(cat[k]['refs']) for _, k, *_ in T) + 3
     out = ['---', f'title: "{L("Tasks", "实验范式")}"',
-           f'description: "{L("The 27 video tasks in RodentFlow 2.1: design, why keypoints help, measures, a simulated example and references for each.", "RodentFlow 2.1 的 27 个视频范式：每个范式的设计、为什么用关键点、测量指标、模拟示例与参考文献。")}"',
-           '---', '']
-    out.append(f'# {L("Tasks", "实验范式")}\n')
-    out.append(L('RodentFlow 2.1 analyses **25 behavioural tests from video with pose keypoints**, plus **multi-chamber tail suspension** and **pose only**, which exports the keypoints and kinematics for your own analysis. Each page below explains the design of the test, why keypoints measure it better than a body centroid, exactly how each measure is defined, a simulated example, and the papers behind it.',
-                 'RodentFlow 2.1 用姿态关键点从视频分析 **25 个行为测试**，另有**多格悬尾**和**仅导出姿态**（导出关键点和运动学数据，供你自行分析）。下面每个页面都说明这个测试怎么设计、为什么关键点比身体质心测得更准、每个指标的确切定义，并附一个模拟示例和相关文献。') + '\n')
-    out.append(L('Every task runs on iPhone, iPad and Mac. The task decides how many animals are tracked; for one-animal tasks you choose a dark or white coat, for two-animal tasks two dark mice or one dark and one white (see [Models](../models.md#coat)).',
-                 '所有范式在 iPhone、iPad 和 Mac 上都能用。范式决定追踪几只动物；单鼠范式可选深色或白色毛色，双鼠范式可选两只深色或一黑一白（见[模型](../models.md#coat)）。') + '\n')
+           f'description: "{L("The 27 video tasks in RodentFlow: design, why keypoints help, measures, a simulated example and references for each.", "RodentFlow 的 27 个视频范式：每个范式的设计、为什么用关键点、测量指标、模拟示例与参考文献。")}"',
+           'aside: false', '---', '']
+    out.append(f'<p class="rf-eyebrow">{L("TASK LIBRARY", "范式库")}</p>\n')
+    out.append(f'# {L("27 tasks, each explained", "27 个范式，逐一讲透")}\n')
+    out.append('<div class="rf-taskhero">\n')
+    out.append('<p class="rf-taskhero-lede">' + L(
+        'Pick a test to see exactly how RodentFlow scores it: the design, why keypoints measure it better than a body centroid, the rule behind every measure, a simulated example and the papers it is built on.',
+        '选一个测试，看 RodentFlow 到底怎样评分：实验设计、为什么关键点比身体质心测得更准、每个指标背后的规则、一个模拟示例，以及它所依据的文献。') + '</p>')
+    out.append('<div class="rf-stats">'
+               f'<span><b>27</b>{L("tasks", "个范式")}</span>'
+               f'<span><b>{sum(len(cat[k]["measures"]) for _, k, *_ in T) + 5}</b>{L("defined measures", "个有定义的指标")}</span>'
+               f'<span><b>{nref}</b>{L("references", "篇参考文献")}</span>'
+               f'<span><b>4</b>{L("pose models", "个姿态模型")}</span></div>')
+    chips = []
     for cg, cen, czh in CATS:
-        items = [(s, k) for s, k, g, *_ in T if g == cg]
+        n = sum(1 for s, k, g, *_ in T if g == cg) + (1 if cg == 'motor' else 0)
+        chips.append(f'<a href="#{cg}">{cen if en else czh}<span>{n}</span></a>')
+    out.append('<nav class="rf-catchips" aria-label="' + L('Areas', '领域') + '">' + ''.join(chips) + '</nav>')
+    out.append('<p class="rf-legend">' + ''.join(f'<span>{DOTS[m]}{MN[m]}</span>' for m in ('pose', 'pose2', 'classic', 'multi')) + '</p>')
+    out.append('\n</div>\n')
+    out.append(L('Every task runs on iPhone, iPad and Mac. The task decides how many animals are tracked; for one-animal tasks you choose a dark or white coat, for two-animal tasks two dark mice or one dark and one white ([Models](../models.md#coat)). The example on each page is a **simulated session**: it shows what each measure means, not data.',
+                 '所有范式在 iPhone、iPad 和 Mac 上都能用。范式决定追踪几只动物；单鼠范式可选深色或白色毛色，双鼠范式可选两只深色或一黑一白（[模型](../models.md#coat)）。每页的示例都是**模拟实验**，用来说明指标的含义，不是实验数据。') + '\n')
+
+    def card(slug, name, tag, methods):
+        meth = ''.join(f'<span>{DOTS[m]}{MN[m]}</span>' for m in methods)
+        return (f'<a href="./{slug}.html"><span class="rf-thumb"><img src="/img/tasks/thumbs/{slug}.{lang}.png" alt="" loading="lazy"></span>'
+                f'<strong>{name}</strong><span class="rf-tl">{tag}</span><span class="rf-meth">{meth}</span></a>')
+    for cg, cen, czh in CATS:
         out.append(f'## {cen if en else czh} {{#{cg}}}\n')
         out.append('<div class="rf-taskgrid">')
-        for s, k in items:
+        for s, k, g, method, classic, _ in T:
+            if g != cg:
+                continue
             tl = brit(cat[k]['tagline_en']) if en else cat[k]['tagline']
-            out.append(f'<a href="./{s}.html"><img src="/img/tasks/{s}.{lang}.png" alt="" loading="lazy"><strong>{title(k, lang)}</strong><span>{tl}</span></a>')
+            out.append(card(s, title(k, lang), tl, [method] + (['classic'] if classic else [])))
         if cg == 'motor':
-            out.append(f'<a href="./tail-suspension.html"><img src="/img/tasks/tail-suspension.{lang}.png" alt="" loading="lazy"><strong>{L("Tail suspension, multi-chamber", "多格悬尾")}</strong><span>{L("Several mice in one recording · immobility in minutes 2–6", "一段录像里多只小鼠 · 第 2–6 分钟不动时间")}</span></a>')
+            out.append(card('tail-suspension', L('Tail suspension, multi-chamber', '多格悬尾'),
+                            L('Several mice in one recording · immobility in minutes 2–6', '一段录像里多只小鼠 · 第 2–6 分钟不动时间'), ['multi']))
         out.append('</div>\n')
     out.append(f'## {L("Results without video", "不用视频的结果")} {{#manual}}\n')
     out.append(L('Marble burying, sucrose preference, beam walking, gait, two-armed bandit and your own measures can also be entered by hand or imported from a table, on iPhone and iPad. These results take part in group comparisons like any other. See [Manual entry & importing tables](../guide/manual-and-import.md).',
                  '埋珠、糖水偏好、平衡木、步态、双臂老虎机和自定义指标，也可以在 iPhone 和 iPad 上手动录入或从表格导入，和其他结果一样参与组间比较。见[手动录入与导入表格](../guide/manual-and-import.md)。') + '\n')
-    out.append(f'::: tip {L("About the example figures", "关于示例图")}\n' +
-               L('The example on each page is a **simulated session**: a model mouse is moved through the arena and the measures are computed with simplified versions of the app’s definitions. The figures show what each measure means; they are not data and are not meant as reference values.',
-                 '每页的示例都是**模拟实验**：让一只模型小鼠在场地里活动，再用 App 定义的简化版本计算指标。这些图用来说明每个指标的含义，不是实验数据，也不能当作参考值。') + '\n:::\n')
     return '\n'.join(out)
 
 
@@ -288,7 +311,7 @@ def reading(lang):
     en = lang == 'en'
     L = lambda e, z: e if en else z
     out = ['---', f'title: "{L("Further reading", "延伸阅读")}"',
-           f'description: "{L("The papers behind every RodentFlow 2.1 task, and tools and guidelines for behavioural studies.", "RodentFlow 2.1 每个范式背后的文献，以及行为研究的工具和指南。")}"', '---', '']
+           f'description: "{L("The papers behind every RodentFlow task, and tools and guidelines for behavioural studies.", "RodentFlow 每个范式背后的文献，以及行为研究的工具和指南。")}"', '---', '']
     out.append(f'# {L("Further reading", "延伸阅读")}\n')
     out.append(L('The papers each task is built on, grouped as in the [Tasks](../tasks/) page. Every task page lists them with what they are used for.',
                  '每个范式所依据的文献，分组与[实验范式](../tasks/)页面一致。每个范式页面也列出了这些文献。') + '\n')

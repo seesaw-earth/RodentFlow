@@ -5,7 +5,7 @@ search: false
 # Getting results you can trust
 
 ::: warning Older version
-This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For RodentFlow 2.1, see [Getting results you can trust](/principles/good-practice.md).
+This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For the current version, see [Getting results you can trust](/principles/good-practice.md).
 :::
 
 

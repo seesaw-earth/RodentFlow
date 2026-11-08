@@ -1,6 +1,6 @@
 ---
 title: "快速上手"
-description: "在 iPhone、iPad 或 Mac 上完成第一次 RodentFlow 2.1 分析：选范式、标定、追踪、回看、看结果。"
+description: "在 iPhone、iPad 或 Mac 上完成第一次 RodentFlow 分析：选范式、标定、追踪、回看、看结果。"
 ---
 
 # 快速上手

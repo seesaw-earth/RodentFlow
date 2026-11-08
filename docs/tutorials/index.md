@@ -6,7 +6,7 @@ The model files themselves, with checksums and licence notes, are on [Core ML mo
 
 ## The models and where they came from {#models}
 
-RodentFlow runs every analysis on the device. Five neural-network packages ship inside RodentFlow 2.1; the centroid tracker uses none. The four pose models share one input, one output layout and the same six keypoints, and the app picks one by the number of animals and their *Coat colour* ([which model a video uses](../models.md#coat)).
+RodentFlow runs every analysis on the device. Five neural-network packages ship inside RodentFlow; the centroid tracker uses none. The four pose models share one input, one output layout and the same six keypoints, and the app picks one by the number of animals and their *Coat colour* ([which model a video uses](../models.md#coat)).
 
 | | [MousePose6](./mousepose6.md) | [WhiteMousePose6](./white-mouse.md) | [MousePose6-DyadBW](./dyad-bw.md) | [MouseDetector](./tst-detector.md) |
 |---|---|---|---|---|
@@ -48,7 +48,7 @@ Every number on these pages comes from one of three places, and each page says w
 
 1. The original Google Colab notebooks used to build the datasets, train, evaluate and export the models (for example `1012_MousePose_Dataset_Builder_v1`, `MousePose_YOLO_Train_v1`, `MousePose_iOS_Export_v1`, `Cylinder_YOLO26_Pose_Training`, `Cylinder_YOLO26_v2_DLC_Distill`, `YOLO_on_CalMS21_v1`, `RodentPose_Colab`, `WhiteMouse_n960_6kp_Train`, `DyadBW_YOLO26_Train_v2`).
 2. The metadata stored inside each shipped `.mlpackage` (training command, library versions, dates, input and output shapes).
-3. The app source: the version published in the [RodentStudio-Support repository](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source) (model loading, decoding and the assays that use each model) and, for the coat-colour models, the RodentFlow 2.1 source (`Shared/PoseEngine/PoseModels.swift`).
+3. The app source: the version published in the [RodentStudio-Support repository](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source) (model loading, decoding and the assays that use each model) and, for the coat-colour models, the RodentFlow source (`Shared/PoseEngine/PoseModels.swift`).
 
 The same archive also holds notebooks for models that the app does not ship (balance beam, RotaWheel, grooming clips, CalMS21 prompt experiments, RodentFlow 1.x re-analyses). They are not covered here.
 

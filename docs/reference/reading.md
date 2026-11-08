@@ -1,6 +1,6 @@
 ---
 title: "Further reading"
-description: "The papers behind every RodentFlow 2.1 task, and tools and guidelines for behavioural studies."
+description: "The papers behind every RodentFlow task, and tools and guidelines for behavioural studies."
 ---
 
 # Further reading

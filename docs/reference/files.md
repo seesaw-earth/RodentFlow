@@ -1,6 +1,6 @@
 ---
 title: "Files and formats"
-description: "The files RodentFlow 2.1 reads and writes: videos, pose tracks, session settings, sync packages, tail-suspension archives and every export."
+description: "The files RodentFlow reads and writes: videos, pose tracks, session settings, sync packages, tail-suspension archives and every export."
 ---
 
 # Files and formats

@@ -6,8 +6,8 @@ RodentFlow 是用 Apple 标准控件构建的 iPhone、iPad 和 Mac 原生 App�
 
 ## 可使用的设置
 
-- **iPhone 与 iPad：**设置 › 辅助功能，调整文字大小、对比度和缩放。
-- **Mac：**系统设置 › 辅助功能，调整显示对比度、指针和文字；用 <kbd>⌘</kbd><kbd>+</kbd> / <kbd>⌘</kbd><kbd>−</kbd> 放大或缩小 RodentFlow 的文字；查看视频细节时可使用缩放。键盘快捷键见[键盘快捷键](./mac/shortcuts.md)。
+- **iPhone 与 iPad**：设置 › 辅助功能，调整文字大小、对比度和缩放。
+- **Mac**：系统设置 › 辅助功能，调整显示对比度、指针和文字；用 <kbd>⌘</kbd><kbd>+</kbd> / <kbd>⌘</kbd><kbd>−</kbd> 放大或缩小 RodentFlow 的文字；查看视频细节时可使用缩放。键盘快捷键见[键盘快捷键](./mac/shortcuts.md)。
 
 ## 反馈无障碍问题
 

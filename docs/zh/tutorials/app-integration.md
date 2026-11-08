@@ -29,8 +29,8 @@ Ultralytics 借助 Apple 的 coremltools 转换 PyTorch 模型。导出可以在
     YOLO('best_mousepose.pt').export(format='coreml', imgsz=960, quantize=8, nms=False)
 
 - **输入尺寸**必须与模型验证时的尺寸一致；App 的解码器写死了这个值（960 或 640）。
-- **精度：**8 位权重让 MousePose6 小于 3 MiB。压缩可能让关键点略有偏移，所以才有[第 7 步](#parity)。
-- **NMS：**YOLO26 姿态模型有端到端输出头，不需要 NMS。检测器导出为包含 NMS 的 pipeline，Vision 直接返回最终的框。
+- **精度**：8 位权重让 MousePose6 小于 3 MiB。压缩可能让关键点略有偏移，所以才有[第 7 步](#parity)。
+- **NMS**：YOLO26 姿态模型有端到端输出头，不需要 NMS。检测器导出为包含 NMS 的 pipeline，Vision 直接返回最终的框。
 
 ## 第 2 步 · 检查导出的内容 {#inspect}
 

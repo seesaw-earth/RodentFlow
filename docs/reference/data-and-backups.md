@@ -1,6 +1,6 @@
 ---
 title: "Where your data lives"
-description: "Where RodentFlow 2.1 keeps videos, analyses and workspaces on iPhone, iPad and Mac, and how to back them up."
+description: "Where RodentFlow keeps videos, analyses and workspaces on iPhone, iPad and Mac, and how to back them up."
 ---
 
 # Where your data lives

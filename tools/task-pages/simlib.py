@@ -1,3 +1,4 @@
+import os
 """Shared pieces for the simulated task figures: style, a simulated mouse, arena drawing."""
 import math
 import numpy as np
@@ -182,9 +183,33 @@ def bars(ax, names, values, colors, unit='', fmt='{:.0f}', ylim=None, ylabel=Non
         ax.set_ylabel(ylabel)
 
 
+def _thumb(fig, path, out_dir):
+    """Save the arena panel alone (no title, no grey notes) as a card thumbnail."""
+    from matplotlib.transforms import Bbox
+    axes = getattr(fig, 'thumb_axes', None) or [fig.axes[0]]
+    saved = []
+    for a in axes:
+        saved.append((a, a.get_title(loc='left'), a.get_title()))
+        a.set_title('', loc='left'); a.set_title('')
+    hidden = [t for a in axes for t in a.texts if t.get_color() == MUTED and t.get_visible()]
+    for t in hidden:
+        t.set_visible(False)
+    fig.canvas.draw()
+    r = fig.canvas.get_renderer()
+    bb = Bbox.union([a.get_tightbbox(r) for a in axes]).transformed(fig.dpi_scale_trans.inverted()).padded(0.05)
+    dpi = max(110, min(240, 560 / bb.width))
+    fig.savefig(os.path.join(out_dir, os.path.basename(path)), dpi=dpi, bbox_inches=bb)
+    for t in hidden:
+        t.set_visible(True)
+    for a, tl, tc in saved:
+        a.set_title(tl, loc='left'); a.set_title(tc)
+
+
 def finish(fig, path, note):
     fig.text(0.012, 0.015, note, fontsize=6.8, color=MUTED, ha='left', va='bottom')
     fig.savefig(path, dpi=200)
+    if os.environ.get('THUMB_DIR'):          # after the full figure, so nothing it changes ends up there
+        _thumb(fig, path, os.environ['THUMB_DIR'])
     plt.close(fig)
 
 

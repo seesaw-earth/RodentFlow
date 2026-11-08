@@ -5,7 +5,7 @@ search: false
 # 版本说明
 
 ::: warning 旧版本
-本页介绍的是 **iPhone 版 RodentFlow 1.x** 和 **Mac 版 RodentFlow 0.7**（原 RodentStudio），保留作参考。RodentFlow 2.1 请看[版本说明](/zh/reference/changelog.md)。
+本页介绍的是 **iPhone 版 RodentFlow 1.x** 和 **Mac 版 RodentFlow 0.7**（原 RodentStudio），保留作参考。当前版本请看[版本说明](/zh/reference/changelog.md)。
 :::
 
 
@@ -69,7 +69,7 @@ search: false
 - 修复 Intel（x86_64）目标编译时 FP16 解码兼容问题。
 
 ::: info
-**尚未正式发布：**在提交前仍需完成真实 Xcode Archive、签名、App Store Connect 处理以及科研工作流测试。
+**尚未正式发布**：在提交前仍需完成真实 Xcode Archive、签名、App Store Connect 处理以及科研工作流测试。
 :::
 
 #### 模型情况

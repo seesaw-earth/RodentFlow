@@ -1,6 +1,6 @@
 ---
 title: "延伸阅读"
-description: "RodentFlow 2.1 每个范式背后的文献，以及行为研究的工具和指南。"
+description: "RodentFlow 每个范式背后的文献，以及行为研究的工具和指南。"
 ---
 
 # 延伸阅读

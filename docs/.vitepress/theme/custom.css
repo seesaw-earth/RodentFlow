@@ -249,51 +249,262 @@
   color: var(--vp-c-text-2);
 }
 
-/* Task index: one card per task with its example figure. */
+/* Task library: header, area chips, legend and one card per task. */
+.vp-doc .rf-taskhero {
+  margin: 8px 0 28px;
+  padding: 22px 24px 18px;
+  border-radius: 18px;
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(34, 199, 232, 0.16), transparent 55%),
+    radial-gradient(120% 140% at 0% 100%, rgba(18, 184, 154, 0.14), transparent 55%),
+    var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc .rf-taskhero-lede {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc .rf-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 26px;
+  margin: 16px 0 6px;
+}
+
+.vp-doc .rf-stats span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc .rf-stats b {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc .rf-catchips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+}
+
+.vp-doc .rf-catchips a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.vp-doc .rf-catchips a:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+.vp-doc .rf-catchips a span {
+  font-weight: 500;
+  color: var(--vp-c-text-3);
+}
+
+.vp-doc .rf-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc .rf-legend span,
+.vp-doc .rf-meth span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vp-doc .rf-dot {
+  display: inline-block;
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--c);
+}
+
+.vp-doc .rf-dot.rf-ab {
+  background: linear-gradient(90deg, #1e88e5 0 50%, #e53935 50% 100%);
+}
+
 .vp-doc .rf-taskgrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 14px;
   margin: 16px 0 8px;
 }
 
-.vp-doc .rf-taskgrid a {
+.vp-doc .rf-taskgrid > a {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   background: var(--vp-c-bg-soft);
   text-decoration: none;
   color: var(--vp-c-text-1);
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-.vp-doc .rf-taskgrid a:hover {
+.vp-doc .rf-taskgrid > a:hover {
   border-color: var(--vp-c-brand-1);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px -18px rgba(19, 32, 59, 0.45);
 }
 
-.vp-doc .rf-taskgrid img {
+.vp-doc .rf-thumb {
+  display: block;
+  aspect-ratio: 4 / 3;
+  background: #fcfcfb;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc .rf-thumb img {
   display: block;
   width: 100%;
-  aspect-ratio: 12 / 5;
-  object-fit: cover;
-  object-position: left top;
-  background: #fff;
-  border-bottom: 1px solid var(--vp-c-divider);
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
 }
 
 .vp-doc .rf-taskgrid strong {
   display: block;
   padding: 10px 14px 2px;
   font-size: 15px;
+  line-height: 1.35;
   color: var(--vp-c-brand-1);
 }
 
-.vp-doc .rf-taskgrid span {
-  display: block;
-  padding: 0 14px 12px;
+.vp-doc .rf-taskgrid .rf-tl {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding: 0 14px;
   font-size: 13px;
   line-height: 1.5;
   color: var(--vp-c-text-2);
+}
+
+.vp-doc .rf-taskgrid .rf-meth {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-top: auto;
+  padding: 10px 14px 12px;
+  font-size: 12px;
+  color: var(--vp-c-text-2);
+}
+
+@media (max-width: 640px) {
+  .vp-doc .rf-taskgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .vp-doc .rf-taskgrid .rf-tl {
+    display: none;
+  }
+}
+
+/* "Tasks" stands out in the top bar. */
+.VPNavBarMenuLink[href$="/tasks/"] {
+  margin: 0 6px;
+  padding: 0 14px !important;
+  height: 32px;
+  align-self: center;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #22c7e8, #12b89a);
+  color: #05202a !important;
+  font-weight: 650;
+  line-height: 32px !important;
+}
+
+.VPNavBarMenuLink[href$="/tasks/"]:hover {
+  filter: brightness(1.06);
+}
+
+/* Task promo at the top of the sidebar (TasksPromo.vue). */
+.rf-promo {
+  display: block;
+  margin: 16px 0 6px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(34, 199, 232, 0.16), rgba(18, 184, 154, 0.16));
+  border: 1px solid rgba(18, 184, 154, 0.35);
+  text-decoration: none !important;
+  color: var(--vp-c-text-1) !important;
+  transition: border-color 0.2s;
+}
+
+.rf-promo:hover {
+  border-color: #12b89a;
+}
+
+.rf-promo .rf-promo-thumbs {
+  display: flex;
+  gap: 4px;
+  margin: 0 0 8px;
+}
+
+.rf-promo .rf-promo-thumbs img {
+  flex: 1 1 0;
+  min-width: 0;
+  aspect-ratio: 1;
+  object-fit: contain;
+  padding: 2px;
+  border-radius: 6px;
+  background: #fcfcfb;
+}
+
+.rf-promo strong {
+  display: block;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.rf-promo > span:not(.rf-promo-thumbs) {
+  display: block;
+  margin-top: 2px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc .rf-promo-wide {
+  margin: 20px 0 8px;
+  padding: 14px 16px 16px;
+}
+
+.vp-doc .rf-promo-wide strong {
+  font-size: 18px;
+}
+
+.vp-doc .rf-promo-wide .rf-promo-thumbs img {
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
 }

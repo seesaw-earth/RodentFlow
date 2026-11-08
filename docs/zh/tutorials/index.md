@@ -6,7 +6,7 @@ RodentFlow 里的姿态模型是怎么做出来的：视频和标签从哪里来
 
 ## 模型及其来历 {#models}
 
-RodentFlow 的所有分析都在设备上完成。RodentFlow 2.1 内置五个神经网络模型包；质心追踪不用任何模型。四个姿态模型的输入、输出格式和六个关键点都相同，App 按动物数和*小鼠毛色*选用其中一个（[每段视频用哪个模型](../models.md#coat)）。
+RodentFlow 的所有分析都在设备上完成。RodentFlow 内置五个神经网络模型包；质心追踪不用任何模型。四个姿态模型的输入、输出格式和六个关键点都相同，App 按动物数和*小鼠毛色*选用其中一个（[每段视频用哪个模型](../models.md#coat)）。
 
 | | [MousePose6](./mousepose6.md) | [WhiteMousePose6](./white-mouse.md) | [MousePose6-DyadBW](./dyad-bw.md) | [MouseDetector](./tst-detector.md) |
 |---|---|---|---|---|
@@ -24,12 +24,12 @@ RodentFlow 的所有分析都在设备上完成。RodentFlow 2.1 内置五个神
 
 ## 怎样看这些数字 {#numbers}
 
-- **参照标签来自成熟的追踪工具。**MousePose6 以各数据集随附的 DeepLabCut 和 JAX 姿态网络预测为参照；WhiteMousePose6 和 MousePose6-DyadBW 以 DooM 各实验室的轨迹为参照。测试分数给出在训练时留出的视频上与这些参照的一致程度。
-- **关键点是指标的输入。**每个范式按明确的规则把关键点变成指标；见[实验范式](../tasks/)和[速度与精度](../principles/performance.md)。
+- **参照标签来自成熟的追踪工具**。MousePose6 以各数据集随附的 DeepLabCut 和 JAX 姿态网络预测为参照；WhiteMousePose6 和 MousePose6-DyadBW 以 DooM 各实验室的轨迹为参照。测试分数给出在训练时留出的视频上与这些参照的一致程度。
+- **关键点是指标的输入**。每个范式按明确的规则把关键点变成指标；见[实验范式](../tasks/)和[速度与精度](../principles/performance.md)。
 - **在自己的装置上**，与任何自动评分一样，大规模实验之前先拿几段视频，把要报告的指标与人工评分比较（[让结果经得起检验](../principles/good-practice.md)）。
 
 ::: warning
-**MousePose6 有两个训练数据集限制商业使用。**两个 ETH Zurich 数据集为 CC BY 4.0，但 Harvard Dataverse 上的两个 JAX 数据集为 CC BY-NC-SA 4.0（非商业、相同方式共享），这限制了 MousePose6 的商业使用；见[教程 1](./mousepose6.md#sources)。Ultralytics YOLO 为 AGPL-3.0，除非使用企业许可。见[许可汇总表](./citations.md#licences)。
+**MousePose6 有两个训练数据集限制商业使用**。两个 ETH Zurich 数据集为 CC BY 4.0，但 Harvard Dataverse 上的两个 JAX 数据集为 CC BY-NC-SA 4.0（非商业、相同方式共享），这限制了 MousePose6 的商业使用；见[教程 1](./mousepose6.md#sources)。Ultralytics YOLO 为 AGPL-3.0，除非使用企业许可。见[许可汇总表](./citations.md#licences)。
 :::
 
 ## 按顺序读，或直接跳到需要的部分
@@ -48,7 +48,7 @@ RodentFlow 的所有分析都在设备上完成。RodentFlow 2.1 内置五个神
 
 1. 构建数据集、训练、评估和导出模型时使用的原始 Google Colab notebook（例如 `1012_MousePose_Dataset_Builder_v1`、`MousePose_YOLO_Train_v1`、`MousePose_iOS_Export_v1`、`Cylinder_YOLO26_Pose_Training`、`Cylinder_YOLO26_v2_DLC_Distill`、`YOLO_on_CalMS21_v1`、`RodentPose_Colab`、`WhiteMouse_n960_6kp_Train`、`DyadBW_YOLO26_Train_v2`）。
 2. 每个随 App 发布的 `.mlpackage` 内部的元数据（训练命令、库版本、日期、输入输出形状）。
-3. App 源码：[RodentStudio-Support 仓库](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source)中公开的版本（模型加载、解码以及各模型对应的实验流程）；按毛色选用的模型则依据 RodentFlow 2.1 的源码（`Shared/PoseEngine/PoseModels.swift`）。
+3. App 源码：[RodentStudio-Support 仓库](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source)中公开的版本（模型加载、解码以及各模型对应的实验流程）；按毛色选用的模型则依据 RodentFlow 的源码（`Shared/PoseEngine/PoseModels.swift`）。
 
 同一批文件中还有若干 App 并未内置的模型 notebook（平衡木、RotaWheel、理毛片段、CalMS21 提示词实验、RodentFlow 1.x 复分析），本教程不涉及。
 

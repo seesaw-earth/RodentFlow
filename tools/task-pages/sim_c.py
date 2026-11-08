@@ -410,8 +410,10 @@ def tst(lang, out):
     gs = fig.add_gridspec(4, 2, width_ratios=(1.5, 1), left=0.075, right=0.985, top=0.86, bottom=0.15, wspace=0.22, hspace=0.25)
     b = fig.add_subplot(gs[:, 1])
     res = []
+    fig.thumb_axes = []
     for c, mi in enumerate(series):
         ax = fig.add_subplot(gs[c, 0])
+        fig.thumb_axes.append(ax)
         sm = med(mi)
         imm = min_duration(sm < 2.0, fps)
         res.append(imm[int(120 * fps):].sum() / fps)

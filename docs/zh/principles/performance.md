@@ -1,6 +1,6 @@
 ---
 title: "速度与精度"
-description: "RodentFlow 2.1 在 iPhone、iPad 和 Mac 上的追踪速度，四个姿态模型在留出测试图像上的精度，以及双鼠身份的区分效果。"
+description: "RodentFlow 在 iPhone、iPad 和 Mac 上的追踪速度，四个姿态模型在留出测试图像上的精度，以及双鼠身份的区分效果。"
 ---
 
 # 速度与精度

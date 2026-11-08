@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>RodentFlow 2.1 | 啮齿类动物行为的姿态追踪</title>
-<meta name="description" content="RodentFlow 2.1 在 iPhone、iPad 和 Mac 上从俯拍视频追踪啮齿类动物并给行为实验评分：质心追踪、六关键点姿态和双鼠身份追踪，全部在设备上完成。">
+<title>RodentFlow: video in, data out | 小鼠行为视频分析</title>
+<meta name="description" content="RodentFlow 在 iPhone、iPad 和 Mac 上从俯拍视频追踪啮齿类动物并给行为实验评分：质心追踪、六关键点姿态和双鼠身份追踪，全部在设备上完成。">
 <meta name="theme-color" content="#0F1A31">
 <link rel="canonical" href="https://seesaw-earth.github.io/RodentFlow/zh/">
 <link rel="alternate" hreflang="en" href="https://seesaw-earth.github.io/RodentFlow/">
 <link rel="alternate" hreflang="zh-CN" href="https://seesaw-earth.github.io/RodentFlow/zh/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="RodentFlow 2.1">
+<meta property="og:title" content="RodentFlow: video in, data out">
 <meta property="og:description" content="在 iPhone、iPad 和 Mac 上完成小鼠姿态追踪与行为分析。每一帧都在设备上分析。">
 <meta property="og:url" content="https://seesaw-earth.github.io/RodentFlow/zh/">
 <!-- Link-preview image: the poster of a landscape (Mac) clip fits the 1.9:1 preview best. -->
@@ -447,6 +447,82 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
 
 .tests th[scope=row] a{color:inherit;text-decoration:none;border-bottom:1px dotted currentColor}
 .tests th[scope=row] a:hover{border-bottom-style:solid}
+
+/* ============================================================
+   Slogan, task strip and task library
+   ============================================================ */
+.hero h1{font-size:clamp(3.4rem,11vw,9rem)}
+.hero h1 .slogan{display:block;font-size:.4em;line-height:1.02;letter-spacing:-.012em;margin-top:.14em;margin-left:.04em;font-variation-settings:"wdth" 88;
+  background:linear-gradient(90deg,#9BE7FB 0%,#22C7E8 35%,#12B89A 70%,#7FDB84 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn.tasks{background:linear-gradient(135deg,#22C7E8,#12B89A);border-color:transparent;color:#05202A;box-shadow:0 10px 32px -10px rgba(34,199,232,.75)}
+.btn.tasks:hover{background:linear-gradient(135deg,#46d3ee,#19c7a7);border-color:transparent}
+.btn.tasks .n{font-variant-numeric:tabular-nums;background:rgba(255,255,255,.6);border-radius:999px;padding:.18rem .5rem;font-size:.85rem}
+.bar-links a.hot,.bar .tasks-m{background:linear-gradient(135deg,#22C7E8,#12B89A);color:#05202A;font-weight:650}
+.bar-links a.hot:hover,.bar.on-light .bar-links a.hot,.bar.on-light .bar-links a.hot:hover{color:#05202A;background:linear-gradient(135deg,#46d3ee,#19c7a7)}
+.bar .tasks-m{display:none;flex:none;font:650 .92rem/1 var(--display);text-decoration:none;padding:.6rem .85rem;margin-right:.35rem;border-radius:999px;white-space:nowrap}
+@media (max-width:860px){.bar .tasks-m{display:inline-flex}}
+@media (max-width:440px){.brand{font-size:0;gap:0}.bar .tasks-m{padding:.6rem .75rem}}
+
+.tk-strip{margin-top:clamp(2rem,4.5vw,3.2rem)}
+.tk-strip-head{display:inline-flex;align-items:baseline;gap:.75rem;text-decoration:none;color:var(--on-night);margin-bottom:.9rem;flex-wrap:wrap}
+.tk-strip-head b{font:800 clamp(1.5rem,3vw,2.1rem)/1 var(--display);font-variation-settings:"wdth" 80;color:#fff}
+.tk-strip-head span{font:500 1rem/1.3 var(--display);color:var(--on-night-2)}
+.tk-strip-head svg{width:20px;height:20px;align-self:center;color:#22C7E8;transition:transform .2s}
+.tk-strip-head:hover svg{transform:translateX(4px)}
+.tk-strip-head:hover span{color:#fff}
+.tk-marquee{position:relative;overflow:hidden;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.tk-track{display:flex;width:max-content;animation:tk-scroll 110s linear infinite}
+.tk-marquee:hover .tk-track,.tk-marquee:focus-within .tk-track{animation-play-state:paused}
+@keyframes tk-scroll{to{transform:translateX(-50%)}}
+.tk-chip{flex:none;display:flex;flex-direction:column;width:172px;margin-right:12px;border-radius:14px;background:#fff;overflow:hidden;text-decoration:none;color:var(--ink);
+  box-shadow:0 1px 0 rgba(255,255,255,.08);transition:transform .18s}
+.tk-chip:hover{transform:translateY(-4px)}
+.tk-chip img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#FCFCFB;padding:6px}
+.tk-chip span{font:600 .84rem/1.25 var(--display);padding:.55rem .7rem .65rem;border-top:1px solid #E7ECF2;min-height:2.9em}
+@media (prefers-reduced-motion:reduce){.tk-marquee{overflow-x:auto}}
+
+.anchor-alias{position:absolute;margin-top:-88px}
+.tasks-sec{position:relative}
+.tk-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem 2.5rem;flex-wrap:wrap}
+.tk-kicker{display:inline-block;font:700 .82rem/1 var(--display);letter-spacing:.09em;text-transform:uppercase;color:#05202A;
+  background:linear-gradient(135deg,#22C7E8,#12B89A);padding:.45rem .7rem;border-radius:999px;margin:0 0 1rem}
+.tk-cta{display:inline-flex;align-items:center;gap:.6rem;font:650 1.05rem/1 var(--display);padding:1rem 1.25rem;border-radius:14px;background:var(--ink);color:#fff;text-decoration:none;white-space:nowrap}
+.tk-cta svg{width:20px;height:20px;transition:transform .2s}
+.tk-cta:hover{background:#24365e}
+.tk-cta:hover svg{transform:translateX(3px)}
+.tk-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:clamp(1.6rem,3vw,2.3rem)}
+.tk-filters button{font:600 .92rem/1 var(--display);padding:.62rem .95rem;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer}
+.tk-filters button span{margin-left:.4rem;color:var(--ink-2);font-variant-numeric:tabular-nums;font-weight:500}
+.tk-filters button:hover{border-color:#9fb0c5}
+.tk-filters button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.tk-filters button[aria-pressed="true"] span{color:#c9d4e8}
+.tk-grid{list-style:none;margin:1.1rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+.tk-grid li[hidden]{display:none}
+.tk-grid a{display:flex;flex-direction:column;height:100%;background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--ink);
+  transition:transform .18s,box-shadow .18s,border-color .18s}
+.tk-grid a:hover{transform:translateY(-4px);box-shadow:0 18px 36px -18px rgba(19,32,59,.4);border-color:#a9b8cb}
+.tk-img{display:block;aspect-ratio:4/3;background:#FCFCFB;border-bottom:1px solid var(--line)}
+.tk-img img{display:block;width:100%;height:100%;object-fit:contain;padding:8px}
+.tk-name{font:650 1.04rem/1.25 var(--display);padding:.85rem 1rem 0}
+.tk-tag{font-size:.88rem;line-height:1.45;color:var(--ink-2);padding:.3rem 1rem 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tk-m{margin-top:auto;padding:.8rem 1rem .9rem;display:flex;gap:.35rem .8rem;flex-wrap:wrap;font:500 .8rem/1 var(--display);color:var(--ink-2)}
+.tk-m span{display:inline-flex;align-items:center;gap:.35rem}
+.tk-more{display:block;margin:1.2rem auto 0;font:650 1rem/1 var(--display);padding:.9rem 1.3rem;border-radius:999px;border:1.5px solid var(--ink);background:none;color:var(--ink);cursor:pointer}
+.tk-more:hover{background:var(--ink);color:#fff}
+.tk-more[hidden]{display:none}
+.tk-table{margin-top:clamp(1.8rem,3.5vw,2.6rem)}
+.tk-table summary{cursor:pointer;font:600 1rem/1.4 var(--display);color:var(--ink);width:max-content;max-width:100%}
+.tk-table summary:hover{color:#1d6fb8}
+.tk-table .tests-wrap{margin-top:1rem}
+@media (max-width:560px){
+  .tk-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .tk-name{font-size:.92rem;padding:.7rem .75rem 0}
+  .tk-tag{display:none}
+  .tk-m{padding:.6rem .75rem .75rem;font-size:.74rem}
+  .tk-chip{width:142px}
+  .tk-cta{width:100%;justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -459,16 +535,16 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
     RodentFlow
   </a>
   <div class="bar-links">
+    <a class="hot" href="#tasks">27 个范式</a>
     <a href="#watch">演示</a>
     <a href="#tracking">追踪</a>
     <a href="#pipeline">流程</a>
     <a href="#identity">身份</a>
-    <a href="#tests">实验</a>
     <a href="#cite">引用</a>
-    <a href="tasks/">范式</a>
     <a href="guide/introduction.html">手册</a>
     <a href="blog/">博客</a>
   </div>
+  <a class="tasks-m" href="#tasks">范式</a>
   <a class="lang" href="../" hreflang="en" lang="en">English</a>
   <a class="get" href="https://apps.apple.com/app/id6818278240">App Store</a>
 </nav>
@@ -478,12 +554,15 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
      ============================================================ -->
 <header class="hero" id="top">
   <div class="wrap">
-    <h1>RodentFlow 2.1</h1>
+    <h1>RodentFlow:<span class="slogan">video in, data out.</span></h1>
     <div class="hero-row">
       <p class="hero-sub">在 iPhone、iPad 和 Mac 上完成小鼠姿态追踪与行为分析。每一帧都在设备上分析。</p>
       <div>
         <p class="byline"><a href="https://seesaw-earth.github.io/">Ziqing Shi, MD, PhD</a><br>耶鲁大学医学院</p>
         <div class="actions">
+          <a class="btn tasks" href="#tasks">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></svg>
+            浏览实验范式 <span class="n">27</span></a>
           <a class="btn solid" href="https://apps.apple.com/app/id6818278240">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
             App Store</a>
@@ -499,6 +578,12 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
         </div>
       </div>
     </div>
+    <!-- TASK-STRIP:START -->
+<div class="tk-strip">
+  <a class="tk-strip-head" href="#tasks"><b>27 个范式</b><span>点一个，看它到底怎样评分</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <div class="tk-marquee"><div class="tk-track"><a class="tk-chip" href="tasks/open-field.html"><img src="../img/tasks/thumbs/open-field.zh.png" alt="" loading="lazy"><span>旷场</span></a><a class="tk-chip" href="tasks/elevated-plus-maze.html"><img src="../img/tasks/thumbs/elevated-plus-maze.zh.png" alt="" loading="lazy"><span>高架十字迷宫</span></a><a class="tk-chip" href="tasks/three-chamber.html"><img src="../img/tasks/thumbs/three-chamber.zh.png" alt="" loading="lazy"><span>三箱社交</span></a><a class="tk-chip" href="tasks/novel-object-recognition.html"><img src="../img/tasks/thumbs/novel-object-recognition.zh.png" alt="" loading="lazy"><span>新物体识别</span></a><a class="tk-chip" href="tasks/water-maze.html"><img src="../img/tasks/thumbs/water-maze.zh.png" alt="" loading="lazy"><span>Morris 水迷宫</span></a><a class="tk-chip" href="tasks/dyadic-social.html"><img src="../img/tasks/thumbs/dyadic-social.zh.png" alt="" loading="lazy"><span>双鼠社交互动</span></a><a class="tk-chip" href="tasks/y-maze.html"><img src="../img/tasks/thumbs/y-maze.zh.png" alt="" loading="lazy"><span>Y 迷宫自发交替</span></a><a class="tk-chip" href="tasks/fear-conditioning.html"><img src="../img/tasks/thumbs/fear-conditioning.zh.png" alt="" loading="lazy"><span>恐惧条件化</span></a><a class="tk-chip" href="tasks/barnes-maze.html"><img src="../img/tasks/thumbs/barnes-maze.zh.png" alt="" loading="lazy"><span>Barnes 迷宫</span></a><a class="tk-chip" href="tasks/light-dark-box.html"><img src="../img/tasks/thumbs/light-dark-box.zh.png" alt="" loading="lazy"><span>明暗箱</span></a><a class="tk-chip" href="tasks/tail-suspension.html"><img src="../img/tasks/thumbs/tail-suspension.zh.png" alt="" loading="lazy"><span>多格悬尾</span></a><a class="tk-chip" href="tasks/resident-intruder.html"><img src="../img/tasks/thumbs/resident-intruder.zh.png" alt="" loading="lazy"><span>居住者–入侵者（攻击）</span></a><a class="tk-chip" href="tasks/social-interaction.html"><img src="../img/tasks/thumbs/social-interaction.zh.png" alt="" loading="lazy"><span>社交回避测试</span></a><a class="tk-chip" href="tasks/elevated-zero-maze.html"><img src="../img/tasks/thumbs/elevated-zero-maze.zh.png" alt="" loading="lazy"><span>高架零迷宫</span></a><a class="tk-chip" href="tasks/t-maze.html"><img src="../img/tasks/thumbs/t-maze.zh.png" alt="" loading="lazy"><span>T 迷宫 · VTE</span></a><a class="tk-chip" href="tasks/place-preference.html"><img src="../img/tasks/thumbs/place-preference.zh.png" alt="" loading="lazy"><span>位置偏好（RTPP / CPP）</span></a><a class="tk-chip" href="tasks/passive-avoidance.html"><img src="../img/tasks/thumbs/passive-avoidance.zh.png" alt="" loading="lazy"><span>被动回避（穿梭箱）</span></a><a class="tk-chip" href="tasks/step-down.html"><img src="../img/tasks/thumbs/step-down.zh.png" alt="" loading="lazy"><span>Step-down 抑制性回避</span></a><a class="tk-chip" href="tasks/looming-escape.html"><img src="../img/tasks/thumbs/looming-escape.zh.png" alt="" loading="lazy"><span>Looming 逃跑</span></a><a class="tk-chip" href="tasks/platform-avoidance.html"><img src="../img/tasks/thumbs/platform-avoidance.zh.png" alt="" loading="lazy"><span>平台介导回避</span></a><a class="tk-chip" href="tasks/novelty-suppressed-feeding.html"><img src="../img/tasks/thumbs/novelty-suppressed-feeding.zh.png" alt="" loading="lazy"><span>新奇抑制摄食</span></a><a class="tk-chip" href="tasks/visual-cliff.html"><img src="../img/tasks/thumbs/visual-cliff.zh.png" alt="" loading="lazy"><span>视觉悬崖</span></a><a class="tk-chip" href="tasks/marble-burying.html"><img src="../img/tasks/thumbs/marble-burying.zh.png" alt="" loading="lazy"><span>埋珠实验</span></a><a class="tk-chip" href="tasks/head-direction.html"><img src="../img/tasks/thumbs/head-direction.zh.png" alt="" loading="lazy"><span>头朝向</span></a><a class="tk-chip" href="tasks/spatial-exploration.html"><img src="../img/tasks/thumbs/spatial-exploration.zh.png" alt="" loading="lazy"><span>空间探索 · 位置细胞</span></a><a class="tk-chip" href="tasks/rotation.html"><img src="../img/tasks/thumbs/rotation.zh.png" alt="" loading="lazy"><span>旋转行为</span></a><a class="tk-chip" href="tasks/pose-only.html"><img src="../img/tasks/thumbs/pose-only.zh.png" alt="" loading="lazy"><span>仅导出姿态</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/open-field.html"><img src="../img/tasks/thumbs/open-field.zh.png" alt="" loading="lazy"><span>旷场</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/elevated-plus-maze.html"><img src="../img/tasks/thumbs/elevated-plus-maze.zh.png" alt="" loading="lazy"><span>高架十字迷宫</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/three-chamber.html"><img src="../img/tasks/thumbs/three-chamber.zh.png" alt="" loading="lazy"><span>三箱社交</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/novel-object-recognition.html"><img src="../img/tasks/thumbs/novel-object-recognition.zh.png" alt="" loading="lazy"><span>新物体识别</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/water-maze.html"><img src="../img/tasks/thumbs/water-maze.zh.png" alt="" loading="lazy"><span>Morris 水迷宫</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/dyadic-social.html"><img src="../img/tasks/thumbs/dyadic-social.zh.png" alt="" loading="lazy"><span>双鼠社交互动</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/y-maze.html"><img src="../img/tasks/thumbs/y-maze.zh.png" alt="" loading="lazy"><span>Y 迷宫自发交替</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/fear-conditioning.html"><img src="../img/tasks/thumbs/fear-conditioning.zh.png" alt="" loading="lazy"><span>恐惧条件化</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/barnes-maze.html"><img src="../img/tasks/thumbs/barnes-maze.zh.png" alt="" loading="lazy"><span>Barnes 迷宫</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/light-dark-box.html"><img src="../img/tasks/thumbs/light-dark-box.zh.png" alt="" loading="lazy"><span>明暗箱</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/tail-suspension.html"><img src="../img/tasks/thumbs/tail-suspension.zh.png" alt="" loading="lazy"><span>多格悬尾</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/resident-intruder.html"><img src="../img/tasks/thumbs/resident-intruder.zh.png" alt="" loading="lazy"><span>居住者–入侵者（攻击）</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/social-interaction.html"><img src="../img/tasks/thumbs/social-interaction.zh.png" alt="" loading="lazy"><span>社交回避测试</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/elevated-zero-maze.html"><img src="../img/tasks/thumbs/elevated-zero-maze.zh.png" alt="" loading="lazy"><span>高架零迷宫</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/t-maze.html"><img src="../img/tasks/thumbs/t-maze.zh.png" alt="" loading="lazy"><span>T 迷宫 · VTE</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/place-preference.html"><img src="../img/tasks/thumbs/place-preference.zh.png" alt="" loading="lazy"><span>位置偏好（RTPP / CPP）</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/passive-avoidance.html"><img src="../img/tasks/thumbs/passive-avoidance.zh.png" alt="" loading="lazy"><span>被动回避（穿梭箱）</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/step-down.html"><img src="../img/tasks/thumbs/step-down.zh.png" alt="" loading="lazy"><span>Step-down 抑制性回避</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/looming-escape.html"><img src="../img/tasks/thumbs/looming-escape.zh.png" alt="" loading="lazy"><span>Looming 逃跑</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/platform-avoidance.html"><img src="../img/tasks/thumbs/platform-avoidance.zh.png" alt="" loading="lazy"><span>平台介导回避</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/novelty-suppressed-feeding.html"><img src="../img/tasks/thumbs/novelty-suppressed-feeding.zh.png" alt="" loading="lazy"><span>新奇抑制摄食</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/visual-cliff.html"><img src="../img/tasks/thumbs/visual-cliff.zh.png" alt="" loading="lazy"><span>视觉悬崖</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/marble-burying.html"><img src="../img/tasks/thumbs/marble-burying.zh.png" alt="" loading="lazy"><span>埋珠实验</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/head-direction.html"><img src="../img/tasks/thumbs/head-direction.zh.png" alt="" loading="lazy"><span>头朝向</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/spatial-exploration.html"><img src="../img/tasks/thumbs/spatial-exploration.zh.png" alt="" loading="lazy"><span>空间探索 · 位置细胞</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/rotation.html"><img src="../img/tasks/thumbs/rotation.zh.png" alt="" loading="lazy"><span>旋转行为</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/pose-only.html"><img src="../img/tasks/thumbs/pose-only.zh.png" alt="" loading="lazy"><span>仅导出姿态</span></a></div></div>
+</div>
+<!-- TASK-STRIP:END -->
   </div>
 </header>
 
@@ -560,7 +645,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
      ============================================================ -->
 <section class="intro" aria-label="概要">
   <div class="wrap intro-grid">
-    <p class="tldr">从上方拍下实验，标定一次场地，RodentFlow 就会追踪动物、给实验评分并比较各组。2.1 版把三种追踪方式放进一个 App：来自 RodentFlow 1.x 的质心追踪、单只小鼠的六关键点姿态模型，以及在整段录像中始终分清 A 和 B 的双鼠模型。</p>
+    <p class="tldr">从上方拍下实验，标定一次场地，RodentFlow 就会追踪动物、给实验评分并比较各组。RodentFlow 把三种追踪方式放进一个 App：来自 RodentFlow 1.x 的质心追踪、单只小鼠的六关键点姿态模型，以及在整段录像中始终分清 A 和 B 的双鼠模型。</p>
     <dl class="spec">
       <div><dt>输入</dt><dd>一只或两只小鼠的俯拍视频，或一排悬尾实验箱</dd></div>
       <div><dt>追踪方式</dt><dd>10 Hz 质心；六关键点姿态；带身份识别的双鼠姿态</dd></div>
@@ -570,6 +655,78 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
     </dl>
   </div>
 </section>
+
+<!-- ============================================================
+     TASKS: written by tools/task-pages/home_tasks.py
+     ============================================================ -->
+<!-- TASKS:START -->
+<section class="light tasks-sec" id="tasks" aria-labelledby="tasks-h">
+  <span id="tests" class="anchor-alias"></span>
+  <div class="wrap">
+    <div class="tk-head">
+      <div>
+        <p class="tk-kicker">范式库</p>
+        <h2 id="tasks-h">27 个范式，逐一讲透</h2>
+        <p class="lede">选一个测试，看 RodentFlow 怎样评分：实验设计、为什么用关键点、每个指标的定义、模拟示例和相关文献。</p>
+      </div>
+      <a class="tk-cta" href="tasks/">打开范式库<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="tk-filters" role="group" aria-label="按领域筛选范式">
+      <button type="button" data-cat="all" aria-pressed="true">全部<span>27</span></button><button type="button" data-cat="social" aria-pressed="false">社交<span>4</span></button><button type="button" data-cat="navigation" aria-pressed="false">导航<span>2</span></button><button type="button" data-cat="anxiety" aria-pressed="false">焦虑<span>7</span></button><button type="button" data-cat="memory" aria-pressed="false">记忆与恐惧<span>11</span></button><button type="button" data-cat="motor" aria-pressed="false">运动与应对<span>2</span></button><button type="button" data-cat="general" aria-pressed="false">通用<span>1</span></button>
+    </div>
+    <ul class="tk-grid">
+      <li data-cat="anxiety"><a href="tasks/open-field.html"><span class="tk-img"><img src="../img/tasks/thumbs/open-field.zh.png" alt="" loading="lazy"></span><span class="tk-name">旷场</span><span class="tk-tag">运动与焦虑样行为 · 中央区、转圈、静止</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span><span><i class="dot" style="--c:var(--m-centroid)"></i>质心</span></span></a></li>
+      <li data-cat="anxiety"><a href="tasks/elevated-plus-maze.html"><span class="tk-img"><img src="../img/tasks/thumbs/elevated-plus-maze.zh.png" alt="" loading="lazy"></span><span class="tk-name">高架十字迷宫</span><span class="tk-tag">开放臂探索 + 探头 + 伸展评估姿势</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span><span><i class="dot" style="--c:var(--m-centroid)"></i>质心</span></span></a></li>
+      <li data-cat="social"><a href="tasks/three-chamber.html"><span class="tk-img"><img src="../img/tasks/thumbs/three-chamber.zh.png" alt="" loading="lazy"></span><span class="tk-name">三箱社交</span><span class="tk-tag">社交偏好与社交新颖性 · 鼻尖嗅探判定</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="memory"><a href="tasks/novel-object-recognition.html"><span class="tk-img"><img src="../img/tasks/thumbs/novel-object-recognition.zh.png" alt="" loading="lazy"></span><span class="tk-name">新物体识别</span><span class="tk-tag">鼻尖距离 + 朝向判定探索 · 辨别指数</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span><span><i class="dot" style="--c:var(--m-centroid)"></i>质心</span></span></a></li>
+      <li data-cat="memory"><a href="tasks/water-maze.html"><span class="tk-img"><img src="../img/tasks/thumbs/water-maze.zh.png" alt="" loading="lazy"></span><span class="tk-name">Morris 水迷宫</span><span class="tk-tag">逃避潜伏期、路径与搜索策略 · 探索测试看平均距离与象限</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span><span><i class="dot" style="--c:var(--m-centroid)"></i>质心</span></span></a></li>
+      <li data-cat="social"><a href="tasks/dyadic-social.html"><span class="tk-img"><img src="../img/tasks/thumbs/dyadic-social.zh.png" alt="" loading="lazy"></span><span class="tk-name">双鼠社交互动</span><span class="tk-tag">两只自由活动小鼠 · 鼻对鼻、肛殖区嗅探、跟随</span><span class="tk-m"><span><i class="dot ab"></i>双鼠</span></span></a></li>
+      <li data-cat="memory"><a href="tasks/y-maze.html"><span class="tk-img"><img src="../img/tasks/thumbs/y-maze.zh.png" alt="" loading="lazy"></span><span class="tk-name">Y 迷宫自发交替</span><span class="tk-tag">工作记忆 · 交替率与探头未进入</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span><span><i class="dot" style="--c:var(--m-centroid)"></i>质心</span></span></a></li>
+      <li data-cat="memory"><a href="tasks/fear-conditioning.html"><span class="tk-img"><img src="../img/tasks/thumbs/fear-conditioning.zh.png" alt="" loading="lazy"></span><span class="tk-name">恐惧条件化</span><span class="tk-tag">关键点僵直检测 · 按 CS 分段</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span><span><i class="dot" style="--c:var(--m-centroid)"></i>质心</span></span></a></li>
+      <li data-cat="memory"><a href="tasks/barnes-maze.html"><span class="tk-img"><img src="../img/tasks/thumbs/barnes-maze.zh.png" alt="" loading="lazy"></span><span class="tk-name">Barnes 迷宫</span><span class="tk-tag">以鼻尖探洞计错误数 · 潜伏期与路径</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span><span><i class="dot" style="--c:var(--m-centroid)"></i>质心</span></span></a></li>
+      <li data-cat="anxiety"><a href="tasks/light-dark-box.html"><span class="tk-img"><img src="../img/tasks/thumbs/light-dark-box.zh.png" alt="" loading="lazy"></span><span class="tk-name">明暗箱</span><span class="tk-tag">明箱时间、穿梭 + 探头风险评估</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span><span><i class="dot" style="--c:var(--m-centroid)"></i>质心</span></span></a></li>
+      <li data-cat="motor"><a href="tasks/tail-suspension.html"><span class="tk-img"><img src="../img/tasks/thumbs/tail-suspension.zh.png" alt="" loading="lazy"></span><span class="tk-name">多格悬尾</span><span class="tk-tag">一段录像里多只小鼠 · 第 2–6 分钟不动时间</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-tst)"></i>多格</span></span></a></li>
+      <li data-cat="social"><a href="tasks/resident-intruder.html"><span class="tk-img"><img src="../img/tasks/thumbs/resident-intruder.zh.png" alt="" loading="lazy"></span><span class="tk-name">居住者–入侵者（攻击）</span><span class="tk-tag">攻击潜伏期、次数、时长 · 追逐、压制、威胁、骑跨</span><span class="tk-m"><span><i class="dot ab"></i>双鼠</span></span></a></li>
+      <li data-cat="social"><a href="tasks/social-interaction.html"><span class="tk-img"><img src="../img/tasks/thumbs/social-interaction.zh.png" alt="" loading="lazy"></span><span class="tk-name">社交回避测试</span><span class="tk-tag">慢性社会挫败后的社交回避 · SI ratio</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="anxiety"><a href="tasks/elevated-zero-maze.html"><span class="tk-img"><img src="../img/tasks/thumbs/elevated-zero-maze.zh.png" alt="" loading="lazy"></span><span class="tk-name">高架零迷宫</span><span class="tk-tag">开放段时间 + 内外缘头探 + 闭合段探出与伸展评估</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="memory"><a href="tasks/t-maze.html"><span class="tk-img"><img src="../img/tasks/thumbs/t-maze.zh.png" alt="" loading="lazy"></span><span class="tk-name">T 迷宫 · VTE</span><span class="tk-tag">选择点头部扫视（替代性试错）</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span><span><i class="dot" style="--c:var(--m-centroid)"></i>质心</span></span></a></li>
+      <li data-cat="memory"><a href="tasks/place-preference.html"><span class="tk-img"><img src="../img/tasks/thumbs/place-preference.zh.png" alt="" loading="lazy"></span><span class="tk-name">位置偏好（RTPP / CPP）</span><span class="tk-tag">配对侧时间与偏好分数 · 前后测自动配对</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span><span><i class="dot" style="--c:var(--m-centroid)"></i>质心</span></span></a></li>
+      <li data-cat="memory"><a href="tasks/passive-avoidance.html"><span class="tk-img"><img src="../img/tasks/thumbs/passive-avoidance.zh.png" alt="" loading="lazy"></span><span class="tk-name">被动回避（穿梭箱）</span><span class="tk-tag">进入暗室潜伏期（截尾）· 反向探头风险评估</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="memory"><a href="tasks/step-down.html"><span class="tk-img"><img src="../img/tasks/thumbs/step-down.zh.png" alt="" loading="lazy"></span><span class="tk-name">Step-down 抑制性回避</span><span class="tk-tag">下台潜伏期（截尾）· 平台上僵直 · 边缘探头</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="memory"><a href="tasks/looming-escape.html"><span class="tk-img"><img src="../img/tasks/thumbs/looming-escape.zh.png" alt="" loading="lazy"></span><span class="tk-name">Looming 逃跑</span><span class="tk-tag">头顶扩张黑影 → 逃回巢穴或僵直</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="memory"><a href="tasks/platform-avoidance.html"><span class="tk-img"><img src="../img/tasks/thumbs/platform-avoidance.zh.png" alt="" loading="lazy"></span><span class="tk-name">平台介导回避</span><span class="tk-tag">平台时间 · 上平台潜伏期 · 平台上 / 外僵直</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="anxiety"><a href="tasks/novelty-suppressed-feeding.html"><span class="tk-img"><img src="../img/tasks/thumbs/novelty-suppressed-feeding.zh.png" alt="" loading="lazy"></span><span class="tk-name">新奇抑制摄食</span><span class="tk-tag">进食潜伏期（人工确认、截尾）· 接近食物 · 家笼摄食对照</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="anxiety"><a href="tasks/visual-cliff.html"><span class="tk-img"><img src="../img/tasks/thumbs/visual-cliff.zh.png" alt="" loading="lazy"></span><span class="tk-name">视觉悬崖</span><span class="tk-tag">首次选择 · 深侧时间 · 边缘探头</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="anxiety"><a href="tasks/marble-burying.html"><span class="tk-img"><img src="../img/tasks/thumbs/marble-burying.zh.png" alt="" loading="lazy"></span><span class="tk-name">埋珠实验</span><span class="tk-tag">埋住的珠子数（按每颗珠子被盖住的程度）· 埋珠事件 · 接近珠子</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="navigation"><a href="tasks/head-direction.html"><span class="tk-img"><img src="../img/tasks/thumbs/head-direction.zh.png" alt="" loading="lazy"></span><span class="tk-name">头朝向</span><span class="tk-tag">HD 细胞记录配套 · 头朝向占据与角速度</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="navigation"><a href="tasks/spatial-exploration.html"><span class="tk-img"><img src="../img/tasks/thumbs/spatial-exploration.zh.png" alt="" loading="lazy"></span><span class="tk-name">空间探索 · 位置细胞</span><span class="tk-tag">占据图、覆盖度与速度 · 神经记录同步</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="motor"><a href="tasks/rotation.html"><span class="tk-img"><img src="../img/tasks/thumbs/rotation.zh.png" alt="" loading="lazy"></span><span class="tk-name">旋转行为</span><span class="tk-tag">单侧损伤模型 · 同侧 / 对侧整圈数</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+      <li data-cat="general"><a href="tasks/pose-only.html"><span class="tk-img"><img src="../img/tasks/thumbs/pose-only.zh.png" alt="" loading="lazy"></span><span class="tk-name">仅导出姿态</span><span class="tk-tag">逐帧 6 个关键点 + 运动学 · 自定义分析</span><span class="tk-m"><span><i class="dot" style="--c:var(--m-pose)"></i>单鼠</span></span></a></li>
+    </ul>
+    <button type="button" class="tk-more" hidden>显示全部 27 个范式</button>
+    <details class="tk-table">
+      <summary>每种实验用哪种追踪方式</summary>
+<!-- TASK-TABLE:START -->
+    <div class="tests-wrap">
+      <table class="tests">
+        <thead>
+          <tr>
+            <th scope="col" style="text-align:left"><span class="sr">实验</span></th>
+            <th scope="col"><i class="dot" style="--c:var(--m-centroid)"></i>质心</th>
+            <th scope="col"><i class="dot" style="--c:var(--m-pose)"></i>单只动物</th>
+            <th scope="col"><i class="dot ab"></i>两只动物</th>
+            <th scope="col"><i class="dot" style="--c:var(--m-tst)"></i>多实验箱</th>
+          </tr>
+        </thead>
+        <tbody id="tests-body"></tbody>
+      </table>
+    </div>
+<!-- TASK-TABLE:END -->
+    </details>
+    <p class="tests-note">不用视频时，埋珠、糖水偏好、平衡木、步态和双臂老虎机可以手动录入，或从 CSV、TSV、JSON 导入，再像其他实验一样比较。</p>
+  </div>
+</section>
+<!-- TASKS:END -->
 
 <!-- ============================================================
      THREE WAYS OF TRACKING (live illustration)
@@ -690,29 +847,11 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
 </section>
 
 <!-- ============================================================
-     TESTS
+     MORE
      ============================================================ -->
-<section class="light" id="tests">
+<section class="light" id="more" aria-label="更多">
   <div class="wrap">
-    <h2>26 种可从视频分析的实验</h2>
-    <p class="lede">每种实验都知道自己需要哪种追踪方式。两种都可用时，质心更快，姿态看到的更多。每个实验都有单独的页面，介绍设计、指标、模拟示例和相关文献：<a href="tasks/">查看全部范式</a>。</p>
-    <div class="tests-wrap">
-      <table class="tests">
-        <thead>
-          <tr>
-            <th scope="col" style="text-align:left"><span class="sr">实验</span></th>
-            <th scope="col"><i class="dot" style="--c:var(--m-centroid)"></i>质心</th>
-            <th scope="col"><i class="dot" style="--c:var(--m-pose)"></i>单只动物</th>
-            <th scope="col"><i class="dot ab"></i>两只动物</th>
-            <th scope="col"><i class="dot" style="--c:var(--m-tst)"></i>多实验箱</th>
-          </tr>
-        </thead>
-        <tbody id="tests-body"></tbody>
-      </table>
-    </div>
-    <p class="tests-note">没有视频时，埋珠实验、糖水偏好、平衡木、步态分析和双臂老虎机任务可以手动录入，或从 CSV、TSV、JSON 导入，然后和其他实验一样比较。</p>
-
-    <div class="trio">
+    <div class="trio" style="margin-top:0">
       <div>
         <h3>手机和 Mac 上数字一致</h3>
         <p>两个 App 编译的是同一套分析代码。手机把每次完成的分析写入你选择的文件夹（例如 iCloud 云盘）；Mac 把它归到对应的实验、组和动物下，重新计算一遍，并显示每项指标是否一致。</p>
@@ -1569,6 +1708,36 @@ copyBtn.addEventListener("click", async () => {
   for (let i = 0; i < 150; i++) update(1 / 30);
   setPP(); resize(); readouts();
 })();
+})();
+</script>
+<script>
+/* Task library on the home page: filter by area, and show the first cards until "Show all" */
+(() => {
+  const sec = document.getElementById("tasks");
+  if (!sec) return;
+  const btns = [...sec.querySelectorAll(".tk-filters button")];
+  const items = [...sec.querySelectorAll(".tk-grid li")];
+  const more = sec.querySelector(".tk-more");
+  const small = matchMedia("(max-width:560px)");
+  let cat = "all", expanded = false;
+  const limit = () => (small.matches ? 6 : 10);
+  function apply() {
+    let n = 0;
+    for (const li of items) {
+      const ok = cat === "all" || li.dataset.cat === cat;
+      li.hidden = !(ok && (cat !== "all" || expanded || n < limit()));
+      if (ok) n++;
+    }
+    more.hidden = !(cat === "all" && !expanded && n > limit());
+  }
+  for (const b of btns) b.addEventListener("click", () => {
+    cat = b.dataset.cat;
+    for (const x of btns) x.setAttribute("aria-pressed", String(x === b));
+    apply();
+  });
+  more.addEventListener("click", () => { expanded = true; apply(); });
+  small.addEventListener("change", apply);
+  apply();
 })();
 </script>
 </body>

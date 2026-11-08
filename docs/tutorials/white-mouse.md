@@ -72,7 +72,7 @@ The rule is close to most laboratories' neck (0.016–0.035 L) but not to Jovial
 
 ## Step 2 · Zoomed crops, background crops and grayscale {#augment}
 
-- **Zoomed crops.** For half of the training images with one white mouse, a square crop centred near the mouse was added, sized so that the mouse covers about 19 % of the crop side (body length ÷ 0.19, × 0.8–1.25, centre shifted up to ±20 %). In laboratories with small mice, such as PleasantMeerkat, this shows the model larger mice. Validation and test sets got one unjittered crop per image (`val_app`, `test_app`), used only for evaluation. The crops were designed for a zoom-and-follow mode of a development build; **RodentFlow 2.1 does not zoom**: it gives this model the calibrated arena region, like every other pose model.
+- **Zoomed crops.** For half of the training images with one white mouse, a square crop centred near the mouse was added, sized so that the mouse covers about 19 % of the crop side (body length ÷ 0.19, × 0.8–1.25, centre shifted up to ±20 %). In laboratories with small mice, such as PleasantMeerkat, this shows the model larger mice. Validation and test sets got one unjittered crop per image (`val_app`, `test_app`), used only for evaluation. The crops were designed for a zoom-and-follow mode of a development build; **RodentFlow does not zoom**: it gives this model the calibrated arena region, like every other pose model.
 - **Background crops.** Half of the dark-mouse-only images also got a random crop, so that zoomed views of dark mice and arenas are also seen as background.
 - **Grayscale.** Half of the training images were converted to grayscale, because the app converts frames to grayscale before tracking by default.
 

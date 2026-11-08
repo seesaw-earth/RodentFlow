@@ -1,6 +1,6 @@
 ---
 title: "Speed and accuracy"
-description: "How fast RodentFlow 2.1 tracks on iPhone, iPad and Mac, how accurate its four pose models are on held-out test images, and how well it keeps two mice apart."
+description: "How fast RodentFlow tracks on iPhone, iPad and Mac, how accurate its four pose models are on held-out test images, and how well it keeps two mice apart."
 ---
 
 # Speed and accuracy

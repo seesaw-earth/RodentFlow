@@ -5,7 +5,7 @@ search: false
 # RodentFlow Mac 版
 
 ::: warning 旧版本
-本页介绍的是 **iPhone 版 RodentFlow 1.x** 和 **Mac 版 RodentFlow 0.7**（原 RodentStudio），保留作参考。RodentFlow 2.1 请看[Mac 上的 RodentFlow](/zh/mac/)。
+本页介绍的是 **iPhone 版 RodentFlow 1.x** 和 **Mac 版 RodentFlow 0.7**（原 RodentStudio），保留作参考。当前版本请看[Mac 上的 RodentFlow](/zh/mac/)。
 :::
 
 

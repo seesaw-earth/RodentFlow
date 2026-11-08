@@ -1,6 +1,6 @@
 ---
 title: "常见问题"
-description: "关于 RodentFlow 2.1 的常见问题：追踪、双鼠、设备、数据、组间比较与统计。"
+description: "关于 RodentFlow 的常见问题：追踪、双鼠、设备、数据、组间比较与统计。"
 ---
 
 # 常见问题

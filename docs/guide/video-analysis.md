@@ -1,6 +1,6 @@
 ---
 title: "Analysing a video"
-description: "The RodentFlow 2.1 analysis flow on iPhone, iPad and Mac: task and coat colour, animal information, calibration, tracking, review, identity checks, manual scoring, and the classic centroid method."
+description: "The RodentFlow analysis flow on iPhone, iPad and Mac: task and coat colour, animal information, calibration, tracking, review, identity checks, manual scoring, and the classic centroid method."
 ---
 
 # Analysing a video

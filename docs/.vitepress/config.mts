@@ -18,15 +18,6 @@ function sidebarEn(): DefaultTheme.SidebarItem[] {
       ]
     },
     {
-      text: 'Using RodentFlow',
-      items: [
-        { text: 'Analysing a video', link: '/guide/video-analysis' },
-        { text: 'Results and exports', link: '/guide/results' },
-        { text: 'Comparing groups', link: '/guide/groups' },
-        { text: 'Manual entry & importing tables', link: '/guide/manual-and-import' }
-      ]
-    },
-    {
       text: 'Tasks',
       items: [
           {
@@ -180,6 +171,15 @@ function sidebarEn(): DefaultTheme.SidebarItem[] {
         ]
     },
     {
+      text: 'Using RodentFlow',
+      items: [
+        { text: 'Analysing a video', link: '/guide/video-analysis' },
+        { text: 'Results and exports', link: '/guide/results' },
+        { text: 'Comparing groups', link: '/guide/groups' },
+        { text: 'Manual entry & importing tables', link: '/guide/manual-and-import' }
+      ]
+    },
+    {
       text: 'Mac',
       items: [
         { text: 'RodentFlow on the Mac', link: '/mac/' },
@@ -254,15 +254,6 @@ function sidebarZh(): DefaultTheme.SidebarItem[] {
         { text: 'iPhone、iPad 与 Mac', link: '/zh/guide/editions' },
         { text: '快速上手', link: '/zh/guide/getting-started' },
         { text: '怎样拍出好追踪的视频', link: '/zh/guide/recording' }
-      ]
-    },
-    {
-      text: '使用 RodentFlow',
-      items: [
-        { text: '分析一段视频', link: '/zh/guide/video-analysis' },
-        { text: '结果与导出', link: '/zh/guide/results' },
-        { text: '组间比较', link: '/zh/guide/groups' },
-        { text: '手动录入与导入表格', link: '/zh/guide/manual-and-import' }
       ]
     },
     {
@@ -419,6 +410,15 @@ function sidebarZh(): DefaultTheme.SidebarItem[] {
         ]
     },
     {
+      text: '使用 RodentFlow',
+      items: [
+        { text: '分析一段视频', link: '/zh/guide/video-analysis' },
+        { text: '结果与导出', link: '/zh/guide/results' },
+        { text: '组间比较', link: '/zh/guide/groups' },
+        { text: '手动录入与导入表格', link: '/zh/guide/manual-and-import' }
+      ]
+    },
+    {
       text: 'Mac',
       items: [
         { text: 'Mac 上的 RodentFlow', link: '/zh/mac/' },
@@ -488,7 +488,7 @@ function sidebarZh(): DefaultTheme.SidebarItem[] {
 function sidebarArchive(zh: boolean): DefaultTheme.SidebarItem[] {
   const p = zh ? '/zh/archive' : '/archive'
   return [
-    { text: zh ? '← RodentFlow 2.1 手册' : '← RodentFlow 2.1 manual', link: zh ? '/zh/guide/introduction' : '/guide/introduction' },
+    { text: zh ? '← 当前手册' : '← Current manual', link: zh ? '/zh/guide/introduction' : '/guide/introduction' },
     { text: zh ? '旧版本' : 'Older versions', link: `${p}/` }
   ]
 }
@@ -496,7 +496,7 @@ function sidebarArchive(zh: boolean): DefaultTheme.SidebarItem[] {
 export default defineConfig({
   base,
   title: 'RodentFlow',
-  description: 'Mouse behaviour tracking and analysis on iPhone, iPad and Mac — RodentFlow 2.1 manual',
+  description: 'RodentFlow: video in, data out. Mouse behaviour tracking and analysis on iPhone, iPad and Mac.',
   lastUpdated: false,
   cleanUrls: false,
   head: [
@@ -554,9 +554,10 @@ export default defineConfig({
       label: 'English',
       lang: 'en-US',
       title: 'RodentFlow',
-      description: 'Mouse behaviour tracking and analysis on iPhone, iPad and Mac — RodentFlow 2.1 manual',
+      description: 'RodentFlow: video in, data out. Mouse behaviour tracking and analysis on iPhone, iPad and Mac.',
       themeConfig: {
         nav: [
+          { text: 'Tasks', link: '/tasks/', activeMatch: '^/tasks/' },
           {
             text: 'Manual',
             activeMatch: '^/(guide|mac|principles|reference)/',
@@ -570,7 +571,6 @@ export default defineConfig({
               { text: 'Reference', link: '/reference/files' }
             ]
           },
-          { text: 'Tasks', link: '/tasks/', activeMatch: '^/tasks/' },
           { text: 'Models & tutorials', link: '/models', activeMatch: '^/(models|tutorials/)' },
           { text: 'Blog', link: '/blog/', activeMatch: '^/blog/' },
           { text: 'Source code', link: '/source' },
@@ -598,6 +598,7 @@ export default defineConfig({
       themeConfig: {
         logoLink: { link: `${base}zh/`, target: '_self' },
         nav: [
+          { text: '实验范式', link: '/zh/tasks/', activeMatch: '^/zh/tasks/' },
           {
             text: '手册',
             activeMatch: '^/zh/(guide|mac|principles|reference)/',
@@ -611,7 +612,6 @@ export default defineConfig({
               { text: '参考', link: '/zh/reference/files' }
             ]
           },
-          { text: '实验范式', link: '/zh/tasks/', activeMatch: '^/zh/tasks/' },
           { text: '模型与教程', link: '/zh/models', activeMatch: '^/zh/(models|tutorials/)' },
           { text: '博客', link: '/zh/blog/', activeMatch: '^/zh/blog/' },
           { text: '源代码', link: '/zh/source' },

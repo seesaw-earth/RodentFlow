@@ -1,6 +1,6 @@
 ---
 title: "FAQ"
-description: "Answers to common questions about RodentFlow 2.1: tracking, two mice, devices, data, groups and statistics."
+description: "Answers to common questions about RodentFlow: tracking, two mice, devices, data, groups and statistics."
 ---
 
 # FAQ

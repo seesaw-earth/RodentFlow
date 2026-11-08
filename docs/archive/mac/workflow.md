@@ -5,7 +5,7 @@ search: false
 # Mac: the full workflow
 
 ::: warning Older version
-This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For RodentFlow 2.1, see [The Mac workflow](/mac/workflow.md).
+This page describes **RodentFlow 1.x for iPhone** and **RodentFlow for Mac 0.7** (formerly RodentStudio). It is kept for reference. For the current version, see [The Mac workflow](/mac/workflow.md).
 :::
 
 

@@ -1,6 +1,6 @@
 ---
 title: "Statistics"
-description: "Which statistical test RodentFlow 2.1 uses for each design, why, and how to read the result: Welch, Mann–Whitney, ANOVA with Tukey–Kramer, Kruskal–Wallis with Dunn, mixed ANOVA, two-way ANOVA, ANCOVA, survival analysis and effect sizes."
+description: "Which statistical test RodentFlow uses for each design, why, and how to read the result: Welch, Mann–Whitney, ANOVA with Tukey–Kramer, Kruskal–Wallis with Dunn, mixed ANOVA, two-way ANOVA, ANCOVA, survival analysis and effect sizes."
 ---
 
 # Statistics

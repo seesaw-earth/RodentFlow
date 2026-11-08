@@ -1,6 +1,6 @@
 ---
 title: "From tracks to measures"
-description: "The common rules RodentFlow 2.1 uses to turn clean keypoint tracks into measures: analysis window, zones and entry rules, investigation, head dips, freezing, turns, latencies with a cut-off, and two-animal contacts."
+description: "The common rules RodentFlow uses to turn clean keypoint tracks into measures: analysis window, zones and entry rules, investigation, head dips, freezing, turns, latencies with a cut-off, and two-animal contacts."
 ---
 
 # From tracks to measures

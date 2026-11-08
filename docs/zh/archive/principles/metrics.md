@@ -5,7 +5,7 @@ search: false
 # 从位置到指标
 
 ::: warning 旧版本
-本页介绍的是 **iPhone 版 RodentFlow 1.x** 和 **Mac 版 RodentFlow 0.7**（原 RodentStudio），保留作参考。RodentFlow 2.1 请看[从轨迹到指标](/zh/principles/metrics.md)。
+本页介绍的是 **iPhone 版 RodentFlow 1.x** 和 **Mac 版 RodentFlow 0.7**（原 RodentStudio），保留作参考。当前版本请看[从轨迹到指标](/zh/principles/metrics.md)。
 :::
 
 
