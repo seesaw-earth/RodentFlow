@@ -6,6 +6,10 @@ CylinderMousePoseV2 在圆筒实验中追踪小鼠的四爪、鼻、嘴和尾根
 
 <Badge type="info" text="YOLO26s-pose" /><Badge type="info" text="7 个关键点" /><Badge type="info" text="640 px" /><Badge type="tip" text="Core ML · FP32" />
 
+::: info 现在属于 RodentLimb
+RodentFlow 2.0 去掉了肢体流程和这个模型。它们在 **RodentLimb** 中继续提供，同一个网络以半精度权重发布为 CylinderPose7；见 [RodentLimb 的模型页面](https://seesaw-earth.github.io/RodentLimb/zh/models/)。本页保留，作为这个模型如何制作的记录。
+:::
+
 ## 模型卡 {#card}
 
 <table class="rf-kv"> <tr><th>发布文件</th><td><code>CylinderMousePoseV2.mlpackage</code>（37.67 MiB）；元数据版本 2.0</td></tr> <tr><th>关键点（输出顺序）</th><td><code>L_fore_paw</code>、<code>L_hind_paw</code>、<code>R_fore_paw</code>、<code>R_hind_paw</code>、<code>tail_base</code>、<code>nose</code>、<code>mouth</code>，与实验室 DeepLabCut 的 <code>config.yaml</code> 顺序一致；<code>flip_idx</code> = <code>[2, 3, 0, 1, 4, 5, 6]</code></td></tr> <tr><th>初始权重</th><td>Ultralytics <code>yolo26s-pose.pt</code>（COCO 预训练）；9,783,360 个参数</td></tr> <tr><th>输入 / 输出</th><td>640 × 640 RGB → 原始输出头张量 (1, 26, 8400)；模型内不含 NMS</td></tr> <tr><th>训练数据</th><td>实验室的圆筒实验录像：543 帧人工标注（使用两次）+ 来自 506 段录像的 20,000 帧清洗后 DeepLabCut 伪标签</td></tr> <tr><th>教师模型</th><td>DeepLabCut ResNet-50 模型 <code>DLC_resnet50_cylinder_DLCJan2shuffle1_44000</code></td></tr> <tr><th>软件</th><td>Ultralytics 8.4.177、PyTorch 2.11.0、coremltools 9.0；运行编号 <code>20261014_1156_dlc_distill</code></td></tr> <tr><th>精度</th><td>FP32（导出时未量化）</td></tr> <tr><th>模型包里记录的测试误差</th><td><code>test_err_body_length</code>：“0.035 (v1-style manual-only baseline 0.050)”</td></tr> </table>

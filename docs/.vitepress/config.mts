@@ -70,6 +70,8 @@ function sidebarEn(): DefaultTheme.Sidebar {
         { text: '2 · CylinderMousePoseV2', link: '/tutorials/cylinder-v2' },
         { text: '3 · TST mouse detector', link: '/tutorials/tst-detector' },
         { text: '4 · Core ML in the app', link: '/tutorials/app-integration' },
+        { text: '5 · WhiteMousePose6', link: '/tutorials/white-mouse' },
+        { text: '6 · MousePose6-DyadBW', link: '/tutorials/dyad-bw' },
         { text: 'How to cite', link: '/tutorials/citations' }
       ]
     },
@@ -169,6 +171,8 @@ function sidebarZh(): DefaultTheme.Sidebar {
         { text: '2 · CylinderMousePoseV2', link: '/zh/tutorials/cylinder-v2' },
         { text: '3 · 悬尾实验小鼠检测器', link: '/zh/tutorials/tst-detector' },
         { text: '4 · App 里的 Core ML', link: '/zh/tutorials/app-integration' },
+        { text: '5 · WhiteMousePose6 白鼠', link: '/zh/tutorials/white-mouse' },
+        { text: '6 · MousePose6-DyadBW 一黑一白', link: '/zh/tutorials/dyad-bw' },
         { text: '如何引用', link: '/zh/tutorials/citations' }
       ]
     },
