@@ -296,6 +296,8 @@ p{margin:0}
 .light h2{font-weight:700;font-variation-settings:"wdth" 82;font-size:clamp(2.3rem,5vw,3.9rem);line-height:.98;letter-spacing:-.02em}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--c);flex:none;display:inline-block}
 .dot.ab{background:linear-gradient(90deg,var(--m-a) 0 50%,var(--m-b) 50% 100%)}
+.dot.grp{background:conic-gradient(#1E88E5 0 25%,#E53935 0 50%,#009E73 0 75%,#E69F00 0)}
+.card .bar.grp i{background:linear-gradient(90deg,#1E88E5,#E53935,#009E73,#E69F00)}
 
 /* ---------- Lightbox ---------- */
 dialog.lightbox{border:0;padding:0;background:transparent;color:var(--on-night);width:fit-content;max-width:min(1280px, 100vw - 32px);max-height:calc(100dvh - 32px);overflow:visible}
@@ -586,7 +588,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
   <h2 class="sr" id="watch-h">实际演示</h2>
   <div class="wrap show-grid">
     <div class="show-cap">
-      <p class="eyebrow"><span>实际演示</span><span class="count"><b id="sc-n">01</b> / <span id="sc-total">08</span></span></p>
+      <p class="eyebrow"><span>实际演示</span><span class="count"><b id="sc-n">01</b> / <span id="sc-total">11</span></span></p>
       <div class="caps" id="sc-caps" aria-live="off"></div>
     </div>
 
@@ -924,7 +926,8 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
                videos/<file>.jpg        its first frame
                videos/<file>-thumb.jpg  the thumbnail in the strip
    device    "phone" for an iPhone recording (portrait), "mac" for a Mac recording (landscape)
-   tracker   "centroid", "pose" (one animal), "dyad" (two animals) or "tst" (tail suspension);
+   tracker   "centroid", "pose" (one animal), "dyad" (two animals), "group" (three or more)
+             or "tst" (tail suspension);
              sets the color, the label and the "In the video" key
    title, text, measures   what the caption beside the video says
    thumbPos  optional: which part of the frame the thumbnail shows,
@@ -935,6 +938,21 @@ const CLIPS = [
     title: "两只小鼠，两个身份",
     text: "两只动物同时追踪，A 为蓝色，B 为红色。身份根据整段录像确定，而不是逐帧判断，所以两只小鼠交叉之后 A 仍然是 A。",
     measures: ["每只动物的接触", "A 和 B 的移动距离", "需要复核的时刻"] },
+
+  { file: "resident-intruder", device: "phone", tracker: "dyad", thumbPos: "50% 37%",
+    title: "居住者–入侵者（攻击）",
+    text: "一白一黑两只小鼠，分别记为 A 和 B。攻击、追逐、压制、威胁姿态、骑跨和嗅探按关键点的运动规则判定；A、B 可能互换的时刻会标出来，方便核对。",
+    measures: ["攻击潜伏期", "攻击次数与时长", "追逐与压制", "威胁姿态", "骑跨", "嗅探"] },
+
+  { file: "group-cage", device: "phone", tracker: "group",
+    title: "四只一组",
+    text: "每只小鼠有自己的编号和颜色。接触、聚集、接近–回避事件和追逐按整组统计。小鼠挤成一团时编号可能互换，这些时刻会标为身份风险。",
+    measures: ["接触", "全部聚在一起的时间", "最大聚集团", "最近邻距离", "接近–回避事件", "等级（预览）"] },
+
+  { file: "group-arena", device: "phone", tracker: "group",
+    title: "四只小鼠，每只六个关键点",
+    text: "群体模型可同时追踪 3–10 只深色小鼠，这里是较大场地中的四只。每只都有六个关键点，三角形指出它朝向哪里。",
+    measures: ["最近邻距离", "成对接触", "接近–回避事件", "追逐"] },
 
   { file: "open-field", device: "phone", tracker: "centroid",
     title: "旷场",
@@ -995,6 +1013,8 @@ const TRACKERS = {
               key: [[["#FF383C"], "鼻尖"], [["#FF8D28"], "左耳"], [["#FFCC00"], "右耳"], [["#34C759"], "颈部"], [["#00C0E8"], "身体中心"], [["#CB30E0"], "尾根"]] },
   dyad:     { label: "两只动物", color: "var(--m-a)", ab: true,
               key: [[["#1E88E5"], "小鼠 A"], [["#E53935"], "小鼠 B"]] },
+  group:    { label: "群体", color: "var(--m-a)", cls: "grp",
+              key: [[["#1E88E5", "#E53935", "#009E73", "#E69F00"], "小鼠 1–4，每只一种颜色"]] },
   tst:      { label: "悬尾实验", color: "var(--m-tst)", key: [] }
 };
 const DEVICE = {
@@ -1038,7 +1058,7 @@ CLIPS.forEach((c, i) => {
       '<span class="thumb"><img alt="" draggable="false" loading="lazy" decoding="async" src="' + esc(fileOf(c, "-thumb.jpg")) + '"' +
         (c.thumbPos ? ' style="object-position:' + esc(c.thumbPos) + '"' : "") + ">" +
         '<span class="devic" title="' + d.name + '">' + d.icon + "</span>" +
-        '<span class="bar' + (t.ab ? " ab" : "") + '"><i></i></span></span>' +
+        '<span class="bar' + (t.ab ? " ab" : t.cls ? " " + t.cls : "") + '"><i></i></span></span>' +
       '<span class="ct"><span class="num">' + pad(i + 1) + '</span><span class="nm">' + esc(c.title) + "</span></span>" +
     "</button>";
   const card = li.firstChild;
@@ -1051,7 +1071,7 @@ CLIPS.forEach((c, i) => {
   const item = document.createElement("div");
   item.className = "cap-item";
   item.innerHTML =
-    '<p class="pills"><span class="pill"><i class="dot' + (t.ab ? " ab" : "") + '" style="--c:' + t.color + '"></i>' + t.label + "</span>" +
+    '<p class="pills"><span class="pill"><i class="dot' + (t.ab ? " ab" : t.cls ? " " + t.cls : "") + '" style="--c:' + t.color + '"></i>' + t.label + "</span>" +
       '<span class="pill ghost">' + d.icon + d.name + "</span></p>" +
     "<h3>" + esc(c.title) + "</h3>" +
     '<p class="cap-text">' + esc(c.text || "") + "</p>" +
