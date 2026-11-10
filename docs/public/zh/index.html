@@ -469,17 +469,18 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
 .tk-strip-head svg{width:20px;height:20px;align-self:center;color:#22C7E8;transition:transform .2s}
 .tk-strip-head:hover svg{transform:translateX(4px)}
 .tk-strip-head:hover span{color:#fff}
-.tk-marquee{position:relative;overflow:hidden;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);
+.tk-marquee{position:relative;overflow-x:auto;scrollbar-width:none;margin-inline:calc(var(--gutter) * -1);padding-inline:var(--gutter);
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
-.tk-track{display:flex;width:max-content;animation:tk-scroll 110s linear infinite}
-.tk-marquee:hover .tk-track,.tk-marquee:focus-within .tk-track{animation-play-state:paused}
-@keyframes tk-scroll{to{transform:translateX(-50%)}}
+.tk-marquee::-webkit-scrollbar{display:none}
+.tk-marquee.js{overflow:hidden;touch-action:pan-y;cursor:grab;-webkit-user-select:none;user-select:none}
+.tk-marquee.js.is-drag{cursor:grabbing}
+.tk-marquee.is-drag .tk-chip{pointer-events:none}
+.tk-track{display:flex;width:max-content;will-change:transform}
 .tk-chip{flex:none;display:flex;flex-direction:column;width:172px;margin-right:12px;border-radius:14px;background:#fff;overflow:hidden;text-decoration:none;color:var(--ink);
   box-shadow:0 1px 0 rgba(255,255,255,.08);transition:transform .18s}
 .tk-chip:hover{transform:translateY(-4px)}
-.tk-chip img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#FCFCFB;padding:6px}
+.tk-chip img{-webkit-user-drag:none;pointer-events:none;display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#FCFCFB;padding:6px}
 .tk-chip span{font:600 .84rem/1.25 var(--display);padding:.55rem .7rem .65rem;border-top:1px solid #E7ECF2;min-height:2.9em}
-@media (prefers-reduced-motion:reduce){.tk-marquee{overflow-x:auto}}
 
 .anchor-alias{position:absolute;margin-top:-88px}
 .tasks-sec{position:relative}
@@ -637,8 +638,8 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
   <div class="wrap">
     <!-- TASK-STRIP:START -->
 <div class="tk-strip">
-  <a class="tk-strip-head" href="#tasks"><b>28 个范式</b><span>点一个，看它到底怎样评分</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  <div class="tk-marquee"><div class="tk-track"><a class="tk-chip" href="tasks/open-field.html"><img src="../img/tasks/thumbs/open-field.zh.png" alt="" loading="lazy"><span>旷场</span></a><a class="tk-chip" href="tasks/elevated-plus-maze.html"><img src="../img/tasks/thumbs/elevated-plus-maze.zh.png" alt="" loading="lazy"><span>高架十字迷宫</span></a><a class="tk-chip" href="tasks/three-chamber.html"><img src="../img/tasks/thumbs/three-chamber.zh.png" alt="" loading="lazy"><span>三箱社交</span></a><a class="tk-chip" href="tasks/novel-object-recognition.html"><img src="../img/tasks/thumbs/novel-object-recognition.zh.png" alt="" loading="lazy"><span>新物体识别</span></a><a class="tk-chip" href="tasks/water-maze.html"><img src="../img/tasks/thumbs/water-maze.zh.png" alt="" loading="lazy"><span>Morris 水迷宫</span></a><a class="tk-chip" href="tasks/dyadic-social.html"><img src="../img/tasks/thumbs/dyadic-social.zh.png" alt="" loading="lazy"><span>双鼠社交互动</span></a><a class="tk-chip" href="tasks/y-maze.html"><img src="../img/tasks/thumbs/y-maze.zh.png" alt="" loading="lazy"><span>Y 迷宫自发交替</span></a><a class="tk-chip" href="tasks/fear-conditioning.html"><img src="../img/tasks/thumbs/fear-conditioning.zh.png" alt="" loading="lazy"><span>恐惧条件化</span></a><a class="tk-chip" href="tasks/barnes-maze.html"><img src="../img/tasks/thumbs/barnes-maze.zh.png" alt="" loading="lazy"><span>Barnes 迷宫</span></a><a class="tk-chip" href="tasks/light-dark-box.html"><img src="../img/tasks/thumbs/light-dark-box.zh.png" alt="" loading="lazy"><span>明暗箱</span></a><a class="tk-chip" href="tasks/tail-suspension.html"><img src="../img/tasks/thumbs/tail-suspension.zh.png" alt="" loading="lazy"><span>多格悬尾</span></a><a class="tk-chip" href="tasks/resident-intruder.html"><img src="../img/tasks/thumbs/resident-intruder.zh.png" alt="" loading="lazy"><span>居住者–入侵者（攻击）</span></a><a class="tk-chip" href="tasks/group-behavior.html"><img src="../img/tasks/thumbs/group-behavior.zh.png" alt="" loading="lazy"><span>群体行为</span></a><a class="tk-chip" href="tasks/social-interaction.html"><img src="../img/tasks/thumbs/social-interaction.zh.png" alt="" loading="lazy"><span>社交回避测试</span></a><a class="tk-chip" href="tasks/elevated-zero-maze.html"><img src="../img/tasks/thumbs/elevated-zero-maze.zh.png" alt="" loading="lazy"><span>高架零迷宫</span></a><a class="tk-chip" href="tasks/t-maze.html"><img src="../img/tasks/thumbs/t-maze.zh.png" alt="" loading="lazy"><span>T 迷宫 · VTE</span></a><a class="tk-chip" href="tasks/place-preference.html"><img src="../img/tasks/thumbs/place-preference.zh.png" alt="" loading="lazy"><span>位置偏好（RTPP / CPP）</span></a><a class="tk-chip" href="tasks/passive-avoidance.html"><img src="../img/tasks/thumbs/passive-avoidance.zh.png" alt="" loading="lazy"><span>被动回避（穿梭箱）</span></a><a class="tk-chip" href="tasks/step-down.html"><img src="../img/tasks/thumbs/step-down.zh.png" alt="" loading="lazy"><span>Step-down 抑制性回避</span></a><a class="tk-chip" href="tasks/looming-escape.html"><img src="../img/tasks/thumbs/looming-escape.zh.png" alt="" loading="lazy"><span>Looming 逃跑</span></a><a class="tk-chip" href="tasks/platform-avoidance.html"><img src="../img/tasks/thumbs/platform-avoidance.zh.png" alt="" loading="lazy"><span>平台介导回避</span></a><a class="tk-chip" href="tasks/novelty-suppressed-feeding.html"><img src="../img/tasks/thumbs/novelty-suppressed-feeding.zh.png" alt="" loading="lazy"><span>新奇抑制摄食</span></a><a class="tk-chip" href="tasks/visual-cliff.html"><img src="../img/tasks/thumbs/visual-cliff.zh.png" alt="" loading="lazy"><span>视觉悬崖</span></a><a class="tk-chip" href="tasks/marble-burying.html"><img src="../img/tasks/thumbs/marble-burying.zh.png" alt="" loading="lazy"><span>埋珠实验</span></a><a class="tk-chip" href="tasks/head-direction.html"><img src="../img/tasks/thumbs/head-direction.zh.png" alt="" loading="lazy"><span>头朝向</span></a><a class="tk-chip" href="tasks/spatial-exploration.html"><img src="../img/tasks/thumbs/spatial-exploration.zh.png" alt="" loading="lazy"><span>空间探索 · 位置细胞</span></a><a class="tk-chip" href="tasks/rotation.html"><img src="../img/tasks/thumbs/rotation.zh.png" alt="" loading="lazy"><span>旋转行为</span></a><a class="tk-chip" href="tasks/pose-only.html"><img src="../img/tasks/thumbs/pose-only.zh.png" alt="" loading="lazy"><span>仅导出姿态</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/open-field.html"><img src="../img/tasks/thumbs/open-field.zh.png" alt="" loading="lazy"><span>旷场</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/elevated-plus-maze.html"><img src="../img/tasks/thumbs/elevated-plus-maze.zh.png" alt="" loading="lazy"><span>高架十字迷宫</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/three-chamber.html"><img src="../img/tasks/thumbs/three-chamber.zh.png" alt="" loading="lazy"><span>三箱社交</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/novel-object-recognition.html"><img src="../img/tasks/thumbs/novel-object-recognition.zh.png" alt="" loading="lazy"><span>新物体识别</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/water-maze.html"><img src="../img/tasks/thumbs/water-maze.zh.png" alt="" loading="lazy"><span>Morris 水迷宫</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/dyadic-social.html"><img src="../img/tasks/thumbs/dyadic-social.zh.png" alt="" loading="lazy"><span>双鼠社交互动</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/y-maze.html"><img src="../img/tasks/thumbs/y-maze.zh.png" alt="" loading="lazy"><span>Y 迷宫自发交替</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/fear-conditioning.html"><img src="../img/tasks/thumbs/fear-conditioning.zh.png" alt="" loading="lazy"><span>恐惧条件化</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/barnes-maze.html"><img src="../img/tasks/thumbs/barnes-maze.zh.png" alt="" loading="lazy"><span>Barnes 迷宫</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/light-dark-box.html"><img src="../img/tasks/thumbs/light-dark-box.zh.png" alt="" loading="lazy"><span>明暗箱</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/tail-suspension.html"><img src="../img/tasks/thumbs/tail-suspension.zh.png" alt="" loading="lazy"><span>多格悬尾</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/resident-intruder.html"><img src="../img/tasks/thumbs/resident-intruder.zh.png" alt="" loading="lazy"><span>居住者–入侵者（攻击）</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/group-behavior.html"><img src="../img/tasks/thumbs/group-behavior.zh.png" alt="" loading="lazy"><span>群体行为</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/social-interaction.html"><img src="../img/tasks/thumbs/social-interaction.zh.png" alt="" loading="lazy"><span>社交回避测试</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/elevated-zero-maze.html"><img src="../img/tasks/thumbs/elevated-zero-maze.zh.png" alt="" loading="lazy"><span>高架零迷宫</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/t-maze.html"><img src="../img/tasks/thumbs/t-maze.zh.png" alt="" loading="lazy"><span>T 迷宫 · VTE</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/place-preference.html"><img src="../img/tasks/thumbs/place-preference.zh.png" alt="" loading="lazy"><span>位置偏好（RTPP / CPP）</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/passive-avoidance.html"><img src="../img/tasks/thumbs/passive-avoidance.zh.png" alt="" loading="lazy"><span>被动回避（穿梭箱）</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/step-down.html"><img src="../img/tasks/thumbs/step-down.zh.png" alt="" loading="lazy"><span>Step-down 抑制性回避</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/looming-escape.html"><img src="../img/tasks/thumbs/looming-escape.zh.png" alt="" loading="lazy"><span>Looming 逃跑</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/platform-avoidance.html"><img src="../img/tasks/thumbs/platform-avoidance.zh.png" alt="" loading="lazy"><span>平台介导回避</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/novelty-suppressed-feeding.html"><img src="../img/tasks/thumbs/novelty-suppressed-feeding.zh.png" alt="" loading="lazy"><span>新奇抑制摄食</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/visual-cliff.html"><img src="../img/tasks/thumbs/visual-cliff.zh.png" alt="" loading="lazy"><span>视觉悬崖</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/marble-burying.html"><img src="../img/tasks/thumbs/marble-burying.zh.png" alt="" loading="lazy"><span>埋珠实验</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/head-direction.html"><img src="../img/tasks/thumbs/head-direction.zh.png" alt="" loading="lazy"><span>头朝向</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/spatial-exploration.html"><img src="../img/tasks/thumbs/spatial-exploration.zh.png" alt="" loading="lazy"><span>空间探索 · 位置细胞</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/rotation.html"><img src="../img/tasks/thumbs/rotation.zh.png" alt="" loading="lazy"><span>旋转行为</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/pose-only.html"><img src="../img/tasks/thumbs/pose-only.zh.png" alt="" loading="lazy"><span>仅导出姿态</span></a></div></div>
+  <a class="tk-strip-head" href="#tasks"><b>28 个范式</b><span>拖动浏览，点一个看它到底怎样评分</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <div class="tk-marquee"><div class="tk-track"><a class="tk-chip" href="tasks/open-field.html"><img src="../img/tasks/thumbs/open-field.zh.png" alt="" loading="lazy" draggable="false"><span>旷场</span></a><a class="tk-chip" href="tasks/elevated-plus-maze.html"><img src="../img/tasks/thumbs/elevated-plus-maze.zh.png" alt="" loading="lazy" draggable="false"><span>高架十字迷宫</span></a><a class="tk-chip" href="tasks/three-chamber.html"><img src="../img/tasks/thumbs/three-chamber.zh.png" alt="" loading="lazy" draggable="false"><span>三箱社交</span></a><a class="tk-chip" href="tasks/novel-object-recognition.html"><img src="../img/tasks/thumbs/novel-object-recognition.zh.png" alt="" loading="lazy" draggable="false"><span>新物体识别</span></a><a class="tk-chip" href="tasks/water-maze.html"><img src="../img/tasks/thumbs/water-maze.zh.png" alt="" loading="lazy" draggable="false"><span>Morris 水迷宫</span></a><a class="tk-chip" href="tasks/dyadic-social.html"><img src="../img/tasks/thumbs/dyadic-social.zh.png" alt="" loading="lazy" draggable="false"><span>双鼠社交互动</span></a><a class="tk-chip" href="tasks/y-maze.html"><img src="../img/tasks/thumbs/y-maze.zh.png" alt="" loading="lazy" draggable="false"><span>Y 迷宫自发交替</span></a><a class="tk-chip" href="tasks/fear-conditioning.html"><img src="../img/tasks/thumbs/fear-conditioning.zh.png" alt="" loading="lazy" draggable="false"><span>恐惧条件化</span></a><a class="tk-chip" href="tasks/barnes-maze.html"><img src="../img/tasks/thumbs/barnes-maze.zh.png" alt="" loading="lazy" draggable="false"><span>Barnes 迷宫</span></a><a class="tk-chip" href="tasks/light-dark-box.html"><img src="../img/tasks/thumbs/light-dark-box.zh.png" alt="" loading="lazy" draggable="false"><span>明暗箱</span></a><a class="tk-chip" href="tasks/tail-suspension.html"><img src="../img/tasks/thumbs/tail-suspension.zh.png" alt="" loading="lazy" draggable="false"><span>多格悬尾</span></a><a class="tk-chip" href="tasks/resident-intruder.html"><img src="../img/tasks/thumbs/resident-intruder.zh.png" alt="" loading="lazy" draggable="false"><span>居住者–入侵者（攻击）</span></a><a class="tk-chip" href="tasks/group-behavior.html"><img src="../img/tasks/thumbs/group-behavior.zh.png" alt="" loading="lazy" draggable="false"><span>群体行为</span></a><a class="tk-chip" href="tasks/social-interaction.html"><img src="../img/tasks/thumbs/social-interaction.zh.png" alt="" loading="lazy" draggable="false"><span>社交回避测试</span></a><a class="tk-chip" href="tasks/elevated-zero-maze.html"><img src="../img/tasks/thumbs/elevated-zero-maze.zh.png" alt="" loading="lazy" draggable="false"><span>高架零迷宫</span></a><a class="tk-chip" href="tasks/t-maze.html"><img src="../img/tasks/thumbs/t-maze.zh.png" alt="" loading="lazy" draggable="false"><span>T 迷宫 · VTE</span></a><a class="tk-chip" href="tasks/place-preference.html"><img src="../img/tasks/thumbs/place-preference.zh.png" alt="" loading="lazy" draggable="false"><span>位置偏好（RTPP / CPP）</span></a><a class="tk-chip" href="tasks/passive-avoidance.html"><img src="../img/tasks/thumbs/passive-avoidance.zh.png" alt="" loading="lazy" draggable="false"><span>被动回避（穿梭箱）</span></a><a class="tk-chip" href="tasks/step-down.html"><img src="../img/tasks/thumbs/step-down.zh.png" alt="" loading="lazy" draggable="false"><span>Step-down 抑制性回避</span></a><a class="tk-chip" href="tasks/looming-escape.html"><img src="../img/tasks/thumbs/looming-escape.zh.png" alt="" loading="lazy" draggable="false"><span>Looming 逃跑</span></a><a class="tk-chip" href="tasks/platform-avoidance.html"><img src="../img/tasks/thumbs/platform-avoidance.zh.png" alt="" loading="lazy" draggable="false"><span>平台介导回避</span></a><a class="tk-chip" href="tasks/novelty-suppressed-feeding.html"><img src="../img/tasks/thumbs/novelty-suppressed-feeding.zh.png" alt="" loading="lazy" draggable="false"><span>新奇抑制摄食</span></a><a class="tk-chip" href="tasks/visual-cliff.html"><img src="../img/tasks/thumbs/visual-cliff.zh.png" alt="" loading="lazy" draggable="false"><span>视觉悬崖</span></a><a class="tk-chip" href="tasks/marble-burying.html"><img src="../img/tasks/thumbs/marble-burying.zh.png" alt="" loading="lazy" draggable="false"><span>埋珠实验</span></a><a class="tk-chip" href="tasks/head-direction.html"><img src="../img/tasks/thumbs/head-direction.zh.png" alt="" loading="lazy" draggable="false"><span>头朝向</span></a><a class="tk-chip" href="tasks/spatial-exploration.html"><img src="../img/tasks/thumbs/spatial-exploration.zh.png" alt="" loading="lazy" draggable="false"><span>空间探索 · 位置细胞</span></a><a class="tk-chip" href="tasks/rotation.html"><img src="../img/tasks/thumbs/rotation.zh.png" alt="" loading="lazy" draggable="false"><span>旋转行为</span></a><a class="tk-chip" href="tasks/pose-only.html"><img src="../img/tasks/thumbs/pose-only.zh.png" alt="" loading="lazy" draggable="false"><span>仅导出姿态</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/open-field.html"><img src="../img/tasks/thumbs/open-field.zh.png" alt="" loading="lazy" draggable="false"><span>旷场</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/elevated-plus-maze.html"><img src="../img/tasks/thumbs/elevated-plus-maze.zh.png" alt="" loading="lazy" draggable="false"><span>高架十字迷宫</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/three-chamber.html"><img src="../img/tasks/thumbs/three-chamber.zh.png" alt="" loading="lazy" draggable="false"><span>三箱社交</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/novel-object-recognition.html"><img src="../img/tasks/thumbs/novel-object-recognition.zh.png" alt="" loading="lazy" draggable="false"><span>新物体识别</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/water-maze.html"><img src="../img/tasks/thumbs/water-maze.zh.png" alt="" loading="lazy" draggable="false"><span>Morris 水迷宫</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/dyadic-social.html"><img src="../img/tasks/thumbs/dyadic-social.zh.png" alt="" loading="lazy" draggable="false"><span>双鼠社交互动</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/y-maze.html"><img src="../img/tasks/thumbs/y-maze.zh.png" alt="" loading="lazy" draggable="false"><span>Y 迷宫自发交替</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/fear-conditioning.html"><img src="../img/tasks/thumbs/fear-conditioning.zh.png" alt="" loading="lazy" draggable="false"><span>恐惧条件化</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/barnes-maze.html"><img src="../img/tasks/thumbs/barnes-maze.zh.png" alt="" loading="lazy" draggable="false"><span>Barnes 迷宫</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/light-dark-box.html"><img src="../img/tasks/thumbs/light-dark-box.zh.png" alt="" loading="lazy" draggable="false"><span>明暗箱</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/tail-suspension.html"><img src="../img/tasks/thumbs/tail-suspension.zh.png" alt="" loading="lazy" draggable="false"><span>多格悬尾</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/resident-intruder.html"><img src="../img/tasks/thumbs/resident-intruder.zh.png" alt="" loading="lazy" draggable="false"><span>居住者–入侵者（攻击）</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/group-behavior.html"><img src="../img/tasks/thumbs/group-behavior.zh.png" alt="" loading="lazy" draggable="false"><span>群体行为</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/social-interaction.html"><img src="../img/tasks/thumbs/social-interaction.zh.png" alt="" loading="lazy" draggable="false"><span>社交回避测试</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/elevated-zero-maze.html"><img src="../img/tasks/thumbs/elevated-zero-maze.zh.png" alt="" loading="lazy" draggable="false"><span>高架零迷宫</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/t-maze.html"><img src="../img/tasks/thumbs/t-maze.zh.png" alt="" loading="lazy" draggable="false"><span>T 迷宫 · VTE</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/place-preference.html"><img src="../img/tasks/thumbs/place-preference.zh.png" alt="" loading="lazy" draggable="false"><span>位置偏好（RTPP / CPP）</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/passive-avoidance.html"><img src="../img/tasks/thumbs/passive-avoidance.zh.png" alt="" loading="lazy" draggable="false"><span>被动回避（穿梭箱）</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/step-down.html"><img src="../img/tasks/thumbs/step-down.zh.png" alt="" loading="lazy" draggable="false"><span>Step-down 抑制性回避</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/looming-escape.html"><img src="../img/tasks/thumbs/looming-escape.zh.png" alt="" loading="lazy" draggable="false"><span>Looming 逃跑</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/platform-avoidance.html"><img src="../img/tasks/thumbs/platform-avoidance.zh.png" alt="" loading="lazy" draggable="false"><span>平台介导回避</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/novelty-suppressed-feeding.html"><img src="../img/tasks/thumbs/novelty-suppressed-feeding.zh.png" alt="" loading="lazy" draggable="false"><span>新奇抑制摄食</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/visual-cliff.html"><img src="../img/tasks/thumbs/visual-cliff.zh.png" alt="" loading="lazy" draggable="false"><span>视觉悬崖</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/marble-burying.html"><img src="../img/tasks/thumbs/marble-burying.zh.png" alt="" loading="lazy" draggable="false"><span>埋珠实验</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/head-direction.html"><img src="../img/tasks/thumbs/head-direction.zh.png" alt="" loading="lazy" draggable="false"><span>头朝向</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/spatial-exploration.html"><img src="../img/tasks/thumbs/spatial-exploration.zh.png" alt="" loading="lazy" draggable="false"><span>空间探索 · 位置细胞</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/rotation.html"><img src="../img/tasks/thumbs/rotation.zh.png" alt="" loading="lazy" draggable="false"><span>旋转行为</span></a><a class="tk-chip" tabindex="-1" aria-hidden="true" href="tasks/pose-only.html"><img src="../img/tasks/thumbs/pose-only.zh.png" alt="" loading="lazy" draggable="false"><span>仅导出姿态</span></a></div></div>
 </div>
 <!-- TASK-STRIP:END -->
   </div>
@@ -1763,6 +1764,110 @@ copyBtn.addEventListener("click", async () => {
   more.addEventListener("click", () => { expanded = true; apply(); });
   small.addEventListener("change", apply);
   apply();
+})();
+</script>
+<script>
+/* Task row under the video: moves slowly on its own; drag it with the mouse, swipe it on a phone,
+   or scroll it sideways on a trackpad. It stops while the pointer is over it and for a moment
+   after you let go, then carries on. The cards are in the row twice, so it can loop without a jump. */
+(() => {
+  const box = document.querySelector(".tk-marquee"), track = box && box.querySelector(".tk-track");
+  if (!box || !track) return;
+  box.classList.add("js");
+  const SPEED = 45;                                     // px per second
+  const IDLE = 1800;                                    // ms of rest after you let go
+  const still = matchMedia("(prefers-reduced-motion: reduce)");
+  let half = 0, x = 0, last = 0, raf = 0, onScreen = true, hover = false, focus = false;
+  let restUntil = 0, fling = 0, drag = null, suppress = false;
+
+  const wrap = v => (half ? ((v % half) + half) % half : 0);
+  const paint = () => { track.style.transform = "translate3d(" + (-x).toFixed(2) + "px,0,0)"; };
+  const measure = () => { const h = track.scrollWidth / 2; if (h && h !== half) { half = h; x = wrap(x); paint(); } };
+  const rest = () => { restUntil = performance.now() + IDLE; };
+  const moving = () => !drag && !hover && !focus && performance.now() >= restUntil && !still.matches;
+
+  function frame(t) {
+    raf = 0;
+    const dt = last ? Math.min(0.05, (t - last) / 1000) : 0;
+    last = t;
+    if (Math.abs(fling) > 8) {                          // a short glide after a quick flick
+      x = wrap(x + fling * dt); fling *= Math.pow(0.04, dt); paint(); rest();
+    } else if (moving()) {
+      fling = 0; x = wrap(x + SPEED * dt); paint();
+    }
+    if (onScreen && !document.hidden) raf = requestAnimationFrame(frame);
+    else last = 0;
+  }
+  const run = () => { if (!raf && onScreen && !document.hidden) { last = 0; raf = requestAnimationFrame(frame); } };
+
+  /* Drag: mouse, pen or finger. Vertical swipes still scroll the page (touch-action: pan-y). */
+  box.addEventListener("pointerdown", e => {
+    if (e.button !== 0) return;
+    drag = { id: e.pointerId, x0: e.clientX, off: x, moved: false, pts: [[e.clientX, e.timeStamp]] };
+    fling = 0;
+  });
+  box.addEventListener("pointermove", e => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const dx = e.clientX - drag.x0;
+    if (!drag.moved && Math.abs(dx) > 5) {
+      drag.moved = true;
+      box.classList.add("is-drag");
+      try { box.setPointerCapture(e.pointerId); } catch (_) {}
+    }
+    if (drag.moved) {
+      x = wrap(drag.off - dx); paint();
+      drag.pts.push([e.clientX, e.timeStamp]);
+      if (drag.pts.length > 6) drag.pts.shift();
+    }
+  });
+  function release(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    if (drag.moved) {
+      suppress = true;                                   // the click that follows a drag does not open a card
+      setTimeout(() => { suppress = false; }, 0);
+      const p = drag.pts, a = p[0], b = p[p.length - 1], ms = b[1] - a[1];
+      if (ms > 0 && ms < 160 && e.type === "pointerup") fling = -((b[0] - a[0]) / ms) * 1000 * 0.9;
+    }
+    box.classList.remove("is-drag");
+    drag = null; rest(); run();
+  }
+  box.addEventListener("pointerup", release);
+  box.addEventListener("pointercancel", release);
+  box.addEventListener("click", e => { if (suppress) { e.preventDefault(); e.stopPropagation(); suppress = false; } }, true);
+  box.addEventListener("dragstart", e => e.preventDefault());
+
+  /* Sideways scrolling on a trackpad, or Shift + mouse wheel. Plain vertical scrolling is left to the page. */
+  box.addEventListener("wheel", e => {
+    const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : (e.shiftKey ? e.deltaY : 0);
+    if (!d) return;
+    e.preventDefault();
+    fling = 0; x = wrap(x + d); paint(); rest(); run();
+  }, { passive: false });
+
+  /* Stop under the mouse; bring a card into view when it gets keyboard focus. */
+  box.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") hover = true; });
+  box.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") { hover = false; rest(); run(); } });
+  box.addEventListener("focusin", e => {
+    focus = true;
+    if (box.scrollLeft) { x = wrap(x + box.scrollLeft); box.scrollLeft = 0; paint(); }   // the browser may have scrolled already
+    const a = e.target.closest(".tk-chip");
+    if (!a) return;
+    const pad = parseFloat(getComputedStyle(box).paddingLeft) || 0;
+    const left = a.offsetLeft - x, right = left + a.offsetWidth;
+    if (left < pad || right > box.clientWidth - pad) { x = wrap(a.offsetLeft - pad); paint(); }
+  });
+  /* The browser may scroll the row itself (focus, find in page): fold that into the offset. */
+  box.addEventListener("scroll", () => {
+    if (!box.scrollLeft) return;
+    x = wrap(x + box.scrollLeft); box.scrollLeft = 0; paint();
+  });
+  box.addEventListener("focusout", () => { focus = false; rest(); run(); });
+
+  new IntersectionObserver(es => { onScreen = es[0].isIntersecting; run(); }).observe(box);
+  document.addEventListener("visibilitychange", run);
+  new ResizeObserver(measure).observe(track);
+  still.addEventListener("change", run);
+  measure(); paint(); run();
 })();
 </script>
 </body>
