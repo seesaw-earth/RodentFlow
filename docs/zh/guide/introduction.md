@@ -7,7 +7,7 @@ description: "RodentFlow 在 iPhone、iPad 和 Mac 上把实验小鼠的视频�
 
 RodentFlow 在 iPhone、iPad 或 Mac 上把**实验小鼠的视频变成行为指标**。选好测试，在一帧画面上标出场地，App 就会追踪动物、给这次实验评分，再做组间统计并生成可直接用于论文的图。不需要账号，也不上传：视频和结果都留在你的设备上。
 
-<a class="rf-promo rf-promo-wide" href="../tasks/"><span class="rf-promo-thumbs"><img src="/img/tasks/thumbs/elevated-plus-maze.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/three-chamber.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/water-maze.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/dyadic-social.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/y-maze.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/fear-conditioning.zh.png" alt="" loading="lazy"></span><strong>27 个实验范式，逐一讲透 →</strong><span>实验设计、为什么用关键点、每个指标背后的规则、模拟示例和相关文献。</span></a>
+<a class="rf-promo rf-promo-wide" href="../tasks/"><span class="rf-promo-thumbs"><img src="/img/tasks/thumbs/elevated-plus-maze.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/three-chamber.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/water-maze.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/dyadic-social.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/y-maze.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/fear-conditioning.zh.png" alt="" loading="lazy"></span><strong>28 个实验范式，逐一讲透 →</strong><span>实验设计、为什么用关键点、每个指标背后的规则、模拟示例和相关文献。</span></a>
 
 ## 一个 App，四种测量方式 {#methods}
 

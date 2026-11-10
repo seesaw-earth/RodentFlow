@@ -53,4 +53,4 @@ description: "RodentFlow 的双鼠社交互动：两只自由活动小鼠 · 鼻
 
 ## 同类范式 {#related}
 
-[三箱社交](./three-chamber.md) · [社交回避测试](./social-interaction.md) · [居住者–入侵者（攻击）](./resident-intruder.md)
+[三箱社交](./three-chamber.md) · [社交回避测试](./social-interaction.md) · [居住者–入侵者（攻击）](./resident-intruder.md) · [群体行为](./group-behavior.md)

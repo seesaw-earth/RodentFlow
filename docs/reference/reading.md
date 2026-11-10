@@ -30,6 +30,13 @@ The papers each task is built on, grouped as in the [Tasks](../tasks/) page. Eve
 - Segalin C et al. (2021) The Mouse Action Recognition System (MARS) software pipeline for automated analysis of social behaviors in mice. eLife 10:e63720. [doi:10.7554/eLife.63720](https://doi.org/10.7554/eLife.63720)
 - Hong W et al. (2015) Automated measurement of mouse social behaviors using depth sensing, video tracking, and machine learning. PNAS 112:E5351–E5360. [doi:10.1073/pnas.1515982112](https://doi.org/10.1073/pnas.1515982112)
 
+### [Group behaviour](../tasks/group-behavior.md)
+
+- de Chaumont F et al. (2019) Real-time analysis of the behaviour of groups of mice via a depth-sensing camera and machine learning. Nat Biomed Eng 3:930–942. [doi:10.1038/s41551-019-0396-1](https://doi.org/10.1038/s41551-019-0396-1)
+- Reinwald JR et al. Individual differences drive social hierarchies in male mouse societies. eLife 109354. [doi:10.7554/eLife.109354](https://doi.org/10.7554/eLife.109354)
+- Gammell MP et al. (2003) David’s score: a more appropriate dominance ranking method than Clutton-Brock et al.’s index. Anim Behav 66:601–605. [doi:10.1006/anbe.2003.2226](https://doi.org/10.1006/anbe.2003.2226)
+- Sánchez-Tójar A, Schroeder J, Farine DR (2018) A practical guide for inferring reliable dominance hierarchies and estimating their uncertainty. J Anim Ecol 87:594–608. [doi:10.1111/1365-2656.12776](https://doi.org/10.1111/1365-2656.12776)
+
 ## Navigation & neural recording {#navigation}
 
 ### [Head direction](../tasks/head-direction.md)

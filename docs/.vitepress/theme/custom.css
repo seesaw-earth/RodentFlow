@@ -350,6 +350,9 @@
 .vp-doc .rf-dot.rf-ab {
   background: linear-gradient(90deg, #1e88e5 0 50%, #e53935 50% 100%);
 }
+.vp-doc .rf-dot.rf-grp {
+  background: conic-gradient(#1E88E5 0 25%, #E53935 0 50%, #009E73 0 75%, #E69F00 0);
+}
 
 .vp-doc .rf-taskgrid {
   display: grid;

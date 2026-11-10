@@ -329,6 +329,250 @@ def resident_intruder(lang, out):
                 attack_s=round(s(attack), 1), chase_s=round(s(chase), 1), sniff_s=round(s(sniff), 1))
 
 
+# ------------------------------------------------------------------ group behaviour
+GROUP_COLS = ['#1E88E5', '#E53935', '#009E73', '#E69F00']   # the app's animal colours 1-4
+
+
+def _seg_dist(p, a, b):
+    """Distance from point p to segment ab (arrays of shape (2,))."""
+    ab = b - a
+    t = np.clip(np.dot(p - a, ab) / max(np.dot(ab, ab), 1e-9), 0, 1)
+    return float(np.hypot(*(a + t * ab - p)))
+
+
+def _body_dist(pa, pb):
+    """The app's contact distance: points of one body polyline to the segments of the other, both ways."""
+    d = math.inf
+    for P, Q in ((pa, pb), (pb, pa)):
+        for x in P:
+            for k in range(len(Q) - 1):
+                d = min(d, _seg_dist(x, Q[k], Q[k + 1]))
+    return d
+
+
+def _sustained(mask, gap, n_min):
+    """Fill gaps of at most `gap` frames, then keep runs of at least n_min frames (Bouts.sustained)."""
+    m = np.asarray(mask, bool).copy()
+    rr = runs(m)
+    for (a0, b0), (a1, b1) in zip(rr, rr[1:]):
+        if a1 - b0 <= gap:
+            m[b0:a1] = True
+    return min_duration(m, n_min)
+
+
+def davids_scores(w):
+    """David's score with Dij (Gammell et al. 2003), as in the app's GroupHierarchy.swift."""
+    n = len(w)
+    D = np.zeros((n, n))
+    for i in range(n):
+        for j in range(n):
+            t = w[i][j] + w[j][i]
+            if i != j and t > 0:
+                p = w[i][j] / t
+                D[i][j] = p - (p - 0.5) / (t + 1)
+    wn = D.sum(1); ln = D.sum(0)
+    return np.array([wn[i] + sum(D[i][j] * wn[j] for j in range(n) if j != i)
+                     - ln[i] - sum(D[j][i] * ln[j] for j in range(n) if j != i) for i in range(n)])
+
+
+def four_mice(T_s, fps, W, seed, dominance):
+    """Four simulated mice: exploring, resting together in a huddle, and approach–avoid interactions in which
+    the higher-ranked mouse usually makes the other move away."""
+    rng = np.random.default_rng(seed)
+    n = int(T_s * fps); dt = 1 / fps; m = len(dominance)
+    inside = lambda x, y: 1.0 < x < W - 1.0 and 1.0 < y < W - 1.0
+    nest = (9.0, W - 9.0)
+    rest = [(95, 175), (330, 420), (520, 575)]          # stretches when the group settles into a huddle
+    A = [Agent(rng, rng.uniform(8, W - 8), rng.uniform(8, W - 8)) for _ in range(m)]
+    for k, a in enumerate(A):
+        a.slot = (nest[0] + 3.2 * math.cos(k * 1.7), nest[1] + 3.2 * math.sin(k * 1.7))
+        a.target = None; a.v = rng.uniform(3, 9); a.goal = (rng.uniform(4, W - 4), rng.uniform(4, W - 4))
+    out = np.zeros((m, 3, n))
+    for i in range(n):
+        t = i * dt
+        resting = any(a0 <= t < b0 for a0, b0 in rest)
+        for k, me in enumerate(A):
+            me.timer -= dt
+            if me.mode in ('approach', 'flee', 'follow') and me.timer <= 0:
+                me.mode, me.timer, me.target = 'explore', rng.uniform(2, 6), None
+            if me.mode == 'explore' and resting and rng.random() < 0.6 * dt:
+                me.mode, me.timer = 'nest', rng.uniform(25, 80)
+            if me.mode == 'nest' and (not resting and me.timer <= 0):
+                me.mode, me.timer = 'explore', rng.uniform(2, 6)
+            if me.mode == 'explore' and rng.random() < 0.06 * dt:
+                near = [j for j in range(m) if j != k and A[j].mode in ('explore', 'nest')
+                        and math.hypot(A[j].x - me.x, A[j].y - me.y) < 22]
+                if near:
+                    j = min(near, key=lambda j: math.hypot(A[j].x - me.x, A[j].y - me.y))
+                    yields = rng.random() < (0.88 if dominance[k] > dominance[j] else 0.12)
+                    fast = rng.random() < 0.25
+                    me.mode, me.target, me.timer = 'approach', j, rng.uniform(4, 6)
+                    me.yields, me.fast = yields, fast
+            if me.mode == 'approach':
+                o = A[me.target]
+                d = math.hypot(o.x - me.x, o.y - me.y)
+                want = math.atan2(o.y - me.y, o.x - me.x)
+                v = (rng.uniform(22, 28) if me.fast else rng.uniform(11, 15))
+                if d < 9:
+                    if me.yields:          # the other moves away; the approacher keeps after it for a moment
+                        o.mode, o.timer, o.target = 'flee', rng.uniform(0.9, 1.6), k
+                        o.fast = me.fast
+                        me.mode, me.timer = 'follow', o.timer
+                    else:                  # the other holds its ground; the approacher turns away
+                        me.mode, me.timer, me.target = 'explore', rng.uniform(2, 5), None
+                        me.goal = (rng.uniform(4, W - 4), rng.uniform(4, W - 4))
+            elif me.mode == 'follow':
+                o = A[me.target]
+                want = math.atan2(o.y - me.y, o.x - me.x)
+                v = (rng.uniform(22, 28) if me.fast else rng.uniform(10, 14))
+            elif me.mode == 'flee':
+                o = A[me.target]
+                want = math.atan2(me.y - o.y, me.x - o.x) + rng.normal(0, 0.1)
+                v = (rng.uniform(22, 28) if me.fast else rng.uniform(11, 15))
+            elif me.mode == 'nest':
+                tx, ty = me.slot
+                d = math.hypot(tx - me.x, ty - me.y)
+                want = math.atan2(ty - me.y, tx - me.x) if d > 0.6 else me.h + rng.normal(0, 0.08)
+                v = min(9, d * 2.5) if d > 0.6 else 0.0
+            else:                          # explore
+                tx, ty = me.goal
+                if math.hypot(tx - me.x, ty - me.y) < 2:
+                    me.goal = (rng.uniform(4, W - 4), rng.uniform(4, W - 4))
+                    me.paused = rng.random() < 0.5
+                if me.paused and rng.random() < 0.04:
+                    me.paused = False
+                want = math.atan2(ty - me.y, tx - me.x)
+                v = 0.2 if me.paused else me.v
+                if rng.random() < 0.01:
+                    me.v = rng.uniform(3, 9)
+            diff = (want - me.h + math.pi) % (2 * math.pi) - math.pi
+            me.h += (0.55 if me.mode in ('approach', 'follow', 'flee') else 0.3) * diff + rng.normal(0, 0.04)
+            step = v * dt
+            nx, ny = me.x + step * math.cos(me.h), me.y + step * math.sin(me.h)
+            tries = 0
+            while not inside(nx, ny) and tries < 10:
+                me.h += rng.uniform(0.6, 1.4) * rng.choice([-1, 1])
+                nx, ny = me.x + step * math.cos(me.h), me.y + step * math.sin(me.h)
+                tries += 1
+            if inside(nx, ny):
+                me.x, me.y = nx, ny
+            out[k, :, i] = me.x, me.y, me.h
+    tt = np.arange(n) * dt
+    return [Mouse(tt, out[k, 0], out[k, 1], np.unwrap(out[k, 2])) for k in range(m)]
+
+
+def group_measures(M, fps, L):
+    """Simplified versions of the app's group rules (AnalyzersGroup.swift), in body lengths L."""
+    m, n = len(M), len(M[0].x)
+    C = np.stack([np.stack([q.x, q.y], 1) for q in M])                       # m × n × 2
+    poly = [np.stack([np.stack(q.nose, 1), C[k], np.stack(q.tail, 1)], 1) for k, q in enumerate(M)]   # n × 3 × 2
+    k2 = max(1, round(0.2 * fps))
+    V = np.zeros_like(C)
+    V[:, k2:-k2] = (C[:, 2 * k2:] - C[:, :-2 * k2]) / (2 * k2 / fps)
+    spd = np.hypot(V[..., 0], V[..., 1]) / L
+    contact_an = np.zeros((m, n), bool); largest = np.zeros(n); together = np.zeros(n, bool); nnd = np.zeros(n)
+    for i in range(n):
+        par = list(range(m))
+
+        def root(x):
+            while par[x] != x:
+                x = par[x]
+            return x
+        near = np.full(m, np.inf)
+        for a in range(m):
+            for b in range(a + 1, m):
+                d = float(np.hypot(*(C[a, i] - C[b, i])))
+                near[a] = min(near[a], d); near[b] = min(near[b], d)
+                if d < 2 * L and _body_dist(poly[a][i], poly[b][i]) < 0.35 * L:
+                    contact_an[a, i] = contact_an[b, i] = True
+                    par[root(a)] = root(b)
+        sizes = {}
+        for a in range(m):
+            sizes[root(a)] = sizes.get(root(a), 0) + 1
+        largest[i] = max(sizes.values()); together[i] = len(sizes) == 1; nnd[i] = near.mean()
+    raw = {}; chase_raw = {}
+    for i in range(k2, n - k2):
+        for a in range(m):
+            if spd[a, i] <= 0.6:
+                continue
+            best, bd = -1, np.inf
+            for b in range(m):
+                if b == a:
+                    continue
+                u = C[b, i] - C[a, i]; d = np.hypot(*u) / L
+                cos = np.dot(V[a, i], u) / (np.hypot(*V[a, i]) * np.hypot(*u) + 1e-9)
+                if 0.3 < d < 2.5 and cos > 0.8 and d < bd:
+                    best, bd = b, d
+            if best < 0 or spd[best, i] <= 0.6:
+                continue
+            u = C[best, i] - C[a, i]
+            if np.dot(V[best, i], u) / (np.hypot(*V[best, i]) * np.hypot(*u) + 1e-9) <= 0.5:
+                continue
+            raw.setdefault((a, best), np.zeros(n, bool))[i] = True
+            if spd[a, i] > 2.7 and spd[best, i] > 0.75 * 2.7:
+                chase_raw.setdefault((a, best), np.zeros(n, bool))[i] = True
+    events = []
+    gap = int(0.25 * fps)
+    for (a, b), mask in raw.items():
+        ch = _sustained(chase_raw[(a, b)], gap, max(1, round(0.3 * fps))) if (a, b) in chase_raw else np.zeros(n, bool)
+        for s0, e0 in runs(_sustained(mask, gap, max(1, round(0.4 * fps)))):
+            events.append((s0 / fps, a, b, bool(ch[s0:e0].any())))
+    events.sort()
+    w = np.zeros((m, m), int)
+    for _, a, b, _c in events:
+        w[a, b] += 1
+    ds = davids_scores(w)
+    nds = (ds + m * (m - 1) / 2) / m
+    return dict(contact=contact_an.mean(), nnd=nnd.mean(), largest=largest, together=together, events=events, wins=w, nds=nds)
+
+
+def group_behaviour(lang, out):
+    W, fps, T_s = 40, 10, 600
+    dominance = [2, 3, 0, 1]              # ID 2 is top, ID 3 bottom: IDs are arbitrary, as in the app
+    M = four_mice(T_s, fps, W, seed=17, dominance=dominance)
+    L = M[0].L
+    r = group_measures(M, fps, L)
+    m = len(M)
+    sizes = [float((r['largest'] == s).mean() * 100) for s in range(1, m + 1)]
+    order = list(np.argsort(-r['nds']))
+    n_ev = len(r['events']); n_ch = sum(1 for e in r['events'] if e[3])
+    fig = plt.figure(figsize=(8.4, 3.5))
+    gs = fig.add_gridspec(1, 3, width_ratios=(0.95, 0.72, 0.9), left=0.03, right=0.985, top=0.86, bottom=0.17, wspace=0.32)
+    a, b, c = (fig.add_subplot(gs[k]) for k in range(3))
+    arena_axes(a, (0, W), (0, W), T(lang, 'Four mice, 10 min', '四只小鼠，10 分钟'))
+    rect(a, 0, 0, W, W)
+    sl = slice(int(240 * fps), int(270 * fps))
+    j = sl.stop - 1
+    for k, q in enumerate(M):
+        a.plot(q.x[sl], q.y[sl], color=GROUP_COLS[k], lw=0.8, alpha=0.85, zorder=3)
+    for k, q in enumerate(M):
+        (nx, ny), (tx, ty) = (q.nose[0][j], q.nose[1][j]), (q.tail[0][j], q.tail[1][j])
+        a.plot([tx, q.x[j], nx], [ty, q.y[j], ny], '-', color=GROUP_COLS[k], lw=2.4, solid_capstyle='round', zorder=6)
+        a.plot(nx, ny, 'o', ms=4, color=GROUP_COLS[k], mec=SURF, mew=0.8, zorder=7)
+        label(a, tx - 2.2 * math.cos(q.h[j]), ty - 2.2 * math.sin(q.h[j]), str(k + 1), color=GROUP_COLS[k], size=7.5, weight='bold', box=True, z=8)
+    label(a, W / 2, W + 3.2, T(lang, '30 s of tracks (240–270 s) · colour = ID', '其中 30 秒的轨迹（240–270 s）· 颜色 = 编号'), size=6.8, color=MUTED)
+    bars(b, [str(s) for s in range(1, m + 1)], sizes, ['#c9c8c2'] * (m - 1) + [VIOLET], unit=' %', ylim=(0, max(sizes) * 1.25))
+    b.set_xlabel(T(lang, 'Mice in the largest group', '最大聚集团的只数'))
+    b.set_title(T(lang, 'Largest group, % of time', '最大聚集团，时间比例'))
+    ys = np.arange(m)[::-1]
+    for y, k in zip(ys, order):
+        c.barh(y, r['nds'][k], height=0.58, color=GROUP_COLS[k], edgecolor=SURF, lw=1.5, zorder=3)
+        c.text(r['nds'][k] + 0.05, y, f"{r['nds'][k]:.2f}  ·  {int(r['wins'][k].sum())}–{int(r['wins'][:, k].sum())}",
+               va='center', fontsize=7.3, color=INK, zorder=4)
+    c.set_yticks(ys, [T(lang, f'#{rk + 1}  ID {k + 1}', f'第 {rk + 1}  编号 {k + 1}') for rk, k in enumerate(order)])
+    c.tick_params(axis='y', length=0)
+    c.set_xlim(0, m - 1 + 0.9)
+    c.set_xticks(range(m))
+    c.grid(axis='x', color=GRID, lw=0.6, zorder=0); c.set_axisbelow(True)
+    c.set_xlabel(T(lang, "Normalised David's score  ·  wins–losses", "标准化 David's score  ·  胜–负"))
+    c.set_title(T(lang, f'Rank from {n_ev} approach–avoid events', f'由 {n_ev} 次接近–回避事件排出的等级'))
+    finish(fig, out, NOTE[lang])
+    return dict(contact_pct=round(r['contact'] * 100, 1), nnd_cm=round(float(r['nnd']), 1),
+                together_pct=round(sizes[-1], 1), no_contact_pct=round(sizes[0], 1), events=n_ev, chases=n_ch,
+                per_mouse=round(n_ev / m, 1), top_id=int(order[0] + 1), bottom_id=int(order[-1] + 1),
+                nds_top=round(float(r['nds'][order[0]]), 2), nds_bottom=round(float(r['nds'][order[-1]]), 2))
+
+
 # ------------------------------------------------------------------ head direction
 def head_direction(lang, out):
     W = 50
@@ -781,7 +1025,7 @@ def place_pref(lang, out):
 
 TASKS_B = {
     'three-chamber': three_chamber, 'social-interaction': social_interaction, 'dyadic-social': dyadic,
-    'resident-intruder': resident_intruder, 'head-direction': head_direction, 'spatial-exploration': spatial,
+    'resident-intruder': resident_intruder, 'group-behavior': group_behaviour, 'head-direction': head_direction, 'spatial-exploration': spatial,
     'novel-object-recognition': nor, 'barnes-maze': barnes, 'water-maze': water_maze, 'y-maze': y_maze,
     't-maze': t_maze, 'place-preference': place_pref,
 }

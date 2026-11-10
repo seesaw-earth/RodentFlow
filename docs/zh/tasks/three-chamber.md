@@ -52,4 +52,4 @@ description: "RodentFlow 的三箱社交：社交偏好与社交新颖性 · 鼻
 
 ## 同类范式 {#related}
 
-[社交回避测试](./social-interaction.md) · [双鼠社交互动](./dyadic-social.md) · [居住者–入侵者（攻击）](./resident-intruder.md)
+[社交回避测试](./social-interaction.md) · [双鼠社交互动](./dyadic-social.md) · [居住者–入侵者（攻击）](./resident-intruder.md) · [群体行为](./group-behavior.md)
