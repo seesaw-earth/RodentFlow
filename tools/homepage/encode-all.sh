@@ -28,6 +28,12 @@ open_field.mp4          open-field
 new_object.mp4          novel-object
 Y_maze.mp4              y-maze
 TST.mp4                 tail-suspension
+# New in 2.1 (iPhone). Originals: ScreenRecording_11-08-2026 20-29-59_1_3x.mp4,
+# ScreenRecording_11-09-2026 11-36-56_1_3x.mp4 and ScreenRecording_11-09-2026 10-57-41_1_3x.mp4,
+# renamed so the names have no spaces. The last 0.3 s of the first one is the end of the screen recording.
+resident_intruder.mp4   resident-intruder --dur 10.3 --thumb 0.5
+group_cage.mp4          group-cage
+group_arena.mp4         group-arena
 # Mac recordings (landscape)
 MAC_head_direction.mp4  mac-head-direction
 MAC_elevated_maze.mp4   mac-plus-maze

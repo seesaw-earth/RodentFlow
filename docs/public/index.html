@@ -296,6 +296,8 @@ p{margin:0}
 .light h2{font-weight:700;font-variation-settings:"wdth" 82;font-size:clamp(2.3rem,5vw,3.9rem);line-height:.98;letter-spacing:-.02em}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--c);flex:none;display:inline-block}
 .dot.ab{background:linear-gradient(90deg,var(--m-a) 0 50%,var(--m-b) 50% 100%)}
+.dot.grp{background:conic-gradient(#1E88E5 0 25%,#E53935 0 50%,#009E73 0 75%,#E69F00 0)}
+.card .bar.grp i{background:linear-gradient(90deg,#1E88E5,#E53935,#009E73,#E69F00)}
 
 /* ---------- Lightbox ---------- */
 dialog.lightbox{border:0;padding:0;background:transparent;color:var(--on-night);width:fit-content;max-width:min(1280px, 100vw - 32px);max-height:calc(100dvh - 32px);overflow:visible}
@@ -580,7 +582,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
   <h2 class="sr" id="watch-h">Watch it work</h2>
   <div class="wrap show-grid">
     <div class="show-cap">
-      <p class="eyebrow"><span>Watch it work</span><span class="count"><b id="sc-n">01</b> / <span id="sc-total">08</span></span></p>
+      <p class="eyebrow"><span>Watch it work</span><span class="count"><b id="sc-n">01</b> / <span id="sc-total">11</span></span></p>
       <div class="caps" id="sc-caps" aria-live="off"></div>
     </div>
 
@@ -918,7 +920,8 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
                videos/<file>.jpg        its first frame
                videos/<file>-thumb.jpg  the thumbnail in the strip
    device    "phone" for an iPhone recording (portrait), "mac" for a Mac recording (landscape)
-   tracker   "centroid", "pose" (one animal), "dyad" (two animals) or "tst" (tail suspension);
+   tracker   "centroid", "pose" (one animal), "dyad" (two animals), "group" (three or more)
+             or "tst" (tail suspension);
              sets the color, the label and the "In the video" key
    title, text, measures   what the caption beside the video says
    thumbPos  optional: which part of the frame the thumbnail shows,
@@ -929,6 +932,21 @@ const CLIPS = [
     title: "Two mice, two identities",
     text: "Both animals are tracked at once, A in blue and B in red. Identities are settled over the whole recording, not frame by frame, so A is still A after the two mice cross.",
     measures: ["Contacts per animal", "Distance for A and B", "Moments flagged for review"] },
+
+  { file: "resident-intruder", device: "phone", tracker: "dyad", thumbPos: "50% 37%",
+    title: "Resident–intruder",
+    text: "A white and a black mouse, tracked as A and B. Attacks, chases, keep-down, threat postures, mounting and sniffing are scored by rules on keypoint movement, and moments where A and B could have swapped are flagged for checking.",
+    measures: ["Attack latency", "Attack bouts and time", "Chasing and keep-down", "Threat postures", "Mounting", "Sniffing"] },
+
+  { file: "group-cage", device: "phone", tracker: "group",
+    title: "Group of four",
+    text: "Each mouse gets a number and a colour. Contact, grouping, approach–avoid events and chases are scored for the group. When the mice pile up, numbers can swap, so those moments are marked as identity risk.",
+    measures: ["Contact", "Time all together", "Largest cluster", "Nearest-neighbour distance", "Approach–avoid events", "Rank (preview)"] },
+
+  { file: "group-arena", device: "phone", tracker: "group",
+    title: "Four mice, six keypoints each",
+    text: "The group model follows 3 to 10 dark mice at once; here, four in a larger arena. Every mouse has six keypoints, so the triangle shows which way it is facing.",
+    measures: ["Nearest-neighbour distance", "Contact per pair", "Approach–avoid events", "Chases"] },
 
   { file: "open-field", device: "phone", tracker: "centroid",
     title: "Open field",
@@ -989,6 +1007,8 @@ const TRACKERS = {
               key: [[["#FF383C"], "Nose"], [["#FF8D28"], "Left ear"], [["#FFCC00"], "Right ear"], [["#34C759"], "Neck"], [["#00C0E8"], "Body center"], [["#CB30E0"], "Tail base"]] },
   dyad:     { label: "Two animals", color: "var(--m-a)", ab: true,
               key: [[["#1E88E5"], "Mouse A"], [["#E53935"], "Mouse B"]] },
+  group:    { label: "Group", color: "var(--m-a)", cls: "grp",
+              key: [[["#1E88E5", "#E53935", "#009E73", "#E69F00"], "Mice 1 to 4, one colour each"]] },
   tst:      { label: "Tail suspension", color: "var(--m-tst)", key: [] }
 };
 const DEVICE = {
@@ -1032,7 +1052,7 @@ CLIPS.forEach((c, i) => {
       '<span class="thumb"><img alt="" draggable="false" loading="lazy" decoding="async" src="' + esc(fileOf(c, "-thumb.jpg")) + '"' +
         (c.thumbPos ? ' style="object-position:' + esc(c.thumbPos) + '"' : "") + ">" +
         '<span class="devic" title="' + d.name + '">' + d.icon + "</span>" +
-        '<span class="bar' + (t.ab ? " ab" : "") + '"><i></i></span></span>' +
+        '<span class="bar' + (t.ab ? " ab" : t.cls ? " " + t.cls : "") + '"><i></i></span></span>' +
       '<span class="ct"><span class="num">' + pad(i + 1) + '</span><span class="nm">' + esc(c.title) + "</span></span>" +
     "</button>";
   const card = li.firstChild;
@@ -1045,7 +1065,7 @@ CLIPS.forEach((c, i) => {
   const item = document.createElement("div");
   item.className = "cap-item";
   item.innerHTML =
-    '<p class="pills"><span class="pill"><i class="dot' + (t.ab ? " ab" : "") + '" style="--c:' + t.color + '"></i>' + t.label + "</span>" +
+    '<p class="pills"><span class="pill"><i class="dot' + (t.ab ? " ab" : t.cls ? " " + t.cls : "") + '" style="--c:' + t.color + '"></i>' + t.label + "</span>" +
       '<span class="pill ghost">' + d.icon + d.name + "</span></p>" +
     "<h3>" + esc(c.title) + "</h3>" +
     '<p class="cap-text">' + esc(c.text || "") + "</p>" +
