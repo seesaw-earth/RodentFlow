@@ -30,7 +30,7 @@ N = len(ORDER)
 
 TXT = {
     'en': dict(
-        strip_label='{n} tasks', strip_hint='Tap one to see exactly how it is scored',
+        strip_label='{n} tasks', strip_hint='Drag to browse, tap one to see exactly how it is scored',
         kicker='Task library', h2='{n} tasks, each explained',
         lede='Pick a test and see how RodentFlow scores it: the design, why keypoints help, how every measure is defined, a simulated example and the papers behind it.',
         cta='Open the task library', all='All', more='Show all {n} tasks', filters='Filter tasks by area',
@@ -39,7 +39,7 @@ TXT = {
         m={'pose': 'One animal', 'pose2': 'Two animals', 'group': 'Group', 'multi': 'Multi-chamber', 'classic': 'Centroid'},
         tst=('Tail suspension, multi-chamber', 'Several mice in one recording · immobility in minutes 2–6')),
     'zh': dict(
-        strip_label='{n} 个范式', strip_hint='点一个，看它到底怎样评分',
+        strip_label='{n} 个范式', strip_hint='拖动浏览，点一个看它到底怎样评分',
         kicker='范式库', h2='{n} 个范式，逐一讲透',
         lede='选一个测试，看 RodentFlow 怎样评分：实验设计、为什么用关键点、每个指标的定义、模拟示例和相关文献。',
         cta='打开范式库', all='全部', more='显示全部 {n} 个范式', filters='按领域筛选范式',
@@ -75,7 +75,7 @@ def strip(lang):
     chips = []
     for s in ORDER:
         n, _ = name_tag(s, lang)
-        chips.append(f'<a class="tk-chip" href="{href(s)}"><img src="{img(s)}" alt="" loading="lazy"><span>{escape(n)}</span></a>')
+        chips.append(f'<a class="tk-chip" href="{href(s)}"><img src="{img(s)}" alt="" loading="lazy" draggable="false"><span>{escape(n)}</span></a>')
     track = ''.join(chips)
     dup = track.replace('<a class="tk-chip"', '<a class="tk-chip" tabindex="-1" aria-hidden="true"')
     return (f'<div class="tk-strip">\n'
