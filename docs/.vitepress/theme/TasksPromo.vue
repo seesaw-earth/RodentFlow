@@ -17,7 +17,7 @@ const thumbs = computed(() =>
 <template>
   <a v-if="!onTasks" class="rf-promo" :href="href">
     <span class="rf-promo-thumbs"><img v-for="t in thumbs" :key="t" :src="t" alt="" loading="lazy" /></span>
-    <strong>{{ zh ? '27 个实验范式 →' : '27 tasks →' }}</strong>
+    <strong>{{ zh ? '28 个实验范式 →' : '28 tasks →' }}</strong>
     <span>{{ zh ? '每个测试的设计、指标定义、模拟示例与文献' : 'Design, measures, a simulated example and references for every test' }}</span>
   </a>
 </template>

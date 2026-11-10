@@ -189,5 +189,18 @@
  },
  "pose-only": {
   "keypoints": 6
+ },
+ "group-behavior": {
+  "contact_pct": 65.4,
+  "nnd_cm": 6.4,
+  "together_pct": 37.9,
+  "no_contact_pct": 16.2,
+  "events": 108,
+  "chases": 8,
+  "per_mouse": 27.0,
+  "top_id": 2,
+  "bottom_id": 3,
+  "nds_top": 1.93,
+  "nds_bottom": 1.18
  }
 }

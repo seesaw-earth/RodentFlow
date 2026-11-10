@@ -52,4 +52,4 @@ The general steps (choose the task, calibrate, track, review, export) are the sa
 
 ## Related tasks {#related}
 
-[Social interaction test (CSDS)](./social-interaction.md) · [Dyadic social interaction](./dyadic-social.md) · [Resident–intruder (aggression)](./resident-intruder.md)
+[Social interaction test (CSDS)](./social-interaction.md) · [Dyadic social interaction](./dyadic-social.md) · [Resident–intruder (aggression)](./resident-intruder.md) · [Group behaviour](./group-behavior.md)

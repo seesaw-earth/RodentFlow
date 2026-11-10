@@ -1,23 +1,23 @@
 ---
 title: "实验范式"
-description: "RodentFlow 的 27 个视频范式：每个范式的设计、为什么用关键点、测量指标、模拟示例与参考文献。"
+description: "RodentFlow 的 28 个视频范式：每个范式的设计、为什么用关键点、测量指标、模拟示例与参考文献。"
 aside: false
 ---
 
 <p class="rf-eyebrow">范式库</p>
 
-# 27 个范式，逐一讲透
+# 28 个范式，逐一讲透
 
 <div class="rf-taskhero">
 
 <p class="rf-taskhero-lede">选一个测试，看 RodentFlow 到底怎样评分：实验设计、为什么关键点比身体质心测得更准、每个指标背后的规则、一个模拟示例，以及它所依据的文献。</p>
-<div class="rf-stats"><span><b>27</b>个范式</span><span><b>111</b>个有定义的指标</span><span><b>75</b>篇参考文献</span><span><b>4</b>个姿态模型</span></div>
-<nav class="rf-catchips" aria-label="领域"><a href="#social">社交行为<span>4</span></a><a href="#navigation">空间导航与神经记录<span>2</span></a><a href="#anxiety">焦虑与风险评估<span>7</span></a><a href="#memory">学习、记忆与恐惧<span>11</span></a><a href="#motor">运动功能与应对<span>2</span></a><a href="#general">通用<span>1</span></a></nav>
-<p class="rf-legend"><span><i class="rf-dot" style="--c:#12B89A"></i>单鼠</span><span><i class="rf-dot rf-ab"></i>双鼠</span><span><i class="rf-dot" style="--c:#F2B441"></i>质心</span><span><i class="rf-dot" style="--c:#9A6BFF"></i>多格</span></p>
+<div class="rf-stats"><span><b>28</b>个范式</span><span><b>115</b>个有定义的指标</span><span><b>79</b>篇参考文献</span><span><b>4</b>个姿态模型</span></div>
+<nav class="rf-catchips" aria-label="领域"><a href="#social">社交行为<span>5</span></a><a href="#navigation">空间导航与神经记录<span>2</span></a><a href="#anxiety">焦虑与风险评估<span>7</span></a><a href="#memory">学习、记忆与恐惧<span>11</span></a><a href="#motor">运动功能与应对<span>2</span></a><a href="#general">通用<span>1</span></a></nav>
+<p class="rf-legend"><span><i class="rf-dot" style="--c:#12B89A"></i>单鼠</span><span><i class="rf-dot rf-ab"></i>双鼠</span><span><i class="rf-dot rf-grp"></i>群体</span><span><i class="rf-dot" style="--c:#F2B441"></i>质心</span><span><i class="rf-dot" style="--c:#9A6BFF"></i>多格</span></p>
 
 </div>
 
-所有范式在 iPhone、iPad 和 Mac 上都能用。范式决定追踪几只动物；单鼠范式可选深色或白色毛色，双鼠范式可选两只深色或一黑一白（[模型](../models.md#coat)）。每页的示例都是**模拟实验**，用来说明指标的含义，不是实验数据。
+所有范式在 iPhone、iPad 和 Mac 上都能用。范式决定追踪几只动物；单鼠范式可选深色或白色毛色，双鼠范式可选两只深色或一黑一白（[模型](../models.md#coat)）；群体行为追踪 3–10 只深色小鼠。每页的示例都是**模拟实验**，用来说明指标的含义，不是实验数据。
 
 ## 社交行为 {#social}
 
@@ -26,6 +26,7 @@ aside: false
 <a href="./social-interaction.html"><span class="rf-thumb"><img src="/img/tasks/thumbs/social-interaction.zh.png" alt="" loading="lazy"></span><strong>社交回避测试</strong><span class="rf-tl">慢性社会挫败后的社交回避 · SI ratio</span><span class="rf-meth"><span><i class="rf-dot" style="--c:#12B89A"></i>单鼠</span></span></a>
 <a href="./dyadic-social.html"><span class="rf-thumb"><img src="/img/tasks/thumbs/dyadic-social.zh.png" alt="" loading="lazy"></span><strong>双鼠社交互动</strong><span class="rf-tl">两只自由活动小鼠 · 鼻对鼻、肛殖区嗅探、跟随</span><span class="rf-meth"><span><i class="rf-dot rf-ab"></i>双鼠</span></span></a>
 <a href="./resident-intruder.html"><span class="rf-thumb"><img src="/img/tasks/thumbs/resident-intruder.zh.png" alt="" loading="lazy"></span><strong>居住者–入侵者（攻击）</strong><span class="rf-tl">攻击潜伏期、次数、时长 · 追逐、压制、威胁、骑跨</span><span class="rf-meth"><span><i class="rf-dot rf-ab"></i>双鼠</span></span></a>
+<a href="./group-behavior.html"><span class="rf-thumb"><img src="/img/tasks/thumbs/group-behavior.zh.png" alt="" loading="lazy"></span><strong>群体行为</strong><span class="rf-tl">3–10 只深色小鼠 · 接触、聚集、最近邻距离、等级（预览）</span><span class="rf-meth"><span><i class="rf-dot rf-grp"></i>群体</span></span></a>
 </div>
 
 ## 空间导航与神经记录 {#navigation}

@@ -5,6 +5,7 @@ These scripts build the [task pages](../../docs/tasks/) of the manual and the fi
 | Script | What it does |
 |---|---|
 | `catalog.py` | Reads the app's paradigm catalog (`Shared/PoseEngine/Paradigms.swift` and `EnglishTranslations.json` of the app source) into `data/catalog.json`: summary, why keypoints help, set-up steps, measures and references, in English and Chinese. |
+| `data/catalog.json` → `groupBehavior` | Added from the build 23 app source. That source writes measure definitions as `L("English", "中文")` with the analysis defaults filled in at run time, which `catalog.py` does not read, so the four definitions were written out with the defaults (contact 0.35 BL, events ≥ 0.4 s). Its `more_en` / `more_zh` paragraphs (the full rules, the rest of the report, why ranks are a preview) are printed after the measures table; any task can have them. |
 | `simlib.py`, `sim_a.py`, `sim_b.py`, `sim_c.py` | Simulated sessions, one per task: a model mouse is moved through the arena, the measures are computed with simplified versions of the app's definitions, and an English and a Chinese figure are drawn. |
 | `run_figs.py` | Renders every figure into `docs/public/img/tasks/` and writes the computed values to `values.json`. |
 | `gen_tasks.py` | Writes `docs/tasks/*.md`, `docs/zh/tasks/*.md` and, with the extra argument `reading`, `docs/reference/reading.md` from the catalog and the values. `tail-suspension.md` is written by hand. |

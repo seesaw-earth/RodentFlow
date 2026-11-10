@@ -1,23 +1,23 @@
 ---
 title: "Tasks"
-description: "The 27 video tasks in RodentFlow: design, why keypoints help, measures, a simulated example and references for each."
+description: "The 28 video tasks in RodentFlow: design, why keypoints help, measures, a simulated example and references for each."
 aside: false
 ---
 
 <p class="rf-eyebrow">TASK LIBRARY</p>
 
-# 27 tasks, each explained
+# 28 tasks, each explained
 
 <div class="rf-taskhero">
 
 <p class="rf-taskhero-lede">Pick a test to see exactly how RodentFlow scores it: the design, why keypoints measure it better than a body centroid, the rule behind every measure, a simulated example and the papers it is built on.</p>
-<div class="rf-stats"><span><b>27</b>tasks</span><span><b>111</b>defined measures</span><span><b>75</b>references</span><span><b>4</b>pose models</span></div>
-<nav class="rf-catchips" aria-label="Areas"><a href="#social">Social behaviour<span>4</span></a><a href="#navigation">Navigation & neural recording<span>2</span></a><a href="#anxiety">Anxiety & risk assessment<span>7</span></a><a href="#memory">Learning, memory & fear<span>11</span></a><a href="#motor">Motor function & coping<span>2</span></a><a href="#general">General<span>1</span></a></nav>
-<p class="rf-legend"><span><i class="rf-dot" style="--c:#12B89A"></i>One animal</span><span><i class="rf-dot rf-ab"></i>Two animals</span><span><i class="rf-dot" style="--c:#F2B441"></i>Centroid</span><span><i class="rf-dot" style="--c:#9A6BFF"></i>Multi-chamber</span></p>
+<div class="rf-stats"><span><b>28</b>tasks</span><span><b>115</b>defined measures</span><span><b>79</b>references</span><span><b>4</b>pose models</span></div>
+<nav class="rf-catchips" aria-label="Areas"><a href="#social">Social behaviour<span>5</span></a><a href="#navigation">Navigation & neural recording<span>2</span></a><a href="#anxiety">Anxiety & risk assessment<span>7</span></a><a href="#memory">Learning, memory & fear<span>11</span></a><a href="#motor">Motor function & coping<span>2</span></a><a href="#general">General<span>1</span></a></nav>
+<p class="rf-legend"><span><i class="rf-dot" style="--c:#12B89A"></i>One animal</span><span><i class="rf-dot rf-ab"></i>Two animals</span><span><i class="rf-dot rf-grp"></i>Group</span><span><i class="rf-dot" style="--c:#F2B441"></i>Centroid</span><span><i class="rf-dot" style="--c:#9A6BFF"></i>Multi-chamber</span></p>
 
 </div>
 
-Every task runs on iPhone, iPad and Mac. The task decides how many animals are tracked; for one-animal tasks you choose a dark or white coat, for two-animal tasks two dark mice or one dark and one white ([Models](../models.md#coat)). The example on each page is a **simulated session**: it shows what each measure means, not data.
+Every task runs on iPhone, iPad and Mac. The task decides how many animals are tracked; for one-animal tasks you choose a dark or white coat, for two-animal tasks two dark mice or one dark and one white ([Models](../models.md#coat)); group behaviour tracks 3–10 dark mice. The example on each page is a **simulated session**: it shows what each measure means, not data.
 
 ## Social behaviour {#social}
 
@@ -26,6 +26,7 @@ Every task runs on iPhone, iPad and Mac. The task decides how many animals are t
 <a href="./social-interaction.html"><span class="rf-thumb"><img src="/img/tasks/thumbs/social-interaction.en.png" alt="" loading="lazy"></span><strong>Social interaction test (CSDS)</strong><span class="rf-tl">Social avoidance after chronic social defeat · SI ratio</span><span class="rf-meth"><span><i class="rf-dot" style="--c:#12B89A"></i>One animal</span></span></a>
 <a href="./dyadic-social.html"><span class="rf-thumb"><img src="/img/tasks/thumbs/dyadic-social.en.png" alt="" loading="lazy"></span><strong>Dyadic social interaction</strong><span class="rf-tl">Two freely moving mice · Nose-to-nose, anogenital sniffing, following</span><span class="rf-meth"><span><i class="rf-dot rf-ab"></i>Two animals</span></span></a>
 <a href="./resident-intruder.html"><span class="rf-thumb"><img src="/img/tasks/thumbs/resident-intruder.en.png" alt="" loading="lazy"></span><strong>Resident–intruder (aggression)</strong><span class="rf-tl">Attack latency, bouts, duration · chasing, keep down, threat, mounting</span><span class="rf-meth"><span><i class="rf-dot rf-ab"></i>Two animals</span></span></a>
+<a href="./group-behavior.html"><span class="rf-thumb"><img src="/img/tasks/thumbs/group-behavior.en.png" alt="" loading="lazy"></span><strong>Group behaviour</strong><span class="rf-tl">3–10 dark mice · contact, grouping, nearest-neighbour distance, rank (preview)</span><span class="rf-meth"><span><i class="rf-dot rf-grp"></i>Group</span></span></a>
 </div>
 
 ## Navigation & neural recording {#navigation}

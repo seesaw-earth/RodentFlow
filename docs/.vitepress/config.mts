@@ -43,6 +43,10 @@ function sidebarEn(): DefaultTheme.SidebarItem[] {
               {
                 text: 'Resident–intruder (aggression)',
                 link: '/tasks/resident-intruder'
+              },
+              {
+                text: 'Group behaviour',
+                link: '/tasks/group-behavior'
               }
             ]
           },
@@ -282,6 +286,10 @@ function sidebarZh(): DefaultTheme.SidebarItem[] {
               {
                 text: '居住者–入侵者（攻击）',
                 link: '/zh/tasks/resident-intruder'
+              },
+              {
+                text: '群体行为',
+                link: '/zh/tasks/group-behavior'
               }
             ]
           },

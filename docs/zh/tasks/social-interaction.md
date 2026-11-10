@@ -51,4 +51,4 @@ description: "RodentFlow 的社交回避测试：慢性社会挫败后的社交�
 
 ## 同类范式 {#related}
 
-[三箱社交](./three-chamber.md) · [双鼠社交互动](./dyadic-social.md) · [居住者–入侵者（攻击）](./resident-intruder.md)
+[三箱社交](./three-chamber.md) · [双鼠社交互动](./dyadic-social.md) · [居住者–入侵者（攻击）](./resident-intruder.md) · [群体行为](./group-behavior.md)

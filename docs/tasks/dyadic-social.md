@@ -53,4 +53,4 @@ The general steps (choose the task, calibrate, track, review, export) are the sa
 
 ## Related tasks {#related}
 
-[Three-chamber sociability](./three-chamber.md) · [Social interaction test (CSDS)](./social-interaction.md) · [Resident–intruder (aggression)](./resident-intruder.md)
+[Three-chamber sociability](./three-chamber.md) · [Social interaction test (CSDS)](./social-interaction.md) · [Resident–intruder (aggression)](./resident-intruder.md) · [Group behaviour](./group-behavior.md)

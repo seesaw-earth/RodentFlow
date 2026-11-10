@@ -17,10 +17,11 @@ METHOD = {
     'pose': ('Pose · one animal', '单鼠姿态'),
     'pose2': ('Pose · two animals', '双鼠姿态'),
     'multi': ('Multi-chamber', '多格同步'),
+    'group': ('Pose · group of 3–10', '群体姿态 · 3–10 只'),
 }
 ZH_TITLE = {
     'threeChamber': '三箱社交', 'socialInteraction': '社交回避测试', 'dyadicSocial': '双鼠社交互动',
-    'residentIntruder': '居住者–入侵者（攻击）', 'headDirection': '头朝向', 'spatialExploration': '空间探索 · 位置细胞',
+    'residentIntruder': '居住者–入侵者（攻击）', 'groupBehavior': '群体行为', 'headDirection': '头朝向', 'spatialExploration': '空间探索 · 位置细胞',
     'openField': '旷场', 'elevatedPlusMaze': '高架十字迷宫', 'elevatedZeroMaze': '高架零迷宫', 'lightDark': '明暗箱',
     'noveltySuppressedFeeding': '新奇抑制摄食', 'visualCliff': '视觉悬崖', 'marbleBurying': '埋珠实验',
     'stepDown': 'Step-down 抑制性回避', 'platformAvoidance': '平台介导回避', 'novelObject': '新物体识别',
@@ -29,6 +30,7 @@ ZH_TITLE = {
     'fearConditioning': '恐惧条件化', 'looming': 'Looming 逃跑', 'rotation': '旋转行为', 'poseOnly': '仅导出姿态',
 }
 EN_TITLE = {'socialInteraction': 'Social interaction test (CSDS)', 'residentIntruder': 'Resident–intruder (aggression)',
+            'groupBehavior': 'Group behaviour',
             'spatialExploration': 'Spatial exploration (place / grid cells)', 'threeChamber': 'Three-chamber sociability',
             'dyadicSocial': 'Dyadic social interaction', 'headDirection': 'Head direction', 'openField': 'Open field',
             'elevatedPlusMaze': 'Elevated plus maze', 'elevatedZeroMaze': 'Elevated zero maze', 'lightDark': 'Light–dark box',
@@ -45,6 +47,7 @@ T = [
     ('social-interaction', 'socialInteraction', 'social', 'pose', False, ('42 × 42 cm; 150 s per phase', '42 × 42 cm；每阶段 150 秒')),
     ('dyadic-social', 'dyadicSocial', 'social', 'pose2', False, ('40 × 40 cm', '40 × 40 cm')),
     ('resident-intruder', 'residentIntruder', 'social', 'pose2', False, ('home cage 30 × 18 cm; 10 min from the intruder’s entry', '饲养笼 30 × 18 cm；入侵者放入后 10 分钟')),
+    ('group-behavior', 'groupBehavior', 'social', 'group', False, ('40 × 40 cm; no calibration needed (body lengths)', '40 × 40 cm；不需要标定（以体长为单位）')),
     ('head-direction', 'headDirection', 'navigation', 'pose', False, ('50 × 50 cm', '50 × 50 cm')),
     ('spatial-exploration', 'spatialExploration', 'navigation', 'pose', False, ('50 × 50 cm', '50 × 50 cm')),
     ('open-field', 'openField', 'anxiety', 'pose', True, ('40 × 40 cm', '40 × 40 cm')),
@@ -93,6 +96,8 @@ EX = {
                    "5 分钟内两只鼠鼻对鼻 {nose_nose_s} s；A 嗅 B 的肛周 {ag_ab_s} s，B 嗅 A 的 {ag_ba_s} s；A 跟随 B {follow_ab_s} s，B 跟随 A {follow_ba_s} s。平均间距 {mean_dist} cm。"),
  'resident-intruder': ("The first attack comes {attack_latency_s} s after the intruder is put in. Over the next four minutes there are {attack_bouts} attack bouts ({attack_s} s in all), {chase_s} s of following or chasing and {sniff_s} s of anogenital sniffing. (The figure uses a simplified version of the attack rule.)",
                        "入侵者放入后 {attack_latency_s} s 出现首次攻击。之后 4 分钟内攻击 {attack_bouts} 次（共 {attack_s} s），跟随或追逐 {chase_s} s，肛周嗅探 {sniff_s} s。（图中用的是简化版攻击规则。）"),
+ 'group-behavior': ("In this simulated 10-minute session of four mice, each mouse is in contact with another for {contact_pct} % of the time on average, and all four form one group for {together_pct} % of it (the stretches when they rest together); the mean nearest-neighbour distance is {nnd_cm} cm. {events} approach–avoid events ({per_mouse} per mouse, {chases} of them chases) rank ID {top_id} first and ID {bottom_id} last, with normalised David’s scores of {nds_top} and {nds_bottom}. The IDs never swap here; in a real video they can when mice touch.",
+                    "这段 10 分钟、四只小鼠的模拟实验中，每只鼠平均有 {contact_pct} % 的时间与其他鼠接触，四只连成一团的时间占 {together_pct} %（它们一起休息的时段）；平均最近邻距离 {nnd_cm} cm。{events} 次接近–回避事件（每只 {per_mouse} 次，其中 {chases} 次是追逐）把编号 {top_id} 排在第一、编号 {bottom_id} 排在最后，标准化 David’s score 分别为 {nds_top} 和 {nds_bottom}。这里编号不会互换；真实录像中，小鼠贴身时编号可能互换。"),
  'head-direction': ("Every 6° bin is visited for at least a second (coverage {coverage_pct} %), and the occupancy mean vector length is {mvl}: the mouse sampled all directions nearly evenly, which is what normalising a tuning curve needs.",
                     "每个 6° 区间都停留了至少 1 秒（覆盖 {coverage_pct} %），停留分布的平均向量长度为 {mvl}：各个方向几乎均匀采样，正好满足调谐曲线归一化的需要。"),
  'spatial-exploration': ("Coverage reaches {coverage_5min} % of the 2.5 cm bins after 5 minutes and {coverage_pct} % after 20. The mouse moves faster than 2 cm/s for {moving_pct} % of the time and covers {distance_m} m.",
@@ -206,6 +211,8 @@ def page(slug, key, cg, method, classic, arena, lang):
     out.append('')
     out.append(L('Thresholds are defaults and can be changed in the analysis parameters; the values used are saved with each session and written into the Methods text.',
                  '阈值都是默认值，可以在分析参数里修改；每次分析实际用的数值随结果保存，并写进方法学文字。') + '\n')
+    for para in c.get('more_en' if en else 'more_zh', []):
+        out.append((brit(para) if en else para) + '\n')
     # setup
     out.append(f'## {L("Setting up", "设置")} {{#setup}}\n')
     steps = c['setup_en'] if en else c['setup_zh']
@@ -244,20 +251,22 @@ def index(lang):
     en = lang == 'en'
     L = lambda e, z: e if en else z
     DOTS = {'pose': '<i class="rf-dot" style="--c:#12B89A"></i>', 'pose2': '<i class="rf-dot rf-ab"></i>',
-            'multi': '<i class="rf-dot" style="--c:#9A6BFF"></i>', 'classic': '<i class="rf-dot" style="--c:#F2B441"></i>'}
-    MN = {'pose': L('One animal', '单鼠'), 'pose2': L('Two animals', '双鼠'), 'multi': L('Multi-chamber', '多格'), 'classic': L('Centroid', '质心')}
+            'multi': '<i class="rf-dot" style="--c:#9A6BFF"></i>', 'classic': '<i class="rf-dot" style="--c:#F2B441"></i>',
+            'group': '<i class="rf-dot rf-grp"></i>'}
+    MN = {'pose': L('One animal', '单鼠'), 'pose2': L('Two animals', '双鼠'), 'group': L('Group', '群体'), 'multi': L('Multi-chamber', '多格'), 'classic': L('Centroid', '质心')}
     nref = sum(len(cat[k]['refs']) for _, k, *_ in T) + 3
+    ntask = len(T) + 1                  # + tail suspension, written by hand
     out = ['---', f'title: "{L("Tasks", "实验范式")}"',
-           f'description: "{L("The 27 video tasks in RodentFlow: design, why keypoints help, measures, a simulated example and references for each.", "RodentFlow 的 27 个视频范式：每个范式的设计、为什么用关键点、测量指标、模拟示例与参考文献。")}"',
+           f'description: "{L(f"The {ntask} video tasks in RodentFlow: design, why keypoints help, measures, a simulated example and references for each.", f"RodentFlow 的 {ntask} 个视频范式：每个范式的设计、为什么用关键点、测量指标、模拟示例与参考文献。")}"',
            'aside: false', '---', '']
     out.append(f'<p class="rf-eyebrow">{L("TASK LIBRARY", "范式库")}</p>\n')
-    out.append(f'# {L("27 tasks, each explained", "27 个范式，逐一讲透")}\n')
+    out.append(f'# {L(f"{ntask} tasks, each explained", f"{ntask} 个范式，逐一讲透")}\n')
     out.append('<div class="rf-taskhero">\n')
     out.append('<p class="rf-taskhero-lede">' + L(
         'Pick a test to see exactly how RodentFlow scores it: the design, why keypoints measure it better than a body centroid, the rule behind every measure, a simulated example and the papers it is built on.',
         '选一个测试，看 RodentFlow 到底怎样评分：实验设计、为什么关键点比身体质心测得更准、每个指标背后的规则、一个模拟示例，以及它所依据的文献。') + '</p>')
     out.append('<div class="rf-stats">'
-               f'<span><b>27</b>{L("tasks", "个范式")}</span>'
+               f'<span><b>{ntask}</b>{L("tasks", "个范式")}</span>'
                f'<span><b>{sum(len(cat[k]["measures"]) for _, k, *_ in T) + 5}</b>{L("defined measures", "个有定义的指标")}</span>'
                f'<span><b>{nref}</b>{L("references", "篇参考文献")}</span>'
                f'<span><b>4</b>{L("pose models", "个姿态模型")}</span></div>')
@@ -266,10 +275,10 @@ def index(lang):
         n = sum(1 for s, k, g, *_ in T if g == cg) + (1 if cg == 'motor' else 0)
         chips.append(f'<a href="#{cg}">{cen if en else czh}<span>{n}</span></a>')
     out.append('<nav class="rf-catchips" aria-label="' + L('Areas', '领域') + '">' + ''.join(chips) + '</nav>')
-    out.append('<p class="rf-legend">' + ''.join(f'<span>{DOTS[m]}{MN[m]}</span>' for m in ('pose', 'pose2', 'classic', 'multi')) + '</p>')
+    out.append('<p class="rf-legend">' + ''.join(f'<span>{DOTS[m]}{MN[m]}</span>' for m in ('pose', 'pose2', 'group', 'classic', 'multi')) + '</p>')
     out.append('\n</div>\n')
-    out.append(L('Every task runs on iPhone, iPad and Mac. The task decides how many animals are tracked; for one-animal tasks you choose a dark or white coat, for two-animal tasks two dark mice or one dark and one white ([Models](../models.md#coat)). The example on each page is a **simulated session**: it shows what each measure means, not data.',
-                 '所有范式在 iPhone、iPad 和 Mac 上都能用。范式决定追踪几只动物；单鼠范式可选深色或白色毛色，双鼠范式可选两只深色或一黑一白（[模型](../models.md#coat)）。每页的示例都是**模拟实验**，用来说明指标的含义，不是实验数据。') + '\n')
+    out.append(L('Every task runs on iPhone, iPad and Mac. The task decides how many animals are tracked; for one-animal tasks you choose a dark or white coat, for two-animal tasks two dark mice or one dark and one white ([Models](../models.md#coat)); group behaviour tracks 3–10 dark mice. The example on each page is a **simulated session**: it shows what each measure means, not data.',
+                 '所有范式在 iPhone、iPad 和 Mac 上都能用。范式决定追踪几只动物；单鼠范式可选深色或白色毛色，双鼠范式可选两只深色或一黑一白（[模型](../models.md#coat)）；群体行为追踪 3–10 只深色小鼠。每页的示例都是**模拟实验**，用来说明指标的含义，不是实验数据。') + '\n')
 
     def card(slug, name, tag, methods):
         meth = ''.join(f'<span>{DOTS[m]}{MN[m]}</span>' for m in methods)

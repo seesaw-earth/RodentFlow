@@ -55,4 +55,4 @@ description: "RodentFlow 的居住者–入侵者（攻击）：攻击潜伏期�
 
 ## 同类范式 {#related}
 
-[三箱社交](./three-chamber.md) · [社交回避测试](./social-interaction.md) · [双鼠社交互动](./dyadic-social.md)
+[三箱社交](./three-chamber.md) · [社交回避测试](./social-interaction.md) · [双鼠社交互动](./dyadic-social.md) · [群体行为](./group-behavior.md)

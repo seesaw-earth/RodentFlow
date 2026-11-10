@@ -18,7 +18,7 @@ T, title, brit = g['T'], g['title'], g['brit']
 # Order on the home page: the tests most people look for first.
 ORDER = ['open-field', 'elevated-plus-maze', 'three-chamber', 'novel-object-recognition', 'water-maze', 'dyadic-social',
          'y-maze', 'fear-conditioning', 'barnes-maze', 'light-dark-box', 'tail-suspension', 'resident-intruder',
-         'social-interaction', 'elevated-zero-maze', 't-maze', 'place-preference', 'passive-avoidance', 'step-down',
+         'group-behavior', 'social-interaction', 'elevated-zero-maze', 't-maze', 'place-preference', 'passive-avoidance', 'step-down',
          'looming-escape', 'platform-avoidance', 'novelty-suppressed-feeding', 'visual-cliff', 'marble-burying',
          'head-direction', 'spatial-exploration', 'rotation', 'pose-only']
 CATS = [('social', 'Social', '社交'), ('navigation', 'Navigation', '导航'), ('anxiety', 'Anxiety', '焦虑'),
@@ -26,28 +26,32 @@ CATS = [('social', 'Social', '社交'), ('navigation', 'Navigation', '导航'), 
 INFO = {s: dict(key=k, cat=c, method=m, classic=cl) for s, k, c, m, cl, _ in T}
 INFO['tail-suspension'] = dict(key=None, cat='motor', method='multi', classic=False)
 assert sorted(ORDER) == sorted(INFO), set(ORDER) ^ set(INFO)
+N = len(ORDER)
 
 TXT = {
     'en': dict(
-        strip_label='27 tasks', strip_hint='Tap one to see exactly how it is scored',
-        kicker='Task library', h2='27 tasks, each explained',
+        strip_label='{n} tasks', strip_hint='Tap one to see exactly how it is scored',
+        kicker='Task library', h2='{n} tasks, each explained',
         lede='Pick a test and see how RodentFlow scores it: the design, why keypoints help, how every measure is defined, a simulated example and the papers behind it.',
-        cta='Open the task library', all='All', more='Show all 27 tasks', filters='Filter tasks by area',
+        cta='Open the task library', all='All', more='Show all {n} tasks', filters='Filter tasks by area',
         table='Which tracker each test uses',
         note='Without video, marble burying, sucrose preference, beam walking, gait and the two-armed bandit can be entered by hand or imported from CSV, TSV or JSON, then compared like any other test.',
-        m={'pose': 'One animal', 'pose2': 'Two animals', 'multi': 'Multi-chamber', 'classic': 'Centroid'},
+        m={'pose': 'One animal', 'pose2': 'Two animals', 'group': 'Group', 'multi': 'Multi-chamber', 'classic': 'Centroid'},
         tst=('Tail suspension, multi-chamber', 'Several mice in one recording · immobility in minutes 2–6')),
     'zh': dict(
-        strip_label='27 个范式', strip_hint='点一个，看它到底怎样评分',
-        kicker='范式库', h2='27 个范式，逐一讲透',
+        strip_label='{n} 个范式', strip_hint='点一个，看它到底怎样评分',
+        kicker='范式库', h2='{n} 个范式，逐一讲透',
         lede='选一个测试，看 RodentFlow 怎样评分：实验设计、为什么用关键点、每个指标的定义、模拟示例和相关文献。',
-        cta='打开范式库', all='全部', more='显示全部 27 个范式', filters='按领域筛选范式',
+        cta='打开范式库', all='全部', more='显示全部 {n} 个范式', filters='按领域筛选范式',
         table='每种实验用哪种追踪方式',
         note='不用视频时，埋珠、糖水偏好、平衡木、步态和双臂老虎机可以手动录入，或从 CSV、TSV、JSON 导入，再像其他实验一样比较。',
-        m={'pose': '单鼠', 'pose2': '双鼠', 'multi': '多格', 'classic': '质心'},
+        m={'pose': '单鼠', 'pose2': '双鼠', 'group': '群体', 'multi': '多格', 'classic': '质心'},
         tst=('多格悬尾', '一段录像里多只小鼠 · 第 2–6 分钟不动时间')),
 }
-DOT = {'pose': '<i class="dot" style="--c:var(--m-pose)"></i>', 'pose2': '<i class="dot ab"></i>',
+for _t in TXT.values():
+    for _k in ('strip_label', 'h2', 'more'):
+        _t[_k] = _t[_k].format(n=N)
+DOT = {'pose': '<i class="dot" style="--c:var(--m-pose)"></i>', 'pose2': '<i class="dot ab"></i>', 'group': '<i class="dot grp"></i>',
        'multi': '<i class="dot" style="--c:var(--m-tst)"></i>', 'classic': '<i class="dot" style="--c:var(--m-centroid)"></i>'}
 ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 
