@@ -4,9 +4,9 @@ outline: false
 
 # 隐私政策
 
-*最近更新：2026 年 10 月 30 日 · 适用于 iPhone、iPad 版 RodentFlow 和 Mac 版 RodentFlow*
+*最近更新：2026 年 11 月 13 日 · 适用于 iPhone、iPad 版，Mac 版和 Windows 版 RodentFlow*
 
-**简而言之：RodentFlow 不收集、不传输、不共享任何数据。视频、结果和你填写的一切都留在你的 iPhone、iPad 或 Mac 上。**
+**简而言之：RodentFlow 不收集、不传输、不共享任何数据。视频、结果和你填写的一切都留在你的 iPhone、iPad、Mac 或 Windows 电脑上。**
 
 ## App 处理哪些数据
 
@@ -25,11 +25,11 @@ RodentFlow **仅在你自己的设备上**处理：
 - **不含任何广告、统计分析或追踪**代码或 SDK。
 - **不访问**通讯录、位置、相机、麦克风或健康数据。
 
-姿态追踪使用内置在 App 中的 Core ML 模型，分析视频不需要联网。
+在 iPhone、iPad 和 Mac 上，姿态追踪使用内置在 App 中的 Core ML 模型；在 Windows 上，使用在电脑显卡或处理器上运行的 ONNX 模型。分析视频不需要联网。
 
 ## 你可以自行核实
 
-RodentFlow 是开源软件，见[源代码](./source.md)，任何人都可以查看 App 如何处理数据。iPhone App 内附带的隐私清单（`PrivacyInfo.xcprivacy`）声明不追踪、不收集任何数据。
+RodentFlow 是开源软件，见[源代码](./source.md)；Windows 版见 [RodentFlow-Windows](https://github.com/seesaw-earth/RodentFlow-Windows)。任何人都可以查看 App 如何处理数据。iPhone App 内附带的隐私清单（`PrivacyInfo.xcprivacy`）声明不追踪、不收集任何数据。
 
 ## iPhone 与 iPad 上的照片与文件
 
@@ -44,16 +44,26 @@ RodentFlow 是开源软件，见[源代码](./source.md)，任何人都可以查
 
 具体位置见[数据存放位置与备份](./reference/data-and-backups.md)。
 
+## Windows 上的文件与文件夹
+
+- Windows 版 RodentFlow **在原位置**读取你添加的视频，从不修改它们。视频画面由 ffmpeg 和 ffprobe 读取，它们是在你电脑上本地运行的程序。
+- 设置和工作区（项目、测试和你填写的信息）保存在 Windows 用户目录的 `%LOCALAPPDATA%\RodentFlow` 中；Microsoft Store 版中，Windows 可能把它们放在 `%LOCALAPPDATA%\Packages` 下 App 自己的数据里。分析结果保存到 `文档\RodentFlow` 或你选择的文件夹，导出文件保存到你选择的文件夹。
+- Windows 版不含任何联网代码。App 启动失败时，错误只写入同一文件夹中的本地文件 `startup-error.log`。
+- Microsoft Store 和 Windows 由 Microsoft 运营。通过 Store 下载和更新 App，以及 Windows 自身发送的诊断数据，适用 [Microsoft 隐私声明](https://privacy.microsoft.com/zh-cn/privacystatement)和你的 Windows 隐私设置。Microsoft 可能通过 Partner Center 向开发者提供汇总报告，例如安装次数和崩溃统计；开发者只用它们发现和修复问题。
+
+Windows 版的完整政策（列出 App 保存的每个文件）见 [PRIVACY.md](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/PRIVACY.md)。
+
 ## 数据存放在哪里
 
-所有数据都保存在你设备上 App 的存储空间和你选择的文件夹里。在 iPhone 和 iPad 上，是否随设备备份（iCloud 或电脑）由你自己的备份设置决定，并受 Apple 管理；在 Mac 上，则随你自己的备份（如时间机器）。
+所有数据都保存在你设备上 App 的存储空间和你选择的文件夹里。在 iPhone 和 iPad 上，是否随设备备份（iCloud 或电脑）由你自己的备份设置决定，并受 Apple 管理；在 Mac 和 Windows 上，则随你自己的备份（如时间机器或 Windows 备份）。
 
-只有当**你**主动共享、导出或另存时（例如隔空投送、邮件、“文件”或访达），数据才会离开设备，而且只发送到你选择的目的地。如果你选择 iCloud 云盘这类云端文件夹（例如把 iPhone 上的分析传到 Mac），文件由该服务按其自身条款保存。
+只有当**你**主动共享、导出或另存时（例如隔空投送、邮件、“文件”、访达或文件资源管理器），数据才会离开设备，而且只发送到你选择的目的地。如果你选择 iCloud 云盘、OneDrive 这类云端文件夹（例如把 iPhone 上的分析传到 Mac），文件由该服务按其自身条款保存。
 
 ## 删除数据
 
 - **iPhone 和 iPad**：在 App 中删除单条结果、在“文件”App 中删除文件夹，或删除 App 本身，即可移除 App 在设备上的全部数据。
 - **Mac**：在 App 中删除任务和测试，在访达中删除导出文件。在 App 中删除任务不会删除你的原始视频，部分追踪文件可能仍留在磁盘上；卸载前请对照[数据存放位置与备份](./reference/data-and-backups.md)检查。
+- **Windows**：在 App 中移除任务和测试，在文件资源管理器中删除结果和导出文件夹。要删除全部数据，卸载 App，再删除仍然存在的 `%LOCALAPPDATA%\RodentFlow`、`文档\RodentFlow` 和你的导出文件夹。
 
 开发者无法访问你的数据，也无法远程删除你设备上的任何内容。
 
@@ -71,6 +81,6 @@ RodentFlow 是面向科研实验室的工具，不收集任何人（包括儿童
 
 ## 联系方式
 
-对本政策有疑问，请在 [github.com/seesaw-earth/RodentFlow/issues](https://github.com/seesaw-earth/RodentFlow/issues) 提交 issue，或见[支持](./support.md)。GitHub issue 是公开的：涉及敏感问题时，请只提交一个请求私下联系的 issue，不要写具体内容。
+对本政策有疑问，请在 [github.com/seesaw-earth/RodentFlow/issues](https://github.com/seesaw-earth/RodentFlow/issues) 提交 issue（Windows 版请到 [github.com/seesaw-earth/RodentFlow-Windows/issues](https://github.com/seesaw-earth/RodentFlow-Windows/issues)），或见[支持](./support.md)。GitHub issue 是公开的：涉及敏感问题时，请只提交一个请求私下联系的 issue，不要写具体内容。
 
 开发者：Ziqing Shi
