@@ -44,6 +44,10 @@ No. There is no account and no upload; videos are analysed where they are stored
 
 No. The models are built into the app and everything runs on the device.
 
+### Is there a Windows version?
+
+Yes. [RodentFlow for Windows](../windows/) is in the [Microsoft Store](https://apps.microsoft.com/detail/9n4hx4cvmzf8) for Windows 10 (version 1809 or later) and Windows 11, 64-bit. It runs the pose tasks with the same analysis code; classic centroid tracking, multi-chamber tail suspension, manual entry and phone sync are on Apple devices only. Its results have not yet been compared with the Mac's on the same videos.
+
 ### What video formats work?
 
 MP4 and MOV with H.264 or HEVC, at any frame rate and resolution. If a file will not open, re-encode it as H.264 MP4, for example with [HandBrake](https://handbrake.fr/).
@@ -62,7 +66,7 @@ They are in the separate **RodentLimb** app, with its own limb models. See the [
 
 ### How do I switch between English and Chinese?
 
-The app follows the device language. On iPhone and iPad you can choose RodentFlow’s language in the Settings app; on the Mac use the language menu in the toolbar or Settings. Data and exports stay in English.
+The app follows the device language. On iPhone and iPad you can choose RodentFlow’s language in the Settings app; on the Mac use the language menu in the toolbar or Settings; on Windows, the language menu in the window. Data and exports stay in English.
 
 ## Groups and statistics {#groups}
 

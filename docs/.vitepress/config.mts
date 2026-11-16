@@ -12,7 +12,7 @@ function sidebarEn(): DefaultTheme.SidebarItem[] {
       text: 'Get started',
       items: [
         { text: 'What RodentFlow does', link: '/guide/introduction' },
-        { text: 'iPhone, iPad and Mac', link: '/guide/editions' },
+        { text: 'iPhone, iPad, Mac and Windows', link: '/guide/editions' },
         { text: 'Quick start', link: '/guide/getting-started' },
         { text: 'Recording videos that track well', link: '/guide/recording' }
       ]
@@ -195,6 +195,13 @@ function sidebarEn(): DefaultTheme.SidebarItem[] {
       ]
     },
     {
+      text: 'Windows',
+      items: [
+        { text: 'RodentFlow for Windows', link: '/windows/' },
+        { text: 'Quick start on Windows', link: '/windows/quick-start' }
+      ]
+    },
+    {
       text: 'How it works',
       items: [
         { text: 'How tracking works', link: '/principles/tracking' },
@@ -255,7 +262,7 @@ function sidebarZh(): DefaultTheme.SidebarItem[] {
       text: '入门',
       items: [
         { text: 'RodentFlow 能做什么', link: '/zh/guide/introduction' },
-        { text: 'iPhone、iPad 与 Mac', link: '/zh/guide/editions' },
+        { text: 'iPhone、iPad、Mac 与 Windows', link: '/zh/guide/editions' },
         { text: '快速上手', link: '/zh/guide/getting-started' },
         { text: '怎样拍出好追踪的视频', link: '/zh/guide/recording' }
       ]
@@ -438,6 +445,13 @@ function sidebarZh(): DefaultTheme.SidebarItem[] {
       ]
     },
     {
+      text: 'Windows',
+      items: [
+        { text: 'Windows 版 RodentFlow', link: '/zh/windows/' },
+        { text: 'Windows 快速上手', link: '/zh/windows/quick-start' }
+      ]
+    },
+    {
       text: '原理',
       items: [
         { text: '追踪原理', link: '/zh/principles/tracking' },
@@ -504,7 +518,7 @@ function sidebarArchive(zh: boolean): DefaultTheme.SidebarItem[] {
 export default defineConfig({
   base,
   title: 'RodentFlow',
-  description: 'RodentFlow: video in, data out. Mouse behaviour tracking and analysis on iPhone, iPad and Mac.',
+  description: 'RodentFlow: video in, data out. Mouse behaviour tracking and analysis on iPhone, iPad, Mac and Windows.',
   lastUpdated: false,
   cleanUrls: false,
   head: [
@@ -562,18 +576,19 @@ export default defineConfig({
       label: 'English',
       lang: 'en-US',
       title: 'RodentFlow',
-      description: 'RodentFlow: video in, data out. Mouse behaviour tracking and analysis on iPhone, iPad and Mac.',
+      description: 'RodentFlow: video in, data out. Mouse behaviour tracking and analysis on iPhone, iPad, Mac and Windows.',
       themeConfig: {
         nav: [
           { text: 'Tasks', link: '/tasks/', activeMatch: '^/tasks/' },
           {
             text: 'Manual',
-            activeMatch: '^/(guide|mac|principles|reference)/',
+            activeMatch: '^/(guide|mac|windows|principles|reference)/',
             items: [
               { text: 'Get started', link: '/guide/introduction' },
               { text: 'Analysing a video', link: '/guide/video-analysis' },
               { text: 'Comparing groups', link: '/guide/groups' },
               { text: 'Mac', link: '/mac/' },
+              { text: 'Windows', link: '/windows/' },
               { text: 'How it works', link: '/principles/tracking' },
               { text: 'Speed and accuracy', link: '/principles/performance' },
               { text: 'Reference', link: '/reference/files' }
@@ -592,7 +607,7 @@ export default defineConfig({
           text: 'Edit this page on GitHub'
         },
         footer: {
-          message: 'RodentFlow for iPhone, iPad and Mac · <a href="/RodentFlow/source.html">Source code</a> · <a href="/RodentFlow/privacy.html">Privacy</a> · <a href="/RodentFlow/support.html">Support</a> · <a href="/RodentFlow/legal.html">Legal</a>',
+          message: 'RodentFlow for iPhone, iPad, Mac and Windows · <a href="/RodentFlow/source.html">Source code</a> · <a href="/RodentFlow/privacy.html">Privacy</a> · <a href="/RodentFlow/support.html">Support</a> · <a href="/RodentFlow/legal.html">Legal</a>',
           copyright: '© 2026 Ziqing Shi'
         }
       }
@@ -602,19 +617,20 @@ export default defineConfig({
       lang: 'zh-CN',
       link: '/zh/',
       title: 'RodentFlow',
-      description: '在 iPhone、iPad 和 Mac 上完成啮齿类动物行为追踪与分析 —— 使用手册',
+      description: '在 iPhone、iPad、Mac 和 Windows 上完成啮齿类动物行为追踪与分析 —— 使用手册',
       themeConfig: {
         logoLink: { link: `${base}zh/`, target: '_self' },
         nav: [
           { text: '实验范式', link: '/zh/tasks/', activeMatch: '^/zh/tasks/' },
           {
             text: '手册',
-            activeMatch: '^/zh/(guide|mac|principles|reference)/',
+            activeMatch: '^/zh/(guide|mac|windows|principles|reference)/',
             items: [
               { text: '入门', link: '/zh/guide/introduction' },
               { text: '分析一段视频', link: '/zh/guide/video-analysis' },
               { text: '组间比较', link: '/zh/guide/groups' },
               { text: 'Mac', link: '/zh/mac/' },
+              { text: 'Windows', link: '/zh/windows/' },
               { text: '原理', link: '/zh/principles/tracking' },
               { text: '速度与精度', link: '/zh/principles/performance' },
               { text: '参考', link: '/zh/reference/files' }
@@ -646,7 +662,7 @@ export default defineConfig({
           linkText: '回到首页'
         },
         footer: {
-          message: 'RodentFlow · iPhone、iPad 与 Mac · <a href="/RodentFlow/zh/source.html">源代码</a> · <a href="/RodentFlow/zh/privacy.html">隐私政策</a> · <a href="/RodentFlow/zh/support.html">支持</a> · <a href="/RodentFlow/zh/legal.html">法律与声明</a>',
+          message: 'RodentFlow · iPhone、iPad、Mac 与 Windows · <a href="/RodentFlow/zh/source.html">源代码</a> · <a href="/RodentFlow/zh/privacy.html">隐私政策</a> · <a href="/RodentFlow/zh/support.html">支持</a> · <a href="/RodentFlow/zh/legal.html">法律与声明</a>',
           copyright: '© 2026 Ziqing Shi'
         }
       }

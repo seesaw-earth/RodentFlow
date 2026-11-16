@@ -1,9 +1,18 @@
 ---
 title: "版本说明"
-description: "RodentFlow 2.1 和 2.0 在 iPhone、iPad 和 Mac 上的新内容。"
+description: "RodentFlow 2.1 和 2.0 在 iPhone、iPad 和 Mac 上的新内容，以及 Windows 版 RodentFlow。"
 ---
 
 # 版本说明
+
+## Windows 版 RodentFlow · 首个版本 {#windows-1}
+
+2026 年 11 月，上架 [Microsoft Store](https://apps.microsoft.com/detail/9n4hx4cvmzf8)。见 [Windows 版 RodentFlow](../windows/)。
+
+- **姿态范式来到 Windows**：支持 Windows 10（1809 或更高版本）和 Windows 11，64 位，由 RodentFlow 2.1 的分析引擎编译而成。
+- **工作区**按任务、组、小鼠和实验组织；所有姿态范式都能标定；结果页的卡片、图和 Methods 文字与 Mac 相同；逐帧复核和 A / B 互换；配对阶段、埋珠和组间比较。
+- **模型**以 32 位 ONNX 文件运行在支持 DirectX 12 的显卡（DirectML）或处理器上，自动选更快的那个。模型和 FFmpeg 都已包含在 App 里。
+- **Windows 版暂时还没有**：经典质心追踪、多格悬尾、手动录入和导入表格、手机同步。
 
 ## 2.1 · iOS build 21，Mac build 17 {#2-1-21}
 

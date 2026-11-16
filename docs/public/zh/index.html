@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>RodentFlow: video in, data out | 小鼠行为视频分析</title>
-<meta name="description" content="RodentFlow 在 iPhone、iPad 和 Mac 上从俯拍视频追踪啮齿类动物并给行为实验评分：质心追踪、六关键点姿态和双鼠身份追踪，全部在设备上完成。">
+<meta name="description" content="RodentFlow 在 iPhone、iPad、Mac 和 Windows 上从俯拍视频追踪啮齿类动物并给行为实验评分：质心追踪、六关键点姿态和双鼠身份追踪，全部在设备上完成。">
 <meta name="theme-color" content="#0F1A31">
 <link rel="canonical" href="https://seesaw-earth.github.io/RodentFlow/zh/">
 <link rel="alternate" hreflang="en" href="https://seesaw-earth.github.io/RodentFlow/">
 <link rel="alternate" hreflang="zh-CN" href="https://seesaw-earth.github.io/RodentFlow/zh/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="RodentFlow: video in, data out">
-<meta property="og:description" content="在 iPhone、iPad 和 Mac 上完成小鼠姿态追踪与行为分析。每一帧都在设备上分析。">
+<meta property="og:description" content="在 iPhone、iPad、Mac 和 Windows 上完成小鼠姿态追踪与行为分析。每一帧都在设备上分析。">
 <meta property="og:url" content="https://seesaw-earth.github.io/RodentFlow/zh/">
 <!-- Link-preview image: the poster of a landscape (Mac) clip fits the 1.9:1 preview best. -->
 <meta property="og:image" content="https://seesaw-earth.github.io/RodentFlow/videos/mac-head-direction.jpg">
@@ -542,6 +542,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
     <a href="#identity">身份</a>
     <a href="#cite">引用</a>
     <a href="guide/introduction.html">手册</a>
+    <a href="windows/">Windows</a>
     <a href="blog/">博客</a>
   </div>
   <a class="tasks-m" href="#tasks">范式</a>
@@ -556,13 +557,16 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
   <div class="wrap">
     <h1>RodentFlow:<span class="slogan">video in, data out.</span></h1>
     <div class="hero-row">
-      <p class="hero-sub">在 iPhone、iPad 和 Mac 上完成小鼠姿态追踪与行为分析。每一帧都在设备上分析。</p>
+      <p class="hero-sub">在 iPhone、iPad、Mac 和 Windows 上完成小鼠姿态追踪与行为分析。每一帧都在设备上分析。</p>
       <div>
         <p class="byline"><a href="https://seesaw-earth.github.io/">Ziqing Shi, MD, PhD</a><br>耶鲁大学医学院</p>
         <div class="actions">
           <a class="btn solid" href="https://apps.apple.com/app/id6818278240">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg>
             App Store</a>
+          <a class="btn solid" href="https://apps.microsoft.com/detail/9n4hx4cvmzf8">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M9 20.5h6M12 17v3.5"/></svg>
+            Microsoft Store</a>
           <a class="btn" href="source.html">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></svg>
             源代码</a>
@@ -655,7 +659,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
       <div><dt>输入</dt><dd>一只或两只小鼠的俯拍视频，或一排悬尾实验箱</dd></div>
       <div><dt>追踪方式</dt><dd>10 Hz 质心；六关键点姿态；带身份识别的双鼠姿态</dd></div>
       <div><dt>输出</dt><dd>每只动物的指标、图表、组间统计，以及附带方法段落的 CSV 和 JSON</dd></div>
-      <div><dt>运行平台</dt><dd>iPhone 和 iPad（iOS 17 或更高版本），以及 Mac（macOS 14 或更高版本）</dd></div>
+      <div><dt>运行平台</dt><dd>iPhone 和 iPad（iOS 17 或更高版本）、Mac（macOS 14 或更高版本），以及 Windows 电脑（Windows 10 1809 或更高版本，64 位）</dd></div>
       <div><dt>隐私</dt><dd>无需账号，不上传，没有使用统计</dd></div>
     </dl>
   </div>
@@ -865,7 +869,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
       </div>
       <div>
         <h3>数据不离开设备</h3>
-        <p>视频在存放的地方直接分析。没有账号、没有使用统计、不上传；App Store 隐私标签为“未收集数据”。Mac 上的长录像边分析边保存，崩溃后可以接着分析。</p>
+        <p>视频在存放的地方直接分析。没有账号、没有使用统计、不上传；App Store 隐私标签为“未收集数据”。Mac 上的长录像边分析边保存，崩溃后可以接着分析。Windows 版完全不含联网代码。</p>
       </div>
       <div>
         <h3>规则明确</h3>
@@ -899,6 +903,7 @@ footer.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2
       <span>RodentFlow 由耶鲁大学医学院的 <a href="https://seesaw-earth.github.io/">Ziqing Shi</a> 开发。</span>
       <nav aria-label="页脚">
         <a href="guide/introduction.html">使用手册</a>
+        <a href="windows/">Windows</a>
         <a href="tasks/">实验范式</a>
         <a href="tutorials/">教程</a>
         <a href="models.html">模型</a>

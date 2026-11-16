@@ -38,6 +38,10 @@ App 如何加载模型包、送入图像并解码输出，见 [4 · App 里的 C
 MousePose6、WhiteMousePose6 和 MousePose6DyadBW 把身体中心放在颈部和尾根的中点。MousePose6Dyad 学到的是另一种定义，约在鼻尖后 0.4 个体长。因此基于身体中心的指标在 MousePose6Dyad 与其他三个模型之间不能互换；见[教程 6](./tutorials/dyad-bw.md#keypoints)。
 :::
 
+## Windows 上的模型 {#windows}
+
+[Windows 版 RodentFlow](./windows/) 运行同一批姿态模型 checkpoint（MousePose6、WhiteMousePose6、MousePose6Dyad、MousePose6DyadBW 和群体模型）导出的 32 位 ONNX 文件，用 ONNX Runtime 在显卡（DirectML）或处理器上运行。ONNX 文件已包含在 Windows App 里。导出这些文件、并把 ONNX Runtime 的输出和 PyTorch 对照的 notebook 在 [RodentFlow-Windows](https://github.com/seesaw-earth/RodentFlow-Windows/tree/main/notebooks) 仓库中。
+
 ## 不再属于 RodentFlow 的模型 {#former}
 
 - **[CylinderMousePoseV2](./tutorials/cylinder-v2.md)**（四爪、鼻尖、嘴和尾根）曾用于早期 Mac App 的肢体流程。RodentFlow 2.0 去掉了这些流程；肢体模型和流程现在属于 **RodentLimb**，其网站记录了[目前的肢体模型](https://seesaw-earth.github.io/RodentLimb/zh/models/)。这篇教程保留在这里，作为这个模型如何制作的记录。

@@ -5,7 +5,7 @@ description: "RodentFlow turns videos of laboratory mice into behavioural measur
 
 # What RodentFlow does
 
-RodentFlow turns **videos of laboratory mice into behavioural measures**, on an iPhone, iPad or Mac. Choose the test, mark the arena on one frame, and the app tracks the animal, scores the session, and compares groups with statistics and publication-ready figures. There is no account and no upload: videos and results stay on your device.
+RodentFlow turns **videos of laboratory mice into behavioural measures**, on an iPhone, iPad, Mac or Windows PC. Choose the test, mark the arena on one frame, and the app tracks the animal, scores the session, and compares groups with statistics and publication-ready figures. There is no account and no upload: videos and results stay on your device.
 
 <a class="rf-promo rf-promo-wide" href="../tasks/"><span class="rf-promo-thumbs"><img src="/img/tasks/thumbs/elevated-plus-maze.en.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/three-chamber.en.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/water-maze.en.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/dyadic-social.en.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/y-maze.en.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/fear-conditioning.en.png" alt="" loading="lazy"></span><strong>28 tasks, each explained →</strong><span>Design, why keypoints help, the rule behind every measure, a simulated example and the papers behind it.</span></a>
 
@@ -31,9 +31,9 @@ On iPhone and iPad you can also **enter values by hand or import a table** (marb
 5. **Read the results**: every measure with its definition, figures of the track and heat map, and a time course.
 6. **Compare groups**: the app suggests a test for the design, draws every animal, and exports the figure, statistics, source data and a Methods paragraph.
 
-## iPhone, iPad and Mac {#devices}
+## iPhone, iPad, Mac and Windows {#devices}
 
-All three run the same analysis code, so the same video, calibration and settings give the same numbers. The iPhone and iPad are convenient at the bench; the Mac organises whole studies (project, task, group, animal, session) and handles long recordings. Analyses done on the phone can be sent to the Mac automatically: see [Phone to Mac sync](../reference/sync.md).
+The iPhone, iPad and Mac run the same analysis code, so the same video, calibration and settings give the same numbers. The iPhone and iPad are convenient at the bench; the Mac organises whole studies (project, task, group, animal, session) and handles long recordings. Analyses done on the phone can be sent to the Mac automatically: see [Phone to Mac sync](../reference/sync.md). [RodentFlow for Windows](../windows/) compiles the same analysis code for Windows PCs and organises studies as the Mac does; see [iPhone, iPad, Mac and Windows](./editions.md) for what each one does.
 
 ## Where to go next {#next}
 

@@ -1,9 +1,18 @@
 ---
 title: "Release notes"
-description: "What is new in RodentFlow 2.1 and 2.0 for iPhone, iPad and Mac."
+description: "What is new in RodentFlow 2.1 and 2.0 for iPhone, iPad and Mac, and in RodentFlow for Windows."
 ---
 
 # Release notes
+
+## RodentFlow for Windows · first release {#windows-1}
+
+November 2026, in the [Microsoft Store](https://apps.microsoft.com/detail/9n4hx4cvmzf8). See [RodentFlow for Windows](../windows/).
+
+- **The pose tasks on Windows** 10 (version 1809 or later) and Windows 11, 64-bit, compiled from the analysis engine of RodentFlow 2.1.
+- **Workspace** of tasks, groups, animals and sessions; calibration of every pose task; results with the same cards, figures and Methods text; frame review with A / B swaps; paired phases, marble burying and group comparison.
+- **Models** run as 32-bit ONNX files on a DirectX 12 graphics card (DirectML) or on the processor, whichever is faster. Models and FFmpeg come with the app.
+- **Not yet on Windows:** classic centroid tracking, multi-chamber tail suspension, manual entry and table import, phone sync.
 
 ## 2.1 · iOS build 21, Mac build 17 {#2-1-21}
 

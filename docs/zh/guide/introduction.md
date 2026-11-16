@@ -5,7 +5,7 @@ description: "RodentFlow 在 iPhone、iPad 和 Mac 上把实验小鼠的视频�
 
 # RodentFlow 能做什么
 
-RodentFlow 在 iPhone、iPad 或 Mac 上把**实验小鼠的视频变成行为指标**。选好测试，在一帧画面上标出场地，App 就会追踪动物、给这次实验评分，再做组间统计并生成可直接用于论文的图。不需要账号，也不上传：视频和结果都留在你的设备上。
+RodentFlow 在 iPhone、iPad、Mac 或 Windows 电脑上把**实验小鼠的视频变成行为指标**。选好测试，在一帧画面上标出场地，App 就会追踪动物、给这次实验评分，再做组间统计并生成可直接用于论文的图。不需要账号，也不上传：视频和结果都留在你的设备上。
 
 <a class="rf-promo rf-promo-wide" href="../tasks/"><span class="rf-promo-thumbs"><img src="/img/tasks/thumbs/elevated-plus-maze.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/three-chamber.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/water-maze.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/dyadic-social.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/y-maze.zh.png" alt="" loading="lazy"><img src="/img/tasks/thumbs/fear-conditioning.zh.png" alt="" loading="lazy"></span><strong>28 个实验范式，逐一讲透 →</strong><span>实验设计、为什么用关键点、每个指标背后的规则、模拟示例和相关文献。</span></a>
 
@@ -31,9 +31,9 @@ RodentFlow 在 iPhone、iPad 或 Mac 上把**实验小鼠的视频变成行为�
 5. **看结果**：每个指标都附定义，另有轨迹图、热图和时间进程。
 6. **组间比较**：App 按实验设计推荐检验方法，画出每只动物，并导出图、统计结果、源数据和方法学段落。
 
-## iPhone、iPad 与 Mac {#devices}
+## iPhone、iPad、Mac 与 Windows {#devices}
 
-三者运行同一套分析代码，同一段视频、同样的标定和设置得到同样的数值。iPhone 和 iPad 适合在实验台边使用；Mac 适合组织整个研究（项目、任务、组、动物、实验），也擅长处理长录像。手机上完成的分析可以自动送到 Mac：见[手机到 Mac 同步](../reference/sync.md)。
+iPhone、iPad 和 Mac 运行同一套分析代码，同一段视频、同样的标定和设置得到同样的数值。iPhone 和 iPad 适合在实验台边使用；Mac 适合组织整个研究（项目、任务、组、动物、实验），也擅长处理长录像。手机上完成的分析可以自动送到 Mac：见[手机到 Mac 同步](../reference/sync.md)。[Windows 版 RodentFlow](../windows/) 把同一套分析代码编译到 Windows 电脑上，组织研究的方式和 Mac 相同；各平台能做什么，见 [iPhone、iPad、Mac 与 Windows](./editions.md)。
 
 ## 接下来 {#next}
 

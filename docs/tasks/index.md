@@ -17,7 +17,7 @@ aside: false
 
 </div>
 
-Every task runs on iPhone, iPad and Mac. The task decides how many animals are tracked; for one-animal tasks you choose a dark or white coat, for two-animal tasks two dark mice or one dark and one white ([Models](../models.md#coat)); group behaviour tracks 3–10 dark mice. The example on each page is a **simulated session**: it shows what each measure means, not data.
+Every task runs on iPhone, iPad and Mac, and every task except multi-chamber tail suspension also runs on [Windows](../windows/). The task decides how many animals are tracked; for one-animal tasks you choose a dark or white coat, for two-animal tasks two dark mice or one dark and one white ([Models](../models.md#coat)); group behaviour tracks 3–10 dark mice. The example on each page is a **simulated session**: it shows what each measure means, not data.
 
 ## Social behaviour {#social}
 

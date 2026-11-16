@@ -44,6 +44,10 @@ description: "关于 RodentFlow 的常见问题：追踪、双鼠、设备、数
 
 不需要。模型内置在 App 里，所有计算都在设备上完成。
 
+### 有 Windows 版吗？
+
+有。[Windows 版 RodentFlow](../windows/) 在 [Microsoft Store](https://apps.microsoft.com/detail/9n4hx4cvmzf8) 上，支持 Windows 10（1809 或更高版本）和 Windows 11，64 位。它用同一套分析代码运行各姿态范式；经典质心追踪、多格悬尾、手动录入和手机同步只在 Apple 设备上。它的结果还没有在同一批视频上和 Mac 比较过。
+
 ### 支持哪些视频格式？
 
 MP4 和 MOV（H.264 或 HEVC），任意帧率和分辨率。打不开的文件可以转成 H.264 MP4，例如用 [HandBrake](https://handbrake.fr/)。
@@ -62,7 +66,7 @@ MP4 和 MOV（H.264 或 HEVC），任意帧率和分辨率。打不开的文件�
 
 ### 怎样在中英文之间切换？
 
-App 跟随设备语言。在 iPhone 和 iPad 上可以在“设置”App 里单独选择 RodentFlow 的语言；在 Mac 上用工具栏的语言菜单或设置。数据和导出始终是英文。
+App 跟随设备语言。在 iPhone 和 iPad 上可以在“设置”App 里单独选择 RodentFlow 的语言；在 Mac 上用工具栏的语言菜单或设置；在 Windows 上用窗口里的语言菜单。数据和导出始终是英文。
 
 ## 组间比较与统计 {#groups}
 

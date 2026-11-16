@@ -42,3 +42,5 @@ description: "RodentFlow 如何把视频帧变成干净的轨迹：只识别场�
 ## 每台设备数值相同 {#same}
 
 iPhone、iPad 和 Mac 编译同一套分析代码，所以同一段视频、同样的标定和设置给出同样的数值。Mac 导入手机上的分析时会重新计算，并显示两者是否一致。
+
+[Windows 版 RodentFlow](../windows/index.md#mac) 编译的也是同一套分析代码，但它用 FFmpeg 读取视频，并运行同一批模型 checkpoint 导出的 32 位 ONNX 文件，所以关键点可能和 Mac 略有差别。它的结果还没有在同一批视频上和 Mac 比较过。

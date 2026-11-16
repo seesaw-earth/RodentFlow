@@ -2,11 +2,13 @@
 
 Important information about software use, third-party rights and research limitations.
 
-Last reviewed: October 18, 2026
+Last reviewed: November 16, 2026
 
 ## Application license
 
 RodentFlow is distributed, if approved, through the Mac App Store under the applicable license terms presented by Apple or a custom license selected by the publisher. Apple's [Standard Licensed Application End User License Agreement](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/) is the default reference unless a different app-specific agreement is provided in App Store Connect.
+
+RodentFlow for Windows is distributed through the Microsoft Store. Unless separate terms are provided with the Store listing, Microsoft's [Standard Application License Terms](https://www.microsoft.com/store/standard-application-license-terms) apply to the copy installed from the Store. The source code of RodentFlow for Windows is published under the GNU Affero General Public License v3.0 in [RodentFlow-Windows](https://github.com/seesaw-earth/RodentFlow-Windows). The Windows app includes FFmpeg, ONNX Runtime with DirectML, the Windows App SDK and Win2D, each under its own licence; see [`THIRD_PARTY_NOTICES.md`](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/THIRD_PARTY_NOTICES.md).
 
 ## Research limitations
 
@@ -18,7 +20,7 @@ Source code, models, and training data may have distinct ownership and licensing
 
 ## Trademarks and third-party names
 
-Apple, macOS, Mac App Store and Core ML are trademarks of Apple Inc. GitHub is a trademark of GitHub, Inc. Third-party marks are used solely to identify the respective technologies and services.
+Apple, macOS, Mac App Store and Core ML are trademarks of Apple Inc. Microsoft, Windows, Microsoft Store and DirectX are trademarks of the Microsoft group of companies. FFmpeg is a trademark of Fabrice Bellard. GitHub is a trademark of GitHub, Inc. Third-party marks are used solely to identify the respective technologies and services.
 
 ## Publisher
 

@@ -511,3 +511,8 @@
   aspect-ratio: 4 / 3;
   object-fit: contain;
 }
+
+/* Editions comparison (guide/editions): keep the row labels on one line. */
+.rf-editions td:first-child {
+  white-space: nowrap;
+}

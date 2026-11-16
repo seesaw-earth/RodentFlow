@@ -277,8 +277,8 @@ def index(lang):
     out.append('<nav class="rf-catchips" aria-label="' + L('Areas', '领域') + '">' + ''.join(chips) + '</nav>')
     out.append('<p class="rf-legend">' + ''.join(f'<span>{DOTS[m]}{MN[m]}</span>' for m in ('pose', 'pose2', 'group', 'classic', 'multi')) + '</p>')
     out.append('\n</div>\n')
-    out.append(L('Every task runs on iPhone, iPad and Mac. The task decides how many animals are tracked; for one-animal tasks you choose a dark or white coat, for two-animal tasks two dark mice or one dark and one white ([Models](../models.md#coat)); group behaviour tracks 3–10 dark mice. The example on each page is a **simulated session**: it shows what each measure means, not data.',
-                 '所有范式在 iPhone、iPad 和 Mac 上都能用。范式决定追踪几只动物；单鼠范式可选深色或白色毛色，双鼠范式可选两只深色或一黑一白（[模型](../models.md#coat)）；群体行为追踪 3–10 只深色小鼠。每页的示例都是**模拟实验**，用来说明指标的含义，不是实验数据。') + '\n')
+    out.append(L('Every task runs on iPhone, iPad and Mac, and every task except multi-chamber tail suspension also runs on [Windows](../windows/). The task decides how many animals are tracked; for one-animal tasks you choose a dark or white coat, for two-animal tasks two dark mice or one dark and one white ([Models](../models.md#coat)); group behaviour tracks 3–10 dark mice. The example on each page is a **simulated session**: it shows what each measure means, not data.',
+                 '所有范式在 iPhone、iPad 和 Mac 上都能用；除多格悬尾外，所有范式也能在 [Windows](../windows/) 上用。范式决定追踪几只动物；单鼠范式可选深色或白色毛色，双鼠范式可选两只深色或一黑一白（[模型](../models.md#coat)）；群体行为追踪 3–10 只深色小鼠。每页的示例都是**模拟实验**，用来说明指标的含义，不是实验数据。') + '\n')
 
     def card(slug, name, tag, methods):
         meth = ''.join(f'<span>{DOTS[m]}{MN[m]}</span>' for m in methods)

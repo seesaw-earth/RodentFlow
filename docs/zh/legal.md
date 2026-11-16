@@ -2,11 +2,13 @@
 
 软件使用、第三方版权和科研限制说明。
 
-最近审阅：2026 年 10 月 18 日
+最近审阅：2026 年 11 月 16 日
 
 ## 应用许可
 
 如通过 Mac App Store 获得批准并分发，RodentFlow 适用 Apple 展示的许可协议或发布者在 App Store Connect 配置的自定义协议。若未选择其他协议，可参考 Apple [标准应用最终用户许可协议](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/)。
+
+Windows 版 RodentFlow 通过 Microsoft Store 分发。除非 Store 页面另附条款，从 Store 安装的副本适用 Microsoft 的[标准应用程序许可条款](https://www.microsoft.com/store/standard-application-license-terms)。Windows 版的源代码以 GNU Affero 通用公共许可证 v3.0 发布在 [RodentFlow-Windows](https://github.com/seesaw-earth/RodentFlow-Windows)。Windows App 包含 FFmpeg、带 DirectML 的 ONNX Runtime、Windows App SDK 和 Win2D，各自适用其许可证，见 [`THIRD_PARTY_NOTICES.md`](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/THIRD_PARTY_NOTICES.md)。
 
 ## 科研用途限制
 
@@ -18,7 +20,7 @@ App 源码、模型权重和训练数据可能适用不同许可。公开 GitHub
 
 ## 第三方商标
 
-Apple、macOS、Mac App Store、Core ML 为 Apple Inc. 的商标；GitHub 为 GitHub, Inc. 的商标。相关名称仅用于说明技术或服务。
+Apple、macOS、Mac App Store、Core ML 为 Apple Inc. 的商标；Microsoft、Windows、Microsoft Store 和 DirectX 为 Microsoft 集团公司的商标；FFmpeg 为 Fabrice Bellard 的商标；GitHub 为 GitHub, Inc. 的商标。相关名称仅用于说明技术或服务。
 
 ## 发布者
 

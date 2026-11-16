@@ -6,25 +6,28 @@ outline: false
 
 ## 先看这里
 
-- **[iPhone、iPad 与 Mac](./guide/editions.md)**：比较各设备能做什么。
+- **[iPhone、iPad、Mac 与 Windows](./guide/editions.md)**：比较各设备能做什么。
 - **[常见问题](./reference/faq.md)**：关于追踪、双鼠、设备、数据和统计的最常见问题。
-- **[快速上手](./guide/getting-started.md)** 和 **[Mac 快速上手](./mac/quick-start.md)**：完整走一遍分析流程。
+- **[快速上手](./guide/getting-started.md)**、**[Mac 快速上手](./mac/quick-start.md)** 和 **[Windows 快速上手](./windows/quick-start.md)**：完整走一遍分析流程。
 - 本网站顶部的搜索框可以搜索整本手册。
 
 ## 报告问题或提问 {#help}
 
 请在 GitHub 上提交 issue：**[github.com/seesaw-earth/RodentFlow/issues](https://github.com/seesaw-earth/RodentFlow/issues)**
 
+**Windows 版 RodentFlow** 的问题请提交到它自己的仓库：**[github.com/seesaw-earth/RodentFlow-Windows/issues](https://github.com/seesaw-earth/RodentFlow-Windows/issues)**。
+
 Mac 版以前的问题报告在 [RodentStudio-Support 的 issue 列表](https://github.com/seesaw-earth/RodentStudio-Support/issues)里，可以先查一下问题是否已知。
 
 为了更快解决问题，请尽量提供：
 
-1. **App 和版本**：iPhone 或 iPad 在设置 › 通用 › iPhone 储存空间 › RodentFlow 中查看；Mac 在菜单 **RodentFlow › 关于 RodentFlow** 中查看。
-2. **设备和系统**：iPhone 或 iPad 型号及 iOS 版本；或 macOS 版本，以及 Mac 是 Apple 芯片还是 Intel。
+1. **App 和版本**：iPhone 或 iPad 在设置 › 通用 › iPhone 储存空间 › RodentFlow 中查看；Mac 在菜单 **RodentFlow › 关于 RodentFlow** 中查看；Windows 在 *设置 › 应用 › 已安装的应用 › RodentFlow › 高级选项* 中查看。
+2. **设备和系统**：iPhone 或 iPad 型号及 iOS 版本；或 macOS 版本，以及 Mac 是 Apple 芯片还是 Intel；或 Windows 版本和显卡型号。
 3. **方法和范式**：姿态（单鼠或双鼠，以及毛色）、质心法还是多格悬尾；数据来自视频、手动录入还是导入。
 4. **你做了什么，预期是什么，实际发生了什么**，以及错误提示原文。
 5. 如果是追踪问题：**预览截图**，方便的话再附一小段视频或模拟测试视频。
 6. 如果是导入问题：**文件的前几行**，必要时替换真实的动物编号。
+7. 如果 Windows 版 RodentFlow 无法启动：附上 **`startup-error.log`** 的内容（位置见[数据存放位置与备份](./reference/data-and-backups.md#windows)）。
 
 ::: warning 注意分享的内容
 GitHub issue 是公开的。不要上传未发表的数据、可识别身份的信息，或你无权分享的视频。一张截图或几行匿名数据通常就够了。
@@ -52,4 +55,4 @@ GitHub issue 是公开的。不要上传未发表的数据、可识别身份的�
 
 RodentFlow 由 Ziqing Shi 开发，完全在你的设备上运行，不收集任何数据，见[隐私政策](./privacy.md)。
 
-系统要求：iPhone 或 iPad，iOS / iPadOS 17 或更高版本；Mac，macOS 14 或更高版本。语言：英文、简体中文。
+系统要求：iPhone 或 iPad，iOS / iPadOS 17 或更高版本；Mac，macOS 14 或更高版本；Windows 电脑，Windows 10 1809 或更高版本或 Windows 11，64 位。语言：英文、简体中文。

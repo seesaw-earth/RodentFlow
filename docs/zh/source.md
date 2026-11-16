@@ -6,6 +6,7 @@ RodentFlow 的代码、Core ML 模型、模型教程和这本手册都公开在 
 |---|---|---|
 | [**seesaw-earth/RodentFlow**](https://github.com/seesaw-earth/RodentFlow) | iPhone 版 RodentFlow 1.x：质心追踪器、指标、统计、手动录入和表格导入。本网站的源文件也在这里的 [`docs/`](https://github.com/seesaw-earth/RodentFlow/tree/main/docs) 中。 | [MIT](https://github.com/seesaw-earth/RodentFlow/blob/main/LICENSE) |
 | [**seesaw-earth/RodentStudio-Support › source**](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source) | Mac 版以及 iPhone、iPad 姿态版：RodentPose 与 RodentLimb 流程、Mac 上的质心追踪、多格悬尾实验、Mac 统计与导出。包含 macOS 和 iOS 的 Xcode 工程。 | AGPL-3.0（每个工程内附许可证文件） |
+| [**seesaw-earth/RodentFlow-Windows**](https://github.com/seesaw-earth/RodentFlow-Windows) | [Windows 版 RodentFlow](./windows/)：编译到 Windows 上的 RodentFlow 分析引擎、C# 宿主（FFmpeg 读视频、ONNX Runtime、WinUI 3 窗口）、命令行工具、模型导出 notebook，以及 Windows App 的[隐私政策](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/PRIVACY.md)和第三方声明。 | [AGPL-3.0](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/LICENSE) |
 | [**seesaw-earth/RodentStudio-CoreML-Models**](https://github.com/seesaw-earth/RodentStudio-CoreML-Models) | Core ML 模型包，权重用 Git LFS 存储。 | 见 [Core ML 模型](./models.md#licences) |
 | [**seesaw-earth/RodentStudio-Tutorials**](https://github.com/seesaw-earth/RodentStudio-Tutorials) | [模型教程](./tutorials/)的原始文件、`references.bib` 和 `CITATION.cff`。 | 见仓库 |
 
@@ -73,9 +74,13 @@ open source/iOS/RodentStudio-Mobile-iOS/RodentPose.xcodeproj
 
 源码检出不等于签名发布版，也不一定通过了最终测试。正式使用前请先用你自己的视频测试。
 
+## 编译 Windows 版 RodentFlow {#build-windows}
+
+[RodentFlow-Windows 的 README](https://github.com/seesaw-earth/RodentFlow-Windows#building) 列出了需要的工具（Swift for Windows、Visual Studio 的 C++ 组件、.NET 8 SDK 和 FFmpeg），以及编译引擎、窗口和命令行工具的命令；更详细的中文说明见仓库里的 [README_CN.md](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/README_CN.md)。ONNX 模型文件不在仓库里，[导出 notebook](https://github.com/seesaw-earth/RodentFlow-Windows/tree/main/notebooks) 可以从模型 checkpoint 生成它们。自己编译的版本不是 Microsoft Store 上签名发布的版本，使用前请先用自己的视频测试。
+
 ## 参与贡献
 
-- **问题与提问**：[提交 issue](https://github.com/seesaw-earth/RodentFlow/issues)，需要提供哪些信息见[支持](./support.md)。
+- **问题与提问**：[提交 issue](https://github.com/seesaw-earth/RodentFlow/issues)（Windows 版请到 [RodentFlow-Windows](https://github.com/seesaw-earth/RodentFlow-Windows/issues)），需要提供哪些信息见[支持](./support.md)。
 - **代码**：先阅读 [CONTRIBUTING.md](https://github.com/seesaw-earth/RodentFlow/blob/main/CONTRIBUTING.md)，然后提交 pull request。
 - **本手册**：每一页底部都有“在 GitHub 上编辑此页”的链接。手册源文件在 [`docs/`](https://github.com/seesaw-earth/RodentFlow/tree/main/docs) 文件夹中，每页都有中英文两个版本。
 
@@ -101,6 +106,7 @@ iPhone 版 RodentFlow 1.x 的仓库中有 [`CITATION.cff`](https://github.com/se
 
 - **iPhone 版 RodentFlow 1.x**（[RodentFlow](https://github.com/seesaw-earth/RodentFlow)）：MIT 许可证，© 2026 Ziqing Shi。在保留版权声明和许可声明的前提下，你可以使用、复制、修改和分发本软件，包括用于商业用途。完整条款见 [`LICENSE`](https://github.com/seesaw-earth/RodentFlow/blob/main/LICENSE)。
 - **Mac 版与姿态追踪代码**（[RodentStudio-Support › source](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source)）：AGPL-3.0。每个 Xcode 工程都附有许可证全文。
+- **Windows 版 RodentFlow**（[RodentFlow-Windows](https://github.com/seesaw-earth/RodentFlow-Windows)）：AGPL-3.0-only，© 2026 Ziqing Shi。它用到的第三方组件（FFmpeg、带 DirectML 的 ONNX Runtime、Windows App SDK、Win2D）列在 [`THIRD_PARTY_NOTICES.md`](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/THIRD_PARTY_NOTICES.md) 中。
 - **模型和训练数据**有各自的条款，见 [Core ML 模型](./models.md#licences)。
 
 本软件不提供任何担保。另见[法律与声明](./legal.md)。

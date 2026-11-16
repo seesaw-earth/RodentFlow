@@ -38,6 +38,10 @@ The task decides how many animals are tracked; the *Coat colour* setting decides
 MousePose6, WhiteMousePose6 and MousePose6DyadBW place the body centre at the midpoint of neck and tail base. MousePose6Dyad learned a different definition, about 0.4 body lengths behind the nose. Measures based on the body centre are therefore not interchangeable between MousePose6Dyad and the other three models; see [tutorial 6](./tutorials/dyad-bw.md#keypoints).
 :::
 
+## On Windows {#windows}
+
+[RodentFlow for Windows](./windows/) runs 32-bit ONNX exports of the same pose model checkpoints (MousePose6, WhiteMousePose6, MousePose6Dyad, MousePose6DyadBW and the group model) with ONNX Runtime, on the graphics card through DirectML or on the processor. The ONNX files are inside the Windows app. The notebook that exports them and checks ONNX Runtime against PyTorch is in the [RodentFlow-Windows](https://github.com/seesaw-earth/RodentFlow-Windows/tree/main/notebooks) repository.
+
 ## Models no longer in RodentFlow {#former}
 
 - **[CylinderMousePoseV2](./tutorials/cylinder-v2.md)** (paws, nose, mouth and tail base) ran the limb workflows of the earlier Mac app. RodentFlow 2.0 removed those workflows; the limb model and workflows are now in **RodentLimb**, whose site documents the [current limb models](https://seesaw-earth.github.io/RodentLimb/models/). The tutorial stays here as the record of how the model was made.

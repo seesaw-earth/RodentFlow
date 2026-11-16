@@ -1,6 +1,6 @@
 ---
 title: "Where your data lives"
-description: "Where RodentFlow keeps videos, analyses and workspaces on iPhone, iPad and Mac, and how to back them up."
+description: "Where RodentFlow keeps videos, analyses and workspaces on iPhone, iPad, Mac and Windows, and how to back them up."
 ---
 
 # Where your data lives
@@ -24,6 +24,12 @@ RodentFlow has no account and no server. Everything stays on your devices and in
 - Analyses imported from the phone are copied into the Mac’s own storage.
 - Before any automatic merge of tasks, a backup of the workspace is written next to it.
 
+## Windows {#windows}
+
+- **Your videos** stay where you put them and are only read. If you move or rename one, use **Locate the video…** on its session.
+- **The workspace** (tasks, sessions, the details you entered, calibrations, review verdicts) and the **settings** are in your user profile, in `%LOCALAPPDATA%\RodentFlow` (`workspace.json`, `settings.json`). Type the path into the address bar of File Explorer. The Microsoft Store version may keep this folder in its own package data under `%LOCALAPPDATA%\Packages` instead. If the app fails to start, the reason is written to `startup-error.log` in the same folder.
+- **Tracking runs and results** are under `Documents\RodentFlow`: one folder per task, one folder per session (animal, date and session number) and inside it `run1`, `run2` … A stopped or failed run continues in the same folder; if the settings no longer match it, a new run is started and the old one is kept. **Open the result folder** shows it in File Explorer.
+
 ## Backing up {#backup}
 
-Back up your video folders, the container folder above and your export folders; [Time Machine](https://support.apple.com/104984) does all three. Quit RodentFlow before copying the workspace by hand. Removing a video or deleting a task in the app does not delete source videos or tracking folders, so nothing is lost by accident.
+Back up your video folders, the container folder above and your export folders; [Time Machine](https://support.apple.com/104984) does all three. On Windows, back up your video folders, `Documents\RodentFlow` and your export folders, for example with Windows Backup or OneDrive. Quit RodentFlow before copying the workspace by hand. Removing a video or deleting a task in the app does not delete source videos or tracking folders, so nothing is lost by accident.

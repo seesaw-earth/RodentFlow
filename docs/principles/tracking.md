@@ -42,3 +42,5 @@ For tail suspension the question is not where the mouse is but whether it moves.
 ## Same numbers on every device {#same}
 
 The iPhone, iPad and Mac compile the same analysis code. The same video, calibration and settings therefore give the same values. When the Mac imports an analysis from the phone, it recomputes it and shows whether the two agree.
+
+[RodentFlow for Windows](../windows/index.md#mac) compiles the same analysis code, but it reads video with FFmpeg and runs 32-bit ONNX exports of the same model checkpoints, so its keypoints can differ slightly from the Mac's. Its results have not yet been compared with the Mac's on the same videos.

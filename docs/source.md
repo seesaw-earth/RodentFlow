@@ -6,6 +6,7 @@ RodentFlow's code, its Core ML models, the model tutorials and this manual are a
 |---|---|---|
 | [**seesaw-earth/RodentFlow**](https://github.com/seesaw-earth/RodentFlow) | RodentFlow for iPhone 1.x: centroid tracker, metrics, statistics, manual entry and table import. Also the source of this website, in [`docs/`](https://github.com/seesaw-earth/RodentFlow/tree/main/docs). | [MIT](https://github.com/seesaw-earth/RodentFlow/blob/main/LICENSE) |
 | [**seesaw-earth/RodentStudio-Support › source**](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source) | The Mac app and the iPhone & iPad pose edition: RodentPose and RodentLimb workflows, Mac centroid tracking, multi-chamber tail suspension, Mac statistics and exports. Xcode projects for macOS and iOS. | AGPL-3.0 (a licence file in each project) |
+| [**seesaw-earth/RodentFlow-Windows**](https://github.com/seesaw-earth/RodentFlow-Windows) | [RodentFlow for Windows](./windows/): the RodentFlow analysis engine compiled for Windows, the C# host (FFmpeg video reading, ONNX Runtime, WinUI 3 window), a command-line tool, the model export notebook, and the [privacy policy](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/PRIVACY.md) and third-party notices of the Windows app. | [AGPL-3.0](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/LICENSE) |
 | [**seesaw-earth/RodentStudio-CoreML-Models**](https://github.com/seesaw-earth/RodentStudio-CoreML-Models) | The Core ML model packages, with weights in Git LFS. | See [Core ML models](./models.md#licences) |
 | [**seesaw-earth/RodentStudio-Tutorials**](https://github.com/seesaw-earth/RodentStudio-Tutorials) | The original source of the [model tutorials](./tutorials/), `references.bib` and `CITATION.cff`. | See the repository |
 
@@ -73,9 +74,13 @@ open source/iOS/RodentStudio-Mobile-iOS/RodentPose.xcodeproj
 
 A source checkout is not a signed release and has not necessarily passed final testing. Please test with your own videos before relying on it.
 
+## Build RodentFlow for Windows {#build-windows}
+
+The [RodentFlow-Windows README](https://github.com/seesaw-earth/RodentFlow-Windows#building) lists what you need (Swift for Windows, Visual Studio's C++ tools, the .NET 8 SDK and FFmpeg) and the build commands for the engine, the window and the command-line tool. The ONNX model files are not in the repository; the [export notebook](https://github.com/seesaw-earth/RodentFlow-Windows/tree/main/notebooks) makes them from the model checkpoints. A source build is not the signed Microsoft Store release; test it with your own videos before relying on it.
+
 ## Contribute
 
-- **Problems and questions**: [open an issue](https://github.com/seesaw-earth/RodentFlow/issues). See [Support](./support.md) for what to include.
+- **Problems and questions**: [open an issue](https://github.com/seesaw-earth/RodentFlow/issues), or for the Windows app [in RodentFlow-Windows](https://github.com/seesaw-earth/RodentFlow-Windows/issues). See [Support](./support.md) for what to include.
 - **Code**: read [CONTRIBUTING.md](https://github.com/seesaw-earth/RodentFlow/blob/main/CONTRIBUTING.md) and open a pull request.
 - **This manual**: every page has an *Edit this page on GitHub* link at the bottom. The manual's source is in the [`docs/`](https://github.com/seesaw-earth/RodentFlow/tree/main/docs) folder, with an English and a Chinese version of each page.
 
@@ -101,6 +106,7 @@ The exact parameters of each result are listed under **Methods** on its result s
 
 - **RodentFlow for iPhone 1.x** ([RodentFlow](https://github.com/seesaw-earth/RodentFlow)): MIT License, © 2026 Ziqing Shi. You may use, copy, modify and distribute the software, including commercially, provided the copyright and licence notice are kept. The full text is in [`LICENSE`](https://github.com/seesaw-earth/RodentFlow/blob/main/LICENSE).
 - **Mac and pose-tracking code** ([RodentStudio-Support › source](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source)): AGPL-3.0. Each Xcode project contains its own licence text.
+- **RodentFlow for Windows** ([RodentFlow-Windows](https://github.com/seesaw-earth/RodentFlow-Windows)): AGPL-3.0-only, © 2026 Ziqing Shi. Its third-party components (FFmpeg, ONNX Runtime with DirectML, Windows App SDK, Win2D) are listed in [`THIRD_PARTY_NOTICES.md`](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/THIRD_PARTY_NOTICES.md).
 - **Models and training data** have their own terms; see [Core ML models](./models.md#licences).
 
 The software is provided without warranty. See also [Legal & notices](./legal.md).
