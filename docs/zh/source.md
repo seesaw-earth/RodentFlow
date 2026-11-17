@@ -5,7 +5,7 @@ RodentFlow 的代码、Core ML 模型、模型教程和这本手册都公开在 
 | 仓库 | 内容 | 许可证 |
 |---|---|---|
 | [**seesaw-earth/RodentFlow**](https://github.com/seesaw-earth/RodentFlow) | iPhone 版 RodentFlow 1.x：质心追踪器、指标、统计、手动录入和表格导入。本网站的源文件也在这里的 [`docs/`](https://github.com/seesaw-earth/RodentFlow/tree/main/docs) 中。 | [MIT](https://github.com/seesaw-earth/RodentFlow/blob/main/LICENSE) |
-| [**seesaw-earth/RodentStudio-Support › source**](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source) | Mac 版以及 iPhone、iPad 姿态版：RodentPose 与 RodentLimb 流程、Mac 上的质心追踪、多格悬尾实验、Mac 统计与导出。包含 macOS 和 iOS 的 Xcode 工程。 | AGPL-3.0（每个工程内附许可证文件） |
+| [**seesaw-earth/RodentStudio-Support › source**](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source) | Mac 版和 iPhone、iPad 版 **RodentFlow 2.1**，发布的版本打了标签 [`v2.1`](https://github.com/seesaw-earth/RodentStudio-Support/tree/v2.1/source)。包括两个 Xcode 工程（`source/macOS/RodentFlow-2.1`、`source/iOS/RodentFlow-2.1`）、`Shared/` 里的共享分析引擎（姿态流程、经典质心追踪、多格悬尾实验、统计与导出）、Core ML 模型和引擎的测试。早先的源代码（Mac 版 RodentStudio 0.7.1、iPhone 和 iPad 版 RodentPose）保留在旁边。 | AGPL-3.0（每个工程内附许可证文件） |
 | [**seesaw-earth/RodentFlow-Windows**](https://github.com/seesaw-earth/RodentFlow-Windows) | [Windows 版 RodentFlow](./windows/)：编译到 Windows 上的 RodentFlow 分析引擎、C# 宿主（FFmpeg 读视频、ONNX Runtime、WinUI 3 窗口）、命令行工具、模型导出 notebook，以及 Windows App 的[隐私政策](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/PRIVACY.md)和第三方声明。 | [AGPL-3.0](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/LICENSE) |
 | [**seesaw-earth/RodentStudio-CoreML-Models**](https://github.com/seesaw-earth/RodentStudio-CoreML-Models) | Core ML 模型包，权重用 Git LFS 存储。 | 见 [Core ML 模型](./models.md#licences) |
 | [**seesaw-earth/RodentStudio-Tutorials**](https://github.com/seesaw-earth/RodentStudio-Tutorials) | [模型教程](./tutorials/)的原始文件、`references.bib` 和 `CITATION.cff`。 | 见仓库 |
@@ -20,6 +20,24 @@ iPhone 1.x 的代码采用 MIT 许可证。Mac 版和姿态追踪代码采用 AG
 - **能核实隐私承诺。** 你可以在代码中确认 App 不会上传你的数据，不需要只听我们说。
 - **可以按需修改。** 你可以修改 App，比如加入实验室常用的范式，并按相应许可证的条款分享你的版本。
 - **公开报告和修复问题。** 欢迎提交 issue 和 pull request。
+
+## RodentFlow 2.1：代码在哪里 {#code-2-1}
+
+路径都相对于 `source/macOS/RodentFlow-2.1/Shared/`；iPhone、iPad 工程里有一份完全相同的副本。Windows 版 RodentFlow 编译的是同一批引擎文件，逐字节相同，位于 [`engine/Sources/RodentFlowABI/Shared`](https://github.com/seesaw-earth/RodentFlow-Windows/tree/main/engine/Sources/RodentFlowABI/Shared)。
+
+| 内容 | 源文件 |
+|---|---|
+| 一帧画面如何进入姿态模型：转正、场地裁剪、灰度、letterbox | [`Vision/PoseVision.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/Vision/PoseVision.swift)、[`Tracking/ArenaROI.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/Tracking/ArenaROI.swift) |
+| 把模型输出解码成关键点 | [`PoseEngine/PoseDecoding.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/PoseDecoding.swift) |
+| 一次分析用哪个模型 | [`PoseEngine/PoseModels.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/PoseModels.swift) |
+| 清理关键点轨迹：置信度、跳点、缺口、平滑 | [`PoseEngine/Kinematics.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/Kinematics.swift) |
+| 两只动物的身份：逐帧追踪器和整段视频的身份校正 | [`PoseEngine/IdentityTracking.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/IdentityTracking.swift) |
+| 3–10 只的群体：姿态去重和已知只数的追踪器 | [`PoseEngine/GroupTracking.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/GroupTracking.swift) |
+| 群体指标和等级关系 | [`PoseEngine/AnalyzersGroup.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/AnalyzersGroup.swift)、[`PoseEngine/GroupHierarchy.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/GroupHierarchy.swift) |
+| 居留者–入侵者实验的规则 | [`PoseEngine/AnalyzersAggression.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/AnalyzersAggression.swift) |
+| 统计检验和组间比较 | [`Groups/StatsEngine.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/Groups/StatsEngine.swift)、[`Groups/GroupAnalysis.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/Groups/GroupAnalysis.swift)、[`Groups/Survival.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/Groups/Survival.swift) |
+
+引擎的测试在 `tools/tests/`；`tools/run_shared_tests.sh` 把引擎和每个测试一起编译并运行，macOS 或 Linux 都可以，只需要 `swiftc`。
 
 ## iPhone 版 RodentFlow 1.x：代码在哪里
 
@@ -62,11 +80,15 @@ cd RodentStudio-Support
 git lfs install
 git lfs pull                       # 拉取真实的模型权重
 
+git checkout v2.1                   # 切到发布的版本（可选）
+
 # Mac 版
-open source/macOS/RodentStudio-0.7.1/RodentStudio.xcodeproj
-# iPhone / iPad 版（内部 target 名为 RodentPose）
-open source/iOS/RodentStudio-Mobile-iOS/RodentPose.xcodeproj
+open source/macOS/RodentFlow-2.1/macOS/RodentFlow-macOS/RodentFlow.xcodeproj
+# iPhone / iPad 版
+open source/iOS/RodentFlow-2.1/iOS/RodentFlow-iOS/RodentFlow.xcodeproj
 ```
+
+两个工程都从 `../../Shared` 编译共享引擎，所以请保持文件夹结构不变。早先的工程（`source/macOS/RodentStudio-0.7.1`、`source/iOS/RodentStudio-Mobile-iOS`）仍留在仓库里备查。
 
 1.  在 Xcode 中选择 target → *Signing & Capabilities* → 选择你自己的开发团队（必要时修改 Bundle ID）。
 2.  Mac：选择 *My Mac*，然后 *Product › Build*（<kbd>⌘</kbd><kbd>B</kbd>）和 *Run*（<kbd>⌘</kbd><kbd>R</kbd>）。iPhone/iPad：选择你的设备（iOS 17+）——参见 [Apple：在设备上运行 App](https://developer.apple.com/documentation/xcode/running-your-app-in-simulator-or-on-a-device)。
@@ -92,7 +114,7 @@ open source/iOS/RodentStudio-Mobile-iOS/RodentPose.xcodeproj
 @software{shi2026rodentflow,
   author  = {Shi, Ziqing},
   title   = {RodentFlow: On-device pose tracking and behavior analysis for rodents},
-  version = {2.0},
+  version = {2.1},
   year    = {2026},
   url     = {https://seesaw-earth.github.io/RodentFlow/}
 }

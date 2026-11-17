@@ -5,7 +5,7 @@ RodentFlow's code, its Core ML models, the model tutorials and this manual are a
 | Repository | What it contains | Licence |
 |---|---|---|
 | [**seesaw-earth/RodentFlow**](https://github.com/seesaw-earth/RodentFlow) | RodentFlow for iPhone 1.x: centroid tracker, metrics, statistics, manual entry and table import. Also the source of this website, in [`docs/`](https://github.com/seesaw-earth/RodentFlow/tree/main/docs). | [MIT](https://github.com/seesaw-earth/RodentFlow/blob/main/LICENSE) |
-| [**seesaw-earth/RodentStudio-Support › source**](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source) | The Mac app and the iPhone & iPad pose edition: RodentPose and RodentLimb workflows, Mac centroid tracking, multi-chamber tail suspension, Mac statistics and exports. Xcode projects for macOS and iOS. | AGPL-3.0 (a licence file in each project) |
+| [**seesaw-earth/RodentStudio-Support › source**](https://github.com/seesaw-earth/RodentStudio-Support/tree/main/source) | **RodentFlow 2.1** for Mac and for iPhone & iPad; the released version is tagged [`v2.1`](https://github.com/seesaw-earth/RodentStudio-Support/tree/v2.1/source). The two Xcode projects (`source/macOS/RodentFlow-2.1`, `source/iOS/RodentFlow-2.1`), the shared analysis engine in `Shared/` (pose workflows, classic centroid tracking, multi-chamber tail suspension, statistics and exports), the Core ML models and the engine's tests. The earlier sources (RodentStudio 0.7.1 for Mac and RodentPose for iPhone & iPad) are kept beside them. | AGPL-3.0 (a licence file in each project) |
 | [**seesaw-earth/RodentFlow-Windows**](https://github.com/seesaw-earth/RodentFlow-Windows) | [RodentFlow for Windows](./windows/): the RodentFlow analysis engine compiled for Windows, the C# host (FFmpeg video reading, ONNX Runtime, WinUI 3 window), a command-line tool, the model export notebook, and the [privacy policy](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/PRIVACY.md) and third-party notices of the Windows app. | [AGPL-3.0](https://github.com/seesaw-earth/RodentFlow-Windows/blob/main/LICENSE) |
 | [**seesaw-earth/RodentStudio-CoreML-Models**](https://github.com/seesaw-earth/RodentStudio-CoreML-Models) | The Core ML model packages, with weights in Git LFS. | See [Core ML models](./models.md#licences) |
 | [**seesaw-earth/RodentStudio-Tutorials**](https://github.com/seesaw-earth/RodentStudio-Tutorials) | The original source of the [model tutorials](./tutorials/), `references.bib` and `CITATION.cff`. | See the repository |
@@ -20,6 +20,24 @@ The iPhone 1.x code is MIT-licensed. The Mac and pose-tracking code is AGPL-3.0,
 - **Check the privacy promise.** You can confirm in the code that the apps do not upload your data. You do not have to take our word for it.
 - **Adapt it.** You may modify the apps, for example to add an assay your lab uses, and share your version under the terms of the licence that applies.
 - **Report and fix problems in the open.** Issues and pull requests are welcome.
+
+## RodentFlow 2.1: where things are in the code {#code-2-1}
+
+Paths are relative to `source/macOS/RodentFlow-2.1/Shared/`; the iPhone & iPad project holds an identical copy. RodentFlow for Windows compiles the same engine files, byte for byte, from [`engine/Sources/RodentFlowABI/Shared`](https://github.com/seesaw-earth/RodentFlow-Windows/tree/main/engine/Sources/RodentFlowABI/Shared).
+
+| Topic | Source file |
+|---|---|
+| One frame through the pose model: upright, arena crop, greyscale, letterbox | [`Vision/PoseVision.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/Vision/PoseVision.swift), [`Tracking/ArenaROI.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/Tracking/ArenaROI.swift) |
+| Decoding the model output into keypoints | [`PoseEngine/PoseDecoding.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/PoseDecoding.swift) |
+| Which model a run uses | [`PoseEngine/PoseModels.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/PoseModels.swift) |
+| Cleaning keypoint tracks: confidence, jumps, gaps, smoothing | [`PoseEngine/Kinematics.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/Kinematics.swift) |
+| Two-animal identity: online tracker and whole-video resolver | [`PoseEngine/IdentityTracking.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/IdentityTracking.swift) |
+| Groups of 3–10 mice: pose suppression and the fixed-number tracker | [`PoseEngine/GroupTracking.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/GroupTracking.swift) |
+| Group measures and dominance hierarchy | [`PoseEngine/AnalyzersGroup.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/AnalyzersGroup.swift), [`PoseEngine/GroupHierarchy.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/GroupHierarchy.swift) |
+| Resident–intruder rules | [`PoseEngine/AnalyzersAggression.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/PoseEngine/AnalyzersAggression.swift) |
+| Statistical tests and group comparison | [`Groups/StatsEngine.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/Groups/StatsEngine.swift), [`Groups/GroupAnalysis.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/Groups/GroupAnalysis.swift), [`Groups/Survival.swift`](https://github.com/seesaw-earth/RodentStudio-Support/blob/v2.1/source/macOS/RodentFlow-2.1/Shared/Groups/Survival.swift) |
+
+The engine's tests are in `tools/tests/`; `tools/run_shared_tests.sh` compiles the engine with each test and runs it, on macOS or Linux, with only `swiftc`.
 
 ## RodentFlow for iPhone 1.x: where things are in the code
 
@@ -62,11 +80,15 @@ cd RodentStudio-Support
 git lfs install
 git lfs pull                       # fetch the real model weights
 
+git checkout v2.1                   # the released version (optional)
+
 # Mac edition
-open source/macOS/RodentStudio-0.7.1/RodentStudio.xcodeproj
-# iPhone / iPad edition (internal target name: RodentPose)
-open source/iOS/RodentStudio-Mobile-iOS/RodentPose.xcodeproj
+open source/macOS/RodentFlow-2.1/macOS/RodentFlow-macOS/RodentFlow.xcodeproj
+# iPhone / iPad edition
+open source/iOS/RodentFlow-2.1/iOS/RodentFlow-iOS/RodentFlow.xcodeproj
 ```
+
+Both projects compile the shared engine from `../../Shared`, so keep the folder layout as it is. The earlier projects (`source/macOS/RodentStudio-0.7.1`, `source/iOS/RodentStudio-Mobile-iOS`) remain in the repository for reference.
 
 1.  In Xcode, select the target → *Signing & Capabilities* → choose your own team (change the bundle identifier if needed).
 2.  Mac: choose *My Mac*, then *Product › Build* (<kbd>⌘</kbd><kbd>B</kbd>) and *Run* (<kbd>⌘</kbd><kbd>R</kbd>). iPhone/iPad: choose your device (iOS 17+) — see [Apple: Running your app on a device](https://developer.apple.com/documentation/xcode/running-your-app-in-simulator-or-on-a-device).
@@ -92,7 +114,7 @@ If RodentFlow contributes to published work, please cite the software and the ve
 @software{shi2026rodentflow,
   author  = {Shi, Ziqing},
   title   = {RodentFlow: On-device pose tracking and behavior analysis for rodents},
-  version = {2.0},
+  version = {2.1},
   year    = {2026},
   url     = {https://seesaw-earth.github.io/RodentFlow/}
 }
